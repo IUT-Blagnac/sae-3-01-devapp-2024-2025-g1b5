@@ -92,20 +92,25 @@ TIP: Pensez à utiliser les salons Discord dédiés pour poser vos questions.
 
 TIP: Mettez ici toutes les informations nécessaire à l'utilisation de votre dépôt (comment on installe votre application, où sont les docs, etc.)
 
-== Gestion de projet & Qualité
+=== Gestion du projet par Sprint
 
-Chaque sprint (semaine) vous devrez livrer une nouvelle version de votre application (release).
-Utilisez pour cela les fonctionnalités de GitHub pour les https://docs.github.com/en/repositories/releasing-projects-on-github[Releases].
+==== Sprint 1
 
-De plus ce fichier `README.adoc` devra être à jour des informations suivantes :
+[cols="1,2,2",options=header]
+|===
+| Nom    | Lien         |  Notes 
+| `Bilan Semaine` | https://github.com/IUT-Blagnac/sae3-01-devapp-g1a-1/blob/master/Documentation/Livrables/GestionProjet/BilanSemaine/CompteRenduGestionProjetSem47_G1A-1.pdf[Lien vers le bilan] | Bilan du Sprint 1 (Bilan difficultés, avancement, etc.)
+|===
 
-- Version courante : https://github.com/IUT-Blagnac/sae3-01-template/releases/tag/v0.1.2[v0.1.2]
-- Lien vers la doc technique
-- Lien vers la doc utilisateur
-- Liste des (ou lien vers les) User Stories (ToDo/Ongoing/Done) et % restant
-- Tests unitaires et plans de test
-- Indicateurs de qualité du code (dette technique)
-- ... tout autre élément que vous jugerez utiles pour démontrer la qualité de votre application
+==== Sprint 2
+
+[cols="1,2,2",options=header]
+|===
+| Nom    | Lien         |  Notes 
+| `Bilan Semaine` | https://github.com/IUT-Blagnac/sae3-01-devapp-g1a-1/blob/master/Documentation/Livrables/GestionProjet/BilanSemaine/CompteRenduGestionProjetSem48_G1A-1.pdf[Lien vers le bilan] | Bilan de la semaine 48 (Bilan des tâches effectuées avec gantt)
+| `Bilan Difficultés Réussites` | https://github.com/IUT-Blagnac/sae3-01-devapp-g1a-1/blob/master/Documentation/Livrables/GestionProjet/BilanDifficultesReussites/BilanDifficult%C3%A9sR%C3%A9ussitesSem48_G1A-1.pdf[Lien vers le bilan] | Bilan des difficultés et réussites du Sprint 2
+|===
+
 
 Voici un exemple d'évaluation :
 
