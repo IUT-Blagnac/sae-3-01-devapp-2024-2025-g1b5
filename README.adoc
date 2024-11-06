@@ -82,54 +82,47 @@ TIP: Adaptez ces fichiers à votre projet et à votre organisation. Et inspirez-
 [[liensUtiles]]
 === Liens utiles
 
-- Le https://webetud.iut-blagnac.fr/course/view.php?id=841[cours Moodle] sur la SAE
-- Le dépôt https://github.com/IUT-Blagnac/sae3-01-template[template] qui sert de base à tous les dépôts étudiants.
-- Le lien https://classroom.github.com/a/OUF7gxEa[classroom] si besoin.
+- Le https://webetud.iut-blagnac.fr/course/view.php?
+id=841[cours Moodle] sur la SAE
+- Le dépôt https://github.com/IUT-Blagnac/
+sae3-01-template[template] qui sert de base à tous les 
+dépôts étudiants.
+- Le lien https://classroom.github.com/a/OUF7gxEa
+[classroom] si besoin.
 
-TIP: Pensez à utiliser les salons Discord dédiés pour poser vos questions.
+TIP: Pensez à utiliser les salons Discord dédiés pour 
+poser vos questions.
 
 == Réalisations 
 
-TIP: Mettez ici toutes les informations nécessaire à l'utilisation de votre dépôt (comment on installe votre application, où sont les docs, etc.)
+TIP: Mettez ici toutes les informations nécessaire à 
+l'utilisation de votre dépôt (comment on installe 
+votre application, où sont les docs, etc.)
 
-=== Gestion du projet par Sprint
+== Gestion du projet par Sprint
 
 [cols="1,1"]
 |===
 |Sprint 1
-|https://github.com/IUT-Blagnac/sae3-01-devapp-g1b-5/blob/master/GPO/Sprint%201/CDCF.pdf[CDCF]
-
-https://github.com/IUT-Blagnac/sae3-01-devapp-g1b-5/blob/master/GPO/Sprint%201/CDCT.pdf[CDCT]
-
-https://github.com/IUT-Blagnac/sae3-01-devapp-g1b-5/blob/master/GPO/Sprint%201/DCE%20SAE.pdf[DCE]
+|
 |===
 
 [cols="1,1"]
 |===
 |Sprint 2
-|https://github.com/IUT-Blagnac/sae3-01-devapp-g1b-5/blob/master/GPO/Sprint%202/Speed%20Dating%20G1B%20-%205.pdf[Compte rendue du speed dating]
+|
 |===
 
 [cols="1,1"]
 |===
 |Sprint 3
-|https://github.com/IUT-Blagnac/sae3-01-devapp-g1b-5/blob/master/GPO/Sprint%203/Backlog%20de%20sprint%20(sprint%203).pdf[Backlog de sprint 3]
-
-https://github.com/IUT-Blagnac/sae3-01-devapp-g1b-5/blob/master/GPO/Sprint%203/Compte%20rendu%20de%20r%C3%A9union%20G1B%20-%205.pdf[Compte rendue de réunion semaine 49]
-
-https://github.com/IUT-Blagnac/sae3-01-devapp-g1b-5/blob/master/GPO/Sprint%203/Ordre%20Du%20Jour%20semaine%2049%20G1B%20-5.pdf[Ordre du jour semaine 49]
+|
 |===
 
 [cols="1,1"]
 |===
 |Sprint 4
-|https://github.com/IUT-Blagnac/sae3-01-devapp-g1b-5/blob/master/GPO/Sprint%204/Backlog%20de%20sprint%20(sprint%204).pdf[Backlog de sprint 4]
-
-https://github.com/IUT-Blagnac/sae3-01-devapp-g1b-5/blob/master/GPO/Sprint%204/Compte%20rendu%20de%20r%C3%A9union%20semaine%2050%20G1B%20-5.pdf[Compte rendue de réunion semaine 50]
-
-https://github.com/IUT-Blagnac/sae3-01-devapp-g1b-5/blob/master/GPO/Sprint%204/Ordre%20du%20Jour%20semaine%2050%20G1B%20-%205.pdf[Ordre du jour semaine 50]
-
-https://github.com/IUT-Blagnac/sae3-01-devapp-g1b-5/blob/master/GPO/Sprint%204/Analyse%20semaine%2050%20G1B%20-5.pdf[Analyse semaine 50]
+|
 |===
 
 
@@ -139,7 +132,14 @@ https://github.com/IUT-Blagnac/sae3-01-devapp-g1b-5/blob/master/GPO/Sprint%204/A
 Voici un exemple d'évaluation :
 
 ifdef::env-github[]
-image:https://docs.google.com/spreadsheets/d/e/2PACX-1vTc3HJJ9iSI4aa2I9a567wX1AUEmgGrQsPl7tHGSAJ_Z-lzWXwYhlhcVIhh5vCJxoxHXYKjSLetP6NS/pubchart?oid=1850914734&amp;format=image[link=https://docs.google.com/spreadsheets/d/e/2PACX-1vTc3HJJ9iSI4aa2I9a567wX1AUEmgGrQsPl7tHGSAJ_Z-lzWXwYhlhcVIhh5vCJxoxHXYKjSLetP6NS/pubchart?oid=1850914734&amp;format=image]
+image:https://docs.google.com/spreadsheets/d/e/
+2PACX-1vTc3HJJ9iSI4aa2I9a567wX1AUEmgGrQsPl7tHGSAJ_Z-lzW
+XwYhlhcVIhh5vCJxoxHXYKjSLetP6NS/pubchart?
+oid=1850914734&amp;format=image[link=https://docs.
+google.com/spreadsheets/d/e/
+2PACX-1vTc3HJJ9iSI4aa2I9a567wX1AUEmgGrQsPl7tHGSAJ_Z-lzW
+XwYhlhcVIhh5vCJxoxHXYKjSLetP6NS/pubchart?
+oid=1850914734&amp;format=image]
 endif::[]
 
 ifndef::env-github[]
