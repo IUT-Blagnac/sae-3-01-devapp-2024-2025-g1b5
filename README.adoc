@@ -50,7 +50,12 @@ Vous trouverez le dépôt "template" qui a servi de base ici : https://github.co
 
 toc::[]
 
-== Equipe
+==  Introduction 
+
+===  Contexte
+
+
+== Notre équipe
 
 Projet est réalisé par::
 
@@ -61,9 +66,10 @@ Projet est réalisé par::
 - https://github.com/[Clavel Simon]
 
 
-Tuteur/tutrice enseignant(e) de l'équipe:: mailto:jean-michel.bruel@univ-tlse2.fr[JMB]
+===  Tuteurs de l'équipe:
 
-== Contexte général
+- link:https://github.com/ependaries[Esther Pendaries]
+
 
 
 === Dépôt initial
