@@ -70,6 +70,7 @@ Projet est réalisé par::
 
 - link:https://github.com/ependaries[Esther Pendaries]
 
+===  Langages / Technologies utilisées
 
 
 === Dépôt initial
