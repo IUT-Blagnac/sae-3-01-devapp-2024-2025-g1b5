@@ -55,8 +55,11 @@ toc::[]
 Projet est réalisé par::
 
 - https://github.com/kwadjanib[Kwadjani Bilon]
-- https://github.com/johnSmith[John Smith]
-...
+- https://github.com/adriang0309[Guerrero Adrian]
+- https://github.com/theor31[Raban Théo]
+- https://github.com/byadri[Adrien Théophile]
+- https://github.com/[Clavel Simon]
+
 
 Tuteur/tutrice enseignant(e) de l'équipe:: mailto:jean-michel.bruel@univ-tlse2.fr[JMB]
 
