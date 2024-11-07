@@ -99,8 +99,17 @@ TIP: Mettez ici toutes les informations nécessaire à
 l'utilisation de votre dépôt (comment on installe 
 votre application, où sont les docs, etc.)
 
-== Gestion du projet par Sprint
+== Gestion du projet
 
+=== Backlog Produit
+[cols="1,1"]
+|===
+|Backlog Produit
+|link:https://github.com/orgs/IUT-Blagnac/projects/256[lien vers notre backlog]
+|===
+
+
+=== Gestion par Sprint
 [cols="1,1"]
 |===
 |Sprint 1
