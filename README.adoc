@@ -99,12 +99,13 @@ votre application, où sont les docs, etc.)
 
 == Gestion du projet
 
-=== Backlog Produit
+=== Backlog
 [cols="1,1"]
 |===
 |Backlog Produit
-|link:https://github.com/orgs/IUT-Blagnac/projects/256[lien vers notre backlog]
+|link:https://github.com/orgs/IUT-Blagnac/projects/256[Lien vers notre backlog]
 |===
+
 
 
 === Gestion par Sprint
