@@ -1,8 +1,12 @@
+= Document De Conception
+
+image::images/Lutin.PNG[]
+
 == SAE DEV APP S3
 
 Université de Toulouse +
 IUT de Blagnac +
-Département Informatique  
+Département Informatique
 
 [discrete]
 === Equipe : 1B5
@@ -16,23 +20,42 @@ Département Informatique
 
 |===
 
+
+
+
+
 [abstract]
 Ce document de conception détaille l’architecture et les fonctionnalités d’un site e-commerce spécialisé dans la vente de jouets, servant de guide technique pour le développement de l’application. Il inclut une vue complète des cas d’utilisation, des classes métier, et des états de transition, essentiels pour structurer les interactions et assurer la cohérence technique du système.
 
+
+
+
+
+
 == Table des matières
 
-* <<introduction,Introduction>>
-* <<I-UseCase,Use Case>>
-* <<IIDiagrammeClassesMetier,Diagramme de Classes métier>>
-  * <<DCMU,Diagramme de classe métier pour Utilisateur>>
-  * <<DCMA,Diagramme de classe métier pour Administrateur>>
-* <<IIIDiagrammeEtatTransition,Diagramme d’État transition>>
-  * <<DETC,Diagramme d'État-Transition pour la Commande>>
-  * <<DETP,Diagramme d'État-Transition pour le Produit>>
-* <<IVDiagrammeClasseConception,Diagramme de classe de Conception>>
-* <<synthese,Synthèse>>
+- <<introduction,Introduction>>
 
-== [[introduction]] Introduction
+- <<I,I-Use Case>>
+
+- <<II,II-Diagramme de Classes métier>>
+
+  * <<DCMU,1. Diagramme de classe métier pour Utilisateur>>
+
+  * <<DCMA,2. Diagramme de classe métier pour Administrateur>>
+
+- <<III,III-Diagramme d’État transition>>
+
+  * <<DETC,1.1 Diagramme d'État-Transition pour la Commande>>
+
+  * <<DETP,1.2. Diagramme d'État-Transition pour le Produit>>
+
+- <<IV,IV-Diagramme de classe de Conception>>
+
+- <<synthèse,Synthèse>>
+
+[[introduction]]
+== Introduction
 
 Ce document de conception décrit l'architecture et les fonctionnalités d’un futur site e-commerce spécialisé dans la vente de jouets. Il vise à fournir une vue d’ensemble complète des cas d’utilisation, des classes métier, et des transitions d’état qui composeront l'application. À travers des diagrammes et des explications détaillées, ce document met en évidence la manière dont les différents types d’utilisateurs interagiront avec le système et explique les choix de conception pour répondre aux exigences fonctionnelles et techniques.
 
@@ -40,9 +63,11 @@ Le site est conçu pour offrir une expérience utilisateur fluide, permettant au
 
 En tant que fondation technique pour le développement de l’application, ce document vise à guider les développeurs et les parties prenantes tout au long du processus de création. En offrant une base claire et structurée, il garantit une expérience utilisateur optimisée et une gestion efficace des opérations en ligne, permettant ainsi de répondre aux attentes des clients tout en assurant une administration fluide et sécurisée du site.
 
-== [[I-UseCase]] Use Case
+[[I]]
+== I-Use Case
 
 image::images/useCase.png[]
+
 
 Ce diagramme de cas d’utilisation montre les différentes fonctionnalités accessibles aux utilisateurs selon leur rôle.
 
@@ -52,29 +77,36 @@ Le rôle Administration dispose de droits supplémentaires pour gérer les utili
 
 En somme, le site est structuré pour offrir une expérience utilisateur complète aux clients tout en permettant une gestion efficace des opérations par les administrateurs.
 
-== [[IIDiagrammeClassesMetier]] Diagramme de Classes métier
+[[II]]
+== II-Diagramme de Classes métier
 
-[[DCMU]] . 1.Diagramme de classe métier pour Utilisateur
+[[DCMU]]
+. 1. Diagramme de classe métier pour Utilisateur
 
 image::images/DCMU.PNG[]
 
-. 2. <<DCMA,Diagramme de classe métier pour Administrateur>>
+[[DCMA]]
+. 2. Diagramme de classe métier pour Administrateur
 
 image::images/DCMA.PNG[]
 
-== [[IIIDiagrammeEtatTransition]] Diagramme d’État transition
+[[III]]
+== III-Diagramme d’État transition
 
 Les deux diagrammes représentent le comportement dynamique d'un système ou d'un objet à travers ses différents états et les transitions entre eux. Nous avons réalisé un diagramme de transition pour la commande et un pour la gestion des stocks produits.
 
-. 1.1. <<DETC,Diagramme d'État-Transition pour la Commande>>
+[[DETC]]
+. 1.1. Diagramme d'État-Transition pour la Commande
 
 image::images/DETC.PNG[]
 
-. 1.2. <<DETP,Diagramme d'État-Transition pour le Produit>>
+[[DETP]]
+. 1.2. Diagramme d'État-Transition pour le Produit
 
 image::images/DETP.PNG[]
 
-== [[IVDiagrammeClasseConception]] Diagramme de classe de Conception
+[[IV]]
+== IV-Diagramme de classe de Conception
 
 Dans le diagramme de classe métier, chaque classe représente un concept ou une entité du domaine métier de l’application. Voici le diagramme de classe métier de votre futur site.
 
@@ -94,6 +126,7 @@ Voici une synthèse des classes présentes dans le diagramme de classe métier :
 
 Ce modèle métier est conçu pour gérer l’ensemble des fonctionnalités d'un site de vente de jouets, en prenant en compte la gestion des utilisateurs, des produits, des commandes et des transactions.
 
-== [[synthese]] Synthèse
+[[synthèse]]
+== Synthèse
 
 Les diagrammes inclus dans ce document de conception constituent des outils essentiels pour structurer et orienter le développement du site e-commerce, en garantissant la cohérence entre les besoins fonctionnels, les choix d’architecture et les spécifications techniques. En offrant une vue d’ensemble des interactions, des états et des classes métier, ce document permet de prévenir les problèmes potentiels, d’assurer la conformité aux exigences et de faciliter les évolutions futures du système. Il servira de référence pour toutes les étapes de développement, permettant une mise en œuvre efficace et une expérience utilisateur optimisée pour les clients et les administrateurs du site.
