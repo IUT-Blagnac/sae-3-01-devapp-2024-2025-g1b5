@@ -1,5 +1,3 @@
-= Document De Conception
-
 == SAE DEV APP S3
 
 Université de Toulouse +
@@ -24,14 +22,14 @@ Ce document de conception détaille l’architecture et les fonctionnalités d�
 == Table des matières
 
 * <<introduction,Introduction>>
-* <<I-UseCase,I-Use Case>>
-* <<IIDiagrammeClassesMetier,II-Diagramme de Classes métier>>
+* <<I-UseCase,Use Case>>
+* <<IIDiagrammeClassesMetier,Diagramme de Classes métier>>
   * <<DCMU,Diagramme de classe métier pour Utilisateur>>
   * <<DCMA,Diagramme de classe métier pour Administrateur>>
-* <<IIIDiagrammeEtatTransition,III-Diagramme d’État transition>>
+* <<IIIDiagrammeEtatTransition,Diagramme d’État transition>>
   * <<DETC,Diagramme d'État-Transition pour la Commande>>
   * <<DETP,Diagramme d'État-Transition pour le Produit>>
-* <<IVDiagrammeClasseConception,IV-Diagramme de classe de Conception>>
+* <<IVDiagrammeClasseConception,Diagramme de classe de Conception>>
 * <<synthese,Synthèse>>
 
 == [[introduction]] Introduction
@@ -42,7 +40,7 @@ Le site est conçu pour offrir une expérience utilisateur fluide, permettant au
 
 En tant que fondation technique pour le développement de l’application, ce document vise à guider les développeurs et les parties prenantes tout au long du processus de création. En offrant une base claire et structurée, il garantit une expérience utilisateur optimisée et une gestion efficace des opérations en ligne, permettant ainsi de répondre aux attentes des clients tout en assurant une administration fluide et sécurisée du site.
 
-== [[I-UseCase]] I-Use Case
+== [[I-UseCase]] Use Case
 
 image::images/useCase.png[]
 
@@ -54,7 +52,7 @@ Le rôle Administration dispose de droits supplémentaires pour gérer les utili
 
 En somme, le site est structuré pour offrir une expérience utilisateur complète aux clients tout en permettant une gestion efficace des opérations par les administrateurs.
 
-== [[IIDiagrammeClassesMetier]] II-Diagramme de Classes métier
+== [[IIDiagrammeClassesMetier]] Diagramme de Classes métier
 
 [[DCMU]] . 1.Diagramme de classe métier pour Utilisateur
 
@@ -64,7 +62,7 @@ image::images/DCMU.PNG[]
 
 image::images/DCMA.PNG[]
 
-== [[IIIDiagrammeEtatTransition]] III-Diagramme d’État transition
+== [[IIIDiagrammeEtatTransition]] Diagramme d’État transition
 
 Les deux diagrammes représentent le comportement dynamique d'un système ou d'un objet à travers ses différents états et les transitions entre eux. Nous avons réalisé un diagramme de transition pour la commande et un pour la gestion des stocks produits.
 
@@ -76,7 +74,7 @@ image::images/DETC.PNG[]
 
 image::images/DETP.PNG[]
 
-== [[IVDiagrammeClasseConception]] IV-Diagramme de classe de Conception
+== [[IVDiagrammeClasseConception]] Diagramme de classe de Conception
 
 Dans le diagramme de classe métier, chaque classe représente un concept ou une entité du domaine métier de l’application. Voici le diagramme de classe métier de votre futur site.
 
