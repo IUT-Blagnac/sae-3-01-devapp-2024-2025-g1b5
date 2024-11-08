@@ -163,7 +163,7 @@ Un Sprint durera 2 semaines
 |Gestion des produits par admin| 2 jours | Must
 
 |===
-
+==== User Story associé au Sprint 2
 
 
 [cols="1,1,1,1", options="header"]
