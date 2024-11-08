@@ -100,12 +100,90 @@ votre application, où sont les docs, etc.)
 == Gestion du projet
 
 === Backlog
+
+Un Sprint durera 2 semaines
+
 [cols="1,1"]
 |===
 |Backlog Produit
 |link:https://github.com/orgs/IUT-Blagnac/projects/256[Lien vers notre backlog]
 |===
 
+= Liste des tâches à réaliser pour le Sprint 1
+
+[cols="1,1,1", options="header"]
+|===
+| Nom de la tâche | Durée Approx. | Priorité
+
+| Se connecter (avec cookie pour login) / se déconnecter
+| 3 jours
+| Must
+
+| Création compte client
+| 3 jours
+| Must
+
+| Visualisation/Création la liste de produits
+| 5 jours
+| Must
+|===
+
+= Liste des tâches à réaliser pour le Sprint 2
+
+[cols="1,1,1", options="header"]
+|===
+| Nom de la tâche | Durée Approx. | Priorité
+
+| Rechercher de produits par catégorie/sous-catégorie ou mot-clé ou regroupement
+| 
+| Must
+
+| Visualiser le détail d’un type produit (dont photos, avis & réponses, moyenne note avis, photos de la communauté, stock, catégorie et regroupement associés, …)
+| 
+| Must
+
+| Ajouter un produit affiché dans le panier / Gérer le panier (afficher le panier, modifier qté, supprimer un produit)
+| 
+| Must
+|===
+
+= Liste des tâches à réaliser pour le Sprint 3
+
+[cols="1,1,1", options="header"]
+|===
+| Nom de la tâche | Durée Approx. | Priorité
+
+| Visualiser ses commandes passées (et saisir un avis sur un type produit acheté et livré, avec photos éventuelles)
+| 
+| Must
+
+| Faire un achat / passer une commande
+| 
+| Must
+
+| CRUD admin
+| 
+| Must
+|===
+
+= Liste des tâches à réaliser pour le Sprint 4
+
+[cols="1,1,1", options="header"]
+|===
+| Nom de la tâche | Durée Approx. | Priorité
+
+| Tri de la liste de produits par prix croissant / décroissant
+| 
+| Must
+
+| Gérer des points fidélité (recommandé)
+| 
+| Should
+
+| Visualiser mes dernières consultations de produits (recommandé)
+| 
+| Should
+|===
 
 
 === Gestion par Sprint
