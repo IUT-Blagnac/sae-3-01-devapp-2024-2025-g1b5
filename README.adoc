@@ -97,7 +97,7 @@ votre application, où sont les docs, etc.)
 
 == Gestion du projet
 
-=== Backlog
+== Backlog
 
 Un Sprint durera 2 semaines
 
@@ -269,7 +269,7 @@ Un Sprint durera 2 semaines
 |===
 
 
-=== User Stories
+==== User Story associé au Sprint 4
 
 [cols="1,1,1,1", options="header"]
 |===
