@@ -53,7 +53,7 @@ En tant que fondation technique pour le développement de l’application, ce do
 
 == I-Use Case
 
-image::images/UC1.PNG[]
+image::images/useCase.png[]
 
 
 Ce diagramme de cas d’utilisation montre les différentes fonctionnalités accessibles aux utilisateurs selon leur rôle.
@@ -67,18 +67,30 @@ En somme, le site est structuré pour offrir une expérience utilisateur complè
 == II-Diagramme de Classes métier
 
 . 1. Diagramme de classe métier pour Utilisateur
+
+image::images/DCMU.PNG[]
+
 . 2. Diagramme de classe métier pour Administrateur
+
+image::images/DCMA.PNG[]
 
 == III-Diagramme d’État transition
 
 Les deux diagrammes représentent le comportement dynamique d'un système ou d'un objet à travers ses différents états et les transitions entre eux. Nous avons réalisé un diagramme de transition pour la commande et un pour la gestion des stocks produits.
 
-. 1. Diagramme d'État-Transition pour la Commande
+. 1.1. Diagramme d'État-Transition pour la Commande
+
+image::images/DETC.PNG[]
+
 . 1.2. Diagramme d'État-Transition pour le Produit
+
+image::images/DETP.PNG[]
 
 == IV-Diagramme de classe de Conception
 
 Dans le diagramme de classe métier, chaque classe représente un concept ou une entité du domaine métier de l’application. Voici le diagramme de classe métier de votre futur site.
+
+image::images/DCC.PNG[]
 
 Voici une synthèse des classes présentes dans le diagramme de classe métier :
 
