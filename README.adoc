@@ -251,24 +251,7 @@ Un Sprint durera 2 semaines
 
 
 
-=== Liste des tâches à réaliser pour le Sprint 4
 
-[cols="1,1,1", options="header"]
-|===
-| Nom de la tâche | Durée Approx. | Priorité
-
-| Visualiser ses commandes passées (et saisir un avis sur un type produit acheté et livré, avec photos éventuelles)
-| 
-| Must
-
-| Faire un achat / passer une commande
-| 
-| Must
-
-| CRUD admin
-| 
-| Must
-|===
 
 === Liste des tâches à réaliser pour le Sprint 4
 
