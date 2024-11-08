@@ -53,6 +53,9 @@ En tant que fondation technique pour le développement de l’application, ce do
 
 == I-Use Case
 
+image::images/UC1.PNG[]
+
+
 Ce diagramme de cas d’utilisation montre les différentes fonctionnalités accessibles aux utilisateurs selon leur rôle.
 
 Les utilisateurs réguliers, comme Maman Active et Papa Cool, peuvent naviguer sur le site, interagir avec le contenu comme laisser des avis et des commentaires, gérer leurs comptes, et effectuer des achats en ligne.
