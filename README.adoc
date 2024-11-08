@@ -132,6 +132,18 @@ Un Sprint durera 2 semaines
 |===
 | User Story | Importance | Critères d'acceptation | Durée
 
+| En tant que maman active, je veux utiliser une barre de recherche intelligente avec des suggestions automatiques pour trouver rapidement des articles spécifiques et gagner du temps.
+| Must
+| - Des propositions se présentent avec le même nom au fur et à mesure qu'on écrit dans la barre de recherche.
+- On trouve l'article recherché.
+| 2 jours
+
+| En tant que maman active, je veux accéder aux catégories de produits pour trouver facilement des articles d’une même gamme ou adaptés aux besoins de ma famille sans devoir explorer tout le site.
+| Must
+| - Les différentes catégories apparaissent quand on clique sur le bouton Catégorie.
+- Des sous-parties liées au produit apparaissent.
+| 3 jours
+
 | En tant que papa cool, je souhaite me connecter rapidement à mon compte en utilisant un identifiant simple pour accéder facilement à mes informations.
 | Must
 | - L'utilisateur doit pouvoir saisir un identifiant ou un email et un mot de passe pour se connecter.
@@ -148,20 +160,6 @@ Un Sprint durera 2 semaines
 | Should
 | - L'utilisateur doit pouvoir accéder à l'option de déconnexion en un clic depuis le tableau de bord.
 | 1 jour
-
-| En tant que maman active, je veux utiliser une barre de recherche intelligente avec des suggestions automatiques pour trouver rapidement des articles spécifiques et gagner du temps.
-| Must
-| - Des propositions se présentent avec le même nom au fur et à mesure qu'on écrit dans la barre de recherche.
-- On trouve l'article recherché.
-| 2 jours
-
-| En tant que maman active, je veux accéder aux catégories de produits pour trouver facilement des articles d’une même gamme ou adaptés aux besoins de ma famille sans devoir explorer tout le site.
-| Must
-| - Les différentes catégories apparaissent quand on clique sur le bouton Catégorie.
-- Des sous-parties liées au produit apparaissent.
-| 3 jours
-
-
 |===
 
 
