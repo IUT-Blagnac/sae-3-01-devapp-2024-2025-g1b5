@@ -107,7 +107,7 @@ Un Sprint durera 2 semaines
 |link:https://github.com/orgs/IUT-Blagnac/projects/256[Lien vers notre backlog]
 |===
 
-= Liste des tâches à réaliser pour le Sprint 1
+=== Liste des tâches à réaliser pour le Sprint 1
 
 [cols="1,1,1", options="header"]
 |===
@@ -126,7 +126,44 @@ Un Sprint durera 2 semaines
 | Must
 |===
 
-= Liste des tâches à réaliser pour le Sprint 2
+==== User Story associé au Sprint 1
+
+[cols="1,1,1,1", options="header"]
+|===
+| User Story | Importance | Critères d'acceptation | Durée
+
+| En tant que maman active, je veux utiliser une barre de recherche intelligente avec des suggestions automatiques pour trouver rapidement des articles spécifiques et gagner du temps.
+| Must
+| - Des propositions se présentent avec le même nom au fur et à mesure qu'on écrit dans la barre de recherche.
+- On trouve l'article recherché.
+| 2 jours
+
+| En tant que maman active, je veux accéder aux catégories de produits pour trouver facilement des articles d’une même gamme ou adaptés aux besoins de ma famille sans devoir explorer tout le site.
+| Must
+| - Les différentes catégories apparaissent quand on clique sur le bouton Catégorie.
+- Des sous-parties liées au produit apparaissent.
+| 3 jours
+
+| En tant que papa cool, je souhaite me connecter rapidement à mon compte en utilisant un identifiant simple pour accéder facilement à mes informations.
+| Must
+| - L'utilisateur doit pouvoir saisir un identifiant ou un email et un mot de passe pour se connecter.
+- Une option "Mot de passe oublié" doit être disponible.
+- Un message d'erreur doit s'afficher en cas de problème de connexion.
+| 1 jour
+
+| En tant que papa cool, je veux pouvoir créer un compte rapidement avec un minimum d’informations pour commencer à utiliser l'application sans délai.
+| Must
+| - L'utilisateur doit pouvoir remplir un formulaire simple avec des champs essentiels (nom, email, mot de passe).
+| 1 jour
+
+| En tant que papa cool, je veux pouvoir me déconnecter facilement, même si ce n’est pas ma priorité principale.
+| Should
+| - L'utilisateur doit pouvoir accéder à l'option de déconnexion en un clic depuis le tableau de bord.
+| 1 jour
+|===
+
+
+=== Liste des tâches à réaliser pour le Sprint 2
 
 [cols="1,1,1", options="header"]
 |===
@@ -145,7 +182,7 @@ Un Sprint durera 2 semaines
 | Must
 |===
 
-= Liste des tâches à réaliser pour le Sprint 3
+=== Liste des tâches à réaliser pour le Sprint 3
 
 [cols="1,1,1", options="header"]
 |===
@@ -164,7 +201,7 @@ Un Sprint durera 2 semaines
 | Must
 |===
 
-= Liste des tâches à réaliser pour le Sprint 4
+=== Liste des tâches à réaliser pour le Sprint 4
 
 [cols="1,1,1", options="header"]
 |===
@@ -184,23 +221,11 @@ Un Sprint durera 2 semaines
 |===
 
 
-= User Stories
+=== User Stories
 
 [cols="1,1,1,1", options="header"]
 |===
 | User Story | Importance | Critères d'acceptation | Durée
-
-| En tant que maman active, je veux utiliser une barre de recherche intelligente avec des suggestions automatiques pour trouver rapidement des articles spécifiques et gagner du temps.
-| Must
-| - Des propositions se présentent avec le même nom au fur et à mesure qu'on écrit dans la barre de recherche.
-- On trouve l'article recherché.
-| 2 jours
-
-| En tant que maman active, je veux accéder aux catégories de produits pour trouver facilement des articles d’une même gamme ou adaptés aux besoins de ma famille sans devoir explorer tout le site.
-| Must
-| - Les différentes catégories apparaissent quand on clique sur le bouton Catégorie.
-- Des sous-parties liées au produit apparaissent.
-| 3 jours
 
 | En tant que maman active, je souhaite pouvoir ajouter des articles au panier directement depuis la page de recherche pour optimiser mon temps de navigation et d'achat.
 | Must
@@ -235,22 +260,7 @@ Un Sprint durera 2 semaines
 - L'utilisateur doit recevoir une confirmation que sa question a bien été envoyée.
 | 1 jour
 
-| En tant que papa cool, je souhaite me connecter rapidement à mon compte en utilisant un identifiant simple pour accéder facilement à mes informations.
-| Must
-| - L'utilisateur doit pouvoir saisir un identifiant ou un email et un mot de passe pour se connecter.
-- Une option "Mot de passe oublié" doit être disponible.
-- Un message d'erreur doit s'afficher en cas de problème de connexion.
-| 1 jour
 
-| En tant que papa cool, je veux pouvoir créer un compte rapidement avec un minimum d’informations pour commencer à utiliser l'application sans délai.
-| Must
-| - L'utilisateur doit pouvoir remplir un formulaire simple avec des champs essentiels (nom, email, mot de passe).
-| 1 jour
-
-| En tant que papa cool, je veux pouvoir me déconnecter facilement, même si ce n’est pas ma priorité principale.
-| Should
-| - L'utilisateur doit pouvoir accéder à l'option de déconnexion en un clic depuis le tableau de bord.
-| 1 jour
 
 | En tant que papa cool, je souhaite pouvoir valider mon panier facilement sans passer par de nombreuses étapes pour que l’achat reste simple.
 | Must
