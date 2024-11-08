@@ -75,7 +75,7 @@ Projet est réalisé par::
 [cols="1,2,2,5",options=header]
 |===
 | Date    | Nom         |  Lien   | Retour
-| 2021-09-20 | Document de Conception |GPO/conception.adoc|
+| 2021-09-20 | Document de Conception |https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b5/blob/master/GPO/conception.adoc|
 |===
 
 TIP: Adaptez ces fichiers à votre projet et à votre organisation. Et inspirez-vous en pour en ajouter.
