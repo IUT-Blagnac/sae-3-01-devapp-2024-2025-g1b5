@@ -23,16 +23,16 @@ Ce document de conception détaille l’architecture et les fonctionnalités d�
 
 == Table des matières
 
-* xref:introduction[Introduction]
-* xref:I-UseCase[I-Use Case]
-* xref:IIDiagrammeClassesMetier[II-Diagramme de Classes métier]
-  * xref:DCMU[Diagramme de classe métier pour Utilisateur]
-  * xref:DCMA[Diagramme de classe métier pour Administrateur]
-* xref:IIIDiagrammeEtatTransition[III-Diagramme d’État transition]
-  * xref:DETC[Diagramme d'État-Transition pour la Commande]
-  * xref:DETP[Diagramme d'État-Transition pour le Produit]
-* xref:IVDiagrammeClasseConception[IV-Diagramme de classe de Conception]
-* xref:synthese[Synthèse]
+* <<introduction,Introduction>>
+* <<I-UseCase,I-Use Case>>
+* <<IIDiagrammeClassesMetier,II-Diagramme de Classes métier>>
+  * <<DCMU,Diagramme de classe métier pour Utilisateur>>
+  * <<DCMA,Diagramme de classe métier pour Administrateur>>
+* <<IIIDiagrammeEtatTransition,III-Diagramme d’État transition>>
+  * <<DETC,Diagramme d'État-Transition pour la Commande>>
+  * <<DETP,Diagramme d'État-Transition pour le Produit>>
+* <<IVDiagrammeClasseConception,IV-Diagramme de classe de Conception>>
+* <<synthese,Synthèse>>
 
 == [[introduction]] Introduction
 
@@ -56,11 +56,11 @@ En somme, le site est structuré pour offrir une expérience utilisateur complè
 
 == [[IIDiagrammeClassesMetier]] II-Diagramme de Classes métier
 
-. 1. xref:DCMU[Diagramme de classe métier pour Utilisateur]
+[[DCMU]] . 1.Diagramme de classe métier pour Utilisateur
 
 image::images/DCMU.PNG[]
 
-. 2. xref:DCMA[Diagramme de classe métier pour Administrateur]
+. 2. <<DCMA,Diagramme de classe métier pour Administrateur>>
 
 image::images/DCMA.PNG[]
 
@@ -68,11 +68,11 @@ image::images/DCMA.PNG[]
 
 Les deux diagrammes représentent le comportement dynamique d'un système ou d'un objet à travers ses différents états et les transitions entre eux. Nous avons réalisé un diagramme de transition pour la commande et un pour la gestion des stocks produits.
 
-. 1.1. xref:DETC[Diagramme d'État-Transition pour la Commande]
+. 1.1. <<DETC,Diagramme d'État-Transition pour la Commande>>
 
 image::images/DETC.PNG[]
 
-. 1.2. xref:DETP[Diagramme d'État-Transition pour le Produit]
+. 1.2. <<DETP,Diagramme d'État-Transition pour le Produit>>
 
 image::images/DETP.PNG[]
 
