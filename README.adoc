@@ -113,17 +113,14 @@ Un Sprint durera 2 semaines
 |===
 | Nom de la tâche | Durée Approx. | Priorité
 
-| Se connecter (avec cookie pour login) / se déconnecter
-| 3 jours
-| Must
+|Préparation de la base de données | 1 jour | Must
+|Création de la page d'accueil | 2 jours | Must
+|Préparation de l'arboréscence du site | 1 jour | Must
+|Création de la barre de recherche | 2 jours | Must
+|Création de la barre de catégorie | 1 jours | Must
+|Tri de la liste de produits par prix croissant / décroissant  | 1 jour | Should
+|Visualiser le détail d’un type produit |1 jour | Must
 
-| Création compte client
-| 3 jours
-| Must
-
-| Visualisation/Création la liste de produits
-| 5 jours
-| Must
 |===
 
 ==== User Story associé au Sprint 1
@@ -131,6 +128,13 @@ Un Sprint durera 2 semaines
 [cols="1,1,1,1", options="header"]
 |===
 | User Story | Importance | Critères d'acceptation | Durée
+| En tant que maman active, je veux accéder aux catégories de produits pour trouver facilement des articles d’une même gamme ou adaptés aux besoins de ma famille sans devoir explorer tout le site.
+| Must
+| - Les différentes catégories apparaissent quand on clique sur le bouton Catégorie.
+- Des sous-parties liées au produit apparaissent.
+| 3 jours
+
+
 
 | En tant que maman active, je veux utiliser une barre de recherche intelligente avec des suggestions automatiques pour trouver rapidement des articles spécifiques et gagner du temps.
 | Must
@@ -138,33 +142,13 @@ Un Sprint durera 2 semaines
 - On trouve l'article recherché.
 | 2 jours
 
-| En tant que maman active, je veux accéder aux catégories de produits pour trouver facilement des articles d’une même gamme ou adaptés aux besoins de ma famille sans devoir explorer tout le site.
-| Must
-| - Les différentes catégories apparaissent quand on clique sur le bouton Catégorie.
-- Des sous-parties liées au produit apparaissent.
-| 3 jours
-
-| En tant que papa cool, je souhaite me connecter rapidement à mon compte en utilisant un identifiant simple pour accéder facilement à mes informations.
-| Must
-| - L'utilisateur doit pouvoir saisir un identifiant ou un email et un mot de passe pour se connecter.
-- Une option "Mot de passe oublié" doit être disponible.
-- Un message d'erreur doit s'afficher en cas de problème de connexion.
-| 1 jour
-
-| En tant que papa cool, je veux pouvoir créer un compte rapidement avec un minimum d’informations pour commencer à utiliser l'application sans délai.
-| Must
-| - L'utilisateur doit pouvoir remplir un formulaire simple avec des champs essentiels (nom, email, mot de passe).
-| 1 jour
-
-| En tant que papa cool, je veux pouvoir me déconnecter facilement, même si ce n’est pas ma priorité principale.
-| Should
-| - L'utilisateur doit pouvoir accéder à l'option de déconnexion en un clic depuis le tableau de bord.
-| 1 jour
-
 
 
 
 |===
+
+
+
 
 
 === Liste des tâches à réaliser pour le Sprint 2
@@ -173,36 +157,67 @@ Un Sprint durera 2 semaines
 |===
 | Nom de la tâche | Durée Approx. | Priorité
 
-| Rechercher de produits par catégorie/sous-catégorie ou mot-clé ou regroupement
-| 
-| Must
+| Création compte client| 3 jours| Must
+| Se connecter au compte client | 3 jours | Must
+| CRUD produit par admin | 2 jours | Must
+|Gestion des produits par admin| 2 jours | Must
 
-| Visualiser le détail d’un type produit (dont photos, avis & réponses, moyenne note avis, photos de la communauté, stock, catégorie et regroupement associés, …)
-| 
-| Must
-
-| Ajouter un produit affiché dans le panier / Gérer le panier (afficher le panier, modifier qté, supprimer un produit)
-| 
-| Must
 |===
 
-==== User Story associé au Sprint 2
+
 
 [cols="1,1,1,1", options="header"]
 |===
 | User Story | Importance | Critères d'acceptation | Durée
 
-| En tant que maman active, je veux utiliser une barre de recherche intelligente avec des suggestions automatiques pour trouver rapidement des articles spécifiques et gagner du temps.
-| Must
-| - Des propositions se présentent avec le même nom au fur et à mesure qu'on écrit dans la barre de recherche.
-- On trouve l'article recherché.
-| 2 jours
 
-| En tant que maman active, je veux accéder aux catégories de produits pour trouver facilement des articles d’une même gamme ou adaptés aux besoins de ma famille sans devoir explorer tout le site.
+
+| En tant que papa cool, je souhaite me connecter rapidement à mon compte en utilisant un identifiant simple pour accéder facilement à mes informations.
 | Must
-| - Les différentes catégories apparaissent quand on clique sur le bouton Catégorie.
-- Des sous-parties liées au produit apparaissent.
-| 3 jours
+| - L'utilisateur doit pouvoir saisir un identifiant ou un email et un mot de passe pour se connecter.
+- Une option "Mot de passe oublié" doit être disponible.
+- Un message d'erreur doit s'afficher en cas de problème de connexion.
+| 1 jour
+
+
+| En tant que papa cool, je veux pouvoir créer un compte rapidement avec un minimum d’informations pour commencer à utiliser l'application sans délai.
+| Must
+| - L'utilisateur doit pouvoir remplir un formulaire simple avec des champs essentiels (nom, email, mot de passe).
+| 1 jour
+
+
+| En tant que papa cool, je veux pouvoir me déconnecter facilement, même si ce n’est pas ma priorité principale.
+| Should
+| - L'utilisateur doit pouvoir accéder à l'option de déconnexion en un clic depuis le tableau de bord.
+| 1 jour
+
+
+
+|===
+
+
+=== Liste des tâches à réaliser pour le Sprint 3
+
+[cols="1,1,1", options="header"]
+|===
+| Nom de la tâche | Durée Approx. | Priorité
+
+| Ajouter un produit affiché dans le panier / Gérer le panier (afficher le panier, modifier qté, supprimer un produit)
+|2 jours
+| Must
+|Passer une commande (validé panier , payer ses article ...)| 2 jours | Must
+
+
+
+|===
+
+==== User Story associé au Sprint 3
+
+[cols="1,1,1,1", options="header"]
+|===
+| User Story | Importance | Critères d'acceptation | Durée
+
+
 
 | En tant que maman active, je souhaite pouvoir ajouter des articles au panier directement depuis la page de recherche pour optimiser mon temps de navigation et d'achat.
 | Must
@@ -218,12 +233,25 @@ Un Sprint durera 2 semaines
 - Un bouton pour supprimer le produit du panier apparaît.
 | 1 jour
 
+| En tant que papa cool, je souhaite pouvoir valider mon panier facilement sans passer par de nombreuses étapes pour que l’achat reste simple.
+| Must
+| - L'utilisateur doit pouvoir accéder à la page de validation du panier sans difficulté.
+- Un résumé des articles et du coût total doit être visible avant la confirmation.
+| 2 jours
 
+
+| En tant que papa cool, je veux finaliser le paiement facilement en utilisant les options de paiement rapides pour éviter les étapes supplémentaires.
+| Must
+| - Les options de paiement rapides doivent être clairement visibles et accessibles sur la page de paiement.
+- Une validation de sécurité doit être effectuée pour protéger les informations de paiement.
+- Un message d'erreur convivial doit être affiché en cas de problème.
+| 2 jours
 |===
 
 
 
-=== Liste des tâches à réaliser pour le Sprint 3
+
+=== Liste des tâches à réaliser pour le Sprint 4
 
 [cols="1,1,1", options="header"]
 |===
@@ -248,17 +276,13 @@ Un Sprint durera 2 semaines
 |===
 | Nom de la tâche | Durée Approx. | Priorité
 
-| Tri de la liste de produits par prix croissant / décroissant
-| 
-| Must
+|Laisser un avis sur un produit| 1 jour | Must
+|Ajouter un commentaire sur un produit| 1 jour | Should
+|Poser une question dans la FAQ| 1 jour | Should
+|Enregistrer sa carte de paiement| 1 jour | Should
+|Gérer des points fidélité | 1 jour | Should
+|Visualiser mes dernières consultations de produits | 1 jour | Should
 
-| Gérer des points fidélité (recommandé)
-| 
-| Should
-
-| Visualiser mes dernières consultations de produits (recommandé)
-| 
-| Should
 |===
 
 
@@ -268,19 +292,7 @@ Un Sprint durera 2 semaines
 |===
 | User Story | Importance | Critères d'acceptation | Durée
 
-| En tant que maman active, je souhaite pouvoir ajouter des articles au panier directement depuis la page de recherche pour optimiser mon temps de navigation et d'achat.
-| Must
-| - Le panier est créé.
-- Des produits apparaissent dans la page de recherche.
-- Un bouton pour ajouter un produit au panier existe.
-| 2 jours
 
-| En tant que maman active, je veux pouvoir retirer un article du panier facilement si je change d’avis, afin de ne conserver que les articles nécessaires.
-| Must
-| - Le panier existe.
-- Un produit est dans le panier.
-- Un bouton pour supprimer le produit du panier apparaît.
-| 1 jour
 
 | En tant que maman active, je souhaite laisser un avis rapide sur un produit pour aider d’autres mamans actives à faire le bon choix en fonction de leurs besoins.
 | Must
@@ -303,12 +315,6 @@ Un Sprint durera 2 semaines
 
 
 
-| En tant que papa cool, je souhaite pouvoir valider mon panier facilement sans passer par de nombreuses étapes pour que l’achat reste simple.
-| Must
-| - L'utilisateur doit pouvoir accéder à la page de validation du panier sans difficulté.
-- Un résumé des articles et du coût total doit être visible avant la confirmation.
-| 2 jours
-
 | En tant que papa cool, je veux enregistrer ma carte de paiement pour ne pas avoir à saisir les détails à chaque fois, rendant les achats plus pratiques.
 | Should
 | - L'utilisateur doit pouvoir enregistrer sa méthode de paiement depuis son compte.
@@ -316,12 +322,7 @@ Un Sprint durera 2 semaines
 - L'utilisateur doit pouvoir modifier ou supprimer la méthode de paiement enregistrée.
 | 1 jour
 
-| En tant que papa cool, je veux finaliser le paiement facilement en utilisant les options de paiement rapides pour éviter les étapes supplémentaires.
-| Must
-| - Les options de paiement rapides doivent être clairement visibles et accessibles sur la page de paiement.
-- Une validation de sécurité doit être effectuée pour protéger les informations de paiement.
-- Un message d'erreur convivial doit être affiché en cas de problème.
-| 2 jours
+
 |===
 
 
