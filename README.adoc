@@ -97,7 +97,7 @@ votre application, où sont les docs, etc.)
 
 == Gestion du projet
 
-== Backlog
+=== Backlog
 
 Un Sprint durera 2 semaines
 
