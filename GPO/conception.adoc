@@ -2,15 +2,32 @@
 
 == SAE DEV APP S3
 
-Université de Toulouse
-IUT de Blagnac
-Département Informatique
+Université de Toulouse +
+IUT de Blagnac +
+Département Informatique  
+
+[discrete]
+=== Equipe : 1B5
+
+[discrete]
+=== Membres :
+[cols="1,1,1,1,1", options="header"]
+|===
+
+|Simon CLAVEL | Bilon KWADJANI | Théo RABAN | Adrian GUERRERO | Adrien THEOPHILE
+
+|===
 
 
-SAE DEV APP S3
 
-Nom : Clavel, Raban, Kwadjani, Guerrero, Théophile
- 
+
+
+[abstract]
+Ce document de conception détaille l’architecture et les fonctionnalités d’un site e-commerce spécialisé dans la vente de jouets, servant de guide technique pour le développement de l’application. Il inclut une vue complète des cas d’utilisation, des classes métier, et des états de transition, essentiels pour structurer les interactions et assurer la cohérence technique du système.
+
+
+
+
 
 
 == Table des matières
