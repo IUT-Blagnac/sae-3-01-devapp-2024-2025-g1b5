@@ -52,6 +52,9 @@ Ce document de conception détaille l’architecture et les fonctionnalités d�
 
 - <<IV,IV-Diagramme de classe de Conception>>
 
+- <<V,V-Diagramme de séquence général>>
+
+
 - <<synthèse,Synthèse>>
 
 [[introduction]]
@@ -126,7 +129,16 @@ Voici une synthèse des classes présentes dans le diagramme de classe métier :
 
 Ce modèle métier est conçu pour gérer l’ensemble des fonctionnalités d'un site de vente de jouets, en prenant en compte la gestion des utilisateurs, des produits, des commandes et des transactions.
 
+[[V]]
+== V-Diagramme de séquence général
+
+Ce diagramme permet de mettre en évidence l'architecture du site comme le diagramme de classe mais permet également de spécifier les méthodes utilisées et les fonctions utilisés.
+
+image::images/DS.PNG[]
+
+
+
 [[synthèse]]
 == Synthèse
 
-Les diagrammes inclus dans ce document de conception constituent des outils essentiels pour structurer et orienter le développement du site e-commerce, en garantissant la cohérence entre les besoins fonctionnels, les choix d’architecture et les spécifications techniques. En offrant une vue d’ensemble des interactions, des états et des classes métier, ce document permet de prévenir les problèmes potentiels, d’assurer la conformité aux exigences et de faciliter les évolutions futures du système. Il servira de référence pour toutes les étapes de développement, permettant une mise en œuvre efficace et une expérience utilisateur optimisée pour les clients et les administrateurs du site.
+Les diagrammes inclus dans ce document de conception constituent des outils essentiels pour structurer et orienter le développement du site e-commerce, en garantissant la cohérence entre les besoins fonctionnels, les choix d’architecture et les spécifications techniques. En offrant une vue d’ensemble des interactions, des états et des classes métier, ce document permet de prévenir les problèmes potentiels, d’assurer la conformité aux exigences et de faciliter les évolutions futures du système. Il servira de référence pour toutes les étapes de développement, permettant une mise en œuvre efficace et une expérience utilisateur optimisée pour les clients et les administrateurs du site. Il se peut que certains changements soient ammenés au fur et à mesure de l'avancement du projet.
