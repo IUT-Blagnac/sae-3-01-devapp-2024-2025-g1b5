@@ -1,3 +1,7 @@
+html, body {
+    height: 100%;
+}
+
 body {
     margin: 0;
     font-family: 'Fredoka One', Arial, sans-serif;
@@ -7,6 +11,8 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;  /* Prevent the background image from scrolling with the page*/
     color: white;
+    display: flex;
+    flex-direction: column;
 }
 
 .header {
@@ -38,7 +44,7 @@ body {
     outline: none;
     width: 100%;
     padding: 0.5rem;
-    border-radius: 25px; /* Ensure the input inside is also round */
+    border-radius: 25px; 
 }
 
 .search-bar img {
@@ -92,13 +98,17 @@ body {
     cursor: pointer; 
 }
 
+main {
+    flex: 1;
+}
 
 footer {
     background-color: #000;
     color: #fff;
-    padding: 20px 0;
+    padding: 10px 0;
     font-size: 14px;
     font-family: sans-serif, Arial;
+    margin-top: 10em;
 }
 
 .footer-contenu {
@@ -111,12 +121,13 @@ footer {
 
 .footer-column {
     flex: 1;
-    padding: 0 15px;
+    padding: 0px;
 }
 
 .footer-column h3 {
     font-size: 22px;
     margin-bottom: 10px;
+    margin-top: 0;
 }
 
 .footer-column p {
