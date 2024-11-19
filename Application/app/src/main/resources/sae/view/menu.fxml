@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sae.model.MenuViewController">
    <center>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -33,14 +32,14 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button mnemonicParsing="false" text="Tester" GridPane.columnIndex="1">
+                  <Button fx:id="butTestCo" mnemonicParsing="false" text="Tester" GridPane.columnIndex="1">
                      <GridPane.margin>
                         <Insets left="5.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button mnemonicParsing="false" text="Salles" GridPane.columnIndex="2" />
-                  <Button mnemonicParsing="false" text="Solar" GridPane.columnIndex="3" />
-                  <Button mnemonicParsing="false" text="Alarmes" />
+                  <Button fx:id="butSalles" mnemonicParsing="false" text="Salles" GridPane.columnIndex="2" />
+                  <Button fx:id="butSolar" mnemonicParsing="false" text="Solar" GridPane.columnIndex="3" />
+                  <Button fx:id="butAlarmes" mnemonicParsing="false" text="Alarmes" />
                </children>
             </GridPane>
          </children>
