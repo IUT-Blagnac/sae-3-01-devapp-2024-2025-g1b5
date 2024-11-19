@@ -37,7 +37,7 @@
                         <Insets left="5.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button fx:id="butSalles" mnemonicParsing="false" text="Salles" GridPane.columnIndex="2" />
+                  <Button fx:id="butSalles" mnemonicParsing="false" onAction="#estPresse" text="Salles" GridPane.columnIndex="2" />
                   <Button fx:id="butSolar" mnemonicParsing="false" text="Solar" GridPane.columnIndex="3" />
                   <Button fx:id="butAlarmes" mnemonicParsing="false" text="Alarmes" />
                </children>
