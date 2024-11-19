@@ -1,4 +1,4 @@
-package sae.model;
+package sae.view;
 
 
 import javafx.fxml.FXML;

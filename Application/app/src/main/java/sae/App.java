@@ -8,7 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import sae.controller.MenuController;
-import sae.model.MenuViewController;
+import sae.view.MenuViewController;
 
 public class App extends Application{
 
@@ -34,7 +34,7 @@ public class App extends Application{
     public void loadMenu() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(App.class.getResource("view/menu.fxml"));
+            loader.setLocation(App.class.getResource("/view/menu.fxml"));
 
             BorderPane vueListe = loader.load();
 
