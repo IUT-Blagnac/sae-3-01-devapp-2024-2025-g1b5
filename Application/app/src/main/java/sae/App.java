@@ -34,7 +34,7 @@ public class App extends Application{
     public void loadMenu() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(App.class.getResource("/view/menu.fxml"));
+            loader.setLocation(App.class.getResource("view/menu.fxml"));
 
             BorderPane vueListe = loader.load();
 
