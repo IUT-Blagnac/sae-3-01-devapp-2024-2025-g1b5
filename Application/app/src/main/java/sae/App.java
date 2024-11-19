@@ -9,10 +9,13 @@ import javafx.application.Application;
 >>>>>>> 3bca878 (Ajout de la page menu)
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+<<<<<<< HEAD
 import javafx.scene.control.Menu;
 =======
 import javafx.scene.Scene;
 >>>>>>> a9cbdfd (Test fonctionnel d'un stage)
+=======
+>>>>>>> d9e0d17a113f413dd52db15fd225c92c0f235dcd
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import sae.controller.MenuController;
@@ -20,6 +23,7 @@ import sae.view.MenuViewController;
 
 public class App extends Application{
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     //@Override
@@ -75,43 +79,46 @@ public class App extends Application{
        Application.launch(args);   
     }
 
+=======
+>>>>>>> d9e0d17a113f413dd52db15fd225c92c0f235dcd
     private BorderPane rootPane;
-    private Stage primaryStage;
+    private Stage stage;
 
+    @Override
+    public void start(Stage primaryStage)  {
 
-
-    public void start(Stage primaryStage) {
-        this.primaryStage = primaryStage;
+        this.stage = primaryStage;
         this.rootPane = new BorderPane();
-        
-        Scene scene = new Scene(rootPane);
-        //scene.getStylesheets().add("css/style.css");
-        primaryStage.setScene(scene);
-        primaryStage.setTitle("Akari Alex");
-        loadMenu();
-        primaryStage.show();
-        
-       
 
+        Scene scene = new Scene(rootPane);
+        stage.setScene(scene);
+        
+        
+        loadMenu();
+
+        primaryStage.setTitle("Menu");
+        primaryStage.show();
     }
 
     public void loadMenu() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(App.class.getResource("view/Menu.fxml"));
+            loader.setLocation(App.class.getResource("view/menu.fxml"));
 
             BorderPane vueListe = loader.load();
 
-            Menu ctrl = loader.getController();
-
-            //ctrl.setAkariApp(this);
-
+            MenuViewController menu = loader.getController();
+            
             this.rootPane.setCenter(vueListe);
 
         } catch (IOException e) {
-            System.out.println("Ressource FXML non disponible : Menu.fxml");
+            System.out.println("Ressource FXML non disponible : menu.fxml");
             System.exit(1);
         }
+    }
+
+    public static void main2(String[] args) {
+       Application.launch(args);   
     }
 
     
