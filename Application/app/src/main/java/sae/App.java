@@ -7,8 +7,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import sae.controller.MenuController;
-import sae.view.MenuViewController;
 
 public class App extends Application{
 
@@ -37,8 +35,6 @@ public class App extends Application{
             loader.setLocation(App.class.getResource("view/menu.fxml"));
 
             BorderPane vueListe = loader.load();
-
-            MenuViewController menu = loader.getController();
             
             this.rootPane.setCenter(vueListe);
 
