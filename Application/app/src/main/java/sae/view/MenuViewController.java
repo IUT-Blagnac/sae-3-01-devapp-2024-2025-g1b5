@@ -1,10 +1,13 @@
 package sae.view;
 
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public class ChoixSallesController{
+public class MenuViewController  {
     
+    
+
     @FXML
     private Button butSalles;
     @FXML
@@ -13,12 +16,7 @@ public class ChoixSallesController{
     private Button butAlarmes;
     @FXML
     private Button butTestCo;
+    
 
-
-    @FXML
-    private void estPresse(){
-        //MenuController.loadSalles();
-    }
-
-
+   
 }
