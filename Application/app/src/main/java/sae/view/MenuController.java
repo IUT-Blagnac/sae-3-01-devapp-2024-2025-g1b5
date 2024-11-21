@@ -22,9 +22,9 @@ public class MenuController  {
     private App application;
 
 
-    public void setDatas(Stage fenetrePrincipale,  App app) {
+    public void setDatas(Stage fenetre,  App app) {
 		this.application = app;
-		this.fenetrePrincipale = fenetrePrincipale;
+		this.fenetrePrincipale = fenetre;
 		//this.fenetrePrincipale.setOnCloseRequest(event -> actionQuitter());
 	}
 
