@@ -63,7 +63,7 @@ public class ParametrageChoixSalles {
 	  }
 
     public void actionChoix () {
-      ObservableList<MenuItem> obList=choixTypeDonnees.getItems();
+      ObservableList<MenuItem> obList = choixTypeDonnees.getItems();
       for(MenuItem n : obList){
           if(((CheckMenuItem)n).isSelected())
             choices.add(n.getText());
