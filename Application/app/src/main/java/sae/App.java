@@ -1,12 +1,15 @@
 package sae;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import sae.appli.TypeDonnee;
 import sae.view.MenuController;
 import sae.view.ParametrageChoixSalles;
 
@@ -58,9 +61,14 @@ public class App extends Application{
             loader.setLocation(App.class.getResource("view/salles.fxml"));
             BorderPane vueListe = loader.load();
 
+            TypeDonnee[] donnees = TypeDonnee.values();
+            // Convertir en liste
+            List<TypeDonnee> listTypeDonnee = Arrays.asList(donnees);
+
             ParametrageChoixSalles choixSalles = loader.getController();
             choixSalles.setDatas(stage, this);
-            choixSalles.loadMenuDeroulant(null);
+            
+            choixSalles.loadMenuDeroulant(listTypeDonnee);
             
             this.rootPane.setCenter(vueListe);
 
