@@ -1,0 +1,228 @@
+{
+ "B105": {
+  "0": {
+   "key": "temperature",
+   "value": 19.2,
+   "alarm_type": "MIN",
+   "timestamp": "2024-11-25 10:52:48"
+  },
+  "1": {
+   "key": "activity",
+   "value": 0.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-11-25 10:52:48"
+  }
+ },
+ "Foyer-etudiants-entr\u00e9e": {
+  "0": {
+   "key": "temperature",
+   "value": 49.7,
+   "alarm_type": "MAX",
+   "timestamp": "2024-11-25 10:52:50"
+  },
+  "1": {
+   "key": "tvoc",
+   "value": 515.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-11-25 10:52:50"
+  },
+  "2": {
+   "key": "infrared",
+   "value": 16.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-11-25 10:52:50"
+  },
+  "3": {
+   "key": "infrared_and_visible",
+   "value": 56.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-11-25 10:52:50"
+  },
+  "4": {
+   "key": "temperature",
+   "value": 49.7,
+   "alarm_type": "MAX",
+   "timestamp": "2024-11-25 10:52:52"
+  },
+  "5": {
+   "key": "tvoc",
+   "value": 515.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-11-25 10:52:52"
+  },
+  "6": {
+   "key": "infrared",
+   "value": 16.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-11-25 10:52:52"
+  },
+  "7": {
+   "key": "infrared_and_visible",
+   "value": 56.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-11-25 10:52:52"
+  }
+ },
+ "B111": {
+  "0": {
+   "key": "temperature",
+   "value": 19.4,
+   "alarm_type": "MIN",
+   "timestamp": "2024-11-25 10:53:08"
+  },
+  "1": {
+   "key": "tvoc",
+   "value": 159.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-11-25 10:53:08"
+  },
+  "2": {
+   "key": "activity",
+   "value": 0.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-11-25 10:53:08"
+  }
+ },
+ "B234": {
+  "0": {
+   "key": "activity",
+   "value": 0.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-11-25 10:53:18"
+  }
+ },
+ "E006": {
+  "0": {
+   "key": "tvoc",
+   "value": 871.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-11-25 10:53:48"
+  },
+  "1": {
+   "key": "illumination",
+   "value": 80.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-11-25 10:53:48"
+  },
+  "2": {
+   "key": "infrared",
+   "value": 18.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-11-25 10:53:48"
+  },
+  "3": {
+   "key": "infrared_and_visible",
+   "value": 73.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-11-25 10:53:48"
+  }
+ },
+ "B113": {
+  "0": {
+   "key": "co2",
+   "value": 2276.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-11-25 10:53:50"
+  },
+  "1": {
+   "key": "tvoc",
+   "value": 414.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-11-25 10:53:50"
+  }
+ },
+ "E209": {
+  "0": {
+   "key": "co2",
+   "value": 437.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-11-25 10:54:22"
+  },
+  "1": {
+   "key": "tvoc",
+   "value": 105.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-11-25 10:54:22"
+  },
+  "2": {
+   "key": "activity",
+   "value": 0.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-11-25 10:54:22"
+  }
+ },
+ "E003": {
+  "0": {
+   "key": "activity",
+   "value": 0.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-11-25 10:54:53"
+  },
+  "1": {
+   "key": "infrared",
+   "value": 24.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-11-25 10:54:53"
+  },
+  "2": {
+   "key": "infrared_and_visible",
+   "value": 68.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-11-25 10:54:53"
+  }
+ },
+ "B217": {
+  "0": {
+   "key": "temperature",
+   "value": 18.9,
+   "alarm_type": "MIN",
+   "timestamp": "2024-11-25 10:55:41"
+  },
+  "1": {
+   "key": "co2",
+   "value": 443.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-11-25 10:55:41"
+  },
+  "2": {
+   "key": "tvoc",
+   "value": 173.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-11-25 10:55:41"
+  },
+  "3": {
+   "key": "activity",
+   "value": 0.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-11-25 10:55:41"
+  }
+ },
+ "B112": {
+  "0": {
+   "key": "co2",
+   "value": 2484.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-11-25 10:55:41"
+  },
+  "1": {
+   "key": "infrared_and_visible",
+   "value": 51.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-11-25 10:55:41"
+  }
+ },
+ "C002": {
+  "0": {
+   "key": "tvoc",
+   "value": 183.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-11-25 10:55:51"
+  },
+  "1": {
+   "key": "activity",
+   "value": 0.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-11-25 10:55:51"
+  }
+ }
+}
