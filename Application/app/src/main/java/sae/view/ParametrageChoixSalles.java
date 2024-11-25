@@ -33,11 +33,13 @@ public class ParametrageChoixSalles {
     @FXML
     private MenuButton choixTypeDonnees;
     
-    private String numSalle ;
+    private String numSalle = "B101" ;
 
     private App application;
 
     ArrayList<String> choices = new ArrayList<>();
+
+    private AfficherDonneesController affCtrl ;
 
 
     public void setDatas(Stage fenetre,  App app) {
@@ -67,6 +69,8 @@ public class ParametrageChoixSalles {
 		  donneeChoisies();
       if (!choices.isEmpty())
         application.loadDonnees();
+      else System.out.println("Selectionner des données ! ");
+      //affCtrl.setSalle(numSalle);
 	  }
 
     public void donneeChoisies () {

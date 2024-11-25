@@ -21,6 +21,10 @@ public class AfficherDonneesController {
       //this.fenetrePrincipale.setOnCloseRequest(event -> actionQuitter());
 	  }
 
+    private void setSalle(String salle){
+      this.titreSalle.setText(salle);
+    }
+
     @FXML
     private void actionAfficher() {
 		System.out.println("A faire !");
