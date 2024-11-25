@@ -42,6 +42,9 @@ public class App extends Application{
             menu.setDatas(stage, this);
             
             this.rootPane.setCenter(vueListe);
+            
+            // Démarrer le script Python main2.py
+            startPythonScript();
 
         } catch (IOException e) {
             System.out.println("Ressource FXML non disponible : menu.fxml");
@@ -80,6 +83,20 @@ public class App extends Application{
         } catch (IOException e) {
             System.out.println("Ressource FXML non disponible : solar.fxml");
             System.exit(1);
+        }
+    }
+
+     // Fonction pour démarrer le script Python
+     private void startPythonScript() {
+        try {
+            // Création d'un processus pour exécuter le script Python
+            ProcessBuilder processBuilder = new ProcessBuilder("python", "iot/main2.py");
+            processBuilder.inheritIO();  // Permet d'afficher les sorties du script Python dans la console Java
+            Process process = processBuilder.start(); // Démarrer le processus
+            process.waitFor();  // Attendre que le processus se termine (optionnel)
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+            System.out.println("Erreur lors du démarrage du script Python.");
         }
     }
 
