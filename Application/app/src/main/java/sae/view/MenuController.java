@@ -31,8 +31,8 @@ public class MenuController  {
 
     @FXML
     private void actionBouttonSalles() {
-		application.loadParametrageSalles();
-	}
+		  application.loadParametrageSalles();
+	  }
 
     
    
