@@ -29,6 +29,7 @@ public class ParametrageChoixSalles {
 
     @FXML
     private MenuButton choixTypeDonnees;
+    
 
     private App application;
 
@@ -41,12 +42,23 @@ public class ParametrageChoixSalles {
       //this.fenetrePrincipale.setOnCloseRequest(event -> actionQuitter());
 	  }
 
-    public void loadMenuDeroulant(List<TypeDonnee> listType){
+    public void loadMenuDeroulantDonnees(List<TypeDonnee> listType){
       
       CheckMenuItem choix;
 
       for (int i=0; i<listType.size(); i++){
         choix = new CheckMenuItem(listType.get(i).toString());
+        choixTypeDonnees.getItems().add(choix);
+      }
+      
+    }
+
+    public void loadMenuDeroulantSalles(List<Salles> listSalles){
+      
+      CheckMenuItem choix;
+
+      for (int i=0; i<listSalles.size(); i++){
+        choix = new CheckMenuItem(listSalles.get(i).toString());
         choixTypeDonnees.getItems().add(choix);
       }
       
@@ -59,10 +71,13 @@ public class ParametrageChoixSalles {
 
     @FXML
     private void actionValider() {
-		  actionChoix();
+		  donneeChoisies();
+      for( int i=0; i<choices.size(); i++){
+        System.out.println(choices.get(i));
+      }
 	  }
 
-    public void actionChoix () {
+    public void donneeChoisies () {
       ObservableList<MenuItem> obList = choixTypeDonnees.getItems();
       for(MenuItem n : obList){
           if(((CheckMenuItem)n).isSelected())
