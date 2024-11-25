@@ -21,18 +21,18 @@ public class AfficherDonneesController {
       //this.fenetrePrincipale.setOnCloseRequest(event -> actionQuitter());
 	  }
 
-    private void setSalle(String salle){
+    public void setSalle(String salle){
       this.titreSalle.setText(salle);
     }
 
     @FXML
     private void actionAfficher() {
-		System.out.println("A faire !");
-	}
+		  System.out.println("A faire !");
+	  }
 
-  @FXML
-  private void actionRetour() {
-		application.loadParametrageSalles();
-	}
+    @FXML
+    private void actionRetour() {
+      application.loadParametrageSalles();
+    }
 
 }

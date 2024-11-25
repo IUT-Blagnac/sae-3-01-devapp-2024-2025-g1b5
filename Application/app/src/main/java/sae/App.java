@@ -19,6 +19,8 @@ public class App extends Application{
     private BorderPane rootPane;
     private Stage stage;
 
+    private String numSalle;
+
     @Override
     public void start(Stage primaryStage)  {
 
@@ -63,11 +65,13 @@ public class App extends Application{
             BorderPane vueListe = loader.load();
 
             TypeDonnee[] donnees = TypeDonnee.values();
-            // Convertir en liste
+            // Convertir en listes
             List<TypeDonnee> listTypeDonnee = Arrays.asList(donnees);
 
             ParametrageChoixSalles choixSalles = loader.getController();
             choixSalles.setDatas(stage, this);
+
+            this.numSalle = choixSalles.getSalle();
             
             choixSalles.loadMenuDeroulantDonnees(listTypeDonnee);
             
@@ -89,6 +93,7 @@ public class App extends Application{
             AfficherDonneesController affichage = loader.getController();
             
             affichage.setDatas(stage, this);
+            affichage.setSalle(this.numSalle);
             
             this.rootPane.setCenter(vueListe);
 

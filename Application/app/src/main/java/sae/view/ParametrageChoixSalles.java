@@ -59,6 +59,10 @@ public class ParametrageChoixSalles {
       
     }
 
+    public String getSalle () {
+      return this.numSalle;
+    }
+
     @FXML
     private void actionRetour() {
 		  application.loadMenu();
