@@ -1,6 +1,7 @@
 package sae;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -19,7 +20,10 @@ public class App extends Application{
     private BorderPane rootPane;
     private Stage stage;
 
+    //partager des données entre controllers
     private String numSalle;
+    ArrayList<String> donneesChoisies = new ArrayList<>();
+
 
     @Override
     public void start(Stage primaryStage)  {
@@ -72,6 +76,7 @@ public class App extends Application{
             choixSalles.setDatas(stage, this);
 
             this.numSalle = choixSalles.getSalle();
+            this.donneesChoisies = choixSalles.getTabDonnee();
             
             choixSalles.loadMenuDeroulantDonnees(listTypeDonnee);
             
@@ -94,6 +99,9 @@ public class App extends Application{
             
             affichage.setDatas(stage, this);
             affichage.setSalle(this.numSalle);
+            affichage.setTab(donneesChoisies);
+            
+            affichage.afficherDonnees();
             
             this.rootPane.setCenter(vueListe);
 

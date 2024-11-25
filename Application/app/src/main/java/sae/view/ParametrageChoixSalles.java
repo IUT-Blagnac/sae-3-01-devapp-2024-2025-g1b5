@@ -1,5 +1,6 @@
 package sae.view;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,13 +34,11 @@ public class ParametrageChoixSalles {
     @FXML
     private MenuButton choixTypeDonnees;
     
-    private String numSalle = "B101" ;
+    private String numSalle = "E004" ;
 
     private App application;
 
     ArrayList<String> choices = new ArrayList<>();
-
-    private AfficherDonneesController affCtrl ;
 
 
     public void setDatas(Stage fenetre,  App app) {
@@ -63,7 +62,7 @@ public class ParametrageChoixSalles {
       return this.numSalle;
     }
 
-    public List<String> getTabDonnee(){
+    public ArrayList<String> getTabDonnee(){
       return choices;
     }
 
@@ -87,9 +86,7 @@ public class ParametrageChoixSalles {
           if(((CheckMenuItem)n).isSelected())
             choices.add(n.getText());
       }
-    }
-
-    
+    }   
 
 
 }
