@@ -10,11 +10,13 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckMenuItem;
+import javafx.scene.control.ListView;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sae.App;
+import sae.appli.Salle;
 import sae.appli.TypeDonnee;
 
 public class ParametrageChoixSalles {
@@ -29,12 +31,16 @@ public class ParametrageChoixSalles {
     private Button butValider ;
     @FXML
     private TextField recherche ;
+    @FXML
+    private ListView<String> listeSalles ;
+    
 
     @FXML
     private MenuButton choixTypeDonnees;
     
 
     private App application;
+    private Salle salle;
 
     ArrayList<String> choices = new ArrayList<>();
 
@@ -61,6 +67,11 @@ public class ParametrageChoixSalles {
     private void actionRetour() {
 		  application.loadMenu();
 	  }
+    @FXML
+    private void actionRecherche() {
+    
+      
+    }
 
     @FXML
     private void actionValider() {
