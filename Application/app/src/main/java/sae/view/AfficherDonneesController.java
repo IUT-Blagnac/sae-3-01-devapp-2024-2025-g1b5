@@ -1,5 +1,8 @@
 package sae.view;
 
+import java.io.File;
+import java.io.IOException;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
@@ -28,6 +31,7 @@ public class AfficherDonneesController {
     @FXML
     private void actionAfficher() {
 		  System.out.println("A faire !");
+      lecture();
 	  }
 
     @FXML
@@ -35,4 +39,21 @@ public class AfficherDonneesController {
       application.loadParametrageSalles();
     }
 
+    public void lecture(){
+   
+       // Chemin relatif du fichier Python
+       String pythonScriptPath = "main2.py"; // Le fichier Python est dans le même dossier
+
+       // Créer un objet File avec le chemin relatif
+       File file = new File(pythonScriptPath);
+
+       // Vérifier si le fichier existe
+       if (file.exists()) 
+           System.out.println("Le fichier Python existe : " + pythonScriptPath); 
+        else 
+           System.out.println("nexiste pas");     
+      
+    }
+
 }
+                      
