@@ -9,6 +9,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import sae.view.MenuController;
 import sae.view.ParametrageChoixSalles;
+import sae.view.ParametrageSolar;
 
 public class App extends Application{
 
@@ -48,10 +49,6 @@ public class App extends Application{
         }
     }
 
-    public static void main2(String[] args) {
-       Application.launch(args);   
-    }
-
     public void loadParametrageSalles() {
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -67,6 +64,27 @@ public class App extends Application{
             System.out.println("Ressource FXML non disponible : salles.fxml");
             System.exit(1);
         }
+    }
+
+    public void loadParametrageSolar() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(App.class.getResource("view/solar.fxml"));
+            BorderPane vueListe = loader.load();
+
+            ParametrageSolar choixSolar = loader.getController();
+            choixSolar.setDatas(stage, this);
+            
+            this.rootPane.setCenter(vueListe);
+
+        } catch (IOException e) {
+            System.out.println("Ressource FXML non disponible : solar.fxml");
+            System.exit(1);
+        }
+    }
+
+    public static void main2(String[] args) {
+        Application.launch(args);   
     }
 
     

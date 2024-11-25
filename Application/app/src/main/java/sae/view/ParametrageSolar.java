@@ -1,24 +1,19 @@
 package sae.view;
 
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import sae.App;
 
-public class MenuController  {
+public class ParametrageSolar {
     
-    private Stage fenetrePrincipale;
+    private Stage fenetrePrincipale ;
 
     @FXML
-    private Button butSalles;
+    private Button boutton ;
     @FXML
-    private Button butSolar;
-    @FXML
-    private Button butAlarmes;
-    @FXML
-    private Button butTestCo;
-    
+    private Button butRetour ;
+
     private App application;
 
 
@@ -28,17 +23,10 @@ public class MenuController  {
 		//this.fenetrePrincipale.setOnCloseRequest(event -> actionQuitter());
 	}
 
-
     @FXML
-    private void actionBouttonSalles() {
-		application.loadParametrageSalles();
+    private void actionRetour() {
+		application.loadMenu();
 	}
 
-    @FXML
-    private void actionBouttonSolar() {
-    application.loadParametrageSolar();
-  }
-
-    
-   
 }
+
