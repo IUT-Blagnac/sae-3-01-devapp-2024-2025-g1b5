@@ -2,9 +2,12 @@ package sae.view;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import sae.App;
 
@@ -17,6 +20,11 @@ public class AfficherDonneesController {
     @FXML
     private Label titreSalle;
 
+    @FXML
+    private GridPane gridDynamique ;
+
+    private ArrayList<String> donnees = new ArrayList<>();
+
     
     public void setDatas(Stage fenetre,  App app) {
       this.application = app;
@@ -28,16 +36,30 @@ public class AfficherDonneesController {
       this.titreSalle.setText(salle);
     }
 
+    public void setTab( ArrayList<String> list){
+      this.donnees = list ;
+    }
+
     @FXML
     private void actionAfficher() {
 		  System.out.println("A faire !");
-      lecture();
+      //lecture();
 	  }
 
     @FXML
     private void actionRetour() {
       application.loadParametrageSalles();
     }
+
+    private void afficher(){
+
+    }
+
+
+
+
+
+
 
     public void lecture(){
    
@@ -52,6 +74,8 @@ public class AfficherDonneesController {
            System.out.println("Le fichier Python existe : " + pythonScriptPath); 
         else 
            System.out.println("nexiste pas");     
+
+      
       
     }
 

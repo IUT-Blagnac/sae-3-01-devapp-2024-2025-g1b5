@@ -63,6 +63,10 @@ public class ParametrageChoixSalles {
       return this.numSalle;
     }
 
+    public List<String> getTabDonnee(){
+      return choices;
+    }
+
     @FXML
     private void actionRetour() {
 		  application.loadMenu();
