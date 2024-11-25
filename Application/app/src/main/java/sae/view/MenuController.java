@@ -8,6 +8,7 @@ import sae.App;
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
+import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
 public class MenuController  {
     
@@ -30,16 +31,28 @@ public class MenuController  {
 		this.fenetrePrincipale = fenetrePrincipale;
 		//this.fenetrePrincipale.setOnCloseRequest(event -> actionQuitter());
 	}
+
     @FXML
     private void actionBouttonSalles() {
 		application.loadParametrageSalles();
 	}
 
-  if(butTestCo.isPressed()){
-    // Code to test the connection
-
-  }
-
-    
+  @FXML
+    private void actionBouttonConnexion() {
+      try {
+        MqttClient client = new MqttClient(
+          "tcp://mqtt.iut-blagnac.fr:1883",
+          MqttClient.generateClientId(),
+          new MemoryPersistence());
+          MqttConnectOptions options = new MqttConnectOptions();
+          client.connect(options);
+          if(client.isConnected()){
+            System.out.println("Connexion réussie");
+          }
+      } catch (MqttException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      }
+    }
    
 }

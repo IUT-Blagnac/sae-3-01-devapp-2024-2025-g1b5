@@ -35,7 +35,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="butTestCo" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Connexion">
+                  <Button fx:id="butTestCo" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#actionBouttonConnexion" text="Connexion">
                      <GridPane.margin>
                         <Insets />
                      </GridPane.margin>
