@@ -68,7 +68,7 @@ public class App extends Application{
             ParametrageChoixSalles choixSalles = loader.getController();
             choixSalles.setDatas(stage, this);
             
-            choixSalles.loadMenuDeroulant(listTypeDonnee);
+            choixSalles.loadMenuDeroulantDonnees(listTypeDonnee);
             
             this.rootPane.setCenter(vueListe);
 
