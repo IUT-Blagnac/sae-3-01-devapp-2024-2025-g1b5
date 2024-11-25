@@ -7,11 +7,18 @@
     <artifactId>app</artifactId>
     <version>1.0</version>
 
+    <repositories>
+        <repository>
+        <id>Eclipse Paho Repository</id>
+        <url>https://repo.eclipse.org/content/repositories/paho-releases/</url>
+        </repository>
+  </repositories>
+
     <properties>
         <sae.app.mainClass>sae.Main</sae.app.mainClass>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <javafx.version>17</javafx.version>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <javafx.version>21</javafx.version>
         <javafx.maven.plugin.version>0.0.8</javafx.maven.plugin.version>
         <maven.shade.plugin.version>3.4.1</maven.shade.plugin.version>
     </properties>
@@ -36,6 +43,11 @@
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-web</artifactId>
             <version>${javafx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.paho</groupId>
+            <artifactId>org.eclipse.paho.client.mqttv3</artifactId>
+            <version>1.2.5</version>
         </dependency>
     </dependencies>
 

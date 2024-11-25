@@ -2,6 +2,7 @@ package sae;
 
 import java.io.IOException;
 
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -14,20 +15,21 @@ public class App extends Application{
 
     private BorderPane rootPane;
     private Stage stage;
+    
+
+
 
     @Override
     public void start(Stage primaryStage)  {
-
         this.stage = primaryStage;
         this.rootPane = new BorderPane();
-
         Scene scene = new Scene(rootPane);
+        scene.getStylesheets().add(App.class.getResource("style.css").toExternalForm());
         stage.setScene(scene);
-        
         loadMenu();
-
         primaryStage.setTitle("Menu");
         primaryStage.show();
+
     }
 
     public void loadMenu() {
@@ -48,9 +50,7 @@ public class App extends Application{
         }
     }
 
-    public static void main2(String[] args) {
-       Application.launch(args);   
-    }
+    
 
     public void loadParametrageSalles() {
         try {
@@ -69,5 +69,9 @@ public class App extends Application{
         }
     }
 
-    
+    public static void main2(String[] args) {
+        
+        Application.launch(args);   
+     }
+
 }
