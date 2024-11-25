@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sae.App;
 import sae.appli.TypeDonnee;
@@ -21,11 +22,13 @@ public class ParametrageChoixSalles {
     private Stage fenetrePrincipale ;
 
     @FXML
-    private Button boutton ;
+      private Button butRecherche ;
     @FXML
     private Button butRetour ;
     @FXML
     private Button butValider ;
+    @FXML
+    private TextField recherche ;
 
     @FXML
     private MenuButton choixTypeDonnees;
