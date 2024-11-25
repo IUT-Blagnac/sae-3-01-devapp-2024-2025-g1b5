@@ -53,16 +53,6 @@ public class ParametrageChoixSalles {
       
     }
 
-    public void loadMenuDeroulantSalles(List<Salles> listSalles){
-      
-      CheckMenuItem choix;
-
-      for (int i=0; i<listSalles.size(); i++){
-        choix = new CheckMenuItem(listSalles.get(i).toString());
-        choixTypeDonnees.getItems().add(choix);
-      }
-      
-    }
 
     @FXML
     private void actionRetour() {
