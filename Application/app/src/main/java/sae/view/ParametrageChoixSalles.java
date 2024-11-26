@@ -25,45 +25,93 @@ import sae.appli.Salle;
 import sae.appli.TypeDonnee;
 
 public class ParametrageChoixSalles {
+    
+    private Stage fenetrePrincipale ;
 
-  private Stage fenetrePrincipale;
+    @FXML
+    private Button boutton ;
+    @FXML
+    private Button butRetour ;
+    @FXML
+    private Button butValider ;
 
-  @FXML
-  private Button butRecherche;
-  @FXML
-  private Button butRetour;
-  @FXML
-  private Button butValider;
-  @FXML
-  private TextField textRecherche;
-  @FXML
-  private ListView<Salle> lvSalles;
-  
-  @FXML
-  private MenuButton choixTypeDonnees;
-  
-  private String numSalle = "E004" ;
+    @FXML
+    private MenuButton choixTypeDonnees;
+    
+    private String numSalle = "" ;
 
-  private App application;
-  
-  private ObservableList<Salle> oListSalles;
-  
-  ArrayList<String> choices = new ArrayList<>();
+    private App application;
+
+    ArrayList<String> choices = new ArrayList<>();
 
 
-  private void configure() {
-    this.oListSalles = FXCollections.observableArrayList();
-    this.lvSalles.setItems(this.oListSalles);
-    this.lvSalles.getSelectionModel().setSelectionMode(javafx.scene.control.SelectionMode.SINGLE);
-    this.lvSalles.getFocusModel().focus(-1);
-    this.lvSalles.getSelectionModel().selectedItemProperty().addListener(e -> this.validateComponentState());
-    this.validateComponentState();
-  
-  }
+    @FXML
+      private Button butRecherche;
+      @FXML
+      private TextField textRecherche;
+      @FXML
+      private ListView<Salle> lvSalles;
+
+      private ObservableList<Salle> oListSalles;
 
 
 
-  @FXML
+    public void setDatas(Stage fenetre,  App app) {
+      this.application = app;
+      this.fenetrePrincipale = fenetre;
+      //this.fenetrePrincipale.setOnCloseRequest(event -> actionQuitter());
+      this.configure();
+	  }
+
+    private void configure() {
+      this.oListSalles = FXCollections.observableArrayList();
+      this.lvSalles.setItems(this.oListSalles);
+      this.lvSalles.getSelectionModel().setSelectionMode(javafx.scene.control.SelectionMode.SINGLE);
+      this.lvSalles.getFocusModel().focus(-1);
+      this.lvSalles.getSelectionModel().selectedItemProperty().addListener(e -> this.validateComponentState());
+      this.validateComponentState();
+    }
+
+    public void loadMenuDeroulantDonnees(List<TypeDonnee> listType){
+      
+      CheckMenuItem choix;
+
+      for (int i=0; i<listType.size(); i++){
+        choix = new CheckMenuItem(listType.get(i).toString());
+        choixTypeDonnees.getItems().add(choix);
+      }
+      
+    }
+
+    public String getSalle () {
+      return this.numSalle;
+    }
+
+    public ArrayList<String> getTabDonnee(){
+      return choices;
+    }
+
+    @FXML
+    private void actionRetour() {
+		  application.loadMenu();
+	  }
+
+    @FXML
+    private void actionValider() {
+		  donneeChoisies();
+      if (!choices.isEmpty())
+        application.loadDonnees();
+      else System.out.println("Selectionner des données ! ");
+	  }
+
+    public void donneeChoisies () {
+      ObservableList<MenuItem> obList = choixTypeDonnees.getItems();
+      for(MenuItem n : obList){
+          if(((CheckMenuItem)n).isSelected())
+            choices.add(n.getText());
+      }
+    } 
+
 
   public void loadListeSalles(String salle) {
     String[] sls = {
@@ -87,56 +135,9 @@ public class ParametrageChoixSalles {
         }
       }
     }
-    
   }
 
 
-
-    public void setDatas(Stage fenetre,  App app) {
-      this.application = app;
-      this.fenetrePrincipale = fenetre;
-      //this.fenetrePrincipale.setOnCloseRequest(event -> actionQuitter());
-	  }
-
-    public void loadMenuDeroulantDonnees(List<TypeDonnee> listType){
-      
-      CheckMenuItem choix;
-
-      for (int i=0; i<listType.size(); i++){
-        choix = new CheckMenuItem(listType.get(i).toString());
-        choixTypeDonnees.getItems().add(choix);
-      }
-      
-    }
-
-    public String getSalle () {
-      return this.numSalle;
-    }
-
-    public ArrayList<String> getTabDonnee(){
-      return choices;
-    }
-
-   
-
-    @FXML
-    private void actionValider() {
-		  donneeChoisies();
-      if (!choices.isEmpty())
-        application.loadDonnees();
-      else System.out.println("Selectionner des données ! ");
-      //affCtrl.setSalle(numSalle);
-	  }
-
-    public void donneeChoisies () {
-      ObservableList<MenuItem> obList = choixTypeDonnees.getItems();
-      for(MenuItem n : obList){
-          if(((CheckMenuItem)n).isSelected())
-            choices.add(n.getText());
-      }
-    }   
-
- 
   @FXML
   private void actionRecherche() {
     if (lvSalles!=null) {
@@ -156,9 +157,11 @@ public class ParametrageChoixSalles {
     }
 
   }
-  @Override
-  public String toString() {
-    return "[Salle: " + this.lvSalles + "]";
-  }
+
+    @Override
+    public String toString() {
+      return "[Salle: " + this.lvSalles + "]";
+    }  
+
 
 }
