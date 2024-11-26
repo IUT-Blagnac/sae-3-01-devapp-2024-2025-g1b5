@@ -137,5 +137,9 @@ public class ParametrageChoixSalles {
     }
 
   }
+  @Override
+  public String toString() {
+    return "[Salle: " + this.lvSalles + "]";
+  }
 
 }

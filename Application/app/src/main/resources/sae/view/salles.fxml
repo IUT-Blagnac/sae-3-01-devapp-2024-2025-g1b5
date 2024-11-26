@@ -23,7 +23,7 @@
             <ColumnConstraints />
         </columnConstraints>
          <children>
-            <Button fx:id="butValider" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#actionRetour" prefHeight="25.0" prefWidth="190.0" text="Validé" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Button fx:id="butValider" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#actionValider" prefHeight="25.0" prefWidth="190.0" text="Validé" GridPane.columnIndex="3" GridPane.rowIndex="1" />
             <Button fx:id="butRetour" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#actionRetour" prefHeight="25.0" prefWidth="190.0" text="Retour" GridPane.rowIndex="1" />
          </children>
          <rowConstraints>

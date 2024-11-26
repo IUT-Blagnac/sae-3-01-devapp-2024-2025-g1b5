@@ -23,4 +23,7 @@ public class Salle {
     public ArrayList<TypeDonnee> getDonnees(){
         return this.donnees;
     }
+    public String toString() {
+        return this.nom;
     }
+}
