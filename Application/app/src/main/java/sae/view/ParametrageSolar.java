@@ -6,12 +6,21 @@ import sae.App;
 import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextArea;
 import javafx.scene.shape.Path;
 import sae.appli.DonneeSolar;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.stream.Collectors;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
 
 
 public class ParametrageSolar {
@@ -21,6 +30,9 @@ public class ParametrageSolar {
     
     private Stage fenetrePrincipale ;
     private App application;
+
+    @FXML
+    private TextArea dataDisplay;
     
     @FXML
     private MenuButton menuButton;
@@ -46,7 +58,6 @@ public class ParametrageSolar {
     }
 
 
-
     public void updateConfig(List<String> donneesSolar) {
       try {
           // Charger toutes les lignes du fichier de configuration avec un chemin direct
@@ -56,7 +67,7 @@ public class ParametrageSolar {
           StringBuilder updatedContent = new StringBuilder();
           
           // Créer la nouvelle ligne pour donneesSolar
-          String newDonneesSolarLine = "donneesSolar=[" + String.join(", ", donneesSolar) + "]";
+            String newDonneesSolarLine = "donneesSolar=[" + donneesSolar.stream().map(attr -> "'" + attr + "'") .collect(Collectors.joining(", ")) + "]";
           
           // On parcourt toutes les lignes du fichier pour remplacer celle de "donneesSolar"
           for (String line : lines) {
@@ -81,28 +92,79 @@ public class ParametrageSolar {
   }
 
 
-    @FXML
-    private void actionValid() {
-        // Créer une liste pour stocker les éléments sélectionnés
-        List<String> selections = new ArrayList<>();
 
-        // Parcourir les éléments du MenuButton
-        for (MenuItem item : menuButton.getItems()) {
-            // Vérifier si l'élément est un CheckMenuItem
-            if (item instanceof CheckMenuItem) {
-                CheckMenuItem checkMenuItem = (CheckMenuItem) item; // Cast explicite
-                if (checkMenuItem.isSelected()) {
-                    selections.add(checkMenuItem.getText());
-                }
+
+    @FXML
+private void actionValid() {
+    // Étape 1 : Créer une liste pour stocker les éléments sélectionnés
+    List<String> selections = new ArrayList<>();
+
+    // Parcourir les éléments du MenuButton
+    for (MenuItem item : menuButton.getItems()) {
+        // Vérifier si l'élément est un CheckMenuItem
+        if (item instanceof CheckMenuItem) {
+            CheckMenuItem checkMenuItem = (CheckMenuItem) item; // Cast explicite
+            if (checkMenuItem.isSelected()) {
+                selections.add(checkMenuItem.getText());
             }
         }
-
-        // Afficher la liste des sélections pour vérifier
-        System.out.println("Sélections : " + selections);
-
-        // Appeler une méthode pour mettre à jour la configuration avec ces sélections
-        updateConfig(selections);
     }
+
+    // Afficher la liste des sélections pour vérifier
+    System.out.println("Sélections : " + selections);
+
+    // Appeler une méthode pour mettre à jour la configuration avec ces sélections
+    updateConfig(selections);
+
+    // Étape 2 : Charger et afficher les données JSON dans la TextArea
+    loadAndDisplaySolarData();
+}
+
+    private static final String JSON_FILE = "Iot/solar.json";
+
+    // Méthode pour lire les données JSON et afficher l'élément "6"
+    // Méthode pour lire les données JSON et afficher le dernier élément
+private void loadAndDisplaySolarData() {
+    try {
+        // Charger et parser le fichier JSON
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode rootNode = mapper.readTree(new File(JSON_FILE));
+
+        // Récupérer le nœud "solar"
+        JsonNode solarNode = rootNode.path("solar");
+
+        if (solarNode.isObject()) {
+            // Récupérer les clés de l'objet et identifier la dernière
+            Iterator<String> fieldNames = solarNode.fieldNames();
+            String lastKey = null;
+
+            while (fieldNames.hasNext()) {
+                lastKey = fieldNames.next(); // La dernière clé rencontrée dans l'itération
+            }
+
+            if (lastKey != null) {
+                // Récupérer les données associées à la dernière clé
+                JsonNode lastData = solarNode.path(lastKey);
+
+                // Convertir les données en une chaîne JSON formatée
+                String formattedData = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(lastData);
+
+                // Afficher les données dans la TextArea
+                dataDisplay.setText("Dernière clé : " + lastKey + "\n" + formattedData);
+            } else {
+                // Si aucune clé n'est trouvée
+                dataDisplay.setText("Aucune donnée trouvée dans le fichier JSON.");
+            }
+        } else {
+            // Gérer le cas où "solar" n'est pas un objet JSON valide
+            dataDisplay.setText("Le format des données 'solar' est invalide.");
+        }
+    } catch (IOException e) {
+        // Gérer les erreurs d'entrée/sortie
+        dataDisplay.setText("Erreur lors du chargement des données : " + e.getMessage());
+        e.printStackTrace();
+    }
+}
 
 
 }
