@@ -67,7 +67,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label fx:id="labelTestCo" styleClass="Label" text=" " GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="labelTestCo" styleClass="Connexion" text=" " GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>
    </center>

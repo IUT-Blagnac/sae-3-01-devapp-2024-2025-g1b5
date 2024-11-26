@@ -18,3 +18,10 @@
     -fx-margin: 30px; /* Espacement externe */
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.7), 5, 0.3, 2, 2); /* Ombre portée */
 }
+
+.Connexion{
+    -fx-text-fill: green; 
+    -fx-font-size: 16px; 
+    -fx-font-family: "Arial Black";
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 5, 0.2, 2, 2); /* Ombre portée */
+}
