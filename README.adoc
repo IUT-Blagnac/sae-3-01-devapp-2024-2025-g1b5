@@ -321,6 +321,7 @@ Un Sprint durera 2 semaines
 |Réunions sprint 1| Ordre du jour | Compte rendu
 |  |link:https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b5/blob/master/GPO/ODJ_CR_Reunion/ODJ_SEM45.pdf[ODJ semaine 45] |link:https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b5/blob/master/GPO/ODJ_CR_Reunion/CR_SEM45.pdf[CR semaine 45]
 |  |link:https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b5/blob/master/GPO/ODJ_CR_Reunion/ODJ_SEM46.pdf[ODJ semaine 46] |link:https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b5/blob/master/GPO/ODJ_CR_Reunion/CR_SEM46.pdf[CR semaine 46]
+|  |link:https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b5/blob/master/GPO/ODJ_CR_Reunion/ODJ_SEM47.pdf[ODJ semaine 47] |link:https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b5/blob/master/GPO/ODJ_CR_Reunion/CR_SEM47.pdf[CR semaine 47]
 |===
 
 [cols="1,1"]

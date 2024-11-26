@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -19,6 +20,9 @@ public class App extends Application{
 
     private BorderPane rootPane;
     private Stage stage;
+    
+
+
 
     //partager des données entre controllers
     private String numSalle;
@@ -27,17 +31,15 @@ public class App extends Application{
 
     @Override
     public void start(Stage primaryStage)  {
-
         this.stage = primaryStage;
         this.rootPane = new BorderPane();
-
         Scene scene = new Scene(rootPane);
+        scene.getStylesheets().add(App.class.getResource("style.css").toExternalForm());
         stage.setScene(scene);
-        
         loadMenu();
-
         primaryStage.setTitle("Menu");
         primaryStage.show();
+
     }
 
     public void loadMenu() {
@@ -58,9 +60,7 @@ public class App extends Application{
         }
     }
 
-    public static void main2(String[] args) {
-       Application.launch(args);   
-    }
+    
 
     public void loadParametrageSalles() {
         try {
@@ -112,4 +112,9 @@ public class App extends Application{
     }
 
     
+    public static void main2(String[] args) {
+        
+        Application.launch(args);   
+     }
+
 }
