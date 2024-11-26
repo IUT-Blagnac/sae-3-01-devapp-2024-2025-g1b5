@@ -19,11 +19,12 @@
         </columnConstraints>
         <rowConstraints>
           <RowConstraints maxHeight="129.0" minHeight="10.0" prefHeight="92.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="229.0" minHeight="10.0" prefHeight="229.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="129.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="254.0" minHeight="10.0" prefHeight="231.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="96.0" minHeight="10.0" prefHeight="63.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <GridPane alignment="CENTER" maxWidth="-Infinity" prefHeight="169.0" prefWidth="231.0" styleClass="Button" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <GridPane alignment="CENTER" maxWidth="-Infinity" prefHeight="169.0" prefWidth="231.0" styleClass="Button" GridPane.columnIndex="1" GridPane.rowIndex="2">
               <columnConstraints>
                   <ColumnConstraints halignment="CENTER" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
@@ -66,6 +67,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
+            <Label fx:id="labelTestCo" styleClass="Label" text=" " GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
    </center>

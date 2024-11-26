@@ -3,6 +3,7 @@ package sae.view;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import sae.App;
 import org.eclipse.paho.client.mqttv3.MqttClient;
@@ -22,6 +23,8 @@ public class MenuController  {
     private Button butAlarmes;
     @FXML
     private Button butTestCo;
+    @FXML
+    private Label labelTestCo;
     
     private App application;
     
@@ -47,7 +50,9 @@ public class MenuController  {
           MqttConnectOptions options = new MqttConnectOptions();
           client.connect(options);
           if(client.isConnected()){
+            labelTestCo.setText("Connexion réussie");
             System.out.println("Connexion réussie");
+            
           }
       } catch (MqttException e) {
         // TODO Auto-generated catch block
