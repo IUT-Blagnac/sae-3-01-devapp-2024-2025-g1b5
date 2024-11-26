@@ -118,7 +118,28 @@ private void actionValid() {
 
     // Étape 2 : Charger et afficher les données JSON dans la TextArea
     loadAndDisplaySolarData();
+    startPythonScript();
 }
+
+
+        // Fonction pour démarrer le script Python sans bloquer l'interface
+    private void startPythonScript() {
+        Thread pythonThread = new Thread(() -> {
+            try {
+                // Création d'un processus pour exécuter le script Python
+                ProcessBuilder processBuilder = new ProcessBuilder("python", "Iot/main2.py");
+                processBuilder.inheritIO();  // Permet d'afficher les sorties du script Python dans la console Java
+                Process process = processBuilder.start(); // Démarrer le processus
+                process.waitFor();  // Attendre que le processus Python se termine
+            } catch (IOException | InterruptedException e) {
+                e.printStackTrace();
+                System.out.println("Erreur lors du démarrage du script Python.");
+            }
+        });
+
+        pythonThread.setDaemon(true); // Permet d'arrêter ce thread quand l'application se ferme
+        pythonThread.start(); // Démarre le thread
+    }
 
     private static final String JSON_FILE = "Iot/solar.json";
 

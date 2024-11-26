@@ -291,6 +291,39 @@
       "currentPower": {
         "power": 21.300194
       }
+    },
+    "32": {
+      "lifeTimeData": {
+        "energy": 3363532
+      },
+      "lastYearData": {
+        "energy": 2882502
+      },
+      "lastMonthData": {
+        "energy": 247630
+      }
+    },
+    "33": {
+      "lifeTimeData": {
+        "energy": 3363692
+      },
+      "lastYearData": {
+        "energy": 2882662
+      },
+      "lastMonthData": {
+        "energy": 247790
+      }
+    },
+    "34": {
+      "lifeTimeData": {
+        "energy": 3363830
+      },
+      "lastYearData": {
+        "energy": 2882800
+      },
+      "lastMonthData": {
+        "energy": 247928
+      }
     }
   }
 }
