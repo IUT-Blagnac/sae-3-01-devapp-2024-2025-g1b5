@@ -379,6 +379,60 @@
       "lastMonthData": {
         "energy": 248222
       }
+    },
+    "40": {
+      "lifeTimeData": {
+        "energy": 3369819
+      }
+    },
+    "41": {
+      "lifeTimeData": {
+        "energy": 3369819
+      }
+    },
+    "42": {
+      "lifeTimeData": {
+        "energy": 3369831
+      }
+    },
+    "43": {
+      "lifeTimeData": {
+        "energy": 3369831
+      },
+      "lastYearData": {
+        "energy": 2888801
+      }
+    },
+    "44": {
+      "lifeTimeData": {
+        "energy": 3369831
+      }
+    },
+    "45": {
+      "lifeTimeData": {
+        "energy": 3369831
+      },
+      "lastYearData": {
+        "energy": 2888801
+      }
+    },
+    "46": {
+      "lifeTimeData": {
+        "energy": 3369831
+      },
+      "lastYearData": {
+        "energy": 2888801
+      }
+    },
+    "47": {
+      "lifeTimeData": {
+        "energy": 3369831
+      }
+    },
+    "48": {
+      "lifeTimeData": {
+        "energy": 3369849
+      }
     }
   }
 }

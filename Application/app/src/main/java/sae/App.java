@@ -98,12 +98,13 @@ public class App extends Application{
 
             ParametrageSolar choixSolar = loader.getController();
             choixSolar.setDatas(stage, this);
-   
+            
+            this.rootPane.setCenter(vueListe);
+
         } catch (IOException e) {
             System.out.println("Ressource FXML non disponible : solar.fxml");
             System.exit(1);
         }
-
     }
 
     public void loadDonnees(){
