@@ -22,13 +22,6 @@ public class App extends Application{
     private Stage stage;
     
 
-
-
-    //partager des données entre controllers
-    private String numSalle;
-    ArrayList<String> donneesChoisies = new ArrayList<>();
-
-
     @Override
     public void start(Stage primaryStage)  {
         this.stage = primaryStage;
@@ -74,9 +67,6 @@ public class App extends Application{
 
             ParametrageChoixSalles choixSalles = loader.getController();
             choixSalles.setDatas(stage, this);
-
-            this.numSalle = choixSalles.getSalle();
-            this.donneesChoisies = choixSalles.getTabDonnee();
             
             choixSalles.loadMenuDeroulantDonnees(listTypeDonnee);
             
@@ -88,7 +78,7 @@ public class App extends Application{
         }
     }
 
-    public void loadDonnees(){
+    public void loadDonnees( String numSalle, ArrayList<String> donneesChoisies){
       try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(App.class.getResource("view/donnee.fxml"));
@@ -98,7 +88,7 @@ public class App extends Application{
             AfficherDonneesController affichage = loader.getController();
             
             affichage.setDatas(stage, this);
-            affichage.setSalle(this.numSalle);
+            affichage.setSalle(numSalle);
             affichage.setTab(donneesChoisies);
             
             affichage.afficherDonnees();
