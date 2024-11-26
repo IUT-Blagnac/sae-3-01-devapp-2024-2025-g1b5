@@ -116,10 +116,6 @@ public class ParametrageChoixSalles {
   @FXML
   private void actionValider() {
     
-    donneeChoisies();
-    for (int i = 0; i < choices.size(); i++) {
-      System.out.println(choices.get(i));
-    }
   }
 
   public void donneeChoisies() {
