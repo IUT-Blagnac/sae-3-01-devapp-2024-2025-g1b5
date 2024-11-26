@@ -324,6 +324,61 @@
       "lastMonthData": {
         "energy": 247928
       }
+    },
+    "35": {
+      "lifeTimeData": {
+        "energy": 3363830
+      },
+      "lastYearData": {
+        "energy": 2882800
+      },
+      "lastMonthData": {
+        "energy": 247928
+      }
+    },
+    "36": {
+      "lifeTimeData": {
+        "energy": 3363830
+      },
+      "lastYearData": {
+        "energy": 2882800
+      },
+      "lastMonthData": {
+        "energy": 247928
+      }
+    },
+    "37": {
+      "lifeTimeData": {
+        "energy": 3363830
+      },
+      "lastYearData": {
+        "energy": 2882800
+      },
+      "lastMonthData": {
+        "energy": 247928
+      }
+    },
+    "38": {
+      "lifeTimeData": {
+        "energy": 3363962
+      },
+      "lastYearData": {
+        "energy": 2882932
+      },
+      "lastMonthData": {
+        "energy": 248060
+      }
+    },
+    "39": {
+      "lifeTimeData": {
+        "energy": 3364124
+      },
+      "lastYearData": {
+        "energy": 2883094
+      },
+      "lastMonthData": {
+        "energy": 248222
+      }
     }
   }
 }

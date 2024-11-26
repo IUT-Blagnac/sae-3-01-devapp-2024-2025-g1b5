@@ -122,15 +122,16 @@ private void actionValid() {
 }
 
 
-        // Fonction pour démarrer le script Python sans bloquer l'interface
-    private void startPythonScript() {
+private Process pythonProcess;  // Déclaration de la variable pour stocker le processus Python
+
+    public void startPythonScript() {
         Thread pythonThread = new Thread(() -> {
             try {
                 // Création d'un processus pour exécuter le script Python
                 ProcessBuilder processBuilder = new ProcessBuilder("python", "Iot/main2.py");
                 processBuilder.inheritIO();  // Permet d'afficher les sorties du script Python dans la console Java
-                Process process = processBuilder.start(); // Démarrer le processus
-                process.waitFor();  // Attendre que le processus Python se termine
+                pythonProcess = processBuilder.start(); // Démarrer le processus
+                pythonProcess.waitFor();  // Attendre que le processus Python se termine
             } catch (IOException | InterruptedException e) {
                 e.printStackTrace();
                 System.out.println("Erreur lors du démarrage du script Python.");
@@ -140,6 +141,17 @@ private void actionValid() {
         pythonThread.setDaemon(true); // Permet d'arrêter ce thread quand l'application se ferme
         pythonThread.start(); // Démarre le thread
     }
+
+    // Méthode pour arrêter le processus Python
+    public void stopPythonScript() {
+        if (pythonProcess != null) {
+            pythonProcess.destroy(); // Arrêter le processus Python
+            System.out.println("Le processus Python a été arrêté.");
+        } else {
+            System.out.println("Aucun processus Python en cours.");
+        }
+    }
+
 
     private static final String JSON_FILE = "Iot/solar.json";
 
