@@ -83,6 +83,9 @@
         </rowConstraints>
          <children>
             <Label contentDisplay="CENTER" prefHeight="21.0" prefWidth="115.0" text="Liste des salles" textAlignment="JUSTIFY" GridPane.columnIndex="1" />
+            <Button fx:id="butRetour" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#actionRetour" prefHeight="25.0" prefWidth="190.0" text="Retour" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <MenuButton fx:id="choixTypeDonnees" mnemonicParsing="false" text="MenuButton" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button fx:id="butValider" alignment="CENTER" contentDisplay="CENTER" layoutX="135.0" layoutY="366.0" mnemonicParsing="false" onAction="#actionValider" prefHeight="25.0" prefWidth="190.0" text="Validé" GridPane.columnIndex="3" GridPane.rowIndex="6" />
          </children>
       </GridPane>
    </top>
