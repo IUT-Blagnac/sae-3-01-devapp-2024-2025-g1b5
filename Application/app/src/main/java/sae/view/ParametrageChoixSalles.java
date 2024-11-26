@@ -50,13 +50,7 @@ public class ParametrageChoixSalles {
   
   ArrayList<String> choices = new ArrayList<>();
 
-  public void setDatas(Stage fenetre, App app) {
-    this.application = app;
-    this.fenetrePrincipale = fenetre;
-    // this.fenetrePrincipale.setOnCloseRequest(event -> actionQuitter());
-    this.configure();
-    
-  }
+
   private void configure() {
     this.oListSalles = FXCollections.observableArrayList();
     this.lvSalles.setItems(this.oListSalles);
@@ -67,16 +61,7 @@ public class ParametrageChoixSalles {
   
   }
 
-  public void loadMenuDeroulantDonnees(List<TypeDonnee> listType) {
 
-    CheckMenuItem choix;
-
-    for (int i = 0; i < listType.size(); i++) {
-      choix = new CheckMenuItem(listType.get(i).toString());
-      choixTypeDonnees.getItems().add(choix);
-    }
-
-  }
 
   @FXML
 
