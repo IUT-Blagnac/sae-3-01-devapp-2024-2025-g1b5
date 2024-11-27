@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Pos?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sae.view.AlarmesController">
+    <center>
+        <GridPane hgap="10" vgap="10" alignment="center" padding="20">
+            <!-- Choisir la salle -->
+            <Label text="Salle:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            <ComboBox fx:id="salleComboBox" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Salle 1"/>
+                        <String fx:value="Salle 2"/>
+                        <String fx:value="Salle 3"/>
+                    </FXCollections>
+                </items>
+            </ComboBox>
+
+            <!-- Choisir la valeur -->
+            <Label text="Valeur:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <ComboBox fx:id="valeurComboBox" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="CO2"/>
+                        <String fx:value="Température"/>
+                        <String fx:value="Humidité"/>
+                    </FXCollections>
+                </items>
+            </ComboBox>
+
+            <!-- Choisir la date -->
+            <Label text="Date:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+            <DatePicker fx:id="datePicker" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+            <!-- Bouton pour appliquer les filtres -->
+            <Button text="Filtrer" fx:id="filterButton" GridPane.columnIndex="1" GridPane.rowIndex="3" onAction="#onFilterClicked"/>
+
+            <!-- TableView pour afficher les alarmes -->
+            <TableView fx:id="alarmTableView" GridPane.columnIndex="0" GridPane.rowIndex="4" GridPane.columnSpan="2" minWidth="600">
+                <columns>
+                    <TableColumn fx:id="salleColumn" text="Salle" prefWidth="150"/>
+                    <TableColumn fx:id="valeurColumn" text="Valeur" prefWidth="150"/>
+                    <TableColumn fx:id="timestampColumn" text="Date" prefWidth="150"/>
+                    <TableColumn fx:id="messageColumn" text="Message" prefWidth="200"/>
+                </columns>
+            </TableView>
+        </GridPane>
+    </center>
+</BorderPane>

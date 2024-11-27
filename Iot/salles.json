@@ -1,0 +1,119 @@
+{
+ "C102": {
+  "0": {
+   "temperature": 18.6,
+   "humidity": 53.5,
+   "co2": 626,
+   "tvoc": 170,
+   "activity": 1,
+   "illumination": 6,
+   "infrared": 2,
+   "infrared_and_visible": 7,
+   "pressure": 999
+  }
+ },
+ "E007": {
+  "0": {
+   "temperature": 20.7,
+   "humidity": 51.5,
+   "co2": 885,
+   "tvoc": 347,
+   "activity": 0,
+   "illumination": 29,
+   "infrared": 10,
+   "infrared_and_visible": 33,
+   "pressure": 999.6
+  }
+ },
+ "B203": {
+  "0": {
+   "temperature": 23.2,
+   "humidity": 57,
+   "co2": 2781,
+   "tvoc": 195,
+   "activity": 383,
+   "illumination": 29,
+   "infrared": 12,
+   "infrared_and_visible": 37,
+   "pressure": 998.2
+  }
+ },
+ "amphi1": {
+  "0": {
+   "temperature": 21.8,
+   "humidity": 47,
+   "co2": 475,
+   "tvoc": 193,
+   "activity": 0,
+   "illumination": 1,
+   "infrared": 1,
+   "infrared_and_visible": 1,
+   "pressure": 999
+  }
+ },
+ "E208": {
+  "0": {
+   "temperature": 20.1,
+   "humidity": 52.5,
+   "co2": 948,
+   "tvoc": 253,
+   "activity": 86,
+   "illumination": 20,
+   "infrared": 7,
+   "infrared_and_visible": 23,
+   "pressure": 998.3
+  }
+ },
+ "E210": {
+  "0": {
+   "temperature": 22,
+   "humidity": 50.5,
+   "co2": 1027,
+   "tvoc": 238,
+   "activity": 276,
+   "illumination": 150,
+   "infrared": 39,
+   "infrared_and_visible": 146,
+   "pressure": 997.7
+  }
+ },
+ "B103": {
+  "0": {
+   "temperature": 23.2,
+   "humidity": 52,
+   "co2": 3977,
+   "tvoc": 234,
+   "activity": 108,
+   "illumination": 64,
+   "infrared": 17,
+   "infrared_and_visible": 63,
+   "pressure": 998.9
+  }
+ },
+ "E101": {
+  "0": {
+   "temperature": 22.6,
+   "humidity": 49,
+   "co2": 1138,
+   "tvoc": 356,
+   "activity": 97,
+   "illumination": 105,
+   "infrared": 24,
+   "infrared_and_visible": 96,
+   "pressure": 998.7
+  }
+ },
+ "E207": {
+  "0": {
+   "temperature": 21.7,
+   "humidity": 52.5,
+   "co2": 1537,
+   "tvoc": 336,
+   "activity": 429,
+   "illumination": 543,
+   "infrared": 126,
+   "infrared_and_visible": 500,
+   "pressure": 998.6
+  }
+ }
+}
