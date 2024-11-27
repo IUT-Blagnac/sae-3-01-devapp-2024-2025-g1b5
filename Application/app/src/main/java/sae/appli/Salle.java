@@ -1,8 +1,5 @@
 package sae.appli;
 
-import java.sql.Array;
-import java.util.ArrayList;
-
 public class Salle {
     private String nom;
 

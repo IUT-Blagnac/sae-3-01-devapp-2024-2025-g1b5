@@ -17,6 +17,7 @@ import sae.view.ConfigController;
 import sae.view.MenuController;
 import sae.view.ParametrageChoixSalles;
 import sae.view.ParametrageSolar;
+import sae.view.SallesConfigController;
 import sae.view.SolarConfigController;
 
 public class App extends Application{
@@ -105,6 +106,22 @@ public class App extends Application{
 
         } catch (IOException e) {
             System.out.println("Ressource FXML non disponible : solar.fxml");
+            System.exit(1);
+        }
+    }
+    public void loadSallesConfig() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(App.class.getResource("view/sallesConfig.fxml"));
+            BorderPane vueListe = loader.load();
+
+            SallesConfigController configSalles = loader.getController();
+            configSalles.setDatas(stage, this);
+            
+            this.rootPane.setCenter(vueListe);
+
+        } catch (IOException e) {
+            System.out.println("Ressource FXML non disponible : sallesConfig.fxml");
             System.exit(1);
         }
     }

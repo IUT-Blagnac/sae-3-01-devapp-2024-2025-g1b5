@@ -9,15 +9,20 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import sae.App;
+import sae.appli.TypeDonnee;
+
 import java.util.ArrayList;
 
-public class SolarConfigController {
+public class SallesConfigController {
 
-   // private static final String CONFIG_FILE = "Iot/config.ini";
-   private static final String CONFIG_FILE ="Iot/config.ini";
+    private static final String CONFIG_FILE = "Iot/config.ini";
 
+
+    @SuppressWarnings("unused")
     private Stage fenetrePrincipale;
     private App application;
 
@@ -28,23 +33,8 @@ public class SolarConfigController {
     Button butValider;
 
     @FXML
-    CheckBox cbCurrentPower;
-
-    @FXML
-    CheckBox cbLastDayData;
-
-    @FXML
-    CheckBox cbLastMonthData;
-
-    @FXML
-    CheckBox cbLastYearData;
-
-    @FXML
-    CheckBox cbLifeTimeData;
-
-    @FXML
-    CheckBox cbLastUpdateTime;
-
+    ScrollPane scrollPane;
+    
     @FXML
     private Label lblInfo;
 
@@ -71,45 +61,34 @@ public class SolarConfigController {
         // Utiliser une liste dynamique pour éviter les problèmes avec des valeurs nulles
         List<String> selectedCheckBoxes = new ArrayList<>();
 
-        if (cbCurrentPower != null && cbCurrentPower.isSelected()) {
-            selectedCheckBoxes.add("currentPower");
-        }
-        if (cbLastDayData != null && cbLastDayData.isSelected()) {
-            selectedCheckBoxes.add("lastDayData");
-        }
-        if (cbLastMonthData != null && cbLastMonthData.isSelected()) {
-            selectedCheckBoxes.add("lastMonthData");
-        }
-        if (cbLastYearData != null && cbLastYearData.isSelected()) {
-            selectedCheckBoxes.add("lastYearData");
-        }
-        if (cbLifeTimeData != null && cbLifeTimeData.isSelected()) {
-            selectedCheckBoxes.add("lifeTimeData");
-        }
-        if (cbLastUpdateTime != null && cbLastUpdateTime.isSelected()) {
-            selectedCheckBoxes.add("lastUpdateTime");
+        // Parcourir tous les enfants du conteneur de boutons
+        for (int i = 0; i < ((VBox) scrollPane.getContent()).getChildren().size(); i++) {
+            CheckBox cb = (CheckBox) ((VBox) scrollPane.getContent()).getChildren().get(i);
+            if (cb.isSelected()) {
+                selectedCheckBoxes.add(cb.getText().toLowerCase());
+            }
         }
 
         return selectedCheckBoxes;
     }
 
-    public void updateConfig(List<String> donneesSolar) {
+    public void updateConfig(List<String> donneesSalles) {
         try {
             // Charger toutes les lignes du fichier de configuration
             List<String> lines = Files.readAllLines(Paths.get(CONFIG_FILE));
 
-            // Créer la nouvelle ligne pour donneesSolar
-            String newDonneesSolarLine = "donneesSolar=[" + donneesSolar.stream()
+            // Créer la nouvelle ligne pour donneesSalles
+            String newDonneesSallesLine = "donneesSalles=[" + donneesSalles.stream()
                     .map(attr -> "'" + attr + "'")
                     .collect(Collectors.joining(", ")) + "]";
 
-            // Mettre à jour ou ajouter la ligne donneesSolar
+            // Mettre à jour ou ajouter la ligne donneesSalles
             List<String> updatedLines = new ArrayList<>();
             boolean found = false;
 
             for (String line : lines) {
-                if (line.startsWith("donneesSolar")) {
-                    updatedLines.add(newDonneesSolarLine);
+                if (line.startsWith("donneesSalles")) {
+                    updatedLines.add(newDonneesSallesLine);
                     found = true;
                 } else {
                     updatedLines.add(line);
@@ -117,7 +96,7 @@ public class SolarConfigController {
             }
 
             if (!found) {
-                updatedLines.add(newDonneesSolarLine); // Ajouter si absent
+                updatedLines.add(newDonneesSallesLine); // Ajouter si absent
             }
 
             // Écrire les nouvelles lignes dans le fichier
@@ -144,39 +123,36 @@ public class SolarConfigController {
 
     @FXML
     private void initialize() {
+
+        //charger les boutons de configuration
+        VBox buttonContainer = new VBox(10); 
+        TypeDonnee[] donnees = TypeDonnee.values();
+
+        scrollPane.setFitToWidth(true); 
+        scrollPane.setPannable(true);
+        scrollPane.setContent(buttonContainer);
+
+
+        
         // Charger les données de configuration
         try {
-            System.out.println(Paths.get(CONFIG_FILE).getParent());
+
             List<String> lines = Files.readAllLines(Paths.get(CONFIG_FILE));
             for (String line : lines) {
-                if (line.startsWith("donneesSolar")) {
+                if (line.startsWith("donneesSalles")) {
                     // Extraire la liste des valeurs entre crochets
                     String values = line.substring(line.indexOf('[') + 1, line.indexOf(']'));
-                    List<String> selectedItems = List.of(values.split(","))
-                            .stream()
-                            .map(v -> v.trim().replace("'", "")) // Supprimer les espaces et les apostrophes
-                            .collect(Collectors.toList());
-
-                    // Cocher les CheckBoxes correspondantes
-                    if (cbCurrentPower != null) {
-                        cbCurrentPower.setSelected(selectedItems.contains("currentPower"));
+                    List<String> selectedItems = List.of(values.split(",")).stream().map(v -> v.trim().replace("'", "")).collect(Collectors.toList());
+                    for (TypeDonnee donnee : donnees) {
+                        CheckBox cb = new CheckBox(donnee.toString());
+                        cb.setUserData(donnee);
+                        
+                        if (selectedItems.contains(donnee.toString().toLowerCase())) {
+                            cb.setSelected(true);
+                        }
+                        buttonContainer.getChildren().add(cb);
                     }
-                    if (cbLastDayData != null) {
-                        cbLastDayData.setSelected(selectedItems.contains("lastDayData"));
-                    }
-                    if (cbLastMonthData != null) {
-                        cbLastMonthData.setSelected(selectedItems.contains("lastMonthData"));
-                    }
-                    if (cbLastYearData != null) {
-                        cbLastYearData.setSelected(selectedItems.contains("lastYearData"));
-                    }
-                    if (cbLifeTimeData != null) {
-                        cbLifeTimeData.setSelected(selectedItems.contains("lifeTimeData"));
-                    }
-                    if (cbLastUpdateTime != null) {
-                        cbLastUpdateTime.setSelected(selectedItems.contains("lastUpdateTime"));
-                    }
-                    break;
+                    return;
                 }
             }
         } catch (IOException e) {
