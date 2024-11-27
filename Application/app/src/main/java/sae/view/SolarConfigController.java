@@ -15,7 +15,8 @@ import java.util.ArrayList;
 
 public class SolarConfigController {
 
-    private static final String CONFIG_FILE = "Iot/config.ini";
+    private static final String CONFIG_FILE = "../resources/sae/iot/config.ini";
+
 
     private Stage fenetrePrincipale;
     private App application;
