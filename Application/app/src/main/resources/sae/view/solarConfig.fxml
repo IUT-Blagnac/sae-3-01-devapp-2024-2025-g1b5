@@ -27,40 +27,46 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <CheckBox mnemonicParsing="false" text="CurrentPower" GridPane.columnIndex="1" GridPane.rowIndex="8">
+            <Label fx:id="lblInfo" text="" style="-fx-text-fill: green;" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="9">
+               <GridPane.margin>
+                  <Insets left="60.0" />
+               </GridPane.margin>
+            </Label>
+            <CheckBox fx:id="cbCurrentPower" mnemonicParsing="false" text="CurrentPower" GridPane.columnIndex="1" GridPane.rowIndex="8">
                <GridPane.margin>
                   <Insets left="120.0" />
                </GridPane.margin>
             </CheckBox>
-            <CheckBox mnemonicParsing="false" text="lastDayData" GridPane.columnIndex="1" GridPane.rowIndex="7">
+            <CheckBox fx:id="cbLastDayData" mnemonicParsing="false" text="lastDayData" GridPane.columnIndex="1" GridPane.rowIndex="7">
                <GridPane.margin>
                   <Insets left="120.0" />
                </GridPane.margin>
             </CheckBox>
-            <CheckBox mnemonicParsing="false" text="lastMonthData" GridPane.columnIndex="1" GridPane.rowIndex="6">
+            <CheckBox fx:id="cbLastMonthData" mnemonicParsing="false" text="lastMonthData" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <GridPane.margin>
                   <Insets left="120.0" />
                </GridPane.margin>
             </CheckBox>
-            <CheckBox mnemonicParsing="false" text="lastYearData" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <CheckBox fx:id="cbLastYearData" mnemonicParsing="false" text="lastYearData" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets left="120.0" />
                </GridPane.margin>
             </CheckBox>
-            <CheckBox mnemonicParsing="false" text="lifeTimeData" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <CheckBox fx:id="cbLifeTimeData" mnemonicParsing="false" text="lifeTimeData" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets left="120.0" />
                </GridPane.margin>
             </CheckBox>
-            <CheckBox mnemonicParsing="false" text="lastUpdateTime" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <CheckBox fx:id="cbLastUpdateTime" mnemonicParsing="false" text="lastUpdateTime" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets left="120.0" />
                </GridPane.margin>
             </CheckBox>
-            <Button mnemonicParsing="false" text="Valider" GridPane.columnIndex="2" GridPane.rowIndex="9">
+            <Button fx:id="butValider" mnemonicParsing="false" onAction="#actionValid" text="Valider" GridPane.columnIndex="2" GridPane.rowIndex="10">
                <GridPane.margin>
                   <Insets left="15.0" />
                </GridPane.margin>
@@ -70,7 +76,7 @@
                   <Insets left="20.0" />
                </GridPane.margin>
             </Label>
-            <Button fx:id="butRetour" mnemonicParsing="false" onAction="#actionRetour" text="Retour" GridPane.rowIndex="9">
+            <Button fx:id="butRetour" mnemonicParsing="false" onAction="#actionRetour" text="Retour" GridPane.rowIndex="10">
                <GridPane.margin>
                   <Insets left="40.0" />
                </GridPane.margin>

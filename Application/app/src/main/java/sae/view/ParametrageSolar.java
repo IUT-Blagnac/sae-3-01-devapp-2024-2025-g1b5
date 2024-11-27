@@ -114,7 +114,7 @@ private void actionValid() {
     updateConfig(selections);
 
     // Étape 2 : Charger et afficher les données JSON dans la TextArea
-    loadAndDisplaySolarData();
+    //loadAndDisplaySolarData();
     startPythonScript();
 }
 
@@ -149,7 +149,7 @@ private Process pythonProcess;  // Déclaration de la variable pour stocker le p
         }
     }
 
-
+/* 
     private static final String JSON_FILE = "Iot/solar.json";
 
     // Méthode pour lire les données JSON et afficher l'élément "6"
@@ -195,6 +195,7 @@ private void loadAndDisplaySolarData() {
         e.printStackTrace();
     }
 }
+*/
 
 
 }
