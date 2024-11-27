@@ -1,14 +1,6 @@
 package sae.view;
 
 import javafx.fxml.FXML;
-<<<<<<< Updated upstream
-import javafx.scene.control.ListView;
-import javafx.scene.control.SelectionMode; // Correct import
-import javafx.stage.Stage;
-import sae.App;
-
-import java.util.Arrays;
-=======
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.MenuButton;
@@ -20,38 +12,14 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
->>>>>>> Stashed changes
 import java.util.List;
 
 public class ParametrageSolar {
 
-<<<<<<< Updated upstream
-=======
     private Stage fenetrePrincipale;
->>>>>>> Stashed changes
     private App application;
-    private Stage fenetrePrincipale;
 
     @FXML
-<<<<<<< Updated upstream
-    private ListView<String> listViewSolarData;
-
-    // Liste des données de solar à afficher dans la ListView
-    private List<String> donneesSolar = Arrays.asList(
-        "currentPower", "lastDayData", "lastMonthData", "lastYearData", 
-        "lifeTimeData", "lastUpdateTime"
-    );
-
-    public void setDatas(Stage fenetrePrincipale, App app) {
-        this.application = app;
-        this.fenetrePrincipale = fenetrePrincipale;
-        
-        // Initialisation de la ListView avec les données
-        listViewSolarData.getItems().addAll(donneesSolar);
-        
-        // Activation de la sélection multiple avec SelectionMode
-        listViewSolarData.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-=======
     private Button butValider;
     @FXML
     private Button butRetour;
@@ -124,7 +92,6 @@ public class ParametrageSolar {
         } catch (IOException e) {
             System.err.println("Erreur lors du chargement du fichier de configuration : " + e.getMessage());
         }
->>>>>>> Stashed changes
     }
 
     /**
@@ -144,15 +111,6 @@ public class ParametrageSolar {
         application.loadMenu();
     }
 
-<<<<<<< Updated upstream
-    @FXML
-    private void onSaveSelection() {
-        // Récupérer les éléments sélectionnés
-        List<String> selectedItems = listViewSolarData.getSelectionModel().getSelectedItems();
-        System.out.println("Données sélectionnées : " + selectedItems);
-        // Vous pouvez ici ajouter la logique pour utiliser ou sauvegarder la sélection
-    }
-=======
     /**
      * Action liée au bouton Valider.
      */
@@ -171,5 +129,4 @@ public class ParametrageSolar {
     }
     
 
->>>>>>> Stashed changes
 }

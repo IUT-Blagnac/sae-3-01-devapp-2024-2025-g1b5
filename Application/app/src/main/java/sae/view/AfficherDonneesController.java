@@ -38,69 +38,8 @@ public class AfficherDonneesController {
       //this.fenetrePrincipale.setOnCloseRequest(event -> actionQuitter());
 	  }
 
-<<<<<<< Updated upstream
     public void setSalle(String salle){
       this.titreSalle.setText(salle);
-=======
-  public void setSalle(String salle) {
-    this.titreSalle.setText(salle);
-  }
-
-  public void setTab(ArrayList<String> list) {
-    this.donnees = list;
-  }
-
-  @FXML
-  private void actionAfficher() {
-    System.out.println("A faire !");
-    // lecture();
-    System.out.println(donnees);
-    chargerFichierSalle();
-  }
-
-  @FXML
-  private void actionRetour() {
-    application.loadParametrageSalles();
-  }
-
-  public void afficherDonnees() {
-    for (int i = 0; i < donnees.size(); i++) {
-      gridDynamique.add(new Label(donnees.get(i) + " :"), 0, i);
-    }
-  }
-
-  public void chargerFichierSalle() {
-
-    JSONParser parser = new JSONParser();
-
-    try {
-      // Lire le fichier JSON
-      URL resource = getClass().getClassLoader().getResource("Iot/salles.json");
-
-      if (resource == null) {
-        System.out.println("Le fichier salles.json est introuvable.");
-        return;
-      }
-
-      FileReader reader = new FileReader(Paths.get(resource.toURI()).toFile());
-      JSONObject jsonObject = (JSONObject) parser.parse(reader);
-
-      // Test: Afficher le contenu du fichier JSON
-      System.out.println("Fichier chargé avec succès : ");
-      // System.out.println(jsonObject.toJSONString()); // Affiche le contenu du JSON
-      // en format lisible
-
-      // Recherche de la salle B110
-      if (jsonObject.containsKey("E004")) {
-        JSONObject salleB110 = (JSONObject) jsonObject.get("E004");
-        System.out.println(salleB110.toJSONString());
-      } else {
-        System.out.println("La salle E004 n'existe pas dans le fichier JSON.");
-      }
-
-    } catch (Exception e) {
-      e.printStackTrace();
->>>>>>> Stashed changes
     }
 
     public void setTab( ArrayList<String> list){
