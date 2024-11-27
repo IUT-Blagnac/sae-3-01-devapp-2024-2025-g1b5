@@ -107,9 +107,6 @@ main {
     display: block;
 }
 
-main {
-    flex: 1;
-}
 
 footer {
     background-color: #000;
@@ -153,3 +150,4 @@ footer {
     font-size: 12px;
     color: #aaa;
 }
+
