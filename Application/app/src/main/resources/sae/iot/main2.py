@@ -8,7 +8,7 @@ import ast
 
 # Charger la configuration depuis le fichier config.ini
 config = configparser.ConfigParser()
-config.read('Iot/config.ini')
+config.read('config.ini')
 
 # Configuration MQTT
 mqttServer = config['mqtt']['server']
@@ -106,28 +106,32 @@ def save_data_to_file_salles(room, donnees):
     print(f"Données des AM107 enregistrées dans le fichier {file_name}")
 
 def save_data_to_file_solar(room, solar_data):
-    file_name = os.path.join("Iot", f"{room}.json")  # Inclure le répertoire Iot
+    file_name = f"{room}.json"
 
+    # Si le fichier existe déjà, on charge les données existantes
     if os.path.exists(file_name):
         with open(file_name, "r") as file:
             data = json.load(file)
     else:
         data = {}
 
+    # Vérifier si data est une liste, et la convertir en dictionnaire si nécessaire
     if isinstance(data, list):
         data = {}
 
+    # Si la salle 'solar' n'existe pas encore dans les données, on l'ajoute
     if room not in data:
         data[room] = {}
 
-    index = str(len(data[room]))
-    data[room][index] = solar_data
+    # Ajouter les nouvelles données sous un index numéroté
+    index = str(len(data[room]))  # Numéro de l'entrée (0, 1, 2, ...)
+    data[room][index] = solar_data  # Ajout des données avec un index numéroté
 
+    # Sauvegarder les données dans le fichier
     with open(file_name, "w") as file:
         json.dump(data, file, indent=2)
 
     print(f"Données des panneaux solaires enregistrées dans le fichier {file_name}")
-
 
 # Connexion et souscription MQTT
 mqttc = mqtt.Client()

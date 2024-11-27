@@ -5,8 +5,7 @@ html, body {
 body {
     margin: 0;
     font-family: 'Fredoka One', Arial, sans-serif;
-    background-color: #8B0000; /* Dark red */
-    background-image: url('fond.jpg');
+    background-color: white; 
     background-size: cover; /* Ensure the background image covers the entire screen*/
     background-repeat: no-repeat;
     background-attachment: fixed;  /* Prevent the background image from scrolling with the page*/
@@ -98,6 +97,12 @@ body {
     cursor: pointer; 
 }
 
+.img-acceuil img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
 main {
     flex: 1;
 }
@@ -141,7 +146,6 @@ footer {
 
 .footer-bottom {
     text-align: right; 
-    padding-top: 10px;
     font-size: 12px;
     color: #aaa;
 }
