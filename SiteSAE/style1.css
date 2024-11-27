@@ -104,6 +104,10 @@ main {
     cursor: pointer; 
 }
 
+
+
+/* accueil produits et guirlandes */
+
 .img-acceuil img {
     width: 100%;
     height: auto;
@@ -111,19 +115,23 @@ main {
 }
 
 .produits-accueil {
-    margin-top: 2%;
+    margin-top: 3%;
     display: flex;
     gap: 100px;
-    align-items: flex-end; /* Alignement vertical en haut pour plus de cohérence */
+    align-items: flex-end; /* Alignement vertical en bas pour les images */
     justify-content: center;
-    text-align: center;
-    
+    text-align: center;  
+    flex-direction: row;
 }
 
-button {
+.prix p {
+    font-size: 85%;
+}
+
+.button {
     border: none;
     border-radius: 25px;
-    background-color: red;
+    background-color: ff1f11;
     color: white;
     padding: 15px 32px;
     text-align: center;
@@ -134,9 +142,51 @@ button {
     cursor: pointer;
   }
 
-main {
-    flex: 1;
+
+/* detailProduit */
+
+.presentation{
+    display: flex;
+    margin: auto;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 60%;
+    gap: 15%;
 }
+
+.prixDescription h2 {
+    text-align: end;
+}
+
+.butFavoris {
+    border-color: grey;
+    width: 45px; /* Largeur du bouton */
+    height: 45px; /* Hauteur identique pour obtenir un cercle */
+    border-radius: 50%; /* Transformation en cercle */
+    background-color: white;
+    align-items: center;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+.texteDescriptif p {
+    text-align: justify;
+    padding-left: 2%;
+}
+
+.texteDescriptif {
+    background-color: #ff1f11;
+    margin-left: 15%;
+    margin-right: 15%;
+    padding-left: 2%;
+    color: #fff;
+}
+
+
+
+
+
+/* footer */
 
 footer {
     background-color: #000;
