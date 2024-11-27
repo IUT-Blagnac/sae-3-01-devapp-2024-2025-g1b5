@@ -64,7 +64,7 @@ Projet est réalisé par::
 
 ===  Tuteurs de l'équipe:
 
-- link:https://github.com/ependaries[Jean-Michel BRUEL]
+- link:https://github.com/jmbruel[Jean-Michel BRUEL]
 
 ===  Langages / Technologies utilisées
 
