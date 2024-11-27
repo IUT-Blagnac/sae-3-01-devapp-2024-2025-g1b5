@@ -1,7 +1,9 @@
 html, body {
     height: 100%;
 }
-
+header{
+    color: white;
+}
 body {
     margin: 0;
     font-family: 'Fredoka One', Arial, sans-serif;
@@ -9,8 +11,14 @@ body {
     background-size: cover; /* Ensure the background image covers the entire screen*/
     background-repeat: no-repeat;
     background-attachment: fixed;  /* Prevent the background image from scrolling with the page*/
+    flex-direction: column;
+}
+
+main {
+    font-family: Arial, Helvetica, sans-serif;
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 
 .header {
@@ -172,3 +180,4 @@ footer {
     font-size: 12px;
     color: #aaa;
 }
+
