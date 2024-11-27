@@ -15,7 +15,12 @@ import java.util.ArrayList;
 
 public class SolarConfigController {
 
+<<<<<<< Updated upstream
     private static final String CONFIG_FILE = "Iot/config.ini";
+=======
+   // private static final String CONFIG_FILE = "Iot/config.ini";
+   private static final String CONFIG_FILE ="../Iot/config.ini";
+>>>>>>> Stashed changes
 
     private Stage fenetrePrincipale;
     private App application;
