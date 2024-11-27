@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="SolarDataController">
+    <MenuButton fx:id="choixTypeDonnees" text="Choisir les données">
+        <!-- Les items seront ajoutés dynamiquement -->
+    </MenuButton>
+    <MenuItem text="Afficher Données" onAction="#afficherDonnees"/>
+</VBox>

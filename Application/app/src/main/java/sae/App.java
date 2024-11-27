@@ -8,10 +8,12 @@ import java.util.List;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import sae.appli.TypeDonnee;
+import sae.view.AfficherDonneesControllerSolar;
 import sae.view.AfficherDonneesController;
 import sae.view.ConfigController;
 import sae.view.MenuController;
@@ -167,6 +169,31 @@ public class App extends Application{
         }
     }
 
+    public void loadDonneesSelectionnees(List<String> selectedChoices) {
+        try {
+            // Charger la vue pour afficher les données
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/sae/view/donneeSolar.fxml"));
+            Parent root = loader.load();
+            
+            // Obtenez le contrôleur de la nouvelle page
+            AfficherDonneesControllerSolar controller = loader.getController();
+            
+            // Charger les données du fichier JSON et les filtrer en fonction des choix sélectionnés
+            controller.setTab(selectedChoices);  // Passer les choix sélectionnés à la page suivante
+            
+            // Afficher la scène avec les données
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    
+
+    
 
     public static void main2(String[] args) {
         Application.launch(args);   
