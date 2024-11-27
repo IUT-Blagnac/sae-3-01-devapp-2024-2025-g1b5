@@ -8,6 +8,9 @@ body {
     margin: 0;
     font-family: 'Fredoka One', Arial, sans-serif;
     background-color: white; 
+    background-size: cover; /* Ensure the background image covers the entire screen*/
+    background-repeat: no-repeat;
+    background-attachment: fixed;  /* Prevent the background image from scrolling with the page*/
     flex-direction: column;
 }
 
@@ -107,6 +110,33 @@ main {
     display: block;
 }
 
+.produits-accueil {
+    margin-top: 2%;
+    display: flex;
+    gap: 100px;
+    align-items: flex-end; /* Alignement vertical en haut pour plus de cohérence */
+    justify-content: center;
+    text-align: center;
+    
+}
+
+button {
+    border: none;
+    border-radius: 25px;
+    background-color: red;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+main {
+    flex: 1;
+}
 
 footer {
     background-color: #000;
