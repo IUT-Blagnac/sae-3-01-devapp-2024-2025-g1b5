@@ -15,7 +15,8 @@ import java.util.ArrayList;
 
 public class SolarConfigController {
 
-    private static final String CONFIG_FILE = "Iot/config.ini";
+   // private static final String CONFIG_FILE = "Iot/config.ini";
+   private static final String CONFIG_FILE ="Application/app/src/main/resources/sae/iot/config.ini";
 
 
     private Stage fenetrePrincipale;
@@ -146,6 +147,7 @@ public class SolarConfigController {
     private void initialize() {
         // Charger les données de configuration
         try {
+            System.out.println(Paths.get(CONFIG_FILE).getParent());
             List<String> lines = Files.readAllLines(Paths.get(CONFIG_FILE));
             for (String line : lines) {
                 if (line.startsWith("donneesSolar")) {

@@ -1,18 +1,21 @@
 html, body {
     height: 100%;
 }
-
+header{
+    color: white;
+}
 body {
     margin: 0;
     font-family: 'Fredoka One', Arial, sans-serif;
-    background-color: #8B0000; /* Dark red */
-    background-image: url('fond.jpg');
-    background-size: cover; /* Ensure the background image covers the entire screen*/
-    background-repeat: no-repeat;
-    background-attachment: fixed;  /* Prevent the background image from scrolling with the page*/
-    color: white;
+    background-color: white; 
+    flex-direction: column;
+}
+
+main {
+    font-family: Arial, Helvetica, sans-serif;
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 
 .header {
@@ -98,6 +101,12 @@ body {
     cursor: pointer; 
 }
 
+.img-acceuil img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
 main {
     flex: 1;
 }
@@ -141,7 +150,6 @@ footer {
 
 .footer-bottom {
     text-align: right; 
-    padding-top: 10px;
     font-size: 12px;
     color: #aaa;
 }
