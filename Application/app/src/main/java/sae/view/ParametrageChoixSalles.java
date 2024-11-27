@@ -2,8 +2,11 @@ package sae.view;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -27,6 +30,7 @@ import sae.appli.TypeDonnee;
 public class ParametrageChoixSalles {
     
     private Stage fenetrePrincipale ;
+    private static final String CONFIG_FILE = "Iot/config.ini";
 
     @FXML
     private Button boutton ;
@@ -73,13 +77,28 @@ public class ParametrageChoixSalles {
     }
 
     public void loadMenuDeroulantDonnees(List<TypeDonnee> listType){
-      
-      CheckMenuItem choix;
+      try {
 
-      for (int i=0; i<listType.size(); i++){
-        choix = new CheckMenuItem(listType.get(i).toString());
-        choixTypeDonnees.getItems().add(choix);
-      }
+            List<String> lines = Files.readAllLines(Paths.get(CONFIG_FILE));
+            for (String line : lines) {
+                if (line.startsWith("donneesSalles")) {
+                    // Extraire la liste des valeurs entre crochets
+                    String values = line.substring(line.indexOf('[') + 1, line.indexOf(']'));
+                    List<String> selectedItems = List.of(values.split(",")).stream().map(v -> v.trim().replace("'", "")).collect(Collectors.toList());
+                    for(TypeDonnee donnee : listType){
+                      CheckMenuItem cb = new CheckMenuItem(donnee.toString());
+                      cb.setUserData(donnee);
+                      if (selectedItems.contains(donnee.toString().toLowerCase())) {
+                          choixTypeDonnees.getItems().add(cb);
+                      }
+                    }
+                }
+              }
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("Erreur lors du chargement du fichier de configuration : " + e.getMessage());
+            }
+      
       
     }
 
@@ -158,10 +177,7 @@ public class ParametrageChoixSalles {
 
   }
 
-    @Override
-    public String toString() {
-      return "[Salle: " + this.lvSalles + "]";
-    }  
+    
 
 
 }
