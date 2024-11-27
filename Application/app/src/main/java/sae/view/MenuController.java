@@ -22,6 +22,8 @@ public class MenuController  {
     private Button butAlarmes;
     @FXML
     private Button butTestCo;
+    @FXML
+    private Button butConfig;
     
     private App application;
     
@@ -37,6 +39,13 @@ public class MenuController  {
 		  application.loadParametrageSalles();
 	  }
 
+    @FXML
+    private void actionBouttonSolar() {
+    application.loadParametrageSolar();
+  }
+
+
+    
   @FXML
     private void actionBouttonConnexion() {
       try {
@@ -54,5 +63,10 @@ public class MenuController  {
         e.printStackTrace();
       }
     }
+
+    @FXML
+    private void actionBouttonConfig() {
+    application.loadMenuConfig();
+  }
    
 }

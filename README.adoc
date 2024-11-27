@@ -29,8 +29,8 @@ ifdef::env-github[]
 :icongit: Git
 endif::[]
 
-// /!\ A MODIFIER !!!
-:baseURL: https://github.com/IUT-Blagnac/sae3-01-template
+
+:baseURL: https://github.com/IUT-Blagnac/sae3-01-devapp-2024-2025-g1b5
 
 // Tags
 image:{baseURL}/actions/workflows/blank.yml/badge.svg[Bidon] 
@@ -64,7 +64,7 @@ Projet est réalisé par::
 
 ===  Tuteurs de l'équipe:
 
-- link:https://github.com/ependaries[Esther Pendaries]
+- link:https://github.com/jmbruel[Jean-Michel BRUEL]
 
 ===  Langages / Technologies utilisées
 

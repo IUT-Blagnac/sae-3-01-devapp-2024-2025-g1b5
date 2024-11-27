@@ -13,8 +13,11 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import sae.appli.TypeDonnee;
 import sae.view.AfficherDonneesController;
+import sae.view.ConfigController;
 import sae.view.MenuController;
 import sae.view.ParametrageChoixSalles;
+import sae.view.ParametrageSolar;
+import sae.view.SolarConfigController;
 
 public class App extends Application{
 
@@ -53,6 +56,7 @@ public class App extends Application{
             menu.setDatas(stage, this);
             
             this.rootPane.setCenter(vueListe);
+            
 
         } catch (IOException e) {
             System.out.println("Ressource FXML non disponible : menu.fxml");
@@ -88,6 +92,58 @@ public class App extends Application{
         }
     }
 
+    public void loadParametrageSolar() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(App.class.getResource("view/solar.fxml"));
+            BorderPane vueListe = loader.load();
+
+            ParametrageSolar choixSolar = loader.getController();
+            choixSolar.setDatas(stage, this);
+            
+            this.rootPane.setCenter(vueListe);
+
+        } catch (IOException e) {
+            System.out.println("Ressource FXML non disponible : solar.fxml");
+            System.exit(1);
+        }
+    }
+
+    public void loadSolarConfig() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(App.class.getResource("view/solarConfig.fxml"));
+            BorderPane vueListe = loader.load();
+
+            SolarConfigController configSolar = loader.getController();
+            configSolar.setDatas(stage, this);
+            
+            this.rootPane.setCenter(vueListe);
+
+        } catch (IOException e) {
+            System.out.println("Ressource FXML non disponible : solarConfig.fxml");
+            System.exit(1);
+        }
+    }
+
+
+    public void loadMenuConfig() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(App.class.getResource("view/menuConfig.fxml"));
+            BorderPane vueListe = loader.load();
+
+            ConfigController config = loader.getController();
+            config.setDatas(stage, this);
+            
+            this.rootPane.setCenter(vueListe);
+
+        } catch (IOException e) {
+            System.out.println("Ressource FXML non disponible : menuConfig.fxml");
+            System.exit(1);
+        }
+    }
+
     public void loadDonnees(){
       try {
             FXMLLoader loader = new FXMLLoader();
@@ -111,10 +167,9 @@ public class App extends Application{
         }
     }
 
-    
+
     public static void main2(String[] args) {
-        
         Application.launch(args);   
-     }
+    }
 
 }
