@@ -35,7 +35,7 @@ public class ConfigController  {
 
     @FXML
     private void actionSallesConfig() {
-        application.loadMenu();
+        application.loadSallesConfig();
     }
 
     @FXML
