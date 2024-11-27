@@ -5,8 +5,7 @@ html, body {
 body {
     margin: 0;
     font-family: 'Fredoka One', Arial, sans-serif;
-    background-color: #8B0000; /* Dark red */
-    background-image: url('images/fond.jpg');
+    background-color: white; 
     background-size: cover; /* Ensure the background image covers the entire screen*/
     background-repeat: no-repeat;
     background-attachment: fixed;  /* Prevent the background image from scrolling with the page*/
@@ -96,6 +95,12 @@ body {
 
 .menu div {
     cursor: pointer; 
+}
+
+.img-acceuil img {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
 main {
