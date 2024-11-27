@@ -12,6 +12,7 @@ import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
 public class MenuController  {
     
+    @SuppressWarnings("unused")
     private Stage fenetrePrincipale;
 
     @FXML

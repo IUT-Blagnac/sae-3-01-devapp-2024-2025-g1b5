@@ -1,14 +1,10 @@
 package sae.view;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Paths;
-import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.List;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -21,6 +17,7 @@ import sae.App;
 
 public class AfficherDonneesController {
 
+  @SuppressWarnings("unused")
   private Stage fenetrePrincipale;
 
   private App application;
@@ -36,7 +33,6 @@ public class AfficherDonneesController {
   public void setDatas(Stage fenetre, App app) {
     this.application = app;
     this.fenetrePrincipale = fenetre;
-    // this.fenetrePrincipale.setOnCloseRequest(event -> actionQuitter());
   }
 
   public void setSalle(String salle) {

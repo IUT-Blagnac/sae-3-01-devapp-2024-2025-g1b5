@@ -9,6 +9,7 @@ import sae.App;
 
 public class ConfigController  {
     
+    @SuppressWarnings("unused")
     private Stage fenetrePrincipale;
 
     @FXML
