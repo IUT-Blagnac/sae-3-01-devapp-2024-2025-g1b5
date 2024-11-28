@@ -68,7 +68,7 @@ public class AfficherDonneesController {
 
     try {
       // Lire le fichier JSON
-      URL resource = getClass().getClassLoader().getResource("sae/iot/salles.json");
+      URL resource = getClass().getClassLoader().getResource("Iot/salles.json");
 
       if (resource == null) {
         System.out.println("Le fichier salles.json est introuvable.");
