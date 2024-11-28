@@ -171,25 +171,24 @@ public class App extends Application{
 
     public void loadDonneesSelectionnees(List<String> selectedChoices) {
         try {
-            // Charger la vue pour afficher les données
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/sae/view/donneeSolar.fxml"));
             Parent root = loader.load();
-            
-            // Obtenez le contrôleur de la nouvelle page
+    
+            // Récupérer le contrôleur d'affichage
             AfficherDonneesControllerSolar controller = loader.getController();
-            
-            // Charger les données du fichier JSON et les filtrer en fonction des choix sélectionnés
-            controller.setTab(selectedChoices);  // Passer les choix sélectionnés à la page suivante
-            
-            // Afficher la scène avec les données
+            controller.setDatas(stage, this);
+            controller.setTab(selectedChoices); // Transmettre les choix sélectionnés
+    
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
-
+    
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+    
+    
 
     
 

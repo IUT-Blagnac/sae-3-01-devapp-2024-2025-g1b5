@@ -26,14 +26,14 @@ public class AfficherDonneesControllerSolar {
     private Label titreSalle;
 
     @FXML
-    Button butRetour;
+    private Button butRetour;
 
     @FXML
     private GridPane gridDynamique;
 
     private JSONObject solarData; // Champ pour stocker les données JSON
 
-    private ArrayList<String> donnees = new ArrayList<>();
+    private List<String> selectedChoices = new ArrayList<>(); // Déclaration de selectedChoices
 
     /**
      * Configure les données de la fenêtre principale et de l'application
@@ -53,13 +53,12 @@ public class AfficherDonneesControllerSolar {
     /**
      * Remplit la grille dynamique avec des données sélectionnées
      */
-    public void setTab(List<String> selectedData) {
-        // Afficher les données dans le GridPane
-        gridDynamique.getChildren().clear(); // Efface tout contenu précédent
-        for (int i = 0; i < selectedData.size(); i++) {
-            String data = selectedData.get(i);
-            Label label = new Label(data);
-            gridDynamique.add(label, 0, i); // Ajoute à la première colonne et la ligne i
+    public void setTab(List<String> selectedChoices) {
+        this.selectedChoices = selectedChoices; // Stocke les données sélectionnées
+        if (selectedChoices.isEmpty()) {
+            System.out.println("Aucune donnée sélectionnée !");
+        } else {
+            System.out.println("Attributs sélectionnés : " + selectedChoices);
         }
     }
 
@@ -68,11 +67,49 @@ public class AfficherDonneesControllerSolar {
      */
     @FXML
     private void actionAfficher() {
-        // Charger les données depuis le fichier JSON
+        // Charger les données JSON
         chargerFichierSolar();
-        // Afficher les données dans le GridPane
-        if (solarData != null) { // Vérifie que les données ont bien été chargées
-            afficherDonnees(solarData);
+
+        if (solarData == null) {
+            System.out.println("Aucune donnée chargée depuis le fichier JSON !");
+            return;
+        }
+
+        if (selectedChoices == null || selectedChoices.isEmpty()) {
+            System.out.println("Aucune donnée sélectionnée !");
+            return;
+        }
+
+        // Filtrer et afficher les données
+        afficherDonneesFiltrees(solarData, selectedChoices);
+    }
+
+    /**
+     * Affiche les données filtrées en fonction des attributs sélectionnés
+     */
+    private void afficherDonneesFiltrees(JSONObject solarData, List<String> attributsSelectionnes) {
+        gridDynamique.getChildren().clear(); // Effacer le contenu précédent de la grille
+
+        JSONObject solar = (JSONObject) solarData.get("solar");
+        if (solar == null) {
+            System.out.println("Aucune donnée 'solar' trouvée dans le JSON.");
+            return;
+        }
+
+        // Parcourir les entrées de "solar"
+        int rowIndex = 0; // Pour suivre les lignes dans la grille
+        for (Object key : solar.keySet()) {
+            JSONObject solarEntry = (JSONObject) solar.get(key);
+
+            // Ajouter une étiquette pour chaque entrée principale
+            gridDynamique.add(new Label("Données pour la clé : " + key), 0, rowIndex++);
+
+            // Afficher les attributs sélectionnés
+            for (String attribut : attributsSelectionnes) {
+                Object value = solarEntry.get(attribut); // Récupérer la valeur de l'attribut
+                String texte = attribut + " : " + (value != null ? value.toString() : "Non disponible");
+                gridDynamique.add(new Label(texte), 0, rowIndex++);
+            }
         }
     }
 
@@ -81,51 +118,8 @@ public class AfficherDonneesControllerSolar {
      */
     @FXML
     private void actionRetour() {
-        application.loadParametrageSolar();
-    }
-
-    /**
-     * Affiche les données JSON dans le GridPane
-     */
-    public void afficherDonnees(JSONObject solarData) {
-        gridDynamique.getChildren().clear(); // Effacer tout contenu précédent dans la grille
-
-        // Parcourir chaque entrée dans l'objet "solar"
-        JSONObject solar = (JSONObject) solarData.get("solar");
-        if (solar == null) {
-            System.out.println("Aucune donnée 'solar' trouvée dans le JSON.");
-            return;
-        }
-
-        for (Object key : solar.keySet()) {
-            JSONObject solarEntry = (JSONObject) solar.get(key);
-
-            // Extraire les champs de chaque entrée
-            String lastUpdateTime = (String) solarEntry.get("lastUpdateTime");
-            JSONObject currentPowerObj = (JSONObject) solarEntry.get("currentPower");
-            JSONObject lastYearDataObj = (JSONObject) solarEntry.get("lastYearData");
-            JSONObject lastMonthDataObj = (JSONObject) solarEntry.get("lastMonthData");
-            JSONObject lastDayDataObj = (JSONObject) solarEntry.get("lastDayData");
-            JSONObject lifeTimeDataObj = (JSONObject) solarEntry.get("lifeTimeData");
-
-            // Obtenir les valeurs
-            String currentPower = currentPowerObj != null ? currentPowerObj.get("power").toString() : "N/A";
-            String lastYearEnergy = lastYearDataObj != null ? lastYearDataObj.get("energy").toString() : "N/A";
-            String lastMonthEnergy = lastMonthDataObj != null ? lastMonthDataObj.get("energy").toString() : "N/A";
-            String lastDayEnergy = lastDayDataObj != null ? lastDayDataObj.get("energy").toString() : "N/A";
-            String lifeTimeEnergy = lifeTimeDataObj != null ? lifeTimeDataObj.get("energy").toString() : "N/A";
-
-            // Ajouter les données dans la GridPane
-            int rowIndex = gridDynamique.getRowCount(); // Index de la ligne suivante
-
-            gridDynamique.add(new Label("Données pour la clé : " + key), 0, rowIndex++);
-            gridDynamique.add(new Label("Last Update Time : " + lastUpdateTime), 0, rowIndex++);
-            gridDynamique.add(new Label("Current Power : " + currentPower), 0, rowIndex++);
-            gridDynamique.add(new Label("Last Year Energy : " + lastYearEnergy), 0, rowIndex++);
-            gridDynamique.add(new Label("Last Month Energy : " + lastMonthEnergy), 0, rowIndex++);
-            gridDynamique.add(new Label("Last Day Energy : " + lastDayEnergy), 0, rowIndex++);
-            gridDynamique.add(new Label("Life Time Energy : " + lifeTimeEnergy), 0, rowIndex++);
-        }
+        Stage stage = (Stage) butRetour.getScene().getWindow();
+        stage.close();
     }
 
     /**
