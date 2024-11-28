@@ -2,15 +2,14 @@ package sae.view;
 
 import java.io.File;
 import java.io.FileReader;
-import java.net.URL;
-import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.ArrayList;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -18,128 +17,146 @@ import sae.App;
 
 public class AfficherDonneesControllerSolar {
 
-  @SuppressWarnings("unused")
-  private Stage fenetrePrincipale;
+    @SuppressWarnings("unused")
+    private Stage fenetrePrincipale;
 
-  private App application;
+    private App application;
 
-  @FXML
-  private Label titreSalle;
+    @FXML
+    private Label titreSalle;
 
-  @FXML
-  private GridPane gridDynamique;
+    @FXML
+    Button butRetour;
 
-  private ArrayList<String> donnees = new ArrayList<>();
+    @FXML
+    private GridPane gridDynamique;
 
-  public void setDatas(Stage fenetre, App app) {
-    this.application = app;
-    this.fenetrePrincipale = fenetre;
-  }
+    private JSONObject solarData; // Champ pour stocker les données JSON
 
-  public void setSalle(String salle) {
-    this.titreSalle.setText(salle);
-  }
+    private ArrayList<String> donnees = new ArrayList<>();
 
-  public void setTab(List<String> selectedData) {
-    // Votre code pour afficher les données dans le GridPane
-    for (int i = 0; i < selectedData.size(); i++) {
-        String data = selectedData.get(i);
-        Label label = new Label(data);
-        gridDynamique.add(label, 0, i);  // Ajoutez à la première colonne et à la ligne i
+    /**
+     * Configure les données de la fenêtre principale et de l'application
+     */
+    public void setDatas(Stage fenetre, App app) {
+        this.application = app;
+        this.fenetrePrincipale = fenetre;
     }
-}
 
-
-  @FXML
-  private void actionAfficher() {
-      // Charger les données depuis le fichier JSON
-      chargerFichierSolar();
-      // Afficher les données dans le GridPane
-      afficherDonnees();
-  }
-
-
-  @FXML
-  private void actionRetour() {
-    application.loadParametrageSolar();
-  }
-
-  public void afficherDonnees() {
-    gridDynamique.getChildren().clear(); // Clear any existing labels in the grid
-
-    for (int i = 0; i < donnees.size(); i++) {
-        Label label = new Label(donnees.get(i));
-        gridDynamique.add(label, 0, i);  // Add the label in the first column, row i
+    /**
+     * Définit le titre de la salle
+     */
+    public void setSalle(String salle) {
+        this.titreSalle.setText(salle);
     }
-}
 
+    /**
+     * Remplit la grille dynamique avec des données sélectionnées
+     */
+    public void setTab(List<String> selectedData) {
+        // Afficher les données dans le GridPane
+        gridDynamique.getChildren().clear(); // Efface tout contenu précédent
+        for (int i = 0; i < selectedData.size(); i++) {
+            String data = selectedData.get(i);
+            Label label = new Label(data);
+            gridDynamique.add(label, 0, i); // Ajoute à la première colonne et la ligne i
+        }
+    }
 
+    /**
+     * Appelé lorsque le bouton "Afficher" est cliqué
+     */
+    @FXML
+    private void actionAfficher() {
+        // Charger les données depuis le fichier JSON
+        chargerFichierSolar();
+        // Afficher les données dans le GridPane
+        if (solarData != null) { // Vérifie que les données ont bien été chargées
+            afficherDonnees(solarData);
+        }
+    }
 
-public void chargerFichierSolar() {
-    // Crée un objet JSONParser pour analyser le fichier JSON
-    JSONParser parser = new JSONParser();
+    /**
+     * Retour à la page précédente
+     */
+    @FXML
+    private void actionRetour() {
+        application.loadParametrageSolar();
+    }
 
-    try {
-        // Définir le chemin du fichier solar.json à la racine du projet
-        File file = new File("Iot/solar.json");
+    /**
+     * Affiche les données JSON dans le GridPane
+     */
+    public void afficherDonnees(JSONObject solarData) {
+        gridDynamique.getChildren().clear(); // Effacer tout contenu précédent dans la grille
 
-        // Vérifier si le fichier existe à la racine du projet
-        if (!file.exists()) {
-            System.out.println("Le fichier solar.json est introuvable à la racine du projet.");
-            return;  // Arrêter l'exécution si le fichier n'est pas trouvé
+        // Parcourir chaque entrée dans l'objet "solar"
+        JSONObject solar = (JSONObject) solarData.get("solar");
+        if (solar == null) {
+            System.out.println("Aucune donnée 'solar' trouvée dans le JSON.");
+            return;
         }
 
-        // Utiliser un FileReader pour lire le fichier
-        FileReader reader = new FileReader(file);
+        for (Object key : solar.keySet()) {
+            JSONObject solarEntry = (JSONObject) solar.get(key);
 
-        // Analyser le contenu du fichier JSON
-        JSONObject json = (JSONObject) parser.parse(reader);
+            // Extraire les champs de chaque entrée
+            String lastUpdateTime = (String) solarEntry.get("lastUpdateTime");
+            JSONObject currentPowerObj = (JSONObject) solarEntry.get("currentPower");
+            JSONObject lastYearDataObj = (JSONObject) solarEntry.get("lastYearData");
+            JSONObject lastMonthDataObj = (JSONObject) solarEntry.get("lastMonthData");
+            JSONObject lastDayDataObj = (JSONObject) solarEntry.get("lastDayData");
+            JSONObject lifeTimeDataObj = (JSONObject) solarEntry.get("lifeTimeData");
 
-        // Afficher le contenu du fichier JSON (par exemple)
-        System.out.println("Données extraites du fichier solar.json :");
-        System.out.println(json.toJSONString());
+            // Obtenir les valeurs
+            String currentPower = currentPowerObj != null ? currentPowerObj.get("power").toString() : "N/A";
+            String lastYearEnergy = lastYearDataObj != null ? lastYearDataObj.get("energy").toString() : "N/A";
+            String lastMonthEnergy = lastMonthDataObj != null ? lastMonthDataObj.get("energy").toString() : "N/A";
+            String lastDayEnergy = lastDayDataObj != null ? lastDayDataObj.get("energy").toString() : "N/A";
+            String lifeTimeEnergy = lifeTimeDataObj != null ? lifeTimeDataObj.get("energy").toString() : "N/A";
 
-        // Fermer le FileReader après utilisation
-        reader.close();
-        
-        // Ici vous pouvez traiter les données extraites selon vos besoins
-        // Par exemple, récupérer des valeurs spécifiques :
-        String currentPower = (String) json.get("currentPower");
-        String lastUpdateTime = (String) json.get("lastUpdateTime");
-        
-        // Affichage des valeurs extraites
-        System.out.println("currentPower : " + currentPower);
-        System.out.println("lastUpdateTime : " + lastUpdateTime);
-        
-        // Vous pouvez maintenant utiliser ces données dans votre application
-        // Par exemple, ajouter à une liste, une table ou une autre structure de données
-    } catch (Exception e) {
-        // Gérer les exceptions (erreurs de lecture, parsing, etc.)
-        System.out.println("Erreur lors du chargement du fichier solar.json : " + e.getMessage());
-        e.printStackTrace();  // Afficher la trace d'erreur pour le débogage
+            // Ajouter les données dans la GridPane
+            int rowIndex = gridDynamique.getRowCount(); // Index de la ligne suivante
+
+            gridDynamique.add(new Label("Données pour la clé : " + key), 0, rowIndex++);
+            gridDynamique.add(new Label("Last Update Time : " + lastUpdateTime), 0, rowIndex++);
+            gridDynamique.add(new Label("Current Power : " + currentPower), 0, rowIndex++);
+            gridDynamique.add(new Label("Last Year Energy : " + lastYearEnergy), 0, rowIndex++);
+            gridDynamique.add(new Label("Last Month Energy : " + lastMonthEnergy), 0, rowIndex++);
+            gridDynamique.add(new Label("Last Day Energy : " + lastDayEnergy), 0, rowIndex++);
+            gridDynamique.add(new Label("Life Time Energy : " + lifeTimeEnergy), 0, rowIndex++);
+        }
     }
-}
 
+    /**
+     * Charge le fichier JSON et stocke les données dans le champ solarData
+     */
+    public void chargerFichierSolar() {
+        JSONParser parser = new JSONParser();
 
+        try {
+            // Définir le chemin du fichier solar.json à la racine du projet
+            File file = new File("Iot/solar.json");
 
-  public void modifConfig() {
+            if (!file.exists()) {
+                System.out.println("Le fichier solar.json est introuvable à la racine du projet.");
+                return;
+            }
 
-  }
+            // Lire et analyser le fichier JSON
+            FileReader reader = new FileReader(file);
+            JSONObject json = (JSONObject) parser.parse(reader);
 
-  public void lecture() {
+            // Stocker les données dans le champ solarData
+            this.solarData = json;
 
-    // Chemin relatif du fichier Python
-    String pythonScriptPath = "main2.py"; // Le fichier Python est dans le même dossier
+            System.out.println("Données extraites du fichier solar.json :");
+            System.out.println(json.toJSONString());
+            reader.close();
 
-    // Créer un objet File avec le chemin relatif
-    File file = new File(pythonScriptPath);
-
-    // Vérifier si le fichier existe
-    if (file.exists())
-      System.out.println("Le fichier Python existe : " + pythonScriptPath);
-    else
-      System.out.println("nexiste pas");
-
-  }
-
+        } catch (Exception e) {
+            System.out.println("Erreur lors du chargement du fichier solar.json : " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
 }

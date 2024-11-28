@@ -46,53 +46,57 @@ public class ParametrageSolar {
      * Charge les options du menu déroulant depuis le fichier de configuration.
      */
     public void loadMenuDeroulantDonnees() {
-        choixTypeDonnees.getItems().clear(); // Nettoie le MenuButton avant d'ajouter les items
+    choixTypeDonnees.getItems().clear(); // Nettoyer le MenuButton avant d'ajouter les items
+    selectedChoices.clear(); // Nettoyer la liste des choix sélectionnés
 
-        try {
-            // Lire le fichier de configuration
-            List<String> lines = Files.readAllLines(Paths.get(CONFIG_FILE));
-            for (String line : lines) {
-                if (line.startsWith("donneesSolar")) {
-                    // Extraire les données entre crochets []
-                    String values = line.substring(line.indexOf('[') + 1, line.indexOf(']'));
-                    List<String> selectedItems = List.of(values.split(","))
-                            .stream()
-                            .map(v -> v.trim().replace("'", "")) // Supprime les guillemets
-                            .toList();
+    try {
+        // Lire le fichier de configuration
+        List<String> lines = Files.readAllLines(Paths.get(CONFIG_FILE));
+        for (String line : lines) {
+            if (line.startsWith("donneesSolar")) {
+                // Extraire les données entre crochets []
+                String values = line.substring(line.indexOf('[') + 1, line.indexOf(']'));
+                List<String> selectedItems = List.of(values.split(","))
+                        .stream()
+                        .map(v -> v.trim().replace("'", "")) // Supprimer les guillemets et espaces
+                        .toList();
 
-                    System.out.println("Données extraites : " + selectedItems);
+                System.out.println("Données extraites : " + selectedItems);
 
-                    // Ajouter des CheckMenuItems pour chaque donnée
-                    for (DonneeSolar donnee : DonneeSolar.values()) {
-                        CheckMenuItem cb = new CheckMenuItem(donnee.name());
-                        cb.setUserData(donnee);
+                // Ajouter des CheckMenuItems pour chaque donnée
+                for (DonneeSolar donnee : DonneeSolar.values()) {
+                    CheckMenuItem cb = new CheckMenuItem(donnee.name());
+                    cb.setUserData(donnee);
 
-                        // Si la donnée est dans le fichier config, on la coche par défaut
-                        if (selectedItems.contains(donnee.name())) {
-                            cb.setSelected(true);
-                            selectedChoices.add(donnee.name()); // Ajouter la donnée sélectionnée dès le début
-                        }
+                    // Si la donnée est dans le fichier config, on la coche par défaut
+                    if (selectedItems.contains(donnee.name())) {
+                        cb.setSelected(true);
+                        selectedChoices.add(donnee.name()); // Ajouter la donnée sélectionnée dès le début
+                    }
 
-                        // Ajouter un listener pour gérer les sélections
-                        cb.selectedProperty().addListener((observable, oldValue, newValue) -> {
-                            if (newValue) {
+                    // Ajouter un listener pour gérer les sélections
+                    cb.selectedProperty().addListener((observable, oldValue, newValue) -> {
+                        if (newValue) {
+                            if (!selectedChoices.contains(donnee.name())) {
                                 selectedChoices.add(donnee.name());
                                 System.out.println("Ajouté : " + donnee.name());
-                            } else {
-                                selectedChoices.remove(donnee.name());
-                                System.out.println("Retiré : " + donnee.name());
                             }
-                        });
+                        } else {
+                            selectedChoices.remove(donnee.name());
+                            System.out.println("Retiré : " + donnee.name());
+                        }
+                    });
 
-                        // Ajouter l'élément au MenuButton
-                        choixTypeDonnees.getItems().add(cb);
-                    }
+                    // Ajouter l'élément au MenuButton
+                    choixTypeDonnees.getItems().add(cb);
                 }
             }
-        } catch (IOException e) {
-            System.err.println("Erreur lors du chargement du fichier de configuration : " + e.getMessage());
         }
+    } catch (IOException e) {
+        System.err.println("Erreur lors du chargement du fichier de configuration : " + e.getMessage());
     }
+}
+
 
     /**
      * Retourne les choix sélectionnés.
