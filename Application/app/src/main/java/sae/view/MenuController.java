@@ -68,5 +68,14 @@ public class MenuController  {
     private void actionBouttonConfig() {
     application.loadMenuConfig();
   }
+
+  @FXML
+  private void actionBouttonAlarmes() {
+      application.loadAlarmes();
+  }
+
+
+
+
    
 }

@@ -1,32 +1,64 @@
 package sae.appli;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.Map;
 
 public class Alarme {
-    private String key;
-    private double value;
-    private String alarm_type;
-    private String timestamp;
+    private Map<String, Map<String, AlarmDetails>> alarmes;
 
-    public Alarme(String key, double value, String alarm_type, String timestamp) {
-        this.key = key;
-        this.value = value;
-        this.alarm_type = alarm_type;
-        this.timestamp = timestamp;
+    public Map<String, Map<String, AlarmDetails>> getAlarmes() {
+        return alarmes;
     }
 
-    // Getters
-    public String getKey() {
-        return key;
+    public void setAlarmes(Map<String, Map<String, AlarmDetails>> alarmes) {
+        this.alarmes = alarmes;
     }
 
-    public double getValue() {
-        return value;
-    }
+    public static class AlarmDetails {
+        private String key;
+        private double value;
+        private String alarm_type;
+        private String timestamp;
 
-    public String getAlarm_type() {
-        return alarm_type;
-    }
+        // Constructeurs, getters et setters
+        public AlarmDetails() { }
 
-    public String getTimestamp() {
-        return timestamp;
+        public AlarmDetails(String key, double value, String alarm_type, String timestamp) {
+            this.key = key;
+            this.value = value;
+            this.alarm_type = alarm_type;
+            this.timestamp = timestamp;
+        }
+
+        public String getKey() {
+            return key;
+        }
+
+        public void setKey(String key) {
+            this.key = key;
+        }
+
+        public double getValue() {
+            return value;
+        }
+
+        public void setValue(double value) {
+            this.value = value;
+        }
+
+        public String getAlarm_type() {
+            return alarm_type;
+        }
+
+        public void setAlarm_type(String alarm_type) {
+            this.alarm_type = alarm_type;
+        }
+
+        public String getTimestamp() {
+            return timestamp;
+        }
+
+        public void setTimestamp(String timestamp) {
+            this.timestamp = timestamp;
+        }
     }
 }

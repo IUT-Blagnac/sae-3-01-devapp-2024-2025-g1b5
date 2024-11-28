@@ -18,6 +18,7 @@ import sae.view.MenuController;
 import sae.view.ParametrageChoixSalles;
 import sae.view.ParametrageSolar;
 import sae.view.SolarConfigController;
+import sae.view.AlarmesController;
 
 import sae.appli.MqttAlarmListener;
 import sae.view.AlarmPopUpController;
@@ -180,6 +181,34 @@ public class App extends Application {
             System.exit(1);
         }
     }
+
+
+
+    public void loadAlarmes() {
+    try {
+        // Création d'un FXMLLoader pour charger le fichier FXML
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(App.class.getResource("view/alarmes.fxml"));
+        
+        // Chargement de la vue définie dans alarmes.fxml
+        BorderPane vueListe = loader.load();
+        
+        // Obtention du contrôleur associé à la vue
+        AlarmesController alarmesController = loader.getController();
+        
+        // Transmission des données nécessaires au contrôleur
+        alarmesController.setDatas(stage, this);
+        
+        // Remplacement du contenu central de rootPane par la vue chargée
+        this.rootPane.setCenter(vueListe);
+    } catch (IOException e) {
+        // Gestion des erreurs si le fichier FXML est introuvable ou mal configuré
+        System.out.println("Ressource FXML non disponible : alarmes.fxml");
+        e.printStackTrace();
+        System.exit(1);
+    }
+}
+
 
     public static void main2(String[] args) {
         Application.launch(args);
