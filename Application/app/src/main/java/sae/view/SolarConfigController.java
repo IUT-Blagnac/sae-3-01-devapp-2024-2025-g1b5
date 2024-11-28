@@ -1,23 +1,23 @@
 package sae.view;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.List;
-import java.util.stream.Collectors;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import sae.App;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.stream.Collectors;
 import java.util.ArrayList;
 
 public class SolarConfigController {
 
-
-   private static final String CONFIG_FILE ="Iot/config.ini";
-
+    private static final String CONFIG_FILE = "Iot/config.ini";
+    private static final String PYTHON_SCRIPT = "python Iot/main2.py"; // Commande pour exécuter le script Python
 
     private Stage fenetrePrincipale;
     private App application;
@@ -49,6 +49,8 @@ public class SolarConfigController {
     @FXML
     private Label lblInfo;
 
+    private Process pythonProcess; // Processus Python en cours
+
     public void setDatas(Stage fenetre, App app) {
         this.application = app;
         this.fenetrePrincipale = fenetre;
@@ -66,6 +68,9 @@ public class SolarConfigController {
 
         // Étape 2 : Mise à jour du fichier de configuration
         updateConfig(selections);
+
+        // Étape 3 : Arrêter et relancer le programme Python
+        restartPythonScript();
     }
 
     private List<String> getSelectedCheckBoxes() {
@@ -127,15 +132,15 @@ public class SolarConfigController {
             lblInfo.setText("Modifications enregistrées avec succès !");
             lblInfo.setVisible(true);
 
-                    // Masquer le message après 3 secondes
-        new Thread(() -> {
-            try {
-                Thread.sleep(3000);
-                lblInfo.setVisible(false);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }).start();
+            // Masquer le message après 3 secondes
+            new Thread(() -> {
+                try {
+                    Thread.sleep(3000);
+                    lblInfo.setVisible(false);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }).start();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -143,11 +148,32 @@ public class SolarConfigController {
         }
     }
 
+    private void restartPythonScript() {
+        // Si le processus Python est déjà en cours, on l'arrête
+        if (pythonProcess != null && pythonProcess.isAlive()) {
+            pythonProcess.destroy(); // Arrêter le processus en cours
+            System.out.println("Processus Python arrêté.");
+        }
+
+        // Lancer le script Python dans un thread séparé
+        Thread pythonThread = new Thread(() -> {
+            try {
+                pythonProcess = new ProcessBuilder("python", "Iot/main2.py").start(); // Démarrer le processus Python
+                System.out.println("Processus Python relancé.");
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("Erreur lors du lancement du script Python.");
+            }
+        });
+
+        pythonThread.setDaemon(true); // Marquer le thread comme démon pour qu'il se termine lorsque l'application ferme
+        pythonThread.start();
+    }
+
     @FXML
     private void initialize() {
         // Charger les données de configuration
         try {
-            System.out.println(Paths.get(CONFIG_FILE).getParent());
             List<String> lines = Files.readAllLines(Paths.get(CONFIG_FILE));
             for (String line : lines) {
                 if (line.startsWith("donneesSolar")) {
