@@ -145,6 +145,8 @@ main {
 
 /* detailProduit */
 
+/* description du produit*/
+
 .presentation{
     display: flex;
     margin: auto;
@@ -152,6 +154,7 @@ main {
     align-items: flex-start;
     width: 60%;
     gap: 15%;
+    margin-top: 5%;
 }
 
 .prixDescription h2 {
@@ -169,32 +172,85 @@ main {
     cursor: pointer;
   }
 
-.texteDescriptif p {
-    text-align: justify;
-    padding-left: 2%;
-}
-
 .texteDescriptif {
     background-color: #ff1f11;
     margin-left: 15%;
     margin-right: 15%;
-    padding-left: 2%;
+    margin-top: 5%;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+    padding-top: 1%;
+    padding-bottom: 1%;
     color: #fff;
+    text-align: justify;
+}
+
+/* avis/eval du produit*/
+
+.avis {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    background-color: #00B928;
+    color: #fff;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 5%;
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.butAvatar {
+    border: none;
+    width: 45px; /* Largeur du bouton */
+    height: 45px; /* Hauteur identique pour obtenir un cercle */
+    border-radius: 50%; /* Transformation en cercle */
+    background-color: white;
+    align-items: center;
+    cursor: pointer;
+}
+
+.butAvatar img {
+    width: 100%;
 }
 
 
+.evaluation {
+    display: flex;
+    flex-direction: column;
+    background-color: #00a023;
+    color: black;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.notes {
+    display: flex;
+    flex-direction: row;
+    gap: 1%;
+}
+
+.eval-perso {
+    margin-top: 1%;
+    color: #000;
+    text-align: justify;
+}
 
 
+    
 
 /* footer */
 
+
 footer {
+    margin-top: 60%;
     background-color: #000;
     color: #fff;
     padding: 10px 0;
     font-size: 14px;
     font-family: sans-serif, Arial;
-    margin-top: 10em;
 }
 
 .footer-contenu {
@@ -202,22 +258,17 @@ footer {
     justify-content: space-around;
     padding-bottom: 10px;
     border-bottom: 1px solid #444;
-    margin: 0 20px;
 }
 
 .footer-column {
-    flex: 1;
     padding: 0px;
 }
 
 .footer-column h3 {
     font-size: 22px;
-    margin-bottom: 10px;
-    margin-top: 0;
 }
 
 .footer-column p {
-    margin: 5px 0;
     cursor: pointer;
 }
 
