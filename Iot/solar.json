@@ -1,0 +1,13 @@
+{
+  "solar": {
+    "0": {
+      "lastYearData": {
+        "energy": 2919111
+      },
+      "lifeTimeData": {
+        "energy": 3400141
+      },
+      "lastUpdateTime": "2024-11-29 13:27:33"
+    }
+  }
+}

@@ -33,6 +33,8 @@ public class App extends Application {
     private BorderPane rootPane;
     private Stage stage;
     private Process pythonProcess;
+    private boolean isAlarmListenerActive = true;  // Variable de contrôle pour le thread des alarmes
+
 
     // Partager des données entre controllers
     private String numSalle;
@@ -52,7 +54,16 @@ public class App extends Application {
         // Lancer l'écoute des alarmes MQTT
         startMqttListener();
         startPythonScript();
+
+        primaryStage.setOnCloseRequest(event -> {
+            // Arrêter les alarmes et fermer proprement l'application
+            stopAlarmListener();
+            stopPythonProcess();  // Arrêter le processus Python
+            System.exit(0);  // Fermer l'application
+        });
     }
+
+    
 
     private void startPythonScript() {
         Thread pythonThread = new Thread(() -> {
@@ -78,10 +89,10 @@ public class App extends Application {
     private void startMqttListener() {
         MqttAlarmListener mqttListener = new MqttAlarmListener();
         mqttListener.start();
-
+    
         // Vérifier périodiquement si le fichier trigger.flag a été mis à jour
         new Thread(() -> {
-            while (true) {
+            while (isAlarmListenerActive) { // Le thread continue tant que cette variable est true
                 checkForAlarms();
                 try {
                     Thread.sleep(5000); // Vérifier toutes les 5 secondes
@@ -91,6 +102,11 @@ public class App extends Application {
             }
         }).start();
     }
+    
+    public void stopAlarmListener() {
+        isAlarmListenerActive = false;  // Cette ligne arrête le thread
+    }
+    
 
     // Méthode pour vérifier si une alarme a été déclenchée
     private void checkForAlarms() {
