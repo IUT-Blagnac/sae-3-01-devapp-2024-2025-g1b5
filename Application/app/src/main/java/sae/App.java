@@ -32,6 +32,7 @@ public class App extends Application {
 
     private BorderPane rootPane;
     private Stage stage;
+    private pythonProcess;
 
     // Partager des données entre controllers
     private String numSalle;
@@ -50,6 +51,27 @@ public class App extends Application {
 
         // Lancer l'écoute des alarmes MQTT
         startMqttListener();
+        startPythonScript();
+    }
+
+    private void startPythonScript() {
+        Thread pythonThread = new Thread(() -> {
+            try {
+                // Lancer le processus Python
+                pythonProcess = new ProcessBuilder("python", "Iot/main2.py").start();
+                long pid = pythonProcess.pid();
+
+                // Sauvegarder le PID dans AppState
+                AppState.setPythonPID(pid);
+                System.out.println("Processus Python démarré avec PID : " + pid);
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("Erreur lors du lancement du script Python.");
+            }
+        });
+
+        pythonThread.setDaemon(true); // S'assurer que le thread se termine avec l'application
+        pythonThread.start();
     }
 
     // Méthode pour démarrer l'écouteur MQTT
