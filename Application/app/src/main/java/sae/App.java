@@ -32,7 +32,7 @@ public class App extends Application {
 
     private BorderPane rootPane;
     private Stage stage;
-    private pythonProcess;
+    private Process pythonProcess;
 
     // Partager des données entre controllers
     private String numSalle;

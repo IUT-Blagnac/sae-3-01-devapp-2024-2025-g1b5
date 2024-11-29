@@ -29,12 +29,6 @@ public class MenuController {
     public void setDatas(Stage fenetre, App app) {
         this.application = app;
         this.fenetrePrincipale = fenetre;
-
-        // Démarrer le processus Python lorsque l'application démarre
-        startPythonScript();
-
-        // Arrêter le processus Python à la fermeture de l'application
-        this.fenetrePrincipale.setOnCloseRequest(event -> stopPythonScript());
     }
 
     @FXML
@@ -63,43 +57,4 @@ public class MenuController {
   }
 
 
-
-    private void startPythonScript() {
-        Thread pythonThread = new Thread(() -> {
-            try {
-                // Lancer le processus Python
-                pythonProcess = new ProcessBuilder("python", "Iot/main2.py").start();
-                long pid = pythonProcess.pid();
-
-                // Sauvegarder le PID dans AppState
-                AppState.setPythonPID(pid);
-                System.out.println("Processus Python démarré avec PID : " + pid);
-            } catch (IOException e) {
-                e.printStackTrace();
-                System.out.println("Erreur lors du lancement du script Python.");
-            }
-        });
-
-        pythonThread.setDaemon(true); // S'assurer que le thread se termine avec l'application
-        pythonThread.start();
-    }
-
-    private void stopPythonScript() {
-        if (pythonProcess != null) {
-            pythonProcess.destroy();
-            System.out.println("Signal envoyé pour arrêter le processus Python.");
-
-            try {
-                boolean processTerminated = pythonProcess.waitFor(5, java.util.concurrent.TimeUnit.SECONDS);
-                if (!processTerminated) {
-                    pythonProcess.destroyForcibly();
-                    System.out.println("Processus Python forcé à s'arrêter.");
-                } else {
-                    System.out.println("Processus Python arrêté proprement.");
-                }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-    }
 }

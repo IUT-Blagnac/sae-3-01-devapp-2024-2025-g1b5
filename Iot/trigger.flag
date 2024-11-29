@@ -1,9 +1,0 @@
-{
-  "room": "E207",
-  "alarm": {
-    "key": "pressure",
-    "value": 998.6,
-    "alarm_type": "MAX",
-    "timestamp": "2024-11-27 15:08:53"
-  }
-}
