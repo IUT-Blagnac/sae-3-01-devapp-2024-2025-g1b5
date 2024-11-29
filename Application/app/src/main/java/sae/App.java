@@ -27,7 +27,7 @@ public class App extends Application{
 
     private BorderPane rootPane;
     private Stage stage;
-    
+    private Process pythonProcess;
 
 
 
@@ -46,7 +46,28 @@ public class App extends Application{
         loadMenu();
         primaryStage.setTitle("Menu");
         primaryStage.show();
+        startPythonScript();
 
+    }
+
+    private void startPythonScript() {
+        Thread pythonThread = new Thread(() -> {
+            try {
+                // Lancer le processus Python
+                pythonProcess = new ProcessBuilder("python", "Iot/main2.py").start();
+                long pid = pythonProcess.pid();
+
+                // Sauvegarder le PID dans AppState
+                AppState.setPythonPID(pid);
+                System.out.println("Processus Python démarré avec PID : " + pid);
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("Erreur lors du lancement du script Python.");
+            }
+        });
+
+        pythonThread.setDaemon(true); // S'assurer que le thread se termine avec l'application
+        pythonThread.start();
     }
 
     public void loadMenu() {
