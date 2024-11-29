@@ -1,0 +1,9 @@
+{
+  "room": "B111",
+  "alarm": {
+    "key": "humidity",
+    "value": 44.5,
+    "alarm_type": "MIN",
+    "timestamp": "2024-11-29 14:02:51"
+  }
+}

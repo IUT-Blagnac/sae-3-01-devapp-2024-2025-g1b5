@@ -13,5 +13,58 @@
   "0": {
    "illumination": 2
   }
+ },
+ "C004": {
+  "0": {
+   "temperature": 19.3,
+   "humidity": 48,
+   "co2": 505,
+   "tvoc": 47,
+   "activity": 0,
+   "illumination": 9,
+   "infrared": 3,
+   "infrared_and_visible": 10,
+   "pressure": 999.1
+  }
+ },
+ "Local-velo": {
+  "0": {
+   "temperature": 22.9,
+   "humidity": 39.5,
+   "co2": 462,
+   "tvoc": 56452,
+   "activity": 41,
+   "illumination": 974,
+   "infrared": 614,
+   "infrared_and_visible": 1622,
+   "pressure": 997.2
+  }
+ },
+ "B202": {
+  "0": {
+   "temperature": 21.9,
+   "humidity": 49.5,
+   "co2": 1262,
+   "tvoc": 188,
+   "activity": 2,
+   "illumination": 33,
+   "infrared": 9,
+   "infrared_and_visible": 33,
+   "pressure": 998.5
+  }
+ },
+ "B002": {
+  "0": {
+   "temperature": 19.8,
+   "humidity": 51.5,
+   "co2": 2719
+  }
+ },
+ "Salle-conseil": {
+  "0": {
+   "temperature": 25.1,
+   "humidity": 35,
+   "co2": 643
+  }
  }
 }
