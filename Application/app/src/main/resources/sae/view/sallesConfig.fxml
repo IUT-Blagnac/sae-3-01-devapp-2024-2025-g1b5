@@ -44,23 +44,24 @@
       <GridPane alignment="CENTER">
         <columnConstraints>
             <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="butValider" contentDisplay="CENTER" mnemonicParsing="false" onAction="#actionValid" text="Valider" textAlignment="CENTER" GridPane.rowIndex="1">
+            <Button fx:id="butValider" contentDisplay="CENTER" mnemonicParsing="false" onAction="#actionValid" text="Valider" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
             </Button>
-            <Button fx:id="butRetour" mnemonicParsing="false" onAction="#actionRetour" text="Retour">
+            <Button fx:id="butRetour" mnemonicParsing="false" onAction="#actionRetour" text="Retour" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
             </Button>
-            <Label fx:id="lblInfo" contentDisplay="CENTER" prefHeight="21.0" prefWidth="428.0" textAlignment="CENTER" />
+            <Label fx:id="lblInfo" contentDisplay="CENTER" prefHeight="21.0" prefWidth="419.0" textAlignment="CENTER" />
          </children>
       </GridPane>
    </bottom>
