@@ -1,64 +1,59 @@
 package sae.appli;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import java.util.Map;
 
 public class Alarme {
-    private Map<String, Map<String, AlarmDetails>> alarmes;
+    private String key;
+    private double value;
+    private String alarmType;
+    private String timestamp;
 
-    public Map<String, Map<String, AlarmDetails>> getAlarmes() {
-        return alarmes;
+    // Constructeur
+    public Alarme(String key, double value, String alarmType, String timestamp) {
+        this.key = key;
+        this.value = value;
+        this.alarmType = alarmType;
+        this.timestamp = timestamp;
     }
 
-    public void setAlarmes(Map<String, Map<String, AlarmDetails>> alarmes) {
-        this.alarmes = alarmes;
+    // Getters et setters
+    public String getKey() {
+        return key;
     }
 
-    public static class AlarmDetails {
-        private String key;
-        private double value;
-        private String alarm_type;
-        private String timestamp;
+    public void setKey(String key) {
+        this.key = key;
+    }
 
-        // Constructeurs, getters et setters
-        public AlarmDetails() { }
+    public double getValue() {
+        return value;
+    }
 
-        public AlarmDetails(String key, double value, String alarm_type, String timestamp) {
-            this.key = key;
-            this.value = value;
-            this.alarm_type = alarm_type;
-            this.timestamp = timestamp;
-        }
+    public void setValue(double value) {
+        this.value = value;
+    }
 
-        public String getKey() {
-            return key;
-        }
+    public String getAlarmType() {
+        return alarmType;
+    }
 
-        public void setKey(String key) {
-            this.key = key;
-        }
+    public void setAlarmType(String alarmType) {
+        this.alarmType = alarmType;
+    }
 
-        public double getValue() {
-            return value;
-        }
+    public String getTimestamp() {
+        return timestamp;
+    }
 
-        public void setValue(double value) {
-            this.value = value;
-        }
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
+    }
 
-        public String getAlarm_type() {
-            return alarm_type;
-        }
-
-        public void setAlarm_type(String alarm_type) {
-            this.alarm_type = alarm_type;
-        }
-
-        public String getTimestamp() {
-            return timestamp;
-        }
-
-        public void setTimestamp(String timestamp) {
-            this.timestamp = timestamp;
-        }
+    @Override
+    public String toString() {
+        return "Alarme{" +
+                "key='" + key + '\'' +
+                ", value=" + value +
+                ", alarmType='" + alarmType + '\'' +
+                ", timestamp='" + timestamp + '\'' +
+                '}';
     }
 }
