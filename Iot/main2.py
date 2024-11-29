@@ -86,7 +86,7 @@ def save_data_to_file():
 
 # Sauvegarder les données des salles
 def save_data_to_file_salles(room, donnees):
-    file_name = "salles.json"
+    file_name = os.path.join("Iot", "salles.json")  # Inclure le répertoire Iot
 
     if os.path.exists(file_name):
         with open(file_name, "r") as file:
