@@ -1,49 +1,53 @@
 package sae.view;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.List;
-import java.util.stream.Collectors;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import sae.App;
+import sae.view.AppState;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class SolarConfigController {
 
-   // private static final String CONFIG_FILE = "Iot/config.ini";
-   private static final String CONFIG_FILE ="Application/app/src/main/resources/sae/iot/config.ini";
+    private static final String CONFIG_FILE = "Iot/config.ini"; // Fichier de configuration
+    private static final String PYTHON_SCRIPT = "Iot/main2.py"; // Script Python
 
     private Stage fenetrePrincipale;
     private App application;
+    private Process pythonProcess; // Processus Python en cours
+    private long pythonPID; // PID du processus Python en cours
 
     @FXML
-    Button butRetour;
+    private Button butRetour;
 
     @FXML
-    Button butValider;
+    private Button butValider;
 
     @FXML
-    CheckBox cbCurrentPower;
+    private CheckBox cbCurrentPower;
 
     @FXML
-    CheckBox cbLastDayData;
+    private CheckBox cbLastDayData;
 
     @FXML
-    CheckBox cbLastMonthData;
+    private CheckBox cbLastMonthData;
 
     @FXML
-    CheckBox cbLastYearData;
+    private CheckBox cbLastYearData;
 
     @FXML
-    CheckBox cbLifeTimeData;
+    private CheckBox cbLifeTimeData;
 
     @FXML
-    CheckBox cbLastUpdateTime;
+    private CheckBox cbLastUpdateTime;
 
     @FXML
     private Label lblInfo;
@@ -65,45 +69,32 @@ public class SolarConfigController {
 
         // Étape 2 : Mise à jour du fichier de configuration
         updateConfig(selections);
+
+        // Étape 3 : Redémarrer le programme Python
+        restartPythonScript();
     }
 
     private List<String> getSelectedCheckBoxes() {
-        // Utiliser une liste dynamique pour éviter les problèmes avec des valeurs nulles
         List<String> selectedCheckBoxes = new ArrayList<>();
 
-        if (cbCurrentPower != null && cbCurrentPower.isSelected()) {
-            selectedCheckBoxes.add("currentPower");
-        }
-        if (cbLastDayData != null && cbLastDayData.isSelected()) {
-            selectedCheckBoxes.add("lastDayData");
-        }
-        if (cbLastMonthData != null && cbLastMonthData.isSelected()) {
-            selectedCheckBoxes.add("lastMonthData");
-        }
-        if (cbLastYearData != null && cbLastYearData.isSelected()) {
-            selectedCheckBoxes.add("lastYearData");
-        }
-        if (cbLifeTimeData != null && cbLifeTimeData.isSelected()) {
-            selectedCheckBoxes.add("lifeTimeData");
-        }
-        if (cbLastUpdateTime != null && cbLastUpdateTime.isSelected()) {
-            selectedCheckBoxes.add("lastUpdateTime");
-        }
+        if (cbCurrentPower.isSelected()) selectedCheckBoxes.add("currentPower");
+        if (cbLastDayData.isSelected()) selectedCheckBoxes.add("lastDayData");
+        if (cbLastMonthData.isSelected()) selectedCheckBoxes.add("lastMonthData");
+        if (cbLastYearData.isSelected()) selectedCheckBoxes.add("lastYearData");
+        if (cbLifeTimeData.isSelected()) selectedCheckBoxes.add("lifeTimeData");
+        if (cbLastUpdateTime.isSelected()) selectedCheckBoxes.add("lastUpdateTime");
 
         return selectedCheckBoxes;
     }
 
     public void updateConfig(List<String> donneesSolar) {
         try {
-            // Charger toutes les lignes du fichier de configuration
             List<String> lines = Files.readAllLines(Paths.get(CONFIG_FILE));
 
-            // Créer la nouvelle ligne pour donneesSolar
             String newDonneesSolarLine = "donneesSolar=[" + donneesSolar.stream()
                     .map(attr -> "'" + attr + "'")
                     .collect(Collectors.joining(", ")) + "]";
 
-            // Mettre à jour ou ajouter la ligne donneesSolar
             List<String> updatedLines = new ArrayList<>();
             boolean found = false;
 
@@ -117,71 +108,115 @@ public class SolarConfigController {
             }
 
             if (!found) {
-                updatedLines.add(newDonneesSolarLine); // Ajouter si absent
+                updatedLines.add(newDonneesSolarLine);
             }
 
-            // Écrire les nouvelles lignes dans le fichier
             Files.write(Paths.get(CONFIG_FILE), updatedLines);
-            System.out.println("Fichier de configuration mis à jour avec succès.");
             lblInfo.setText("Modifications enregistrées avec succès !");
             lblInfo.setVisible(true);
 
-                    // Masquer le message après 3 secondes
-        new Thread(() -> {
-            try {
-                Thread.sleep(3000);
-                lblInfo.setVisible(false);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }).start();
+            // Masquer l'information après 3 secondes
+            new Thread(() -> {
+                try {
+                    Thread.sleep(3000);
+                    lblInfo.setVisible(false);
+                } catch (InterruptedException ignored) {}
+            }).start();
 
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("Erreur lors de la mise à jour du fichier de configuration : " + e.getMessage());
+            lblInfo.setText("Erreur : Impossible de mettre à jour la configuration.");
         }
     }
 
+
+
     @FXML
     private void initialize() {
-        // Charger les données de configuration
         try {
-            System.out.println(Paths.get(CONFIG_FILE).getParent());
             List<String> lines = Files.readAllLines(Paths.get(CONFIG_FILE));
             for (String line : lines) {
                 if (line.startsWith("donneesSolar")) {
-                    // Extraire la liste des valeurs entre crochets
                     String values = line.substring(line.indexOf('[') + 1, line.indexOf(']'));
                     List<String> selectedItems = List.of(values.split(","))
                             .stream()
-                            .map(v -> v.trim().replace("'", "")) // Supprimer les espaces et les apostrophes
+                            .map(v -> v.trim().replace("'", ""))
                             .collect(Collectors.toList());
 
-                    // Cocher les CheckBoxes correspondantes
-                    if (cbCurrentPower != null) {
-                        cbCurrentPower.setSelected(selectedItems.contains("currentPower"));
-                    }
-                    if (cbLastDayData != null) {
-                        cbLastDayData.setSelected(selectedItems.contains("lastDayData"));
-                    }
-                    if (cbLastMonthData != null) {
-                        cbLastMonthData.setSelected(selectedItems.contains("lastMonthData"));
-                    }
-                    if (cbLastYearData != null) {
-                        cbLastYearData.setSelected(selectedItems.contains("lastYearData"));
-                    }
-                    if (cbLifeTimeData != null) {
-                        cbLifeTimeData.setSelected(selectedItems.contains("lifeTimeData"));
-                    }
-                    if (cbLastUpdateTime != null) {
-                        cbLastUpdateTime.setSelected(selectedItems.contains("lastUpdateTime"));
-                    }
+                    cbCurrentPower.setSelected(selectedItems.contains("currentPower"));
+                    cbLastDayData.setSelected(selectedItems.contains("lastDayData"));
+                    cbLastMonthData.setSelected(selectedItems.contains("lastMonthData"));
+                    cbLastYearData.setSelected(selectedItems.contains("lastYearData"));
+                    cbLifeTimeData.setSelected(selectedItems.contains("lifeTimeData"));
+                    cbLastUpdateTime.setSelected(selectedItems.contains("lastUpdateTime"));
                     break;
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("Erreur lors du chargement du fichier de configuration : " + e.getMessage());
+            System.out.println("Erreur lors du chargement du fichier de configuration.");
+        }
+    }
+
+    private void restartPythonScript() {
+        stopPythonProcess();
+        startPythonScript();
+    }
+
+    private boolean isProcessRunning(long pid) {
+        try {
+            Process process = new ProcessBuilder("cmd", "/c", "tasklist /FI \"PID eq " + pid + "\"").start();
+            String output = new String(process.getInputStream().readAllBytes());
+            return output.contains(String.valueOf(pid));
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    private void stopPythonProcess() {
+        long pid = AppState.getPythonPID();
+        if (pid > 0) {
+            try {
+                // Détection du système d'exploitation
+                String os = System.getProperty("os.name").toLowerCase();
+    
+                if (os.contains("win")) {
+                    // Commande Windows : arrêter le processus avec "taskkill"
+                    Process process = new ProcessBuilder("cmd", "/c", "taskkill /PID " + pid + " /F").start();
+                    int exitCode = process.waitFor();
+                    if (exitCode == 0) {
+                        System.out.println("Le processus Python avec PID : " + pid + " a été arrêté sous Windows.");
+                    } else {
+                        System.out.println("Échec de l'arrêt du processus Python avec PID : " + pid + " sous Windows.");
+                    }
+                } else if (os.contains("nix") || os.contains("nux") || os.contains("mac")) {
+                    // Commande Linux/Mac : arrêter le processus avec "kill -9"
+                    Process process = new ProcessBuilder("kill", "-9", String.valueOf(pid)).start();
+                    int exitCode = process.waitFor();
+                    if (exitCode == 0) {
+                        System.out.println("Le processus Python avec PID : " + pid + " a été arrêté sous Linux/Mac.");
+                    } else {
+                        System.out.println("Échec de l'arrêt du processus Python avec PID : " + pid + " sous Linux/Mac.");
+                    }
+                }
+                // Réinitialiser le PID après arrêt
+                AppState.setPythonPID(-1);
+            } catch (IOException | InterruptedException e) {
+                e.printStackTrace();
+                System.out.println("Erreur lors de l'arrêt du processus Python.");
+            }
+        }
+    }
+    
+
+    private void startPythonScript() {
+        try {
+            Process pythonProcess = new ProcessBuilder("python", PYTHON_SCRIPT).start();
+            AppState.setPythonPID(pythonProcess.pid());
+            System.out.println("Nouveau processus Python démarré avec PID : " + pythonProcess.pid());
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

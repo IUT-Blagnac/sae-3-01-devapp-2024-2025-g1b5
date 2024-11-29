@@ -1,12 +1,10 @@
 package sae.view;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
-import java.text.ParseException;
+import java.net.URL;
+import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.List;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -19,108 +17,104 @@ import sae.App;
 
 public class AfficherDonneesController {
 
-    private Stage fenetrePrincipale ;
+  @SuppressWarnings("unused")
+  private Stage fenetrePrincipale;
 
-    private App application;
+  private App application;
 
-    @FXML
-    private Label titreSalle;
+  @FXML
+  private Label titreSalle;
 
-    @FXML
-    private GridPane gridDynamique ;
+  @FXML
+  private GridPane gridDynamique;
 
-    private ArrayList<String> donnees = new ArrayList<>();
+  private ArrayList<String> donnees = new ArrayList<>();
 
-    
-    public void setDatas(Stage fenetre,  App app) {
-      this.application = app;
-      this.fenetrePrincipale = fenetre;
-      //this.fenetrePrincipale.setOnCloseRequest(event -> actionQuitter());
-	  }
+  public void setDatas(Stage fenetre, App app) {
+    this.application = app;
+    this.fenetrePrincipale = fenetre;
+  }
 
-    public void setSalle(String salle){
-      this.titreSalle.setText(salle);
+  public void setSalle(String salle) {
+    this.titreSalle.setText(salle);
+  }
+
+  public void setTab(ArrayList<String> list) {
+    this.donnees = list;
+  }
+
+  @FXML
+  private void actionAfficher() {
+    System.out.println("A faire !");
+    // lecture();
+    System.out.println(donnees);
+    chargerFichierSalle();
+  }
+
+  @FXML
+  private void actionRetour() {
+    application.loadParametrageSalles();
+  }
+
+  public void afficherDonnees() {
+    for (int i = 0; i < donnees.size(); i++) {
+      gridDynamique.add(new Label(donnees.get(i) + " :"), 0, i);
     }
+  }
 
-    public void setTab( ArrayList<String> list){
-      this.donnees = list ;
-    }
+  public void chargerFichierSalle() {
 
-    @FXML
-    private void actionAfficher() {
-		  System.out.println("A faire !");
-      //lecture();
-      System.out.println(donnees);
-      chargerFichierSalle();
-	  }
+    JSONParser parser = new JSONParser();
 
-    @FXML
-    private void actionRetour() {
-      application.loadParametrageSalles();
-    }
+    try {
+      // Lire le fichier JSON
+      URL resource = getClass().getClassLoader().getResource("Iot/salles.json");
 
-    public void afficherDonnees() {
-      for(int i=0; i<donnees.size(); i++){
-        gridDynamique.add(new Label( donnees.get(i) + " :"), 0, i);
+      if (resource == null) {
+        System.out.println("Le fichier salles.json est introuvable.");
+        return;
       }
+
+      FileReader reader = new FileReader(Paths.get(resource.toURI()).toFile());
+      JSONObject jsonObject = (JSONObject) parser.parse(reader);
+
+      // Test: Afficher le contenu du fichier JSON
+      System.out.println("Fichier chargé avec succès : ");
+      // System.out.println(jsonObject.toJSONString()); // Affiche le contenu du JSON
+      // en format lisible
+
+      // Recherche de la salle B110
+      if (jsonObject.containsKey("E004")) {
+        JSONObject salleB110 = (JSONObject) jsonObject.get("E004");
+        System.out.println(salleB110.toJSONString());
+      } else {
+        System.out.println("La salle E004 n'existe pas dans le fichier JSON.");
+      }
+
+    } catch (Exception e) {
+      e.printStackTrace();
     }
 
-    public void chargerFichierSalle(){
+  }
 
-      JSONParser parser = new JSONParser();
+  public void modifConfig() {
 
-        try {
-            // Lire le fichier JSON
-            FileReader reader = new FileReader(getClass().getClassLoader().getResource("sae/iot/salles.json").getFile());
+  }
 
-            JSONObject jsonObject = (JSONObject) parser.parse(reader);
+  public void lecture() {
 
-             // Test: Afficher le contenu du fichier JSON
-             System.out.println("Fichier chargé avec succès : ");
-             //System.out.println(jsonObject.toJSONString());  // Affiche le contenu du JSON en format lisible
+    // Chemin relatif du fichier Python
+    String pythonScriptPath = "main2.py"; // Le fichier Python est dans le même dossier
 
-             // Recherche de la salle B110
-            if (jsonObject.containsKey("E004")) {
-              JSONObject salleB110 = (JSONObject) jsonObject.get("E004");
-              System.out.println(salleB110.toJSONString());
-            } else {
-                System.out.println("La salle E004 n'existe pas dans le fichier JSON.");
-            }
-            
+    // Créer un objet File avec le chemin relatif
+    File file = new File(pythonScriptPath);
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    // Vérifier si le fichier existe
+    if (file.exists())
+      System.out.println("Le fichier Python existe : " + pythonScriptPath);
+    else
+      System.out.println("nexiste pas");
 
-    }
-
-    public void modifConfig(){
-
-    }
-
-
-
-
-
-
-
-    public void lecture(){
-   
-       // Chemin relatif du fichier Python
-       String pythonScriptPath = "main2.py"; // Le fichier Python est dans le même dossier
-
-       // Créer un objet File avec le chemin relatif
-       File file = new File(pythonScriptPath);
-
-       // Vérifier si le fichier existe
-       if (file.exists()) 
-           System.out.println("Le fichier Python existe : " + pythonScriptPath); 
-        else 
-           System.out.println("nexiste pas");     
-
-      
-      
-    }
+  }
 
 }
-                      

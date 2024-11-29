@@ -1,7 +1,9 @@
 html, body {
     height: 100%;
 }
-
+header{
+    color: white;
+}
 body {
     margin: 0;
     font-family: 'Fredoka One', Arial, sans-serif;
@@ -9,9 +11,14 @@ body {
     background-size: cover; /* Ensure the background image covers the entire screen*/
     background-repeat: no-repeat;
     background-attachment: fixed;  /* Prevent the background image from scrolling with the page*/
-    color: white;
+    flex-direction: column;
+}
+
+main {
+    font-family: Arial, Helvetica, sans-serif;
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 
 .header {
@@ -97,23 +104,153 @@ body {
     cursor: pointer; 
 }
 
+
+
+/* accueil produits et guirlandes */
+
 .img-acceuil img {
     width: 100%;
     height: auto;
     display: block;
 }
 
-main {
-    flex: 1;
+.produits-accueil {
+    margin-top: 3%;
+    display: flex;
+    gap: 100px;
+    align-items: flex-end; /* Alignement vertical en bas pour les images */
+    justify-content: center;
+    text-align: center;  
+    flex-direction: row;
 }
 
+.prix p {
+    font-size: 85%;
+}
+
+.button {
+    border: none;
+    border-radius: 25px;
+    background-color: #ff1f11;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+
+/* detailProduit */
+
+/* description du produit*/
+
+.presentation{
+    display: flex;
+    margin: auto;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 60%;
+    gap: 15%;
+    margin-top: 5%;
+}
+
+.prixDescription h2 {
+    text-align: end;
+}
+
+.butFavoris {
+    border-color: grey;
+    width: 45px; /* Largeur du bouton */
+    height: 45px; /* Hauteur identique pour obtenir un cercle */
+    border-radius: 50%; /* Transformation en cercle */
+    background-color: white;
+    align-items: center;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+.texteDescriptif {
+    background-color: #ff1f11;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 5%;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    color: #fff;
+    text-align: justify;
+}
+
+/* avis/eval du produit*/
+
+.avis {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    background-color: #00B928;
+    color: #fff;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 5%;
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.butAvatar {
+    border: none;
+    width: 45px; /* Largeur du bouton */
+    height: 45px; /* Hauteur identique pour obtenir un cercle */
+    border-radius: 50%; /* Transformation en cercle */
+    background-color: white;
+    align-items: center;
+    cursor: pointer;
+}
+
+.butAvatar img {
+    width: 100%;
+}
+
+
+.evaluation {
+    display: flex;
+    flex-direction: column;
+    background-color: #00a023;
+    color: black;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.notes {
+    display: flex;
+    flex-direction: row;
+    gap: 1%;
+}
+
+.eval-perso {
+    margin-top: 1%;
+    color: #000;
+    text-align: justify;
+}
+
+
+    
+
+/* footer */
+
+
 footer {
+    margin-top: 15%;
     background-color: #000;
     color: #fff;
     padding: 10px 0;
     font-size: 14px;
     font-family: sans-serif, Arial;
-    margin-top: 10em;
 }
 
 .footer-contenu {
@@ -121,22 +258,17 @@ footer {
     justify-content: space-around;
     padding-bottom: 10px;
     border-bottom: 1px solid #444;
-    margin: 0 20px;
 }
 
 .footer-column {
-    flex: 1;
     padding: 0px;
 }
 
 .footer-column h3 {
     font-size: 22px;
-    margin-bottom: 10px;
-    margin-top: 0;
 }
 
 .footer-column p {
-    margin: 5px 0;
     cursor: pointer;
 }
 
@@ -149,3 +281,4 @@ footer {
     font-size: 12px;
     color: #aaa;
 }
+

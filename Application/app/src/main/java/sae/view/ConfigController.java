@@ -9,6 +9,7 @@ import sae.App;
 
 public class ConfigController  {
     
+    @SuppressWarnings("unused")
     private Stage fenetrePrincipale;
 
     @FXML
@@ -35,7 +36,7 @@ public class ConfigController  {
 
     @FXML
     private void actionSallesConfig() {
-        application.loadMenu();
+        application.loadSallesConfig();
     }
 
     @FXML
