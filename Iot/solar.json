@@ -1,13 +1,28 @@
 {
   "solar": {
     "0": {
-      "lastUpdateTime": "2024-11-29 11:12:42"
+      "lifeTimeData": {
+        "energy": 3400571
+      },
+      "lastUpdateTime": "2024-11-29 13:47:54"
     },
     "1": {
       "lifeTimeData": {
-        "energy": 3394708
+        "energy": 3400571
       },
-      "lastUpdateTime": "2024-11-29 11:12:42"
+      "lastUpdateTime": "2024-11-29 13:47:54"
+    },
+    "2": {
+      "lifeTimeData": {
+        "energy": 3400571
+      },
+      "lastUpdateTime": "2024-11-29 13:47:54"
+    },
+    "3": {
+      "lifeTimeData": {
+        "energy": 3400571
+      },
+      "lastUpdateTime": "2024-11-29 13:47:54"
     }
   }
 }
