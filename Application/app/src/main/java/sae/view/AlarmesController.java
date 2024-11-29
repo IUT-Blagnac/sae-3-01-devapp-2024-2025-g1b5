@@ -1,9 +1,9 @@
 package sae.view;
 
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import sae.App;
 import sae.appli.TypeDonnee;
@@ -20,7 +20,7 @@ public class AlarmesController {
     @FXML
     private ComboBox<String> salleComboBox; // ComboBox pour la salle
     @FXML
-    private ComboBox<TypeDonnee> elementComboBox; // ComboBox pour l'élément recherché (TypeDonnee directement)
+    private ComboBox<String> elementComboBox; // Change this to ComboBox<String>; // ComboBox pour l'élément recherché (TypeDonnee directement)
     @FXML
     private Button rechercheButton; // Bouton Recherche
     @FXML
@@ -30,7 +30,22 @@ public class AlarmesController {
     @FXML
     private Button retourButton; // Bouton Retour
     @FXML
-    private VBox resultVBox; // VBox pour afficher les résultats
+    private TableView<Alarme> resultTable;
+
+    @FXML
+    private TableColumn<Alarme, String> dateColumn;
+
+    @FXML
+    private TableColumn<Alarme, String> typeColumn;
+
+    @FXML
+    private TableColumn<Alarme, Double> valueColumn;
+
+    @FXML
+    private TableColumn<Alarme, String> alarmTypeColumn;
+
+    @FXML
+    private TableColumn<Alarme, String> salleColumn; // Colonne pour la salle
 
     private App application;
     private Stage fenetrePrincipale;
@@ -47,18 +62,31 @@ public class AlarmesController {
 
         // Charger les données depuis le fichier JSON
         try {
-            alarmes.loadFromJson("C:\\Users\\Etudiant\\Documents\\GitHub\\sae-3-01-devapp-2024-2025-g1b5\\Application\\app\\src\\main\\resources\\sae\\iot\\alarmes.json"); // Remplacez le chemin par le chemin correct
+            alarmes.loadFromJson("Iot/alarmes.json");
         } catch (IOException e) {
             e.printStackTrace();
             showAlert("Erreur", "Impossible de charger les données d'alarmes.", Alert.AlertType.ERROR);
         }
 
-        // Initialisation des éléments de la ComboBox pour l'élément recherché (TypeDonnee)
-        elementComboBox.getItems().addAll(TypeDonnee.values());
+        // Initialisation de l'élément recherché ComboBox avec "Tous" et les valeurs de TypeDonnee
+        elementComboBox.getItems().add("ALL"); // Ajouter "Tous"
+        for (TypeDonnee type : TypeDonnee.values()) {
+            elementComboBox.getItems().add(type.toString()); // Ajouter chaque valeur de TypeDonnee
+        }
 
         // Initialisation dynamique des salles dans le ComboBox
         loadSalles();
-        salleComboBox.getItems().addAll(salles);
+        salleComboBox.getItems().add("ALL"); // Ajouter "Tous" à la ComboBox de salle
+        salleComboBox.getItems().addAll(salles); // Ajouter toutes les salles
+
+        // Configuration des colonnes du TableView
+        dateColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTimestamp()));
+        typeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getKey()));
+        valueColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getValue()));
+        alarmTypeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAlarmType()));
+
+        // Configuration de la nouvelle colonne pour la salle
+        salleColumn.setCellValueFactory(cellData -> new SimpleStringProperty(getSalleFromMap(cellData.getValue())));
 
         // Gérer l'action des boutons
         maxButton.setOnAction(e -> handleMax());
@@ -66,6 +94,10 @@ public class AlarmesController {
         rechercheButton.setOnAction(e -> handleRecherche());
         retourButton.setOnAction(e -> handleRetour());
     }
+
+
+
+
 
     // Méthode pour charger les salles dynamiquement
     private void loadSalles() {
@@ -80,6 +112,18 @@ public class AlarmesController {
         };
         salles.addAll(Arrays.asList(sls));
     }
+
+    //recupère la salle
+    private String getSalleFromMap(Alarme alarme) {
+        // Recherche de la salle à partir de la Map de alarmes
+        for (Map.Entry<String, List<Alarme>> entry : alarmes.getAlarmes().entrySet()) {
+            if (entry.getValue().contains(alarme)) {
+                return entry.getKey(); // La clé de la Map est la salle
+            }
+        }
+        return "Aucune salle"; // Retourne "Aucune salle" si non trouvé
+    }
+    
 
     // Méthode pour récupérer toutes les alarmes
     public Map<String, List<Alarme>> getAllAlarmes() {
@@ -130,28 +174,21 @@ public class AlarmesController {
         }
     }
 
-    // Méthode pour effectuer la recherche des alarmes en fonction des critères sélectionnés
     private void handleRecherche() {
-        // Récupérer les critères de recherche
-        String salle = salleComboBox.getValue(); // Salle sélectionnée
-        String date = (datePicker.getValue() != null) ? datePicker.getValue().toString() : null; // Date sélectionnée
-        TypeDonnee typeDonnee = elementComboBox.getValue(); // Type de donnée (ex: temperature, co2)
-        Boolean isMax = selectedMax; // Filtre Max ou Min
+        String salle = salleComboBox.getValue();
+        String date = (datePicker.getValue() != null) ? datePicker.getValue().toString() : null;
+        String selectedType = elementComboBox.getValue(); // Get the selected type from ComboBox
+        Boolean isMax = selectedMax;
     
-        // Récupérer toutes les alarmes
         Map<String, List<Alarme>> allAlarmes = alarmes.getAlarmes();
     
-        // Liste pour stocker les résultats filtrés
         List<Alarme> resultats = new ArrayList<>();
     
-        // Filtrer les alarmes
         for (Map.Entry<String, List<Alarme>> entry : allAlarmes.entrySet()) {
-            // Vérifier si on doit filtrer par salle
-            if (salle != null && !salle.equals(entry.getKey())) {
-                continue; // Ignorer les salles non correspondantes
+            if (salle != null && !salle.equals("ALL") && !salle.equals(entry.getKey())) {
+                continue; // Filtrer par salle (si "Tous" n'est pas sélectionné)
             }
     
-            // Parcourir les alarmes de cette salle
             for (Alarme alarme : entry.getValue()) {
                 boolean correspond = true;
     
@@ -161,7 +198,7 @@ public class AlarmesController {
                 }
     
                 // Filtrer par type de donnée
-                if (typeDonnee != null && !alarme.getKey().equals(typeDonnee.toString().toLowerCase())) {
+                if (selectedType != null && !selectedType.equals("ALL") && !alarme.getKey().equals(selectedType.toLowerCase())) {
                     correspond = false;
                 }
     
@@ -175,7 +212,6 @@ public class AlarmesController {
                     }
                 }
     
-                // Ajouter l'alarme si elle correspond aux critères
                 if (correspond) {
                     resultats.add(alarme);
                 }
@@ -186,38 +222,25 @@ public class AlarmesController {
         displayResults(resultats);
     }
     
-    // Méthode pour afficher les résultats dans la VBox
+    
+    
+    
+    
+    
+    // Méthode pour afficher les résultats dans le TableView
     private void displayResults(List<Alarme> alarmes) {
-        resultVBox.getChildren().clear(); // Effacer les résultats précédents
-
+        resultTable.getItems().clear(); // Effacer les résultats précédents
+    
         if (alarmes.isEmpty()) {
-            resultVBox.getChildren().add(new Label("Aucun résultat trouvé."));
+            // Si aucun résultat n'est trouvé, afficher un message dans le TableView
+            showAlert("Aucun résultat", "Aucune alarme ne correspond à votre recherche.", Alert.AlertType.INFORMATION);
         } else {
-            for (Alarme alarme : alarmes) {
-                // Conteneur horizontal pour formater chaque alarme
-                HBox alarmeBox = new HBox(10); // Espacement de 10 entre les éléments
-                alarmeBox.setStyle("-fx-padding: 10; -fx-background-color: #f4f4f4; -fx-border-color: #ccc; -fx-border-radius: 5; -fx-background-radius: 5;");
-
-                // Labels pour chaque champ de l'alarme
-                Label keyLabel = new Label("Type: " + alarme.getKey());
-                keyLabel.setStyle("-fx-font-weight: bold;");
-
-                Label valueLabel = new Label("Valeur: " + alarme.getValue());
-
-                Label typeLabel = new Label("Alarme: " + alarme.getAlarmType());
-                typeLabel.setStyle(alarme.getAlarmType().equals("MAX") ? "-fx-text-fill: red;" : "-fx-text-fill: blue;");
-
-                Label timestampLabel = new Label("Date: " + alarme.getTimestamp());
-                timestampLabel.setStyle("-fx-font-style: italic;");
-
-                // Ajouter les labels au conteneur horizontal
-                alarmeBox.getChildren().addAll(keyLabel, valueLabel, typeLabel, timestampLabel);
-
-                // Ajouter le conteneur horizontal à la VBox
-                resultVBox.getChildren().add(alarmeBox);
-            }
+            // Ajouter les alarmes au TableView
+            resultTable.getItems().addAll(alarmes);
         }
     }
+    
+
 
     
 
