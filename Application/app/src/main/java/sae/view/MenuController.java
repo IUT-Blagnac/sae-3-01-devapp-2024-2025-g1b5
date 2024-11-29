@@ -29,7 +29,6 @@ public class MenuController {
     public void setDatas(Stage fenetre, App app) {
         this.application = app;
         this.fenetrePrincipale = fenetre;
-
     }
 
     @FXML
@@ -49,7 +48,13 @@ public class MenuController {
 
     @FXML
     private void actionBouttonConfig() {
-        application.loadMenuConfig();
-    }
+    application.loadMenuConfig();
+  }
+
+  @FXML
+  private void actionBouttonAlarmes() {
+      application.loadAlarmes();
+  }
+
 
 }

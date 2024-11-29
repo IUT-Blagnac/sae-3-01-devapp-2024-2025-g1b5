@@ -1,0 +1,17 @@
+{
+ "C006": {
+  "0": {
+   "illumination": 1
+  }
+ },
+ "hall-amphi": {
+  "0": {
+   "illumination": 18
+  }
+ },
+ "E100": {
+  "0": {
+   "illumination": 2
+  }
+ }
+}
