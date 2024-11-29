@@ -8,10 +8,13 @@ import java.util.List;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import sae.appli.TypeDonnee;
+import sae.view.AfficherDonneesControllerSolar;
+import sae.view.AppState;
 import sae.view.AfficherDonneesController;
 import sae.view.ConfigController;
 import sae.view.MenuController;
@@ -181,6 +184,70 @@ public class App extends Application{
         } catch (IOException e) {
             System.out.println("Ressource FXML non disponible : donnee.fxml");
             System.exit(1);
+        }
+    }
+
+    public void loadDonneesSelectionnees(List<String> selectedChoices) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/sae/view/donneeSolar.fxml"));
+            Parent root = loader.load();
+    
+            // Récupérer le contrôleur d'affichage
+            AfficherDonneesControllerSolar controller = loader.getController();
+            controller.setDatas(stage, this);
+            controller.setTab(selectedChoices); // Transmettre les choix sélectionnés
+    
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+    
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+        @Override
+    public void stop() {
+        System.out.println("Fermeture de l'application...");
+        stopPythonProcess();
+    }
+
+    // Méthode pour arrêter le processus Python
+    private void stopPythonProcess() {
+        long pid = AppState.getPythonPID();
+        if (pid > 0) {
+            try {
+                // Détection du système d'exploitation
+                String os = System.getProperty("os.name").toLowerCase();
+
+                Process process;
+                if (os.contains("win")) {
+                    // Commande Windows : arrêter le processus avec "taskkill"
+                    process = new ProcessBuilder("cmd", "/c", "taskkill /PID " + pid + " /F").start();
+                } else if (os.contains("nix") || os.contains("nux") || os.contains("mac")) {
+                    // Commande Linux/Mac : arrêter le processus avec "kill -9"
+                    process = new ProcessBuilder("kill", "-9", String.valueOf(pid)).start();
+                } else {
+                    System.out.println("Système d'exploitation non pris en charge pour arrêter le processus Python.");
+                    return;
+                }
+
+                int exitCode = process.waitFor();
+                if (exitCode == 0) {
+                    System.out.println("Processus Python avec PID " + pid + " arrêté avec succès.");
+                } else {
+                    System.out.println("Échec de l'arrêt du processus Python avec PID " + pid);
+                }
+
+                // Réinitialiser le PID après l'arrêt
+                AppState.setPythonPID(-1);
+
+            } catch (IOException | InterruptedException e) {
+                e.printStackTrace();
+                System.out.println("Erreur lors de l'arrêt du processus Python.");
+            }
+        } else {
+            System.out.println("Aucun processus Python actif à arrêter.");
         }
     }
 
