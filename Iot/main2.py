@@ -8,7 +8,7 @@ import ast
 
 # Charger la configuration depuis le fichier config.ini
 config = configparser.ConfigParser()
-config.read('config.ini')
+config.read('Iot/config.ini')
 
 # Configuration MQTT
 mqttServer = config['mqtt']['server']
