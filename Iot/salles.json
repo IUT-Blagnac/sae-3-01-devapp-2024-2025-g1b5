@@ -1,82 +1,17 @@
 {
- "B108": {
-  "0": {
-   "illumination": 52
-  },
-  "1": {
-   "illumination": 52
-  }
- },
- "E007": {
-  "0": {
-   "illumination": 40
-  },
-  "1": {
-   "illumination": 40
-  }
- },
- "C102": {
-  "0": {
-   "illumination": 83
-  },
-  "1": {
-   "illumination": 83
-  }
- },
- "B203": {
-  "0": {
-   "illumination": 36
-  },
-  "1": {
-   "illumination": 36
-  }
- },
- "amphi1": {
+ "C006": {
   "0": {
    "illumination": 1
-  },
-  "1": {
-   "illumination": 1
   }
  },
- "E208": {
+ "hall-amphi": {
   "0": {
-   "illumination": 11
-  },
-  "1": {
-   "illumination": 11
+   "illumination": 18
   }
  },
- "B103": {
+ "E100": {
   "0": {
-   "illumination": 109
-  },
-  "1": {
-   "illumination": 109
-  }
- },
- "E210": {
-  "0": {
-   "illumination": 137
-  },
-  "1": {
-   "illumination": 137
-  }
- },
- "E101": {
-  "0": {
-   "illumination": 50
-  },
-  "1": {
-   "illumination": 50
-  }
- },
- "E207": {
-  "0": {
-   "illumination": 499
-  },
-  "1": {
-   "illumination": 499
+   "illumination": 2
   }
  }
 }
