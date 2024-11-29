@@ -74,6 +74,7 @@ public class ParametrageChoixSalles {
       this.lvSalles.getFocusModel().focus(-1);
       this.lvSalles.getSelectionModel().selectedItemProperty().addListener(e -> this.validateComponentState());
       this.validateComponentState();
+      this.butRecherche.setText("Rechercher");
     }
 
     public void loadMenuDeroulantDonnees(List<TypeDonnee> listType){
