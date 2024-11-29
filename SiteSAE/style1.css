@@ -104,6 +104,49 @@ main {
     cursor: pointer; 
 }
 
+/* menu deroulant */
+
+
+.deroulant {
+    background: none; /* Pas de fond */
+    border: none; /* Pas de bordure */
+    color: inherit; /* Couleur héritée (texte similaire au reste) */
+    font: inherit; /* Police héritée */
+    cursor: pointer; /* Curseur en mode clic */
+}
+
+.liste-deroulant {
+    display: none; 
+    position: absolute;
+    background-color: #f1f1f1; 
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); 
+    z-index: 1;
+    border-radius: 4px; 
+}
+
+
+.liste-deroulant a {
+    color: black; 
+    padding: 12px 16px; 
+    text-decoration: none; 
+    display: block; 
+}
+
+
+.liste-deroulant a:hover {
+    background-color: #ddd; 
+}
+
+
+.liste-deroulant a:hover {background-color: #ddd;}
+  
+.menu-age:hover  .liste-deroulant {display: block;}
+.menu-taille:hover .liste-deroulant {display: block;}
+.menu-type:hover  .liste-deroulant {display: block;}
+.menu-promo:hover  .liste-deroulant {display: block;}
+.menu-meilleur-ventes:hover  .liste-deroulant {display: block;}
+
 
 
 /* accueil produits et guirlandes */
@@ -199,7 +242,7 @@ main {
     padding-left: 3%;
     padding-right: 3%;
     padding-top: 1%;
-    padding-bottom: 1%;
+    padding-bottom: 3%;
 }
 
 .butAvatar {
@@ -222,6 +265,7 @@ main {
     flex-direction: column;
     background-color: #00a023;
     color: black;
+    margin-top: 1%;
     padding: 20px;
     border-radius: 5px;
 }
@@ -233,9 +277,14 @@ main {
 }
 
 .eval-perso {
-    margin-top: 1%;
+    margin-top: 2%;
     color: #000;
     text-align: justify;
+}
+
+.date-avis {
+    text-align: end;
+    margin-right: 2%;
 }
 
 
@@ -245,7 +294,7 @@ main {
 
 
 footer {
-    margin-top: 15%;
+    margin-top: 12%;
     background-color: #000;
     color: #fff;
     padding: 10px 0;

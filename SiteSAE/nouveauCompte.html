@@ -29,19 +29,64 @@
             </div>
         </div>
         
-        <div class="menu">
-            <div>Âge</div>
-            <div>Taille</div>
-            <div>Type</div>
-            <div>Promotions</div>
-            <div>Nos meilleures ventes</div>
-        </div> 
+        <section class="menu">
+
+            <div class="menu-age">
+                <button class="deroulant">Âge</button> 
+                <div class="liste-deroulant">
+                    <a href="#">3 ans et +</a>
+                    <a href="#">5 ans et +</a>
+                    <a href="#">7 ans et +</a>
+                    <a href="#">10 ans et +</a>
+                </div> 
+            </div>
+    
+            <div class="menu-taille">
+                <button class="deroulant">Taille</button> 
+                <div class="liste-deroulant">
+                    <a href="#">-</a>
+                </div>
+            </div>
+    
+            <div class="menu-type">
+                <button class="deroulant">Type</button> 
+                <div class="liste-deroulant">
+                    <a href="#">Educatif</a>
+                    <a href="#">Scientifique</a>
+                    <a href="#">Decouverte</a>
+                    <a href="#">Figurines</a>
+                    <a href="#">Exterieur</a>
+                    <a href="#">Musicale</a>
+                    <a href="#">Construction</a>
+                    <a href="#">Eveil</a>
+                    <a href="#">Guerre</a>
+                </div>
+            </div>
+    
+            <div class="menu-promo">
+                <button class="deroulant">Promotions</button> 
+                <div class="liste-deroulant">
+                    <a href="#">-5%</a>
+                    <a href="#">-10%</a>
+                    <a href="#">-20%</a>
+                </div>
+            </div>
+    
+            <div class="menu-meilleur-ventes">
+                <button class="deroulant">Nos meilleures ventes</button> 
+                <div class="liste-deroulant">
+                    <a href="#">-</a>
+                </div>
+            </div>
+    
+        </section> 
+         
     </header>
 
     <main class="d-flex justify-content-center align-items-center" 
       style="height: 150vh; background-color: #f9f9f9; margin-top: 0;">
     <div class="card p-4 shadow" style="width: 350px;">
-        <h2 class="text-center mb-4" style="color: #ff1f11;">Créer compte</h2>
+        <h2 class="text-center mb-4" style="color: #FF1F11;">Créer compte</h2>
         <form>
             <div class="mb-3">
                 <label for="prenom" class="form-label">Prénom</label>
@@ -79,7 +124,7 @@
                 <label for="confirm-password" class="form-label">Confirmez votre mot de passe</label>
                 <input type="password" class="form-control" id="confirm-password" placeholder="Ressaisir votre mot de passe" required>
             </div>
-            <button type="submit" class="btn btn-danger w-100">Créer Compte</button>
+            <button type="submit" class="btn btn-danger w-100" style="background-color: #FF1F11;">Créer Compte</button>
             <div class="mt-3 text-center">
                 <a href="monCompte.html" class="text-muted" style="font-size: 14px;">Se connecter</a>
             </div>
