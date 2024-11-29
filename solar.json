@@ -1,0 +1,40 @@
+{
+  "solar": {
+    "0": {
+      "currentPower": {
+        "power": 1940.4827
+      },
+      "lastDayData": {
+        "energy": 2640
+      },
+      "lastMonthData": {
+        "energy": 279438
+      },
+      "lastYearData": {
+        "energy": 2914310
+      },
+      "lifeTimeData": {
+        "energy": 3395340
+      },
+      "lastUpdateTime": "2024-11-29 11:30:39"
+    },
+    "1": {
+      "currentPower": {
+        "power": 1940.4827
+      },
+      "lastDayData": {
+        "energy": 2640
+      },
+      "lastMonthData": {
+        "energy": 279438
+      },
+      "lastYearData": {
+        "energy": 2914310
+      },
+      "lifeTimeData": {
+        "energy": 3395340
+      },
+      "lastUpdateTime": "2024-11-29 11:30:39"
+    }
+  }
+}

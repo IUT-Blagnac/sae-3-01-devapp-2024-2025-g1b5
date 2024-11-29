@@ -114,7 +114,7 @@ def save_data_to_file_salles(room, donnees):
 
 # Sauvegarder les données des panneaux solaires
 def save_data_to_file_solar(room, solar_data):
-    file_name = f"{room}.json"
+    file_name = os.path.join("Iot", "solar.json")  # Inclure le répertoire Iot
 
     # Si le fichier existe déjà, on charge les données existantes
     if os.path.exists(file_name):
@@ -149,7 +149,7 @@ def update_trigger_flag(room, alarm_data):
     :param room: Nom de la salle (source des données)
     :param alarm_data: Dictionnaire contenant les détails de la dernière alarme
     """
-    file_name = "trigger.flag"
+    file_name = "Iot/trigger.flag"
 
     # Créer une structure minimale pour contenir uniquement la dernière alarme
     trigger_data = {
@@ -230,7 +230,7 @@ def save_alarm_to_file(room, alarm_data):
     :param room: Nom de la salle ou source des données
     :param alarm_data: Dictionnaire contenant les détails de l'alarme
     """
-    file_name = "alarmes.json"
+    file_name = "Iot/alarmes.json"
 
     # Charger les données existantes si le fichier existe
     if os.path.exists(file_name):
