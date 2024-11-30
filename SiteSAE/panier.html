@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil Lutin & Co.</title>
+    <link rel="stylesheet" href="style1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+    <div class="header">
+        <a href="index.html"><img src="images/logo-entreprise.png" alt="Logo"></a> 
+
+        <div class="search-bar">
+            <input type="text" placeholder="Recherche...">
+            <img src="images/loupe.png" alt="Search"> 
+        </div>
+        
+        <div class="icons">
+            <img src="images/coeur.jpg" alt="Favoris"> 
+            <img src="images/cart.jpg" alt="Cart">
+            <a href="connexionCompte.html"><img src="images/user.jpg" alt="User"></a>
+            <div class="langue">
+                <span>Langue :</span>
+                <img src="images/france.png" alt="Langue"> 
+            </div>
+        </div>
+    </div>
+    
+    <section class="menu">
+
+        <div class="menu-age">
+            <button class="deroulant">Âge</button> 
+            <div class="liste-deroulant">
+                <a href="#">3 ans et +</a>
+                <a href="#">5 ans et +</a>
+                <a href="#">7 ans et +</a>
+                <a href="#">10 ans et +</a>
+            </div> 
+        </div>
+
+        <div class="menu-taille">
+            <button class="deroulant">Taille</button> 
+            <div class="liste-deroulant">
+                <a href="#">-</a>
+            </div>
+        </div>
+
+        <div class="menu-type">
+            <button class="deroulant">Type</button> 
+            <div class="liste-deroulant">
+                <a href="#">Educatif</a>
+                <a href="#">Scientifique</a>
+                <a href="#">Decouverte</a>
+                <a href="#">Figurines</a>
+                <a href="#">Exterieur</a>
+                <a href="#">Musicale</a>
+                <a href="#">Construction</a>
+                <a href="#">Eveil</a>
+                <a href="#">Guerre</a>
+            </div>
+        </div>
+
+        <div class="menu-promo">
+            <button class="deroulant">Promotions</button> 
+        </div>
+
+        <div class="menu-meilleur-ventes">
+            <button class="deroulant">Nos meilleures ventes</button> 
+        </div>
+
+    </section> 
+
+</header>
+
+
+<section class="panier">
+
+
+    <div class="votre-panier">
+        <h1>Votre Panier</h1>
+
+        <div class="produit-panier">
+            <img src="images/kit-batteries-enfant.png" alt="Image kit de batteries pour enfant"  >
+
+            <div class="info-produit-panier">
+                <p>Kit batteries pour enfant grosse caisse + tambours + cymbale</p>
+                <div class="prix">
+                    <p>39,99 €</p>
+                    <button type="button" class="delete-btn" onclick="">Supprimer</button>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="produit-panier">
+            <img src="images/pistolet-enfant-16-flechettes.png" alt="Image pistolet enfant"  >
+
+            <div class="info-produit-panier">
+                <p>Pistolet enfant + 16 fléchettes en mousses</p>
+                <div class="prix">
+                    <p>34,99 €</p>
+                    <button type="button" class="delete-btn" onclick="">Supprimer</button>
+                </div>                
+            </div>
+            
+        </div>
+
+
+    </div>
+
+
+
+
+    <div class="recapitulatif">
+        <h1>Récapitulatif</h1>
+
+        <div class="recap-panier">
+            <div class="code-promo">
+                <label for="code-promo">Code Promo :</label>
+                <input type="text" class="promo" placeholder="Ecrivez le ici ...">
+            </div>
+        </div>
+
+        <div class="recap-panier">
+            <p>Produits (2) </p>
+            <p>Sous-Total : 74,98 €</p>
+        </div>
+
+        <button type="button" class="valider-panier" onclick="">Valider mon Panier</button>
+       
+
+    </div>
+
+</section>
+
+
+
+
+<footer>
+    <div class="footer-contenu">
+        <div class="footer-column">
+            <h3>À propos de Lutin & Co.</h3>
+            <p>Qui sommes nous ?</p>
+            <p>Nos objectifs</p>
+            <p>Programme de fidélité</p>
+        </div>
+    
+        <div class="footer-column">
+            <h3>Aide et FAQ</h3>
+            <p>Centre d’aide</p>
+            <p>Un problème sur la livraison</p>
+            <p>FAQ générale</p>
+            <p>Nous contacter</p>
+        </div>
+        <div class="footer-column">
+            <h3>Informations légales</h3>
+            <p>Conditions générales de vente</p>
+            <p>Mentions légales</p>
+            <p>Politique de cookies</p>
+            <p>Gestion des cookies</p>
+            <p>Politique de confidentialité</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2024 Lutin & Co.</p>
+    </div>
+</footer>
+
+</body>
+</html>
