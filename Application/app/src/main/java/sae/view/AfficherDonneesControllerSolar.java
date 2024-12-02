@@ -33,6 +33,9 @@ public class AfficherDonneesControllerSolar {
     @FXML
     private GridPane gridDynamique;
 
+    @FXML
+    private Button afficherGraph;
+
     private JSONObject solarData; // Champ pour stocker les données JSON
 
     private List<String> selectedChoices = new ArrayList<>(); // Déclaration de selectedChoices

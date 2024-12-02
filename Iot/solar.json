@@ -980,6 +980,33 @@
         "energy": 3427013
       },
       "lastUpdateTime": "2024-12-02 10:50:33"
+    },
+    "56": {
+      "currentPower": {
+        "power": 252.87508
+      },
+      "lastDayData": {
+        "energy": 1400
+      },
+      "lastMonthData": {
+        "energy": 12247
+      },
+      "lastYearData": {
+        "energy": 2946653
+      },
+      "lifeTimeData": {
+        "energy": 3427683
+      },
+      "lastUpdateTime": "2024-12-02 13:48:31"
+    },
+    "57": {
+      "lastYearData": {
+        "energy": 2946653
+      },
+      "lifeTimeData": {
+        "energy": 3427683
+      },
+      "lastUpdateTime": "2024-12-02 13:48:31"
     }
   }
 }
