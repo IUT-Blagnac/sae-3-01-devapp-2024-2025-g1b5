@@ -36,6 +36,7 @@ public class App extends Application {
     private boolean isAlarmListenerActive = true;  // Variable de contrôle pour le thread des alarmes
 
     
+    
 
     @Override
     public void start(Stage primaryStage) {
@@ -211,6 +212,7 @@ public class App extends Application {
         }
     }
     
+
     public void loadDonnees( String numSalle, ArrayList<String> donneesChoisies){
       try {
             FXMLLoader loader = new FXMLLoader();
