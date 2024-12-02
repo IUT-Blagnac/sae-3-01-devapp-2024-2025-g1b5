@@ -728,6 +728,258 @@
         "energy": 3426916
       },
       "lastUpdateTime": "2024-12-02 10:50:33"
+    },
+    "42": {
+      "currentPower": {
+        "power": 381.58496
+      },
+      "lastDayData": {
+        "energy": 665
+      },
+      "lastMonthData": {
+        "energy": 11512
+      },
+      "lastYearData": {
+        "energy": 2945918
+      },
+      "lifeTimeData": {
+        "energy": 3426948
+      },
+      "lastUpdateTime": "2024-12-02 10:50:33"
+    },
+    "43": {
+      "currentPower": {
+        "power": 381.58496
+      },
+      "lastDayData": {
+        "energy": 665
+      },
+      "lastMonthData": {
+        "energy": 11512
+      },
+      "lastYearData": {
+        "energy": 2945918
+      },
+      "lifeTimeData": {
+        "energy": 3426948
+      },
+      "lastUpdateTime": "2024-12-02 10:50:33"
+    },
+    "44": {
+      "currentPower": {
+        "power": 381.58496
+      },
+      "lastDayData": {
+        "energy": 665
+      },
+      "lastMonthData": {
+        "energy": 11512
+      },
+      "lastYearData": {
+        "energy": 2945918
+      },
+      "lifeTimeData": {
+        "energy": 3426948
+      },
+      "lastUpdateTime": "2024-12-02 10:50:33"
+    },
+    "45": {
+      "currentPower": {
+        "power": 332.28693
+      },
+      "lastDayData": {
+        "energy": 696
+      },
+      "lastMonthData": {
+        "energy": 11543
+      },
+      "lastYearData": {
+        "energy": 2945949
+      },
+      "lifeTimeData": {
+        "energy": 3426979
+      },
+      "lastUpdateTime": "2024-12-02 10:50:33"
+    },
+    "46": {
+      "currentPower": {
+        "power": 332.28693
+      },
+      "lastDayData": {
+        "energy": 696
+      },
+      "lastMonthData": {
+        "energy": 11543
+      },
+      "lastYearData": {
+        "energy": 2945949
+      },
+      "lifeTimeData": {
+        "energy": 3426979
+      },
+      "lastUpdateTime": "2024-12-02 10:50:33"
+    },
+    "47": {
+      "currentPower": {
+        "power": 332.28693
+      },
+      "lastDayData": {
+        "energy": 696
+      },
+      "lastMonthData": {
+        "energy": 11543
+      },
+      "lastYearData": {
+        "energy": 2945949
+      },
+      "lifeTimeData": {
+        "energy": 3426979
+      },
+      "lastUpdateTime": "2024-12-02 10:50:33"
+    },
+    "48": {
+      "currentPower": {
+        "power": 332.28693
+      },
+      "lastDayData": {
+        "energy": 696
+      },
+      "lastMonthData": {
+        "energy": 11543
+      },
+      "lastYearData": {
+        "energy": 2945949
+      },
+      "lifeTimeData": {
+        "energy": 3426979
+      },
+      "lastUpdateTime": "2024-12-02 10:50:33"
+    },
+    "49": {
+      "currentPower": {
+        "power": 332.28693
+      },
+      "lastDayData": {
+        "energy": 696
+      },
+      "lastMonthData": {
+        "energy": 11543
+      },
+      "lastYearData": {
+        "energy": 2945949
+      },
+      "lifeTimeData": {
+        "energy": 3426979
+      },
+      "lastUpdateTime": "2024-12-02 10:50:33"
+    },
+    "50": {
+      "currentPower": {
+        "power": 332.28693
+      },
+      "lastDayData": {
+        "energy": 696
+      },
+      "lastMonthData": {
+        "energy": 11543
+      },
+      "lastYearData": {
+        "energy": 2945949
+      },
+      "lifeTimeData": {
+        "energy": 3426979
+      },
+      "lastUpdateTime": "2024-12-02 10:50:33"
+    },
+    "51": {
+      "currentPower": {
+        "power": 332.28693
+      },
+      "lastDayData": {
+        "energy": 696
+      },
+      "lastMonthData": {
+        "energy": 11543
+      },
+      "lastYearData": {
+        "energy": 2945949
+      },
+      "lifeTimeData": {
+        "energy": 3426979
+      },
+      "lastUpdateTime": "2024-12-02 10:50:33"
+    },
+    "52": {
+      "currentPower": {
+        "power": 332.28693
+      },
+      "lastDayData": {
+        "energy": 696
+      },
+      "lastMonthData": {
+        "energy": 11543
+      },
+      "lastYearData": {
+        "energy": 2945949
+      },
+      "lifeTimeData": {
+        "energy": 3426979
+      },
+      "lastUpdateTime": "2024-12-02 10:50:33"
+    },
+    "53": {
+      "currentPower": {
+        "power": 332.28693
+      },
+      "lastDayData": {
+        "energy": 696
+      },
+      "lastMonthData": {
+        "energy": 11543
+      },
+      "lastYearData": {
+        "energy": 2945949
+      },
+      "lifeTimeData": {
+        "energy": 3426979
+      },
+      "lastUpdateTime": "2024-12-02 10:50:33"
+    },
+    "54": {
+      "currentPower": {
+        "power": 332.28693
+      },
+      "lastDayData": {
+        "energy": 696
+      },
+      "lastMonthData": {
+        "energy": 11543
+      },
+      "lastYearData": {
+        "energy": 2945949
+      },
+      "lifeTimeData": {
+        "energy": 3426979
+      },
+      "lastUpdateTime": "2024-12-02 10:50:33"
+    },
+    "55": {
+      "currentPower": {
+        "power": 437.90674
+      },
+      "lastDayData": {
+        "energy": 730
+      },
+      "lastMonthData": {
+        "energy": 11577
+      },
+      "lastYearData": {
+        "energy": 2945983
+      },
+      "lifeTimeData": {
+        "energy": 3427013
+      },
+      "lastUpdateTime": "2024-12-02 10:50:33"
     }
   }
 }
