@@ -10,7 +10,9 @@ import java.io.IOException;
 
 public class MenuController {
 
+    @SuppressWarnings("unused")
     private Stage fenetrePrincipale;
+    @SuppressWarnings("unused")
     private Process pythonProcess;
 
     @FXML

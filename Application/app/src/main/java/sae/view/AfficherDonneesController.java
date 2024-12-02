@@ -67,7 +67,6 @@ public class AfficherDonneesController {
     JSONParser parser = new JSONParser();
 
     try {
-      // Lire le fichier JSON
       URL resource = getClass().getClassLoader().getResource("Iot/salles.json");
 
       if (resource == null) {
