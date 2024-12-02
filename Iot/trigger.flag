@@ -1,9 +1,9 @@
 {
-  "room": "B111",
+  "room": "B113",
   "alarm": {
-    "key": "humidity",
-    "value": 44.5,
-    "alarm_type": "MIN",
-    "timestamp": "2024-11-29 14:02:51"
+    "key": "co2",
+    "value": 1885.0,
+    "alarm_type": "MAX",
+    "timestamp": "2024-12-02 10:53:53"
   }
 }
