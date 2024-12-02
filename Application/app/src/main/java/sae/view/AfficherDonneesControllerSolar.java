@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -96,21 +98,58 @@ public class AfficherDonneesControllerSolar {
             return;
         }
 
-        // Parcourir les entrées de "solar"
-        int rowIndex = 0; // Pour suivre les lignes dans la grille
+        // Titre des colonnes
+        Label titreCle = new Label("Clé");
+        Label titreAttribut = new Label("Attribut");
+        Label titreValeur = new Label("Valeur");
+        gridDynamique.add(titreCle, 0, 0);
+        gridDynamique.add(titreAttribut, 1, 0);
+        gridDynamique.add(titreValeur, 2, 0);
+        
+        // Mettre en valeur les titres
+        titreCle.setStyle("-fx-font-weight: bold;");
+        titreAttribut.setStyle("-fx-font-weight: bold;");
+        titreValeur.setStyle("-fx-font-weight: bold;");
+        
+        int rowIndex = 1; // Commence après la ligne des titres
+
+        // Utilisation d'un Set pour éviter d'afficher les clés en double
+        Set<String> displayedKeys = new HashSet<>();
+        
         for (Object key : solar.keySet()) {
+            // Si la clé a déjà été affichée, on la saute
+            if (displayedKeys.contains(key.toString())) {
+                continue;
+            }
+
             JSONObject solarEntry = (JSONObject) solar.get(key);
+            gridDynamique.add(new Label(key.toString()), 0, rowIndex);
+            displayedKeys.add(key.toString());  // Ajouter la clé au Set pour éviter les doublons
 
-            // Ajouter une étiquette pour chaque entrée principale
-            gridDynamique.add(new Label("Données pour la clé : " + key), 0, rowIndex++);
-
-            // Afficher les attributs sélectionnés
+            // Ajouter les attributs sélectionnés
             for (String attribut : attributsSelectionnes) {
                 Object value = solarEntry.get(attribut); // Récupérer la valeur de l'attribut
-                String texte = attribut + " : " + (value != null ? value.toString() : "Non disponible");
-                gridDynamique.add(new Label(texte), 0, rowIndex++);
+                String texte = attribut + " : " + (value != null ? formatValue(value) : "Non disponible");
+
+                // Mettre les données dans des colonnes séparées
+                gridDynamique.add(new Label(attribut), 1, rowIndex);
+                gridDynamique.add(new Label(texte), 2, rowIndex++);
             }
+
+            // Ajouter un espace après chaque entrée de clé pour un meilleur espacement visuel
+            gridDynamique.add(new Label(" "), 0, rowIndex++);  // Espacement entre les clés
         }
+    }
+
+    /**
+     * Formate la valeur pour éviter d'afficher les accolades des objets JSON
+     */
+    private String formatValue(Object value) {
+        if (value instanceof JSONObject) {
+            // Convertir l'objet JSON en chaîne de caractères sans accolades
+            return value.toString().replaceAll("[{}]", "").trim();
+        }
+        return value != null ? value.toString() : "Non disponible";
     }
 
     /**
