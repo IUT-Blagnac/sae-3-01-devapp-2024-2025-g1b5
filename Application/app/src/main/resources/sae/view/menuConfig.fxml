@@ -21,16 +21,18 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Label text="Configurer les données que vous souhaitez enregistrer" GridPane.columnIndex="1" />
             <Button fx:id="butSolarConfig" mnemonicParsing="false" onAction="#actionSolarConfig" prefHeight="25.0" prefWidth="320.0" text="Config Solar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Button fx:id="butSallesConfig" mnemonicParsing="false" onAction="#actionSallesConfig" prefHeight="25.0" prefWidth="331.0" text="Config Salles" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Button fx:id="butRetour" alignment="CENTER" mnemonicParsing="false" onAction="#actionRetour" text="Retour" GridPane.rowIndex="3">
+            <Button fx:id="butRetour" alignment="CENTER" mnemonicParsing="false" onAction="#actionRetour" text="Retour" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets left="30.0" />
                </GridPane.margin>
             </Button>
+            <Button fx:id="butConfigFreq" mnemonicParsing="false" onAction="#actionFreqConfig" prefHeight="25.0" prefWidth="332.0" text="Config Fréquence" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>
    </center>

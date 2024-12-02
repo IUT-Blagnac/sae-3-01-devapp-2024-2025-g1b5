@@ -17,6 +17,7 @@ import sae.view.AfficherDonneesControllerSolar;
 import sae.view.AppState;
 import sae.view.AfficherDonneesController;
 import sae.view.ConfigController;
+import sae.view.FreqConfigController;
 import sae.view.MenuController;
 import sae.view.ParametrageChoixSalles;
 import sae.view.ParametrageSolar;
@@ -88,6 +89,23 @@ public class App extends Application {
 
         } catch (IOException e) {
             System.out.println("Ressource FXML non disponible : sallesConfig.fxml");
+            System.exit(1);
+        }
+    }
+
+    public void loadFreqConfig() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(App.class.getResource("view/freqConfig.fxml"));
+            BorderPane vueListe = loader.load();
+
+            FreqConfigController configFreq = loader.getController();
+            configFreq.setDatas(stage, this);
+            
+            this.rootPane.setCenter(vueListe);
+
+        } catch (IOException e) {
+            System.out.println("Ressource FXML non disponible : freqConfig.fxml");
             System.exit(1);
         }
     }
