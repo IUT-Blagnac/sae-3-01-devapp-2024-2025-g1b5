@@ -35,10 +35,8 @@ public class App extends Application {
     private Process pythonProcess;
     private boolean isAlarmListenerActive = true;  // Variable de contrôle pour le thread des alarmes
 
-
-    // Partager des données entre controllers
-    private String numSalle;
-    private ArrayList<String> donneesChoisies = new ArrayList<>();
+    
+    
 
     @Override
     public void start(Stage primaryStage) {
@@ -61,6 +59,69 @@ public class App extends Application {
             stopPythonProcess();  // Arrêter le processus Python
             System.exit(0);  // Fermer l'application
         });
+    }
+    public void loadParametrageSolar() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(App.class.getResource("view/solar.fxml"));
+            BorderPane vueListe = loader.load();
+
+            ParametrageSolar choixSolar = loader.getController();
+            choixSolar.setDatas(stage, this);
+
+            this.rootPane.setCenter(vueListe);
+        } catch (IOException e) {
+            System.out.println("Ressource FXML non disponible : solar.fxml");
+            System.exit(1);
+        }
+    }
+    public void loadSallesConfig() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(App.class.getResource("view/sallesConfig.fxml"));
+            BorderPane vueListe = loader.load();
+
+            SallesConfigController configSalles = loader.getController();
+            configSalles.setDatas(stage, this);
+            
+            this.rootPane.setCenter(vueListe);
+
+        } catch (IOException e) {
+            System.out.println("Ressource FXML non disponible : sallesConfig.fxml");
+            System.exit(1);
+        }
+    }
+
+    public void loadSolarConfig() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(App.class.getResource("view/solarConfig.fxml"));
+            BorderPane vueListe = loader.load();
+
+            SolarConfigController configSolar = loader.getController();
+            configSolar.setDatas(stage, this);
+
+            this.rootPane.setCenter(vueListe);
+        } catch (IOException e) {
+            System.out.println("Ressource FXML non disponible : solarConfig.fxml");
+            System.exit(1);
+        }
+    }
+
+    public void loadMenuConfig() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(App.class.getResource("view/menuConfig.fxml"));
+            BorderPane vueListe = loader.load();
+
+            ConfigController config = loader.getController();
+            config.setDatas(stage, this);
+
+            this.rootPane.setCenter(vueListe);
+        } catch (IOException e) {
+            System.out.println("Ressource FXML non disponible : menuConfig.fxml");
+            System.exit(1);
+        }
     }
 
     
@@ -141,10 +202,7 @@ public class App extends Application {
 
             ParametrageChoixSalles choixSalles = loader.getController();
             choixSalles.setDatas(stage, this);
-
-            this.numSalle = choixSalles.getSalle();
-            this.donneesChoisies = choixSalles.getTabDonnee();
-
+            
             choixSalles.loadMenuDeroulantDonnees(listTypeDonnee);
 
             this.rootPane.setCenter(vueListe);
@@ -153,73 +211,10 @@ public class App extends Application {
             System.exit(1);
         }
     }
+    
 
-    public void loadParametrageSolar() {
-        try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(App.class.getResource("view/solar.fxml"));
-            BorderPane vueListe = loader.load();
-
-            ParametrageSolar choixSolar = loader.getController();
-            choixSolar.setDatas(stage, this);
-
-            this.rootPane.setCenter(vueListe);
-        } catch (IOException e) {
-            System.out.println("Ressource FXML non disponible : solar.fxml");
-            System.exit(1);
-        }
-    }
-    public void loadSallesConfig() {
-        try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(App.class.getResource("view/sallesConfig.fxml"));
-            BorderPane vueListe = loader.load();
-
-            SallesConfigController configSalles = loader.getController();
-            configSalles.setDatas(stage, this);
-            
-            this.rootPane.setCenter(vueListe);
-
-        } catch (IOException e) {
-            System.out.println("Ressource FXML non disponible : sallesConfig.fxml");
-            System.exit(1);
-        }
-    }
-
-    public void loadSolarConfig() {
-        try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(App.class.getResource("view/solarConfig.fxml"));
-            BorderPane vueListe = loader.load();
-
-            SolarConfigController configSolar = loader.getController();
-            configSolar.setDatas(stage, this);
-
-            this.rootPane.setCenter(vueListe);
-        } catch (IOException e) {
-            System.out.println("Ressource FXML non disponible : solarConfig.fxml");
-            System.exit(1);
-        }
-    }
-
-    public void loadMenuConfig() {
-        try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(App.class.getResource("view/menuConfig.fxml"));
-            BorderPane vueListe = loader.load();
-
-            ConfigController config = loader.getController();
-            config.setDatas(stage, this);
-
-            this.rootPane.setCenter(vueListe);
-        } catch (IOException e) {
-            System.out.println("Ressource FXML non disponible : menuConfig.fxml");
-            System.exit(1);
-        }
-    }
-
-    public void loadDonnees() {
-        try {
+    public void loadDonnees( String numSalle, ArrayList<String> donneesChoisies){
+      try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(App.class.getResource("view/donnee.fxml"));
 
@@ -228,7 +223,7 @@ public class App extends Application {
             AfficherDonneesController affichage = loader.getController();
 
             affichage.setDatas(stage, this);
-            affichage.setSalle(this.numSalle);
+            affichage.setSalle(numSalle);
             affichage.setTab(donneesChoisies);
 
             affichage.afficherDonnees();

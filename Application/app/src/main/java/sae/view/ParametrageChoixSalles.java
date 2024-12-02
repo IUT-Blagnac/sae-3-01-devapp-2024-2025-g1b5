@@ -42,7 +42,7 @@ public class ParametrageChoixSalles {
     @FXML
     private MenuButton choixTypeDonnees;
     
-    private String numSalle = "" ;
+    private String numSalle = "kwadjanib" ;
 
     private App application;
 
@@ -120,7 +120,7 @@ public class ParametrageChoixSalles {
     private void actionValider() {
 		  donneeChoisies();
       if (!choices.isEmpty())
-        application.loadDonnees();
+        application.loadDonnees( this.getSalle() , this.getTabDonnee() );
       else System.out.println("Selectionner des données ! ");
 	  }
 
@@ -172,8 +172,10 @@ public class ParametrageChoixSalles {
   private void validateComponentState() {
     this.butValider.setDisable(true);
     int selectedIndice = this.lvSalles.getSelectionModel().getSelectedIndex();
-    if (selectedIndice >= 0) {
+    if (selectedIndice >= 0  ) {
       this.butValider.setDisable(false);
+      this.numSalle=this.lvSalles.getSelectionModel().getSelectedItem().toString();
+      System.out.println(numSalle);
     }
 
   }
