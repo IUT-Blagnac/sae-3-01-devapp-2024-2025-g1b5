@@ -32,6 +32,9 @@ public class App extends Application {
 
     private BorderPane rootPane;
     private Stage stage;
+    private Process pythonProcess;
+    private boolean isAlarmListenerActive = true;  // Variable de contrôle pour le thread des alarmes
+
     
 
     @Override
