@@ -437,6 +437,11 @@
    "temperature": 20.3,
    "humidity": 48.5,
    "co2": 735
+  },
+  "9": {
+   "temperature": 20.3,
+   "humidity": 50,
+   "co2": 832
   }
  },
  "C002": {
@@ -484,6 +489,11 @@
    "temperature": 20.6,
    "humidity": 50.5,
    "co2": 902
+  },
+  "9": {
+   "temperature": 20.9,
+   "humidity": 52,
+   "co2": 834
   }
  },
  "B112": {
@@ -531,6 +541,11 @@
    "temperature": 19.7,
    "humidity": 51.5,
    "co2": 576
+  },
+  "9": {
+   "temperature": 19.5,
+   "humidity": 53.5,
+   "co2": 553
   }
  },
  "E001": {
@@ -563,6 +578,11 @@
    "temperature": 21.1,
    "humidity": 56.5,
    "co2": 1359
+  },
+  "6": {
+   "temperature": 20.2,
+   "humidity": 57,
+   "co2": 634
   }
  },
  "B108": {

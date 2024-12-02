@@ -417,6 +417,12 @@
    "value": 19.7,
    "alarm_type": "MIN",
    "timestamp": "2024-12-02 10:55:59"
+  },
+  "4": {
+   "key": "temperature",
+   "value": 19.5,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-02 13:55:59"
   }
  },
  "E001": {
