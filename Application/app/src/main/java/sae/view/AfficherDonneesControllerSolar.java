@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -20,6 +21,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import sae.App;
+import sae.view.AfficherGraphiqueControllerSolar;
 
 public class AfficherDonneesControllerSolar {
 
@@ -96,8 +98,8 @@ public class AfficherDonneesControllerSolar {
     /**
      * Affiche les données filtrées en fonction des attributs sélectionnés
      */
-    private void afficherDonneesFiltrees(JSONObject solarData, List<String> attributsSelectionnes) {
-        gridDynamique.getChildren().clear(); // Effacer le contenu précédent de la grille
+private void afficherDonneesFiltrees(JSONObject solarData, List<String> attributsSelectionnes) {
+    gridDynamique.getChildren().clear(); // Effacer le contenu précédent de la grille
 
         JSONObject solar = (JSONObject) solarData.get("solar");
         if (solar == null) {
@@ -163,6 +165,8 @@ public class AfficherDonneesControllerSolar {
         }
         return value != null ? value.toString() : "Non disponible";
     }
+    
+
 
     /**
      * Retour à la page précédente
