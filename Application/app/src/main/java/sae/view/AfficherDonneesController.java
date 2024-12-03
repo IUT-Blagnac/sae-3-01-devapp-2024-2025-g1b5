@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.net.URL;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Set;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -25,10 +26,15 @@ public class AfficherDonneesController {
   @FXML
   private Label titreSalle;
 
+  private String numSalle;
+
   @FXML
   private GridPane gridDynamique;
 
   private ArrayList<String> donnees = new ArrayList<>();
+
+  private JSONObject sallesData; // Champ pour stocker les données JSON
+
 
   public void setDatas(Stage fenetre, App app) {
     this.application = app;
@@ -37,6 +43,7 @@ public class AfficherDonneesController {
 
   public void setSalle(String salle) {
     this.titreSalle.setText(salle);
+    this.numSalle = salle;
   }
 
   public void setTab(ArrayList<String> list) {
@@ -46,7 +53,6 @@ public class AfficherDonneesController {
   @FXML
   private void actionAfficher() {
     System.out.println("A faire !");
-    // lecture();
     System.out.println(donnees);
     chargerFichierSalle();
   }
@@ -64,55 +70,51 @@ public class AfficherDonneesController {
 
   public void chargerFichierSalle() {
 
-    JSONParser parser = new JSONParser();
+     JSONParser parser = new JSONParser();
 
-    try {
-      URL resource = getClass().getClassLoader().getResource("Iot/salles.json");
+        try {
+            // Définir le chemin du fichier salles.json à la racine du projet
+            File file = new File("Iot/salles.json");
 
-      if (resource == null) {
-        System.out.println("Le fichier salles.json est introuvable.");
-        return;
-      }
+            if (!file.exists()) {
+                System.out.println("Le fichier salles.json est introuvable à la racine du projet.");
+                return;
+            }
 
-      FileReader reader = new FileReader(Paths.get(resource.toURI()).toFile());
-      JSONObject jsonObject = (JSONObject) parser.parse(reader);
+            // Lire et analyser le fichier JSON
+            FileReader reader = new FileReader(file);
+            JSONObject json = (JSONObject) parser.parse(reader);
 
-      // Test: Afficher le contenu du fichier JSON
-      System.out.println("Fichier chargé avec succès : ");
-      // System.out.println(jsonObject.toJSONString()); // Affiche le contenu du JSON
-      // en format lisible
+            // Stocker les données dans le champ solarData
+            this.sallesData = json;
 
-      // Recherche de la salle B110
-      if (jsonObject.containsKey("E004")) {
-        JSONObject salleB110 = (JSONObject) jsonObject.get("E004");
-        System.out.println(salleB110.toJSONString());
-      } else {
-        System.out.println("La salle E004 n'existe pas dans le fichier JSON.");
-      }
+            System.out.println("Données extraites du fichier salles.json " + numSalle + " : ");
+            //System.out.println(json.toJSONString());
+            
 
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
+            if (json.containsKey(numSalle)) {
+              JSONObject salleChoisi = (JSONObject) json.get(numSalle);
+              System.out.println(salleChoisi.toJSONString());
 
-  }
+              // Récupérer toutes les valeurs pour cette clé spécifique
+              Set<String> allKeys = salleChoisi.keySet();
 
-  public void modifConfig() {
+              JSONObject dernierClé = (JSONObject) salleChoisi.get( (allKeys.size() - 1) + "" );
+              System.out.println( "Dernière clée de la salle : " + (allKeys.size() - 1));
+              System.out.println(dernierClé);
 
-  }
+            } else {
+              System.out.println("La salle " + numSalle + " n'existe pas dans le fichier JSON.");
+            }
 
-  public void lecture() {
+          
 
-    // Chemin relatif du fichier Python
-    String pythonScriptPath = "main2.py"; // Le fichier Python est dans le même dossier
+            reader.close();
 
-    // Créer un objet File avec le chemin relatif
-    File file = new File(pythonScriptPath);
-
-    // Vérifier si le fichier existe
-    if (file.exists())
-      System.out.println("Le fichier Python existe : " + pythonScriptPath);
-    else
-      System.out.println("nexiste pas");
+        } catch (Exception e) {
+            System.out.println("Erreur lors du chargement du fichier solar.json : " + e.getMessage());
+            e.printStackTrace();
+        }
 
   }
 
