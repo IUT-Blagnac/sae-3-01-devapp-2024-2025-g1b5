@@ -10,36 +10,105 @@
 <body>
 <header>
     <div class="header">
-        <img src="logo-entreprise.png" alt="Logo"> 
+        <a href="index.html"><img src="images/logo-entreprise.png" alt="Logo"></a> 
 
         <div class="search-bar">
             <input type="text" placeholder="Recherche...">
-            <img src="loupe.png" alt="Search"> 
+            <img src="images/loupe.png" alt="Search"> 
         </div>
         
         <div class="icons">
-            <img src="coeur.jpg" alt="Favoris"> 
-            <img src="cart.jpg" alt="Cart">
-            <img src="user.jpg" alt="User"> 
+            <img src="images/coeur.jpg" alt="Favoris"> 
+            <img src="images/cart.jpg" alt="Cart">
+            <a href="connexionCompte.html"><img src="images/user.jpg" alt="User"></a>
             <div class="langue">
                 <span>Langue :</span>
-                <img src="france.png" alt="Langue"> 
+                <img src="images/france.png" alt="Langue"> 
             </div>
         </div>
     </div>
     
-    <div class="menu">
-        <div>Âge</div>
-        <div>Taille</div>
-        <div>Type</div>
-        <div>Promotions</div>
-        <div>Nos meilleures ventes</div>
-    </div> 
+    <section class="menu">
+
+        <div class="menu-age">
+            <button class="deroulant">Âge</button> 
+            <div class="liste-deroulant">
+                <a href="#">3 ans et +</a>
+                <a href="#">5 ans et +</a>
+                <a href="#">7 ans et +</a>
+                <a href="#">10 ans et +</a>
+            </div> 
+        </div>
+
+        <div class="menu-taille">
+            <button class="deroulant">Taille</button> 
+            <div class="liste-deroulant">
+                <a href="#">-</a>
+            </div>
+        </div>
+
+        <div class="menu-type">
+            <button class="deroulant">Type</button> 
+            <div class="liste-deroulant">
+                <a href="#">Educatif</a>
+                <a href="#">Scientifique</a>
+                <a href="#">Decouverte</a>
+                <a href="#">Figurines</a>
+                <a href="#">Exterieur</a>
+                <a href="#">Musicale</a>
+                <a href="#">Construction</a>
+                <a href="#">Eveil</a>
+                <a href="#">Guerre</a>
+            </div>
+        </div>
+
+        <div class="menu-promo">
+            <button class="deroulant">Promotions</button> 
+        </div>
+
+        <div class="menu-meilleur-ventes">
+            <button class="deroulant">Nos meilleures ventes</button> 
+        </div>
+
+    </section> 
+
 </header>
 
-    <h1>Les nouveautés</h1>
-    <p>Retrouvez ici les derniers produits ajoutés à notre catalogue.</p>
-    <p>Ceci est un texte de test pour démontrer l'ajout de contenu.</p>
+
+    <div class="img-acceuil" >
+        <img src="images/guirlandes-accueil.png" alt="Image guirlandes page d'acceuil" >
+    </div>
+
+    <section class="produits-accueil">
+
+        <div>
+            <a href="descriptionProduit.html" > <img src="images/circuit-a-bille-138-pieces.png" alt="Image circuit de bille"  > </a>
+            <p>Circuit à bille 138 pièces + 30 billes</p>
+            <div class="prix">
+                <p>49,99 €</p>
+            </div>
+            <button type="button" class="button" onclick="">Ajouter au panier</button>
+        </div>
+
+        <div>
+            <img src="images/kit-batteries-enfant.png" alt="Image kit de batteries pour enfant" width="70%" >
+            <p>Kit batteries pour enfant grosse caisse + tambours + cymbale</p>
+            <div class="prix">
+                <p>39,99 €</p>
+            </div>
+            <button type="button" class="button" onclick="">Ajouter au panier</button>
+        </div>
+            
+        <div>
+            <img src="images/pistolet-enfant-16-flechettes.png" alt="Image pistolet enfant" width="120%" >
+            <p>Pistolet enfant + 16 fléchettes en mousses</p>
+            <div class="prix">
+                <p>34,99 €</p>
+            </div>
+            <button type="button" class="button" onclick="">Ajouter au panier</button>
+        </div>
+
+    </section>
 
 
 <footer>

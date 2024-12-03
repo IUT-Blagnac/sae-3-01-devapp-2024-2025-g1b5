@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil Lutin & Co.</title>
+    <link rel="stylesheet" href="style1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="header">
+            <a href="index.html"><img src="images/logo-entreprise.png" alt="Logo"></a> 
+    
+            <div class="search-bar">
+                <input type="text" placeholder="Recherche...">
+                <img src="images/loupe.png" alt="Search"> 
+            </div>
+            
+            <div class="icons">
+                <img src="images/coeur.jpg" alt="Favoris"> 
+                <img src="images/cart.jpg" alt="Cart">
+                <a href="detailCompte.html"><img src="images/user.jpg" alt="User"></a>
+                <div class="langue">
+                    <span>Langue :</span>
+                    <img src="images/france.png" alt="Langue"> 
+                </div>
+            </div>
+        </div>
+        
+        <section class="menu">
+
+            <div class="menu-age">
+                <button class="deroulant">Âge</button> 
+                <div class="liste-deroulant">
+                    <a href="#">3 ans et +</a>
+                    <a href="#">5 ans et +</a>
+                    <a href="#">7 ans et +</a>
+                    <a href="#">10 ans et +</a>
+                </div> 
+            </div>
+    
+            <div class="menu-taille">
+                <button class="deroulant">Taille</button> 
+                <div class="liste-deroulant">
+                    <a href="#">-</a>
+                </div>
+            </div>
+    
+            <div class="menu-type">
+                <button class="deroulant">Type</button> 
+                <div class="liste-deroulant">
+                    <a href="#">Educatif</a>
+                    <a href="#">Scientifique</a>
+                    <a href="#">Decouverte</a>
+                    <a href="#">Figurines</a>
+                    <a href="#">Exterieur</a>
+                    <a href="#">Musicale</a>
+                    <a href="#">Construction</a>
+                    <a href="#">Eveil</a>
+                    <a href="#">Guerre</a>
+                </div>
+            </div>
+    
+            <div class="menu-promo">
+                <button class="deroulant">Promotions</button> 
+            </div>
+    
+            <div class="menu-meilleur-ventes">
+                <button class="deroulant">Nos meilleures ventes</button> 
+            </div>
+    
+        </section> 
+         
+    </header>
+
+    <main class="d-flex justify-content-center align-items-center" style="height: 80vh; background-color: #f9f9f9;">
+        <div class="card p-4 shadow" style="width: 350px;">
+            <h2 class="text-center mb-4" style="color: #FF1F11;">Connexion</h2>
+            <form>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Adresse e-mail</label>
+                    <input type="email" class="form-control" id="email" placeholder="Entrez votre email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Mot de passe</label>
+                    <input type="password" class="form-control" id="password" placeholder="Entrez votre mot de passe" required>
+                </div>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="remember">
+                    <label class="form-check-label" for="remember">Se souvenir de moi</label>
+                </div>
+                <a href="detailCompte.html"><button type="submit" class="btn btn-danger w-100" style="background-color: #FF1F11;">Se connecter</button></a>
+                <div class="mt-3 text-center">
+                    <a href="nouveauCompte.html" class="text-muted" style="font-size: 14px;">Créer un nouveau compte</a>
+                </div>
+            </form>
+        </div>
+    </main>
+
+
+
+
+    <footer>
+        <div class="footer-contenu">
+            <div class="footer-column">
+                <h3>À propos de Lutin & Co.</h3>
+                <p>Qui sommes nous ?</p>
+                <p>Nos objectifs</p>
+                <p>Programme de fidélité</p>
+            </div>
+        
+            <div class="footer-column">
+                <h3>Aide et FAQ</h3>
+                <p>Centre d’aide</p>
+                <p>Un problème sur la livraison</p>
+                <p>FAQ générale</p>
+                <p>Nous contacter</p>
+            </div>
+            <div class="footer-column">
+                <h3>Informations légales</h3>
+                <p>Conditions générales de vente</p>
+                <p>Mentions légales</p>
+                <p>Politique de cookies</p>
+                <p>Gestion des cookies</p>
+                <p>Politique de confidentialité</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Lutin & Co.</p>
+        </div>
+    </footer>
+</body>

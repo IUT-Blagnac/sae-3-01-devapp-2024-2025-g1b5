@@ -1,4 +1,4 @@
-= S3.A.01 - Développement appli
+= S3.A.01 - Développement appli (Sprint2)
 
 :icons: font
 :models: models
@@ -29,8 +29,8 @@ ifdef::env-github[]
 :icongit: Git
 endif::[]
 
-// /!\ A MODIFIER !!!
-:baseURL: https://github.com/IUT-Blagnac/sae3-01-template
+
+:baseURL: https://github.com/IUT-Blagnac/sae3-01-devapp-2024-2025-g1b5
 
 // Tags
 image:{baseURL}/actions/workflows/blank.yml/badge.svg[Bidon] 
@@ -64,7 +64,7 @@ Projet est réalisé par::
 
 ===  Tuteurs de l'équipe:
 
-- link:https://github.com/ependaries[Esther Pendaries]
+- link:https://github.com/jmbruel[Jean-Michel BRUEL]
 
 ===  Langages / Technologies utilisées
 
@@ -322,31 +322,16 @@ Un Sprint durera 2 semaines
 |  |link:https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b5/blob/master/GPO/ODJ_CR_Reunion/ODJ_SEM45.pdf[ODJ semaine 45] |link:https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b5/blob/master/GPO/ODJ_CR_Reunion/CR_SEM45.pdf[CR semaine 45]
 |  |link:https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b5/blob/master/GPO/ODJ_CR_Reunion/ODJ_SEM46.pdf[ODJ semaine 46] |link:https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b5/blob/master/GPO/ODJ_CR_Reunion/CR_SEM46.pdf[CR semaine 46]
 |  |link:https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b5/blob/master/GPO/ODJ_CR_Reunion/ODJ_SEM47.pdf[ODJ semaine 47] |link:https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b5/blob/master/GPO/ODJ_CR_Reunion/CR_SEM47.pdf[CR semaine 47]
+|Réunions sprint 2| link:https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b5/blob/master/GPO/ODJ_CR_Reunion/ODJ_SEM48.pdf[ODJ semaine 48] | link:https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b5/blob/master/GPO/ODJ_CR_Reunion/CR_SEM48.pdf[CR semaine 48]
 |===
 
-[cols="1,1"]
-|===
-|Sprint 2
-|
-|===
-
-[cols="1,1"]
-|===
-|Sprint 3
-|
-|===
-
-[cols="1,1"]
-|===
-|Sprint 4
-|
-|===
+==== Evaluation communication semaine 48 par EP
+Odj /CR évalués concernent la réunion de rétrospective de sprint de l'équipe, je ne l'ai pas pour la semaine 48!  J'ai évalué exceptionnellement semaine 47 à la plaçe. ODJ : Il manque qui va rédiger le compte rendu, qui est responsable de chaque rubrique (cf. exemple). CR : Il manque le plan avec les rubriques de l'ODJ, il manque le point réunion client, il manque l'analyse difficultés -réussites du sprint, il manque qui se charge de l'organisation de la prochaine réunion.
+note: 1,2/3
 
 
 
-
-
-Voici un exemple d'évaluation :
+=== Voici un exemple d'évaluation :
 
 ifdef::env-github[]
 image:https://docs.google.com/spreadsheets/d/e/2PACX-1vTc3HJJ9iSI4aa2I9a567wX1AUEmgGrQsPl7tHGSAJ_Z-lzWXwYhlhcVIhh5vCJxoxHXYKjSLetP6NS/pubchart?oid=1850914734&amp;format=image[link=https://docs.google.com/spreadsheets/d/e/2PACX-1vTc3HJJ9iSI4aa2I9a567wX1AUEmgGrQsPl7tHGSAJ_Z-lzWXwYhlhcVIhh5vCJxoxHXYKjSLetP6NS/pubchart?oid=1850914734&amp;format=image]

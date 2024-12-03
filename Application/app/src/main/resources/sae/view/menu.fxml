@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sae.view.MenuController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sae.view.MenuController">
    <center>
       <GridPane styleClass="Menu" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -19,14 +19,17 @@
         </columnConstraints>
         <rowConstraints>
           <RowConstraints maxHeight="129.0" minHeight="10.0" prefHeight="92.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="129.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="254.0" minHeight="10.0" prefHeight="231.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="96.0" minHeight="10.0" prefHeight="63.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="129.0" minHeight="10.0" prefHeight="92.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="229.0" minHeight="10.0" prefHeight="229.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="96.0" minHeight="10.0" prefHeight="63.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <GridPane alignment="CENTER" maxWidth="-Infinity" prefHeight="169.0" prefWidth="231.0" styleClass="Button" GridPane.columnIndex="1" GridPane.rowIndex="2">
               <columnConstraints>
                   <ColumnConstraints halignment="CENTER" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints />
+                  <ColumnConstraints />
+                  <ColumnConstraints />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -41,22 +44,18 @@
                         <Insets />
                      </GridPane.margin>
                   </Button>
+                  <Button fx:id="butSolar" mnemonicParsing="false" onAction="#actionBouttonSolar" prefHeight="25.0" prefWidth="100.0" text="Solar" GridPane.rowIndex="2" />
                   <Button fx:id="butSalles" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#actionBouttonSalles" text="Salles" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets />
                      </GridPane.margin>
                   </Button>
-                  <Button fx:id="butSolar" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Solar" GridPane.rowIndex="2">
+                  <Button fx:id="butAlarmes" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#actionBouttonAlarmes" text="Alarmes" GridPane.rowIndex="3">
                      <GridPane.margin>
                         <Insets />
                      </GridPane.margin>
                   </Button>
-                  <Button fx:id="butAlarmes" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Alarmes" GridPane.rowIndex="3">
-                     <GridPane.margin>
-                        <Insets />
-                     </GridPane.margin>
-                  </Button>
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Fréquence" GridPane.rowIndex="4" />
+                  <Button fx:id="butConfig" layoutX="76.0" layoutY="155.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#actionBouttonConfig" text="Config" GridPane.rowIndex="4" />
                </children>
                <GridPane.margin>
                   <Insets left="5.0" />
@@ -67,7 +66,6 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label fx:id="labelTestCo" styleClass="Connexion" text=" " GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>
    </center>
