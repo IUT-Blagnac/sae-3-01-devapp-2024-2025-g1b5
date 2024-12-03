@@ -62,6 +62,31 @@
    "temperature": 19.1,
    "humidity": 58.5,
    "co2": 1132
+  },
+  "13": {
+   "temperature": 19,
+   "humidity": 58,
+   "co2": 1053
+  },
+  "14": {
+   "temperature": 19,
+   "humidity": 58,
+   "co2": 1034
+  },
+  "15": {
+   "temperature": 19,
+   "humidity": 58,
+   "co2": 1034
+  },
+  "16": {
+   "temperature": 18.9,
+   "humidity": 58,
+   "co2": 1009
+  },
+  "17": {
+   "temperature": 18.9,
+   "humidity": 58,
+   "co2": 979
   }
  },
  "hall-amphi": {
@@ -132,6 +157,31 @@
    "temperature": 19.4,
    "humidity": 54,
    "co2": 719
+  },
+  "14": {
+   "temperature": 19.4,
+   "humidity": 54,
+   "co2": 708
+  },
+  "15": {
+   "temperature": 19.4,
+   "humidity": 53.5,
+   "co2": 695
+  },
+  "16": {
+   "temperature": 19.4,
+   "humidity": 53.5,
+   "co2": 695
+  },
+  "17": {
+   "temperature": 19.4,
+   "humidity": 54,
+   "co2": 734
+  },
+  "18": {
+   "temperature": 19.5,
+   "humidity": 55,
+   "co2": 915
   }
  },
  "E100": {
@@ -202,6 +252,31 @@
    "temperature": 24.6,
    "humidity": 38.5,
    "co2": 560
+  },
+  "14": {
+   "temperature": 25.1,
+   "humidity": 37.5,
+   "co2": 554
+  },
+  "15": {
+   "temperature": 25.2,
+   "humidity": 37,
+   "co2": 570
+  },
+  "16": {
+   "temperature": 25.2,
+   "humidity": 37,
+   "co2": 570
+  },
+  "17": {
+   "temperature": 24.2,
+   "humidity": 39,
+   "co2": 582
+  },
+  "18": {
+   "temperature": 25,
+   "humidity": 37.5,
+   "co2": 586
   }
  },
  "C004": {
@@ -255,6 +330,26 @@
    "temperature": 19.9,
    "humidity": 59.5,
    "co2": 1591
+  },
+  "9": {
+   "temperature": 19.6,
+   "humidity": 58,
+   "co2": 1405
+  },
+  "10": {
+   "temperature": 19.7,
+   "humidity": 58,
+   "co2": 1479
+  },
+  "11": {
+   "temperature": 19.7,
+   "humidity": 58.5,
+   "co2": 1565
+  },
+  "12": {
+   "temperature": 19.7,
+   "humidity": 58.5,
+   "co2": 1565
   }
  },
  "Local-velo": {
@@ -293,6 +388,26 @@
    "temperature": 11.7,
    "humidity": 87.5,
    "co2": 511
+  },
+  "6": {
+   "temperature": 12.4,
+   "humidity": 78.5,
+   "co2": 452
+  },
+  "7": {
+   "temperature": 12.2,
+   "humidity": 79,
+   "co2": 453
+  },
+  "8": {
+   "temperature": 12,
+   "humidity": 79.5,
+   "co2": 455
+  },
+  "9": {
+   "temperature": 12,
+   "humidity": 79.5,
+   "co2": 455
   }
  },
  "B202": {
@@ -351,6 +466,26 @@
    "temperature": 20.6,
    "humidity": 58.5,
    "co2": 2035
+  },
+  "10": {
+   "temperature": 21.6,
+   "humidity": 61,
+   "co2": 2188
+  },
+  "11": {
+   "temperature": 21.6,
+   "humidity": 61.5,
+   "co2": 2336
+  },
+  "12": {
+   "temperature": 21.7,
+   "humidity": 62,
+   "co2": 2460
+  },
+  "13": {
+   "temperature": 21.7,
+   "humidity": 62,
+   "co2": 2460
   }
  },
  "B002": {
@@ -388,6 +523,31 @@
    "temperature": 19.6,
    "humidity": 54.5,
    "co2": 2385
+  },
+  "7": {
+   "temperature": 19.4,
+   "humidity": 53.5,
+   "co2": 1841
+  },
+  "8": {
+   "temperature": 19.4,
+   "humidity": 53.5,
+   "co2": 1912
+  },
+  "9": {
+   "temperature": 19.4,
+   "humidity": 53.5,
+   "co2": 1912
+  },
+  "10": {
+   "temperature": 19.4,
+   "humidity": 53.5,
+   "co2": 1925
+  },
+  "11": {
+   "temperature": 19.4,
+   "humidity": 53.5,
+   "co2": 1925
   }
  },
  "Salle-conseil": {
@@ -435,6 +595,26 @@
    "temperature": 22.9,
    "humidity": 40,
    "co2": 595
+  },
+  "9": {
+   "temperature": 22.3,
+   "humidity": 45,
+   "co2": 611
+  },
+  "10": {
+   "temperature": 22.4,
+   "humidity": 45,
+   "co2": 611
+  },
+  "11": {
+   "temperature": 22.4,
+   "humidity": 45,
+   "co2": 613
+  },
+  "12": {
+   "temperature": 22.4,
+   "humidity": 45,
+   "co2": 613
   }
  },
  "B217": {
@@ -487,6 +667,26 @@
    "temperature": 20.3,
    "humidity": 50,
    "co2": 832
+  },
+  "10": {
+   "temperature": 20.7,
+   "humidity": 54,
+   "co2": 1166
+  },
+  "11": {
+   "temperature": 20.7,
+   "humidity": 54,
+   "co2": 1159
+  },
+  "12": {
+   "temperature": 20.6,
+   "humidity": 54,
+   "co2": 1154
+  },
+  "13": {
+   "temperature": 20.6,
+   "humidity": 54,
+   "co2": 1154
   }
  },
  "C002": {
@@ -539,6 +739,26 @@
    "temperature": 20.9,
    "humidity": 52,
    "co2": 834
+  },
+  "10": {
+   "temperature": 21.6,
+   "humidity": 50,
+   "co2": 1024
+  },
+  "11": {
+   "temperature": 21.6,
+   "humidity": 50,
+   "co2": 1029
+  },
+  "12": {
+   "temperature": 21.6,
+   "humidity": 50,
+   "co2": 1056
+  },
+  "13": {
+   "temperature": 21.6,
+   "humidity": 50,
+   "co2": 1056
   }
  },
  "B112": {
@@ -591,6 +811,26 @@
    "temperature": 19.5,
    "humidity": 53.5,
    "co2": 553
+  },
+  "10": {
+   "temperature": 20.3,
+   "humidity": 56,
+   "co2": 1530
+  },
+  "11": {
+   "temperature": 20.4,
+   "humidity": 55.5,
+   "co2": 1641
+  },
+  "12": {
+   "temperature": 20.5,
+   "humidity": 56,
+   "co2": 1745
+  },
+  "13": {
+   "temperature": 20.5,
+   "humidity": 56,
+   "co2": 1745
   }
  },
  "E001": {
@@ -628,6 +868,26 @@
    "temperature": 20.2,
    "humidity": 57,
    "co2": 634
+  },
+  "7": {
+   "temperature": 20,
+   "humidity": 49,
+   "co2": 448
+  },
+  "8": {
+   "temperature": 20,
+   "humidity": 48.5,
+   "co2": 442
+  },
+  "9": {
+   "temperature": 19.9,
+   "humidity": 48.5,
+   "co2": 439
+  },
+  "10": {
+   "temperature": 19.9,
+   "humidity": 48.5,
+   "co2": 439
   }
  },
  "B108": {
@@ -675,6 +935,26 @@
    "temperature": 20.1,
    "humidity": 54.5,
    "co2": 1672
+  },
+  "9": {
+   "temperature": 20.1,
+   "humidity": 57,
+   "co2": 1389
+  },
+  "10": {
+   "temperature": 20.1,
+   "humidity": 57,
+   "co2": 1383
+  },
+  "11": {
+   "temperature": 20,
+   "humidity": 57,
+   "co2": 1371
+  },
+  "12": {
+   "temperature": 20,
+   "humidity": 57,
+   "co2": 1371
   }
  },
  "C102": {
@@ -727,6 +1007,26 @@
    "temperature": 18.2,
    "humidity": 56,
    "co2": 575
+  },
+  "10": {
+   "temperature": 18.3,
+   "humidity": 56,
+   "co2": 572
+  },
+  "11": {
+   "temperature": 18.3,
+   "humidity": 56,
+   "co2": 569
+  },
+  "12": {
+   "temperature": 18.4,
+   "humidity": 56,
+   "co2": 610
+  },
+  "13": {
+   "temperature": 18.4,
+   "humidity": 56,
+   "co2": 610
   }
  },
  "E007": {
@@ -779,6 +1079,26 @@
    "temperature": 19.8,
    "humidity": 49,
    "co2": 460
+  },
+  "10": {
+   "temperature": 19.8,
+   "humidity": 48.5,
+   "co2": 440
+  },
+  "11": {
+   "temperature": 19.8,
+   "humidity": 48.5,
+   "co2": 439
+  },
+  "12": {
+   "temperature": 19.7,
+   "humidity": 48.5,
+   "co2": 438
+  },
+  "13": {
+   "temperature": 19.7,
+   "humidity": 48.5,
+   "co2": 438
   }
  },
  "E208": {
@@ -836,6 +1156,26 @@
    "temperature": 20.2,
    "humidity": 49,
    "co2": 621
+  },
+  "11": {
+   "temperature": 20.3,
+   "humidity": 50,
+   "co2": 742
+  },
+  "12": {
+   "temperature": 20.3,
+   "humidity": 50.5,
+   "co2": 768
+  },
+  "13": {
+   "temperature": 20.3,
+   "humidity": 50.5,
+   "co2": 784
+  },
+  "14": {
+   "temperature": 20.3,
+   "humidity": 50.5,
+   "co2": 784
   }
  },
  "B203": {
@@ -888,6 +1228,26 @@
    "temperature": 21.4,
    "humidity": 62,
    "co2": 2348
+  },
+  "10": {
+   "temperature": 21,
+   "humidity": 61,
+   "co2": 2042
+  },
+  "11": {
+   "temperature": 21,
+   "humidity": 60.5,
+   "co2": 1950
+  },
+  "12": {
+   "temperature": 20.9,
+   "humidity": 60,
+   "co2": 1884
+  },
+  "13": {
+   "temperature": 20.9,
+   "humidity": 60,
+   "co2": 1884
   }
  },
  "amphi1": {
@@ -945,6 +1305,26 @@
    "temperature": 21.4,
    "humidity": 49.5,
    "co2": 455
+  },
+  "11": {
+   "temperature": 21.4,
+   "humidity": 49,
+   "co2": 447
+  },
+  "12": {
+   "temperature": 21.4,
+   "humidity": 49,
+   "co2": 450
+  },
+  "13": {
+   "temperature": 21.5,
+   "humidity": 49,
+   "co2": 447
+  },
+  "14": {
+   "temperature": 21.5,
+   "humidity": 49,
+   "co2": 447
   }
  },
  "B103": {
@@ -1002,6 +1382,26 @@
    "temperature": 21.3,
    "humidity": 50,
    "co2": 2548
+  },
+  "11": {
+   "temperature": 21.2,
+   "humidity": 49.5,
+   "co2": 2471
+  },
+  "12": {
+   "temperature": 21.1,
+   "humidity": 49.5,
+   "co2": 2464
+  },
+  "13": {
+   "temperature": 21.1,
+   "humidity": 50,
+   "co2": 2513
+  },
+  "14": {
+   "temperature": 21.1,
+   "humidity": 50,
+   "co2": 2513
   }
  },
  "E210": {
@@ -1059,6 +1459,26 @@
    "temperature": 21.1,
    "humidity": 47.5,
    "co2": 534
+  },
+  "11": {
+   "temperature": 21.1,
+   "humidity": 48.5,
+   "co2": 676
+  },
+  "12": {
+   "temperature": 21.1,
+   "humidity": 49,
+   "co2": 708
+  },
+  "13": {
+   "temperature": 21.1,
+   "humidity": 49,
+   "co2": 743
+  },
+  "14": {
+   "temperature": 21.1,
+   "humidity": 49,
+   "co2": 743
   }
  },
  "E101": {
@@ -1126,6 +1546,31 @@
    "temperature": 20.3,
    "humidity": 48.5,
    "co2": 676
+  },
+  "13": {
+   "temperature": 20.5,
+   "humidity": 49,
+   "co2": 771
+  },
+  "14": {
+   "temperature": 20.6,
+   "humidity": 49,
+   "co2": 797
+  },
+  "15": {
+   "temperature": 20.6,
+   "humidity": 49,
+   "co2": 797
+  },
+  "16": {
+   "temperature": 20.7,
+   "humidity": 49,
+   "co2": 829
+  },
+  "17": {
+   "temperature": 20.7,
+   "humidity": 49,
+   "co2": 829
   }
  },
  "E207": {
@@ -1189,15 +1634,35 @@
    "humidity": 48,
    "co2": 604
   },
-  "12": {
-   "temperature": 20.4,
-   "humidity": 48,
-   "co2": 604
-  },
   "13": {
    "temperature": 20.4,
    "humidity": 48,
    "co2": 604
+  },
+  "14": {
+   "temperature": 20.3,
+   "humidity": 48,
+   "co2": 550
+  },
+  "15": {
+   "temperature": 20.3,
+   "humidity": 47.5,
+   "co2": 540
+  },
+  "16": {
+   "temperature": 20.3,
+   "humidity": 47.5,
+   "co2": 540
+  },
+  "17": {
+   "temperature": 20.3,
+   "humidity": 47.5,
+   "co2": 522
+  },
+  "18": {
+   "temperature": 20.3,
+   "humidity": 47.5,
+   "co2": 522
   }
  },
  "E102": {
@@ -1250,6 +1715,31 @@
    "temperature": 20.8,
    "humidity": 53.5,
    "co2": 1281
+  },
+  "10": {
+   "temperature": 20.3,
+   "humidity": 54,
+   "co2": 1378
+  },
+  "11": {
+   "temperature": 20.7,
+   "humidity": 54,
+   "co2": 1458
+  },
+  "12": {
+   "temperature": 20.7,
+   "humidity": 54,
+   "co2": 1458
+  },
+  "13": {
+   "temperature": 20.8,
+   "humidity": 54,
+   "co2": 1479
+  },
+  "14": {
+   "temperature": 21,
+   "humidity": 54,
+   "co2": 1495
   }
  },
  "hall-entr\u00e9e-principale": {
@@ -1302,6 +1792,36 @@
    "temperature": 19.2,
    "humidity": 52.5,
    "co2": 564
+  },
+  "10": {
+   "temperature": 19.8,
+   "humidity": 52,
+   "co2": 678
+  },
+  "11": {
+   "temperature": 19.8,
+   "humidity": 51.5,
+   "co2": 666
+  },
+  "12": {
+   "temperature": 19.8,
+   "humidity": 51.5,
+   "co2": 648
+  },
+  "13": {
+   "temperature": 19.8,
+   "humidity": 51.5,
+   "co2": 648
+  },
+  "14": {
+   "temperature": 19.8,
+   "humidity": 51.5,
+   "co2": 668
+  },
+  "15": {
+   "temperature": 19.9,
+   "humidity": 52,
+   "co2": 720
   }
  },
  "E103": {
@@ -1354,6 +1874,36 @@
    "temperature": 19.6,
    "humidity": 56,
    "co2": 1228
+  },
+  "10": {
+   "temperature": 18.8,
+   "humidity": 51,
+   "co2": 486
+  },
+  "11": {
+   "temperature": 18.7,
+   "humidity": 51,
+   "co2": 478
+  },
+  "12": {
+   "temperature": 18.7,
+   "humidity": 51,
+   "co2": 478
+  },
+  "13": {
+   "temperature": 18.7,
+   "humidity": 51,
+   "co2": 478
+  },
+  "14": {
+   "temperature": 18.7,
+   "humidity": 51,
+   "co2": 474
+  },
+  "15": {
+   "temperature": 18.7,
+   "humidity": 51,
+   "co2": 477
   }
  },
  "B110": {
@@ -1406,6 +1956,36 @@
    "temperature": 20.1,
    "humidity": 49.5,
    "co2": 683
+  },
+  "10": {
+   "temperature": 21,
+   "humidity": 56,
+   "co2": 1661
+  },
+  "11": {
+   "temperature": 21.1,
+   "humidity": 56,
+   "co2": 1683
+  },
+  "12": {
+   "temperature": 21.1,
+   "humidity": 56,
+   "co2": 1718
+  },
+  "13": {
+   "temperature": 21.1,
+   "humidity": 56,
+   "co2": 1718
+  },
+  "14": {
+   "temperature": 21.1,
+   "humidity": 56,
+   "co2": 1762
+  },
+  "15": {
+   "temperature": 21.2,
+   "humidity": 57,
+   "co2": 2099
   }
  },
  "B106": {
@@ -1458,6 +2038,36 @@
    "temperature": 21,
    "humidity": 55.5,
    "co2": 1861
+  },
+  "10": {
+   "temperature": 19.7,
+   "humidity": 53.5,
+   "co2": 952
+  },
+  "11": {
+   "temperature": 19.8,
+   "humidity": 54.5,
+   "co2": 1172
+  },
+  "12": {
+   "temperature": 19.9,
+   "humidity": 55,
+   "co2": 1268
+  },
+  "13": {
+   "temperature": 19.9,
+   "humidity": 55,
+   "co2": 1268
+  },
+  "14": {
+   "temperature": 20,
+   "humidity": 55,
+   "co2": 1243
+  },
+  "15": {
+   "temperature": 20.2,
+   "humidity": 56,
+   "co2": 1378
   }
  },
  "E004": {
@@ -1505,6 +2115,26 @@
    "temperature": 21.6,
    "humidity": 56,
    "co2": 1717
+  },
+  "9": {
+   "temperature": 20.3,
+   "humidity": 48,
+   "co2": 505
+  },
+  "10": {
+   "temperature": 20.2,
+   "humidity": 48,
+   "co2": 490
+  },
+  "11": {
+   "temperature": 20.1,
+   "humidity": 48,
+   "co2": 478
+  },
+  "12": {
+   "temperature": 20,
+   "humidity": 48.5,
+   "co2": 470
   }
  },
  "E106": {
@@ -1557,6 +2187,36 @@
    "temperature": 21.1,
    "humidity": 53,
    "co2": 1385
+  },
+  "10": {
+   "temperature": 20.6,
+   "humidity": 46.5,
+   "co2": 499
+  },
+  "11": {
+   "temperature": 20.6,
+   "humidity": 46.5,
+   "co2": 488
+  },
+  "12": {
+   "temperature": 20.5,
+   "humidity": 46.5,
+   "co2": 483
+  },
+  "13": {
+   "temperature": 20.5,
+   "humidity": 46.5,
+   "co2": 483
+  },
+  "14": {
+   "temperature": 20.4,
+   "humidity": 46.5,
+   "co2": 483
+  },
+  "15": {
+   "temperature": 20.4,
+   "humidity": 46.5,
+   "co2": 484
   }
  },
  "B001": {
@@ -1609,6 +2269,36 @@
    "temperature": 21.4,
    "humidity": 51.5,
    "co2": 1137
+  },
+  "10": {
+   "temperature": 20.5,
+   "humidity": 50.5,
+   "co2": 489
+  },
+  "11": {
+   "temperature": 20.5,
+   "humidity": 50.5,
+   "co2": 487
+  },
+  "12": {
+   "temperature": 20.5,
+   "humidity": 50,
+   "co2": 490
+  },
+  "13": {
+   "temperature": 20.5,
+   "humidity": 50,
+   "co2": 490
+  },
+  "14": {
+   "temperature": 20.5,
+   "humidity": 50.5,
+   "co2": 498
+  },
+  "15": {
+   "temperature": 20.6,
+   "humidity": 50.5,
+   "co2": 678
   }
  },
  "Foyer-personnels": {
@@ -1656,6 +2346,26 @@
    "temperature": 20.7,
    "humidity": 50,
    "co2": 978
+  },
+  "9": {
+   "temperature": 21,
+   "humidity": 55,
+   "co2": 1355
+  },
+  "10": {
+   "temperature": 20.9,
+   "humidity": 54.5,
+   "co2": 1312
+  },
+  "11": {
+   "temperature": 20.9,
+   "humidity": 54.5,
+   "co2": 1287
+  },
+  "12": {
+   "temperature": 20.9,
+   "humidity": 54.5,
+   "co2": 1287
   }
  },
  "B109": {
@@ -1703,6 +2413,26 @@
    "temperature": 20.4,
    "humidity": 48,
    "co2": 673
+  },
+  "9": {
+   "temperature": 22.3,
+   "humidity": 55,
+   "co2": 2107
+  },
+  "10": {
+   "temperature": 22.5,
+   "humidity": 55,
+   "co2": 2213
+  },
+  "11": {
+   "temperature": 22.5,
+   "humidity": 55,
+   "co2": 2262
+  },
+  "12": {
+   "temperature": 22.5,
+   "humidity": 55,
+   "co2": 2262
   }
  },
  "B201": {
@@ -1745,6 +2475,26 @@
    "temperature": 22.4,
    "humidity": 56,
    "co2": 2223
+  },
+  "8": {
+   "temperature": 22.1,
+   "humidity": 58.5,
+   "co2": 2274
+  },
+  "9": {
+   "temperature": 22.2,
+   "humidity": 59,
+   "co2": 2380
+  },
+  "10": {
+   "temperature": 22.3,
+   "humidity": 59,
+   "co2": 2476
+  },
+  "11": {
+   "temperature": 22.3,
+   "humidity": 59,
+   "co2": 2476
   }
  },
  "C001": {
@@ -1792,6 +2542,26 @@
    "temperature": 22.3,
    "humidity": 42.5,
    "co2": 716
+  },
+  "9": {
+   "temperature": 22.6,
+   "humidity": 43,
+   "co2": 576
+  },
+  "10": {
+   "temperature": 22.5,
+   "humidity": 43,
+   "co2": 578
+  },
+  "11": {
+   "temperature": 22.6,
+   "humidity": 43,
+   "co2": 566
+  },
+  "12": {
+   "temperature": 22.6,
+   "humidity": 43,
+   "co2": 566
   }
  },
  "B111": {
@@ -1829,6 +2599,26 @@
    "temperature": 22.5,
    "humidity": 51.5,
    "co2": 1400
+  },
+  "7": {
+   "temperature": 21.8,
+   "humidity": 56,
+   "co2": 1987
+  },
+  "8": {
+   "temperature": 22,
+   "humidity": 56.5,
+   "co2": 2190
+  },
+  "9": {
+   "temperature": 22.3,
+   "humidity": 57.5,
+   "co2": 2436
+  },
+  "10": {
+   "temperature": 22.3,
+   "humidity": 57.5,
+   "co2": 2436
   }
  },
  "B105": {
@@ -1866,6 +2656,41 @@
    "temperature": 20.1,
    "humidity": 49,
    "co2": 591
+  },
+  "7": {
+   "temperature": 21.6,
+   "humidity": 57,
+   "co2": 2035
+  },
+  "8": {
+   "temperature": 21.6,
+   "humidity": 57,
+   "co2": 2035
+  },
+  "9": {
+   "temperature": 21.6,
+   "humidity": 56.5,
+   "co2": 1998
+  },
+  "10": {
+   "temperature": 21.5,
+   "humidity": 55,
+   "co2": 1599
+  },
+  "11": {
+   "temperature": 21.5,
+   "humidity": 55,
+   "co2": 1599
+  },
+  "12": {
+   "temperature": 21.5,
+   "humidity": 55,
+   "co2": 1599
+  },
+  "13": {
+   "temperature": 21.5,
+   "humidity": 55,
+   "co2": 1599
   }
  },
  "Foyer-etudiants-entr\u00e9e": {
@@ -1923,6 +2748,31 @@
    "temperature": 49.3,
    "humidity": 56,
    "co2": 962
+  },
+  "11": {
+   "temperature": 49.1,
+   "humidity": 54.5,
+   "co2": 612
+  },
+  "12": {
+   "temperature": 49,
+   "humidity": 54.5,
+   "co2": 608
+  },
+  "13": {
+   "temperature": 49,
+   "humidity": 54.5,
+   "co2": 608
+  },
+  "14": {
+   "temperature": 49,
+   "humidity": 54.5,
+   "co2": 608
+  },
+  "15": {
+   "temperature": 49,
+   "humidity": 54.5,
+   "co2": 608
   }
  },
  "B234": {
@@ -1960,6 +2810,26 @@
    "temperature": 23.1,
    "humidity": 42.5,
    "co2": 800
+  },
+  "7": {
+   "temperature": 23,
+   "humidity": 48,
+   "co2": 1168
+  },
+  "8": {
+   "temperature": 23,
+   "humidity": 48,
+   "co2": 1191
+  },
+  "9": {
+   "temperature": 23,
+   "humidity": 47.5,
+   "co2": 1138
+  },
+  "10": {
+   "temperature": 23,
+   "humidity": 47.5,
+   "co2": 1138
   }
  },
  "B113": {
@@ -2002,6 +2872,31 @@
    "temperature": 20.9,
    "humidity": 59,
    "co2": 1991
+  },
+  "8": {
+   "temperature": 21.1,
+   "humidity": 67,
+   "co2": 2830
+  },
+  "9": {
+   "temperature": 21.3,
+   "humidity": 67.5,
+   "co2": 3002
+  },
+  "10": {
+   "temperature": 21.4,
+   "humidity": 68,
+   "co2": 3181
+  },
+  "11": {
+   "temperature": 21.4,
+   "humidity": 68,
+   "co2": 3181
+  },
+  "12": {
+   "temperature": 21.4,
+   "humidity": 68,
+   "co2": 3181
   }
  },
  "E006": {
@@ -2049,6 +2944,26 @@
    "temperature": 20.3,
    "humidity": 55.5,
    "co2": 1180
+  },
+  "9": {
+   "temperature": 20.9,
+   "humidity": 46.5,
+   "co2": 475
+  },
+  "10": {
+   "temperature": 20.9,
+   "humidity": 46.5,
+   "co2": 467
+  },
+  "11": {
+   "temperature": 20.8,
+   "humidity": 46.5,
+   "co2": 468
+  },
+  "12": {
+   "temperature": 20.8,
+   "humidity": 46.5,
+   "co2": 468
   }
  },
  "E209": {
@@ -2091,6 +3006,26 @@
    "temperature": 22.4,
    "humidity": 50,
    "co2": 1341
+  },
+  "8": {
+   "temperature": 22,
+   "humidity": 48.5,
+   "co2": 1007
+  },
+  "9": {
+   "temperature": 22.1,
+   "humidity": 48.5,
+   "co2": 1013
+  },
+  "10": {
+   "temperature": 22.4,
+   "humidity": 48,
+   "co2": 1069
+  },
+  "11": {
+   "temperature": 22.4,
+   "humidity": 48,
+   "co2": 1069
   }
  },
  "E003": {
@@ -2128,6 +3063,21 @@
    "temperature": 20.6,
    "humidity": 51.5,
    "co2": 1039
+  },
+  "7": {
+   "temperature": 20.8,
+   "humidity": 46.5,
+   "co2": 477
+  },
+  "8": {
+   "temperature": 20.8,
+   "humidity": 46.5,
+   "co2": 470
+  },
+  "9": {
+   "temperature": 20.8,
+   "humidity": 46.5,
+   "co2": 470
   }
  }
 }

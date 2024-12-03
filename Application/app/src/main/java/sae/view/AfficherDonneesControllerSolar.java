@@ -3,6 +3,7 @@ package sae.view;
 import java.io.File;
 import java.io.FileReader;
 import java.util.List;
+import java.util.Map;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
@@ -16,6 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import sae.App;
+import sae.view.AfficherGraphiqueControllerSolar;
 
 public class AfficherDonneesControllerSolar {
 
@@ -92,57 +94,69 @@ public class AfficherDonneesControllerSolar {
     /**
      * Affiche les données filtrées en fonction des attributs sélectionnés
      */
-    private void afficherDonneesFiltrees(JSONObject solarData, List<String> attributsSelectionnes) {
-        gridDynamique.getChildren().clear(); // Effacer le contenu précédent de la grille
+private void afficherDonneesFiltrees(JSONObject solarData, List<String> attributsSelectionnes) {
+    gridDynamique.getChildren().clear(); // Effacer le contenu précédent de la grille
 
-        JSONObject solar = (JSONObject) solarData.get("solar");
-        if (solar == null) {
-            System.out.println("Aucune donnée 'solar' trouvée dans le JSON.");
-            return;
-        }
-
-        // Titre des colonnes
-        Label titreCle = new Label("Clé");
-        Label titreAttribut = new Label("Attribut");
-        Label titreValeur = new Label("Valeur");
-        gridDynamique.add(titreCle, 0, 0);
-        gridDynamique.add(titreAttribut, 1, 0);
-        gridDynamique.add(titreValeur, 2, 0);
-        
-        // Mettre en valeur les titres
-        titreCle.setStyle("-fx-font-weight: bold;");
-        titreAttribut.setStyle("-fx-font-weight: bold;");
-        titreValeur.setStyle("-fx-font-weight: bold;");
-        
-        int rowIndex = 1; // Commence après la ligne des titres
-
-        // Utilisation d'un Set pour éviter d'afficher les clés en double
-        Set<String> displayedKeys = new HashSet<>();
-        
-        for (Object key : solar.keySet()) {
-            // Si la clé a déjà été affichée, on la saute
-            if (displayedKeys.contains(key.toString())) {
-                continue;
-            }
-
-            JSONObject solarEntry = (JSONObject) solar.get(key);
-            gridDynamique.add(new Label(key.toString()), 0, rowIndex);
-            displayedKeys.add(key.toString());  // Ajouter la clé au Set pour éviter les doublons
-
-            // Ajouter les attributs sélectionnés
-            for (String attribut : attributsSelectionnes) {
-                Object value = solarEntry.get(attribut); // Récupérer la valeur de l'attribut
-                String texte = attribut + " : " + (value != null ? formatValue(value) : "Non disponible");
-
-                // Mettre les données dans des colonnes séparées
-                gridDynamique.add(new Label(attribut), 1, rowIndex);
-                gridDynamique.add(new Label(texte), 2, rowIndex++);
-            }
-
-            // Ajouter un espace après chaque entrée de clé pour un meilleur espacement visuel
-            gridDynamique.add(new Label(" "), 0, rowIndex++);  // Espacement entre les clés
-        }
+    JSONObject solar = (JSONObject) solarData.get("solar");
+    if (solar == null) {
+        System.out.println("Aucune donnée 'solar' trouvée dans le JSON.");
+        return;
     }
+
+    // Titre des colonnes
+    Label titreCle = new Label("Clé");
+    Label titreAttribut = new Label("Attribut");
+    Label titreValeur = new Label("Valeur");
+    gridDynamique.add(titreCle, 0, 0);
+    gridDynamique.add(titreAttribut, 1, 0);
+    gridDynamique.add(titreValeur, 2, 0);
+    
+    // Mettre en valeur les titres
+    titreCle.setStyle("-fx-font-weight: bold;");
+    titreAttribut.setStyle("-fx-font-weight: bold;");
+    titreValeur.setStyle("-fx-font-weight: bold;");
+    
+    int rowIndex = 1; // Commence après la ligne des titres
+
+    // Utilisation d'un Set pour éviter d'afficher les clés en double
+    Set<String> displayedKeys = new HashSet<>();
+    
+    // Trier les entrées par clé dans l'ordre décroissant des valeurs numériques
+    List<Map.Entry<String, JSONObject>> sortedEntries = new ArrayList<>(solar.entrySet());
+    sortedEntries.sort((entry1, entry2) -> {
+        try {
+            // Convertir les clés en entiers pour effectuer un tri numérique
+            Integer key1 = Integer.valueOf(entry1.getKey());
+            Integer key2 = Integer.valueOf(entry2.getKey());
+            return key2.compareTo(key1); // Ordre décroissant
+        } catch (NumberFormatException e) {
+            // Si les clés ne sont pas des entiers valides, les laisser dans l'ordre d'origine
+            return entry1.getKey().compareTo(entry2.getKey());
+        }
+    });
+
+    // Ajouter les entrées triées à la grille
+    for (Map.Entry<String, JSONObject> entry : sortedEntries) {
+        String key = entry.getKey();
+        JSONObject solarEntry = entry.getValue();
+        gridDynamique.add(new Label(key), 0, rowIndex);
+        displayedKeys.add(key);  // Ajouter la clé au Set pour éviter les doublons
+
+        // Ajouter les attributs sélectionnés
+        for (String attribut : attributsSelectionnes) {
+            Object value = solarEntry.get(attribut); // Récupérer la valeur de l'attribut
+            String texte = attribut + " : " + (value != null ? formatValue(value) : "Non disponible");
+
+            // Mettre les données dans des colonnes séparées
+            gridDynamique.add(new Label(attribut), 1, rowIndex);
+            gridDynamique.add(new Label(texte), 2, rowIndex++);
+        }
+
+        // Ajouter un espace après chaque entrée de clé pour un meilleur espacement visuel
+        gridDynamique.add(new Label(" "), 0, rowIndex++);  // Espacement entre les clés
+    }
+}
+
 
     /**
      * Formate la valeur pour éviter d'afficher les accolades des objets JSON
@@ -154,6 +168,20 @@ public class AfficherDonneesControllerSolar {
         }
         return value != null ? value.toString() : "Non disponible";
     }
+
+    @FXML
+    private void actionAfficherGraphique() {
+        if (solarData == null) {
+            System.out.println("Aucune donnée disponible pour afficher le graphique !");
+            return;
+        }
+    
+        // Création du contrôleur pour afficher le graphique
+        AfficherGraphiqueControllerSolar graphController = new AfficherGraphiqueControllerSolar(solarData);
+        graphController.afficherGraphique(); // Affichage du graphique
+    }
+    
+
 
     /**
      * Retour à la page précédente
