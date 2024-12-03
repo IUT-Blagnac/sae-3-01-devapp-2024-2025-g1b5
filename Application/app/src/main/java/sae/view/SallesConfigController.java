@@ -79,52 +79,79 @@ public class SallesConfigController {
 
     public void updateConfig(List<String> donneesSalles) {
         try {
-            // Charger toutes les lignes du fichier de configuration
-            List<String> lines = Files.readAllLines(Paths.get(CONFIG_FILE));
-
-            // Créer la nouvelle ligne pour donneesSalles
+            // Créer les nouvelles listes pour les seuils
+            List<Integer> seuilMinList = new ArrayList<>();
+            List<Integer> seuilMaxList = new ArrayList<>();
+    
+            for (String salle : donneesSalles) {
+                if (TypeDonnee.containsType(salle)) {
+                    int[] seuils = TypeDonnee.getSeuilsByNom(salle);
+                    seuilMinList.add(seuils[0]);
+                    seuilMaxList.add(seuils[1]);
+                }
+            }
+    
+            // Construire les nouvelles lignes pour la configuration
             String newDonneesSallesLine = "donneesSalles=[" + donneesSalles.stream()
                     .map(attr -> "'" + attr + "'")
                     .collect(Collectors.joining(", ")) + "]";
-
-            // Mettre à jour ou ajouter la ligne donneesSalles
+            String newSeuilMinLine = "seuil_min=[" + seuilMinList.stream()
+                    .map(String::valueOf)
+                    .collect(Collectors.joining(", ")) + "]";
+            String newSeuilMaxLine = "seuil_max=[" + seuilMaxList.stream()
+                    .map(String::valueOf)
+                    .collect(Collectors.joining(", ")) + "]";
+    
+            // Charger les lignes existantes
+            List<String> lines = Files.readAllLines(Paths.get(CONFIG_FILE));
             List<String> updatedLines = new ArrayList<>();
-            boolean found = false;
-
+            boolean donneesSallesFound = false;
+            boolean seuilMinFound = false;
+            boolean seuilMaxFound = false;
+    
+            // Mettre à jour ou ajouter les lignes correspondantes
             for (String line : lines) {
                 if (line.startsWith("donneesSalles")) {
                     updatedLines.add(newDonneesSallesLine);
-                    found = true;
+                    donneesSallesFound = true;
+                } else if (line.startsWith("seuil_min")) {
+                    updatedLines.add(newSeuilMinLine);
+                    seuilMinFound = true;
+                } else if (line.startsWith("seuil_max")) {
+                    updatedLines.add(newSeuilMaxLine);
+                    seuilMaxFound = true;
                 } else {
                     updatedLines.add(line);
                 }
             }
-
-            if (!found) {
-                updatedLines.add(newDonneesSallesLine); // Ajouter si absent
-            }
-
+    
+            // Ajouter les lignes manquantes si nécessaire
+            if (!donneesSallesFound) updatedLines.add(newDonneesSallesLine);
+            if (!seuilMinFound) updatedLines.add(newSeuilMinLine);
+            if (!seuilMaxFound) updatedLines.add(newSeuilMaxLine);
+    
             // Écrire les nouvelles lignes dans le fichier
             Files.write(Paths.get(CONFIG_FILE), updatedLines);
             System.out.println("Fichier de configuration mis à jour avec succès.");
             lblInfo.setText("Modifications enregistrées avec succès !");
             lblInfo.setVisible(true);
-
-                    // Masquer le message après 3 secondes
-        new Thread(() -> {
-            try {
-                Thread.sleep(3000);
-                lblInfo.setVisible(false);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }).start();
-
+    
+            // Masquer le message après 3 secondes
+            new Thread(() -> {
+                try {
+                    Thread.sleep(3000);
+                    lblInfo.setVisible(false);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }).start();
+    
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Erreur lors de la mise à jour du fichier de configuration : " + e.getMessage());
         }
     }
+    
 
     @FXML
     private void initialize() {
