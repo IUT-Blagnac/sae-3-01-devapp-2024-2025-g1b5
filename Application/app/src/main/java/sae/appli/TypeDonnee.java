@@ -2,14 +2,14 @@ package sae.appli;
 
 public enum TypeDonnee{
 
-    TEMPERATURE,
-    HUMIDITY,
-    CO2,
-    TVOC,
-    ACTIVITY,
-    ILLUMINATION,
-    INFRARED,
-    INFRARED_AND_VISIBLE,
-    PRESSURE;
+    temperature,
+    humidity,
+    co2,
+    tvoc,
+    activity,
+    illumination,
+    infrared,
+    infrared_and_visible,
+    pressure;
 
 }

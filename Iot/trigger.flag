@@ -1,9 +1,9 @@
 {
-  "room": "B112",
+  "room": "B110",
   "alarm": {
-    "key": "temperature",
-    "value": 19.5,
-    "alarm_type": "MIN",
-    "timestamp": "2024-12-02 13:55:59"
+    "key": "co2",
+    "value": 1696.0,
+    "alarm_type": "MAX",
+    "timestamp": "2024-12-03 15:00:04"
   }
 }

@@ -5,6 +5,8 @@ import java.io.FileReader;
 import java.net.URL;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 import org.json.simple.JSONObject;
@@ -51,10 +53,8 @@ public class AfficherDonneesController {
   }
 
   @FXML
-  private void actionAfficher() {
-    System.out.println("A faire !");
-    System.out.println(donnees);
-    chargerFichierSalle();
+  private void actionAfficher() {;
+    
   }
 
   @FXML
@@ -63,14 +63,21 @@ public class AfficherDonneesController {
   }
 
   public void afficherDonnees() {
-    for (int i = 0; i < donnees.size(); i++) {
-      gridDynamique.add(new Label(donnees.get(i) + " :"), 0, i);
+    Map<String, Double> dicoTypeValeur = chargerFichierSalle();
+    System.out.println(dicoTypeValeur);
+
+    System.out.println(donnees);
+
+    for (int i = 0; i < donnees.size(); i++) { 
+      gridDynamique.add(new Label( donnees.get(i).toUpperCase() + " :"), 0, i);
+      gridDynamique.add(new Label( dicoTypeValeur.get(donnees.get(i)) + "" ), 1, i);
     }
   }
 
-  public void chargerFichierSalle() {
+  public Map<String, Double> chargerFichierSalle() {
 
      JSONParser parser = new JSONParser();
+     Map<String, Double> dicoTypeValeur = new HashMap<String,Double>();
 
         try {
             // Définir le chemin du fichier salles.json à la racine du projet
@@ -78,7 +85,7 @@ public class AfficherDonneesController {
 
             if (!file.exists()) {
                 System.out.println("Le fichier salles.json est introuvable à la racine du projet.");
-                return;
+                // return;
             }
 
             // Lire et analyser le fichier JSON
@@ -93,30 +100,33 @@ public class AfficherDonneesController {
             
 
             if (json.containsKey(numSalle)) {
-              JSONObject salleChoisi = (JSONObject) json.get(numSalle);
-              System.out.println(salleChoisi.toJSONString());
+              JSONObject salleChoisie = (JSONObject) json.get(numSalle);
+              System.out.println(salleChoisie.toJSONString());
 
               // Récupérer toutes les valeurs pour cette clé spécifique
-              Set<String> allKeys = salleChoisi.keySet();
+              Set<String> allKeys = salleChoisie.keySet();
 
-              JSONObject dernierClé = (JSONObject) salleChoisi.get( (allKeys.size() - 1) + "" );
+              JSONObject dernierClé = (JSONObject) salleChoisie.get( (allKeys.size() - 1) + "" );
               System.out.println( "Dernière clée de la salle : " + (allKeys.size() - 1));
               System.out.println(dernierClé);
 
-              
+              dicoTypeValeur = dernierClé;
+    
 
             } else {
               System.out.println("La salle " + numSalle + " n'existe pas dans le fichier JSON.");
             }
 
-          
-
             reader.close();
+            
+            
 
         } catch (Exception e) {
             System.out.println("Erreur lors du chargement du fichier solar.json : " + e.getMessage());
             e.printStackTrace();
         }
+
+        return dicoTypeValeur;
 
   }
 
