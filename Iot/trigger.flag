@@ -1,9 +1,9 @@
 {
-  "room": "B112",
+  "room": "hall-amphi",
   "alarm": {
     "key": "temperature",
-    "value": 19.5,
+    "value": 19.3,
     "alarm_type": "MIN",
-    "timestamp": "2024-12-02 13:55:59"
+    "timestamp": "2024-12-03 14:49:28"
   }
 }

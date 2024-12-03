@@ -2,11 +2,18 @@ package sae.view;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.Labeled;
 import javafx.stage.Stage;
 import sae.App;
 import sae.view.AppState;
 
 import java.io.IOException;
+
+import org.eclipse.paho.client.mqttv3.MqttClient;
+import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
+import org.eclipse.paho.client.mqttv3.MqttException;
+import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
 public class MenuController {
 
@@ -25,6 +32,8 @@ public class MenuController {
     private Button butTestCo;
     @FXML
     private Button butConfig;
+    @FXML
+    Label labelTestCo;
 
     private App application;
 
@@ -45,7 +54,29 @@ public class MenuController {
 
     @FXML
     private void actionBouttonConnexion() {
-        // Test de connexion MQTT
+        try {
+        MqttClient client = new MqttClient(
+          "tcp://mqtt.iut-blagnac.fr:1883",
+          MqttClient.generateClientId(),
+          new MemoryPersistence());
+          MqttConnectOptions options = new MqttConnectOptions();
+          client.connect(options);
+          if(client.isConnected()){
+            
+            labelTestCo.setText("Connexion réussie");
+            System.out.println("Connexion réussie");
+            
+          } else {
+            labelTestCo.setText("Connexion échouée");
+            labelTestCo.setStyle("-fx-text-fill: red;");
+            System.out.println("Connexion échouée");
+          }
+      } catch (MqttException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+        labelTestCo.setText("Connexion échouée");
+        labelTestCo.setStyle("-fx-text-fill: red;");
+      }
     }
 
     @FXML
