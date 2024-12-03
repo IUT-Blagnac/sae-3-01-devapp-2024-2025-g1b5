@@ -1,0 +1,806 @@
+{
+ "E103": {
+  "0": {
+   "key": "temperature",
+   "value": 18.8,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 14:29:58"
+  },
+  "1": {
+   "key": "activity",
+   "value": 0.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 14:29:58"
+  },
+  "2": {
+   "key": "illumination",
+   "value": 113.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 14:29:58"
+  },
+  "3": {
+   "key": "infrared",
+   "value": 38.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 14:29:58"
+  },
+  "4": {
+   "key": "infrared_and_visible",
+   "value": 126.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 14:29:58"
+  },
+  "5": {
+   "key": "pressure",
+   "value": 997.9,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 14:29:58"
+  },
+  "6": {
+   "key": "temperature",
+   "value": 18.6,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 17:39:59"
+  }
+ },
+ "E102": {
+  "0": {
+   "key": "temperature",
+   "value": 19.4,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 14:29:58"
+  },
+  "1": {
+   "key": "tvoc",
+   "value": 152.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 14:29:58"
+  },
+  "2": {
+   "key": "infrared_and_visible",
+   "value": 52.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 14:29:58"
+  },
+  "3": {
+   "key": "pressure",
+   "value": 997.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 14:29:58"
+  }
+ },
+ "hall-entr\u00e9e-principale": {
+  "0": {
+   "key": "temperature",
+   "value": 19.7,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 14:29:59"
+  },
+  "1": {
+   "key": "activity",
+   "value": 21.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 14:29:59"
+  },
+  "2": {
+   "key": "infrared",
+   "value": 21.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 14:29:59"
+  },
+  "3": {
+   "key": "infrared_and_visible",
+   "value": 53.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 14:29:59"
+  },
+  "4": {
+   "key": "pressure",
+   "value": 998.4,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 14:29:59"
+  },
+  "5": {
+   "key": "temperature",
+   "value": 19.8,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 15:09:59"
+  },
+  "6": {
+   "key": "tvoc",
+   "value": 407.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 15:09:59"
+  },
+  "7": {
+   "key": "activity",
+   "value": 12.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 15:09:59"
+  },
+  "8": {
+   "key": "pressure",
+   "value": 998.1,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 15:09:59"
+  },
+  "9": {
+   "key": "temperature",
+   "value": 19.8,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 17:40:00"
+  }
+ },
+ "B110": {
+  "0": {
+   "key": "tvoc",
+   "value": 152.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 14:30:04"
+  },
+  "1": {
+   "key": "pressure",
+   "value": 997.8,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 14:30:04"
+  },
+  "2": {
+   "key": "co2",
+   "value": 2037.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 17:39:58"
+  },
+  "3": {
+   "key": "tvoc",
+   "value": 195.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 17:39:58"
+  }
+ },
+ "B113": {
+  "0": {
+   "key": "co2",
+   "value": 2118.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 14:33:53"
+  },
+  "1": {
+   "key": "infrared_and_visible",
+   "value": 45.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 14:33:53"
+  },
+  "2": {
+   "key": "pressure",
+   "value": 997.2,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 14:33:53"
+  }
+ },
+ "E006": {
+  "0": {
+   "key": "humidity",
+   "value": 46.5,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 14:33:56"
+  },
+  "1": {
+   "key": "activity",
+   "value": 0.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 14:33:57"
+  },
+  "2": {
+   "key": "infrared",
+   "value": 24.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 14:33:57"
+  },
+  "3": {
+   "key": "infrared_and_visible",
+   "value": 74.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 14:33:57"
+  },
+  "4": {
+   "key": "pressure",
+   "value": 997.4,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 14:33:57"
+  }
+ },
+ "amphi1": {
+  "0": {
+   "key": "humidity",
+   "value": 49.5,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 14:47:57"
+  },
+  "1": {
+   "key": "tvoc",
+   "value": 166.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 14:47:57"
+  },
+  "2": {
+   "key": "activity",
+   "value": 0.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 14:47:57"
+  },
+  "3": {
+   "key": "pressure",
+   "value": 997.7,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 14:47:57"
+  }
+ },
+ "E208": {
+  "0": {
+   "key": "humidity",
+   "value": 49.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 14:47:57"
+  },
+  "1": {
+   "key": "tvoc",
+   "value": 171.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 14:47:57"
+  },
+  "2": {
+   "key": "activity",
+   "value": 0.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 14:47:57"
+  },
+  "3": {
+   "key": "pressure",
+   "value": 997.1,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 14:47:57"
+  }
+ },
+ "B203": {
+  "0": {
+   "key": "co2",
+   "value": 2348.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 14:47:59"
+  },
+  "1": {
+   "key": "tvoc",
+   "value": 191.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 14:47:59"
+  },
+  "2": {
+   "key": "infrared_and_visible",
+   "value": 42.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 14:47:59"
+  },
+  "3": {
+   "key": "pressure",
+   "value": 997.1,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 14:47:59"
+  }
+ },
+ "B103": {
+  "0": {
+   "key": "co2",
+   "value": 2529.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 14:58:25"
+  },
+  "1": {
+   "key": "tvoc",
+   "value": 115.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 14:58:25"
+  },
+  "2": {
+   "key": "activity",
+   "value": 0.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 14:58:25"
+  },
+  "3": {
+   "key": "pressure",
+   "value": 997.5,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 14:58:25"
+  }
+ },
+ "E210": {
+  "0": {
+   "key": "humidity",
+   "value": 48.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 14:58:26"
+  },
+  "1": {
+   "key": "tvoc",
+   "value": 135.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 14:58:26"
+  },
+  "2": {
+   "key": "activity",
+   "value": 0.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 14:58:26"
+  },
+  "3": {
+   "key": "illumination",
+   "value": 96.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 14:58:26"
+  },
+  "4": {
+   "key": "infrared",
+   "value": 31.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 14:58:26"
+  },
+  "5": {
+   "key": "infrared_and_visible",
+   "value": 105.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 14:58:26"
+  },
+  "6": {
+   "key": "pressure",
+   "value": 996.3,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 14:58:26"
+  }
+ },
+ "E207": {
+  "0": {
+   "key": "humidity",
+   "value": 48.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 14:58:57"
+  },
+  "1": {
+   "key": "activity",
+   "value": 0.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 14:58:57"
+  },
+  "2": {
+   "key": "illumination",
+   "value": 240.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 14:58:57"
+  },
+  "3": {
+   "key": "infrared",
+   "value": 75.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 14:58:57"
+  },
+  "4": {
+   "key": "infrared_and_visible",
+   "value": 257.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 14:58:57"
+  },
+  "5": {
+   "key": "pressure",
+   "value": 997.1,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 14:58:57"
+  },
+  "6": {
+   "key": "humidity",
+   "value": 47.5,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 15:38:57"
+  }
+ },
+ "E101": {
+  "0": {
+   "key": "humidity",
+   "value": 48.5,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 14:58:58"
+  },
+  "1": {
+   "key": "activity",
+   "value": 3.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 14:58:58"
+  },
+  "2": {
+   "key": "pressure",
+   "value": 997.3,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 14:58:58"
+  },
+  "3": {
+   "key": "humidity",
+   "value": 49.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 15:38:58"
+  },
+  "4": {
+   "key": "humidity",
+   "value": 48.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 17:38:58"
+  }
+ },
+ "B201": {
+  "0": {
+   "key": "co2",
+   "value": 2274.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 15:11:57"
+  },
+  "1": {
+   "key": "pressure",
+   "value": 996.9,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 15:11:57"
+  },
+  "2": {
+   "key": "co2",
+   "value": 2156.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 16:11:57"
+  },
+  "3": {
+   "key": "co2",
+   "value": 2103.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 16:31:57"
+  }
+ },
+ "C001": {
+  "0": {
+   "key": "humidity",
+   "value": 43.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 15:11:58"
+  },
+  "1": {
+   "key": "tvoc",
+   "value": 117.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 15:11:58"
+  },
+  "2": {
+   "key": "activity",
+   "value": 0.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 15:11:58"
+  },
+  "3": {
+   "key": "pressure",
+   "value": 997.8,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 15:11:58"
+  },
+  "4": {
+   "key": "humidity",
+   "value": 43.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 16:11:58"
+  },
+  "5": {
+   "key": "tvoc",
+   "value": 118.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 16:11:58"
+  },
+  "6": {
+   "key": "humidity",
+   "value": 43.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 16:31:58"
+  },
+  "7": {
+   "key": "tvoc",
+   "value": 122.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 16:31:58"
+  }
+ },
+ "B109": {
+  "0": {
+   "key": "co2",
+   "value": 2107.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 15:11:59"
+  },
+  "1": {
+   "key": "activity",
+   "value": 504.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 15:11:59"
+  },
+  "2": {
+   "key": "infrared_and_visible",
+   "value": 45.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 15:11:59"
+  },
+  "3": {
+   "key": "pressure",
+   "value": 997.1,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 15:11:59"
+  },
+  "4": {
+   "key": "co2",
+   "value": 2676.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 16:11:59"
+  },
+  "5": {
+   "key": "co2",
+   "value": 2649.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 16:32:00"
+  }
+ },
+ "E001": {
+  "0": {
+   "key": "temperature",
+   "value": 19.9,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 15:36:25"
+  },
+  "1": {
+   "key": "humidity",
+   "value": 48.5,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 15:36:25"
+  },
+  "2": {
+   "key": "co2",
+   "value": 439.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 15:36:25"
+  },
+  "3": {
+   "key": "activity",
+   "value": 0.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 15:36:25"
+  },
+  "4": {
+   "key": "pressure",
+   "value": 998.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 15:36:25"
+  },
+  "5": {
+   "key": "temperature",
+   "value": 19.9,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 16:26:24"
+  },
+  "6": {
+   "key": "humidity",
+   "value": 49.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 16:26:25"
+  },
+  "7": {
+   "key": "co2",
+   "value": 440.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 16:26:25"
+  }
+ },
+ "C102": {
+  "0": {
+   "key": "temperature",
+   "value": 18.4,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 15:57:27"
+  },
+  "1": {
+   "key": "tvoc",
+   "value": 149.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 15:57:27"
+  },
+  "2": {
+   "key": "temperature",
+   "value": 18.5,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 16:47:27"
+  },
+  "3": {
+   "key": "tvoc",
+   "value": 156.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 16:47:27"
+  }
+ },
+ "E007": {
+  "0": {
+   "key": "temperature",
+   "value": 19.7,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 15:57:29"
+  },
+  "1": {
+   "key": "humidity",
+   "value": 48.5,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 15:57:29"
+  },
+  "2": {
+   "key": "co2",
+   "value": 434.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 15:57:30"
+  },
+  "3": {
+   "key": "temperature",
+   "value": 19.6,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 16:47:29"
+  },
+  "4": {
+   "key": "humidity",
+   "value": 48.5,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 16:47:29"
+  },
+  "5": {
+   "key": "co2",
+   "value": 435.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 16:47:29"
+  }
+ },
+ "B111": {
+  "0": {
+   "key": "co2",
+   "value": 2520.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 16:12:49"
+  },
+  "1": {
+   "key": "tvoc",
+   "value": 182.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 16:12:49"
+  },
+  "2": {
+   "key": "co2",
+   "value": 2378.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 17:02:49"
+  },
+  "3": {
+   "key": "tvoc",
+   "value": 166.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 17:02:49"
+  }
+ },
+ "B106": {
+  "0": {
+   "key": "tvoc",
+   "value": 138.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 16:20:28"
+  }
+ },
+ "B108": {
+  "0": {
+   "key": "tvoc",
+   "value": 167.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 16:46:56"
+  }
+ },
+ "B001": {
+  "0": {
+   "key": "tvoc",
+   "value": 77.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 16:50:58"
+  }
+ },
+ "E106": {
+  "0": {
+   "key": "humidity",
+   "value": 47.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 16:50:59"
+  },
+  "1": {
+   "key": "tvoc",
+   "value": 89.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 16:50:59"
+  }
+ },
+ "E004": {
+  "0": {
+   "key": "temperature",
+   "value": 19.9,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 16:51:00"
+  },
+  "1": {
+   "key": "humidity",
+   "value": 48.5,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 16:51:00"
+  },
+  "2": {
+   "key": "tvoc",
+   "value": 191.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 16:51:00"
+  }
+ },
+ "Foyer-etudiants-entr\u00e9e": {
+  "0": {
+   "key": "temperature",
+   "value": 49.1,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-03 17:02:58"
+  }
+ },
+ "E003": {
+  "0": {
+   "key": "humidity",
+   "value": 46.5,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 17:14:52"
+  },
+  "1": {
+   "key": "tvoc",
+   "value": 168.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 17:14:52"
+  }
+ },
+ "C006": {
+  "0": {
+   "key": "temperature",
+   "value": 18.8,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 17:39:22"
+  },
+  "1": {
+   "key": "tvoc",
+   "value": 166.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 17:39:22"
+  }
+ },
+ "E100": {
+  "0": {
+   "key": "humidity",
+   "value": 38.5,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 17:39:30"
+  },
+  "1": {
+   "key": "tvoc",
+   "value": 53.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 17:39:30"
+  }
+ },
+ "hall-amphi": {
+  "0": {
+   "key": "temperature",
+   "value": 19.5,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-03 17:39:30"
+  }
+ }
+}

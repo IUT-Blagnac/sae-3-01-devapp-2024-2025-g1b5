@@ -17,6 +17,8 @@ public class ConfigController  {
     @FXML
     private Button butConfigSolar;
     @FXML
+    private Button butConfigSeuil;
+    @FXML
     private Button butRetour;
     
     private App application;
@@ -42,6 +44,11 @@ public class ConfigController  {
     @FXML
     private void actionSolarConfig() {
         application.loadSolarConfig();
+    }
+
+    @FXML
+    private void actionSeuilConfig() {
+        application.loadSeuilConfig();
     }
    
 }
