@@ -47,7 +47,7 @@
                   </GridPane>
                </content>
             </ScrollPane>
-            <Button mnemonicParsing="false" text="Afficher Graphique" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <Button fx:id= "afficherGraph" mnemonicParsing="false" onAction="#actionAfficherGraphique" text="Afficher Graphique" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="8.0" />
                </GridPane.margin>

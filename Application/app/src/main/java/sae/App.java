@@ -18,6 +18,7 @@ import sae.view.AppState;
 import sae.view.AfficherDonneesController;
 import sae.view.ConfigController;
 import sae.view.FreqConfigController;
+import sae.view.GraphiqueSolarController;
 import sae.view.MenuController;
 import sae.view.ParametrageChoixSalles;
 import sae.view.ParametrageSolar;
@@ -76,6 +77,23 @@ public class App extends Application {
             System.exit(1);
         }
     }
+
+    public void loadGraphSolar() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(App.class.getResource("view/graphiqueSolar.fxml"));
+            BorderPane vueListe = loader.load();
+
+            GraphiqueSolarController graphSolar = loader.getController(); 
+            graphSolar.setDatas(stage, this);  
+
+            this.rootPane.setCenter(vueListe);
+        } catch (IOException e) {
+            System.out.println("Ressource FXML non disponible : graphiqueSolar.fxml");
+            System.exit(1);
+        }
+    }
+
     public void loadSallesConfig() {
         try {
             FXMLLoader loader = new FXMLLoader();

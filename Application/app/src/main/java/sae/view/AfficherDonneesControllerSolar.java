@@ -2,8 +2,10 @@ package sae.view;
 
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,6 +13,8 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
@@ -103,46 +107,51 @@ public class AfficherDonneesControllerSolar {
 
         // Titre des colonnes
         Label titreCle = new Label("Clé");
-        Label titreAttribut = new Label("Attribut");
         Label titreValeur = new Label("Valeur");
         gridDynamique.add(titreCle, 0, 0);
-        gridDynamique.add(titreAttribut, 1, 0);
-        gridDynamique.add(titreValeur, 2, 0);
-        
+        gridDynamique.add(titreValeur, 1, 0);
+
         // Mettre en valeur les titres
         titreCle.setStyle("-fx-font-weight: bold;");
-        titreAttribut.setStyle("-fx-font-weight: bold;");
         titreValeur.setStyle("-fx-font-weight: bold;");
-        
+
+        // Définir un espacement interne pour les cellules
+        GridPane.setMargin(titreCle, new javafx.geometry.Insets(5));
+        GridPane.setMargin(titreValeur, new javafx.geometry.Insets(5));
+
         int rowIndex = 1; // Commence après la ligne des titres
 
-        // Utilisation d'un Set pour éviter d'afficher les clés en double
-        Set<String> displayedKeys = new HashSet<>();
-        
+        // Extraire les clés et les trier dans l'ordre numérique décroissant
+        List<Integer> sortedKeys = new ArrayList<>();
         for (Object key : solar.keySet()) {
-            // Si la clé a déjà été affichée, on la saute
-            if (displayedKeys.contains(key.toString())) {
-                continue;
-            }
+            sortedKeys.add(Integer.parseInt(key.toString())); // Convertir la clé en entier
+        }
+        sortedKeys.sort(Collections.reverseOrder()); // Tri décroissant (du plus grand au plus petit)
 
-            JSONObject solarEntry = (JSONObject) solar.get(key);
+        // Parcourir les clés triées
+        for (Integer key : sortedKeys) {
+            JSONObject solarEntry = (JSONObject) solar.get(key.toString());
             gridDynamique.add(new Label(key.toString()), 0, rowIndex);
-            displayedKeys.add(key.toString());  // Ajouter la clé au Set pour éviter les doublons
 
-            // Ajouter les attributs sélectionnés
+            // Ajouter uniquement les valeurs des attributs sélectionnés
             for (String attribut : attributsSelectionnes) {
                 Object value = solarEntry.get(attribut); // Récupérer la valeur de l'attribut
-                String texte = attribut + " : " + (value != null ? formatValue(value) : "Non disponible");
+                String texte = (value != null ? formatValue(value) : "Non disponible");
 
-                // Mettre les données dans des colonnes séparées
-                gridDynamique.add(new Label(attribut), 1, rowIndex);
-                gridDynamique.add(new Label(texte), 2, rowIndex++);
+                // Créer un label avec de l'espacement à droite
+                Label valeurLabel = new Label(texte);
+                valeurLabel.setStyle("-fx-padding: 0 10px 0 0;"); // Ajouter un padding à droite
+
+                // Afficher uniquement la valeur
+                gridDynamique.add(valeurLabel, 1, rowIndex++);
             }
 
             // Ajouter un espace après chaque entrée de clé pour un meilleur espacement visuel
-            gridDynamique.add(new Label(" "), 0, rowIndex++);  // Espacement entre les clés
+            gridDynamique.add(new Label(" "), 0, rowIndex++); // Espacement entre les clés
         }
     }
+
+
 
     /**
      * Formate la valeur pour éviter d'afficher les accolades des objets JSON
@@ -163,6 +172,8 @@ public class AfficherDonneesControllerSolar {
         Stage stage = (Stage) butRetour.getScene().getWindow();
         stage.close();
     }
+
+    
 
     /**
      * Charge le fichier JSON et stocke les données dans le champ solarData
@@ -194,5 +205,10 @@ public class AfficherDonneesControllerSolar {
             System.out.println("Erreur lors du chargement du fichier solar.json : " + e.getMessage());
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void actionAfficherGraphique() {
+        application.loadGraphSolar(); // Appelle la méthode dans App pour charger le graphique
     }
 }
