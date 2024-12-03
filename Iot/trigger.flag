@@ -1,9 +1,9 @@
 {
-  "room": "B110",
+  "room": "C006",
   "alarm": {
-    "key": "co2",
-    "value": 1696.0,
+    "key": "pressure",
+    "value": 998.2,
     "alarm_type": "MAX",
-    "timestamp": "2024-12-03 15:00:04"
+    "timestamp": "2024-12-03 16:59:22"
   }
 }

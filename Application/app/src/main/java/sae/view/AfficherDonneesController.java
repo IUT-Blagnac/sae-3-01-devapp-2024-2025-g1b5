@@ -37,6 +37,9 @@ public class AfficherDonneesController {
 
   private JSONObject sallesData; // Champ pour stocker les données JSON
 
+  Map<String, Object> dicoTypeValeur ;
+  Map<String, Object> dicoGraphe ;
+
 
   public void setDatas(Stage fenetre, App app) {
     this.application = app;
@@ -54,7 +57,7 @@ public class AfficherDonneesController {
 
   @FXML
   private void actionAfficher() {;
-    
+      application.loadGraphe(numSalle, dicoGraphe);
   }
 
   @FXML
@@ -63,21 +66,24 @@ public class AfficherDonneesController {
   }
 
   public void afficherDonnees() {
-    Map<String, Double> dicoTypeValeur = chargerFichierSalle();
+    dicoTypeValeur = chargerFichierSalle();
     System.out.println(dicoTypeValeur);
-
-    System.out.println(donnees);
+    
+    dicoGraphe = new HashMap<String,Object>();
 
     for (int i = 0; i < donnees.size(); i++) { 
       gridDynamique.add(new Label( donnees.get(i).toUpperCase() + " :"), 0, i);
       gridDynamique.add(new Label( dicoTypeValeur.get(donnees.get(i)) + "" ), 1, i);
+
+      dicoGraphe.put(donnees.get(i), dicoTypeValeur.get(donnees.get(i)));
     }
+
   }
 
-  public Map<String, Double> chargerFichierSalle() {
+  public Map<String, Object> chargerFichierSalle() {
 
      JSONParser parser = new JSONParser();
-     Map<String, Double> dicoTypeValeur = new HashMap<String,Double>();
+     Map<String, Object> dicoTypeValeur = new HashMap<String,Object>();
 
         try {
             // Définir le chemin du fichier salles.json à la racine du projet
@@ -111,6 +117,8 @@ public class AfficherDonneesController {
               System.out.println(dernierClé);
 
               dicoTypeValeur = dernierClé;
+
+              System.out.println(dernierClé);
     
 
             } else {

@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
+import java.util.Map;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -18,6 +18,7 @@ import sae.view.AppState;
 import sae.view.AfficherDonneesController;
 import sae.view.ConfigController;
 import sae.view.FreqConfigController;
+import sae.view.GrapheController;
 import sae.view.MenuController;
 import sae.view.ParametrageChoixSalles;
 import sae.view.ParametrageSolar;
@@ -348,4 +349,31 @@ public class App extends Application {
     public static void main2(String[] args) {
         Application.launch(args);
     }
+
+    public void loadGraphe(String numSalle, Map<String, Object> map) {
+        try {
+            
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(App.class.getResource("view/grapheSalle.fxml"));
+
+            BorderPane vueListe = loader.load();
+            
+            GrapheController graphe = loader.getController();
+            
+            // Transmission des données nécessaires au contrôleur
+            graphe.setDatas(stage, this);
+            graphe.populateHistogram(numSalle, map);
+            
+            // Remplacement du contenu central de rootPane par la vue chargée
+            this.rootPane.setCenter(vueListe);
+
+        } catch (IOException e) {
+            // Gestion des erreurs si le fichier FXML est introuvable ou mal configuré
+            System.out.println("Ressource FXML non disponible : grapheSalle.fxml");
+            e.printStackTrace();
+            System.exit(1);
+        }
+    }
+
+
 }
