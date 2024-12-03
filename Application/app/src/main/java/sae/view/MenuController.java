@@ -74,6 +74,8 @@ public class MenuController {
       } catch (MqttException e) {
         // TODO Auto-generated catch block
         e.printStackTrace();
+        labelTestCo.setText("Connexion échouée");
+        labelTestCo.setStyle("-fx-text-fill: red;");
       }
     }
 

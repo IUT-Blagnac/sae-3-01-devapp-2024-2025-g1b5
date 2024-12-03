@@ -912,6 +912,11 @@
    "temperature": 21.5,
    "humidity": 47.5,
    "co2": 2466
+  },
+  "9": {
+   "temperature": 21.5,
+   "humidity": 52.5,
+   "co2": 3217
   }
  },
  "E210": {
@@ -959,6 +964,11 @@
    "temperature": 20.9,
    "humidity": 50,
    "co2": 885
+  },
+  "9": {
+   "temperature": 20.6,
+   "humidity": 47.5,
+   "co2": 486
   }
  },
  "E101": {
@@ -1011,6 +1021,11 @@
    "temperature": 20,
    "humidity": 49.5,
    "co2": 692
+  },
+  "10": {
+   "temperature": 19.9,
+   "humidity": 48.5,
+   "co2": 518
   }
  },
  "E207": {
@@ -1063,6 +1078,11 @@
    "temperature": 20.2,
    "humidity": 50.5,
    "co2": 923
+  },
+  "10": {
+   "temperature": 20,
+   "humidity": 47.5,
+   "co2": 519
   }
  },
  "E102": {
