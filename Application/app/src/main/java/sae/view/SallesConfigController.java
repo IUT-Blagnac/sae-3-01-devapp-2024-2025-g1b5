@@ -13,7 +13,6 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import sae.App;
-import sae.appli.Seuils;
 import sae.appli.TypeDonnee;
 import sae.view.AppState;
 
@@ -84,13 +83,16 @@ public class SallesConfigController {
             List<Integer> seuilMinList = new ArrayList<>();
             List<Integer> seuilMaxList = new ArrayList<>();
     
-            // Liste de tous les seuils, récupérée d'une manière ou d'une autre    
+            // Récupérer les seuils en fonction des données dans donneesSalles
             for (String salle : donneesSalles) {
-                // Trouver l'objet Seuils correspondant à la salle
-                Seuils seuil = Seuils.findSeuilByNom(Seuils.getAllSeuils(), salle);
-                if (seuil != null) {
-                    seuilMinList.add(seuil.getSeuilMin());
-                    seuilMaxList.add(seuil.getSeuilMax());
+                // Vérifier si le type de donnée est valide
+                if (TypeDonnee.containsType(salle)) {
+                    // Récupérer les seuils min et max associés à cette donnée
+                    int[] seuils = TypeDonnee.getSeuilsByNom(salle);
+                    if (seuils != null) {
+                        seuilMinList.add(seuils[0]); // seuil min
+                        seuilMaxList.add(seuils[1]); // seuil max
+                    }
                 }
             }
     
@@ -154,6 +156,7 @@ public class SallesConfigController {
             System.out.println("Erreur lors de la mise à jour du fichier de configuration : " + e.getMessage());
         }
     }
+    
     
     
 

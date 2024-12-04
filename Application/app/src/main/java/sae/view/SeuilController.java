@@ -9,6 +9,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sae.App;  // Assure-toi d'importer App correctement
+import sae.appli.TypeDonnee;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -272,15 +273,20 @@ public class SeuilController {
 
             String selectedType = choices.get(0); // Obtenir le type sélectionné
 
-            // Étape 5 : Mettre à jour le fichier de configuration
+            // Étape 5 : Mettre à jour les seuils dans l'énumération TypeDonnee
+            TypeDonnee.setSeuilsByNom(selectedType, minValue, maxValue);
+            System.out.println("Seuils mis à jour pour " + selectedType + ": " + minValue + " - " + maxValue);
+
+            // Étape 6 : Mettre à jour le fichier de configuration
             updateConfigFile(minValue, maxValue, selectedType);
 
-            // Étape 6 : Redémarrer le processus Python
+            // Étape 7 : Redémarrer le processus Python
             restartPythonScript();
         } else {
             System.out.println("Les champs sont invalides.");
         }
     }
+
 
 
     private void restartPythonScript() {
