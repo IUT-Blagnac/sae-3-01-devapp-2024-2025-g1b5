@@ -79,52 +79,86 @@ public class SallesConfigController {
 
     public void updateConfig(List<String> donneesSalles) {
         try {
-            // Charger toutes les lignes du fichier de configuration
-            List<String> lines = Files.readAllLines(Paths.get(CONFIG_FILE));
-
-            // Créer la nouvelle ligne pour donneesSalles
+            // Liste pour stocker les seuils min et max
+            List<Integer> seuilMinList = new ArrayList<>();
+            List<Integer> seuilMaxList = new ArrayList<>();
+    
+            // Récupérer les seuils en fonction des données dans donneesSalles
+            for (String salle : donneesSalles) {
+                // Vérifier si le type de donnée est valide
+                if (TypeDonnee.containsType(salle)) {
+                    // Récupérer les seuils min et max associés à cette donnée
+                    int[] seuils = TypeDonnee.getSeuilsByNom(salle);
+                    if (seuils != null) {
+                        seuilMinList.add(seuils[0]); // seuil min
+                        seuilMaxList.add(seuils[1]); // seuil max
+                    }
+                }
+            }
+    
+            // Construire les nouvelles lignes pour la configuration
             String newDonneesSallesLine = "donneesSalles=[" + donneesSalles.stream()
                     .map(attr -> "'" + attr + "'")
                     .collect(Collectors.joining(", ")) + "]";
-
-            // Mettre à jour ou ajouter la ligne donneesSalles
+            String newSeuilMinLine = "seuil_min=[" + seuilMinList.stream()
+                    .map(String::valueOf)
+                    .collect(Collectors.joining(", ")) + "]";
+            String newSeuilMaxLine = "seuil_max=[" + seuilMaxList.stream()
+                    .map(String::valueOf)
+                    .collect(Collectors.joining(", ")) + "]";
+    
+            // Charger les lignes existantes du fichier de configuration
+            List<String> lines = Files.readAllLines(Paths.get(CONFIG_FILE));
             List<String> updatedLines = new ArrayList<>();
-            boolean found = false;
-
+            boolean donneesSallesFound = false;
+            boolean seuilMinFound = false;
+            boolean seuilMaxFound = false;
+    
+            // Mettre à jour ou ajouter les lignes correspondantes
             for (String line : lines) {
                 if (line.startsWith("donneesSalles")) {
                     updatedLines.add(newDonneesSallesLine);
-                    found = true;
+                    donneesSallesFound = true;
+                } else if (line.startsWith("seuil_min")) {
+                    updatedLines.add(newSeuilMinLine);
+                    seuilMinFound = true;
+                } else if (line.startsWith("seuil_max")) {
+                    updatedLines.add(newSeuilMaxLine);
+                    seuilMaxFound = true;
                 } else {
                     updatedLines.add(line);
                 }
             }
-
-            if (!found) {
-                updatedLines.add(newDonneesSallesLine); // Ajouter si absent
-            }
-
-            // Écrire les nouvelles lignes dans le fichier
+    
+            // Ajouter les lignes manquantes si nécessaire
+            if (!donneesSallesFound) updatedLines.add(newDonneesSallesLine);
+            if (!seuilMinFound) updatedLines.add(newSeuilMinLine);
+            if (!seuilMaxFound) updatedLines.add(newSeuilMaxLine);
+    
+            // Écrire les nouvelles lignes dans le fichier de configuration
             Files.write(Paths.get(CONFIG_FILE), updatedLines);
             System.out.println("Fichier de configuration mis à jour avec succès.");
             lblInfo.setText("Modifications enregistrées avec succès !");
             lblInfo.setVisible(true);
-
-                    // Masquer le message après 3 secondes
-        new Thread(() -> {
-            try {
-                Thread.sleep(3000);
-                lblInfo.setVisible(false);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }).start();
-
+    
+            // Masquer le message après 3 secondes
+            new Thread(() -> {
+                try {
+                    Thread.sleep(3000);
+                    lblInfo.setVisible(false);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }).start();
+    
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Erreur lors de la mise à jour du fichier de configuration : " + e.getMessage());
         }
     }
+    
+    
+    
 
     @FXML
     private void initialize() {
