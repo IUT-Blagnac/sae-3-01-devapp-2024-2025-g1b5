@@ -17,8 +17,9 @@ import sae.view.AfficherDonneesControllerSolar;
 import sae.view.AppState;
 import sae.view.AfficherDonneesController;
 import sae.view.ConfigController;
+import sae.view.EvolutionGrapheController;
 import sae.view.FreqConfigController;
-import sae.view.GrapheController;
+import sae.view.GrapheSalleController;
 import sae.view.MenuController;
 import sae.view.ParametrageChoixSalles;
 import sae.view.ParametrageSolar;
@@ -358,7 +359,7 @@ public class App extends Application {
 
             BorderPane vueListe = loader.load();
             
-            GrapheController graphe = loader.getController();
+            GrapheSalleController graphe = loader.getController();
             
             // Transmission des données nécessaires au contrôleur
             graphe.setDatas(stage, this);
@@ -375,7 +376,7 @@ public class App extends Application {
         }
     }
 
-    public void loadGraphe2(String numSalle, Map<String, Object> map) {
+    public void loadGraphe2(String numSalle, Map< String, Map<String, Object> > map) {
         try {
             
             FXMLLoader loader = new FXMLLoader();
@@ -383,11 +384,11 @@ public class App extends Application {
 
             BorderPane vueListe = loader.load();
             
-            GrapheController graphe = loader.getController();
+            EvolutionGrapheController graphe = loader.getController();
             
             // Transmission des données nécessaires au contrôleur
             graphe.setDatas(stage, this);
-            graphe.lignePts(numSalle, map);
+            //graphe.lignePts(numSalle, map);
             
             // Remplacement du contenu central de rootPane par la vue chargée
             this.rootPane.setCenter(vueListe);
