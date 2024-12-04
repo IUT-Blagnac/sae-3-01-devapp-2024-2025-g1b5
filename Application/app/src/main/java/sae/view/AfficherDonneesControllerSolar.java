@@ -11,6 +11,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.print.DocFlavor.URL;
+
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
@@ -277,6 +279,73 @@ public class AfficherDonneesControllerSolar {
             graphiqueStage.show();
         } catch (IOException e) {
             System.out.println("Erreur lors de l'ouverture du graphique dans une nouvelle fenêtre : " + e.getMessage());
+        }
+    }
+
+    
+    @FXML
+    private void actionAfficherDayGraphique() {
+        // Créer une nouvelle fenêtre (Stage) pour afficher le graphique
+        Stage graphiqueStage = new Stage();  // Nouvelle fenêtre
+    
+        try {
+            // Créer un FXMLLoader pour charger le fichier FXML
+            FXMLLoader loader = new FXMLLoader();
+            
+            // Charger le fichier FXML
+            loader.setLocation(getClass().getResource("/sae/view/graphiqueSolarDay.fxml"));
+    
+            // Charger le fichier FXML dans la vue
+            BorderPane vueGraphique = loader.load();
+    
+            // Obtenir le contrôleur du graphique
+            GraphiqueSolarDayController graphController = loader.getController();
+            graphController.setDatas(graphiqueStage);  // Passer la référence de la fenêtre
+    
+            // Créer et afficher la nouvelle scène avec le graphique
+            Scene scene = new Scene(vueGraphique);
+            graphiqueStage.setScene(scene);
+            graphiqueStage.setTitle("Graphique Energie par Jour");
+            graphiqueStage.show();
+        } catch (IOException e) {
+            // Afficher un message d'erreur si le fichier FXML ne peut pas être chargé
+            System.out.println("Erreur lors de l'ouverture du graphique dans une nouvelle fenêtre : " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+    
+    
+    
+
+    
+    @FXML
+    private void actionAfficherMonthGraphique() {
+        // Créer une nouvelle fenêtre (Stage) pour afficher le graphique
+        Stage graphiqueStage = new Stage();  // Nouvelle fenêtre
+    
+        try {
+            // Créer un FXMLLoader pour charger le fichier FXML
+            FXMLLoader loader = new FXMLLoader();
+            
+            // Charger le fichier FXML
+            loader.setLocation(getClass().getResource("/sae/view/graphiqueSolarMonth.fxml"));
+    
+            // Charger le fichier FXML dans la vue
+            BorderPane vueGraphique = loader.load();
+    
+            // Obtenir le contrôleur du graphique
+            GraphiqueSolarMonthController graphController = loader.getController();
+            graphController.setDatas(graphiqueStage);  // Passer la référence de la fenêtre
+    
+            // Créer et afficher la nouvelle scène avec le graphique
+            Scene scene = new Scene(vueGraphique);
+            graphiqueStage.setScene(scene);
+            graphiqueStage.setTitle("Graphique Energie par Jour");
+            graphiqueStage.show();
+        } catch (IOException e) {
+            // Afficher un message d'erreur si le fichier FXML ne peut pas être chargé
+            System.out.println("Erreur lors de l'ouverture du graphique dans une nouvelle fenêtre : " + e.getMessage());
+            e.printStackTrace();
         }
     }
 }

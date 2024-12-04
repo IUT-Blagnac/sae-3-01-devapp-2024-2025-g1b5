@@ -52,12 +52,12 @@
                   <Insets left="8.0" />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="20.0" prefWidth="130.0" text="Afficher Graphique energie par jour" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <Button mnemonicParsing="false" onAction="#actionAfficherDayGraphique" prefHeight="20.0" prefWidth="130.0" text="Afficher Graphique energie par jour" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="75.0" left="8.0" />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" text="Afficher Graphique energie par mois" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <Button mnemonicParsing="false" onAction="#actionAfficherMonthGraphique" text="Afficher Graphique energie par mois" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="8.0" top="75.0" />
                </GridPane.margin>
