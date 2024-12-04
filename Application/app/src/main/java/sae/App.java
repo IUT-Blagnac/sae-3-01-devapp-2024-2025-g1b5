@@ -387,9 +387,10 @@ public class App extends Application {
             EvolutionGrapheController graphe = loader.getController();
             
             // Transmission des données nécessaires au contrôleur
-            graphe.setDatas(stage, this);
+            graphe.setDatas(stage, this,vueListe);
             graphe.afficherGraphes(numSalle, map);
             
+
             // Remplacement du contenu central de rootPane par la vue chargée
             this.rootPane.setCenter(vueListe);
 

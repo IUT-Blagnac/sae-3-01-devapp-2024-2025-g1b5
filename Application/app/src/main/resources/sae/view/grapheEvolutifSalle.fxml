@@ -1,34 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.FlowPane?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sae.view.EvolutionGrapheController">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sae.view.EvolutionGrapheController">
+   <top>
+      <Label fx:id="titreSalle" alignment="CENTER" contentDisplay="CENTER" maxHeight="17.0" maxWidth="926.0" prefHeight="17.0" prefWidth="926.0" text="Label" textAlignment="CENTER" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets top="50.0" />
+         </BorderPane.margin>
+      </Label>
+   </top>
+   <bottom>
+      <Button fx:id="retour" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#actionRetour" prefHeight="25.0" prefWidth="123.0" text="Retour" textAlignment="CENTER" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="50.0" />
+         </BorderPane.margin>
+      </Button>
+   </bottom>
    <center>
-      <GridPane alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
-        <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="195.0" minWidth="0.0" prefWidth="15.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="733.0" minWidth="10.0" prefWidth="727.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="135.0" minWidth="7.0" prefWidth="11.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints maxHeight="230.0" minHeight="0.0" prefHeight="62.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="504.0" minHeight="10.0" prefHeight="442.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="159.0" minHeight="2.0" prefHeight="53.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <Button fx:id="retour" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#actionRetour" prefHeight="25.0" prefWidth="941.0" text="Retour" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <GridPane fx:id="gridDynamique" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="1">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-            </GridPane>
-            <Label fx:id="titreSalle" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="926.0" text="Label" textAlignment="CENTER" GridPane.columnIndex="1" />
-         </children>
-      </GridPane>
+      <FlowPane fx:id="gridDynamique" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>

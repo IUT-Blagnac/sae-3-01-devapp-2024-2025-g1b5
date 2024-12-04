@@ -16,7 +16,10 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
 import sae.App;
 
@@ -26,17 +29,20 @@ public class EvolutionGrapheController {
     private App application;
 
     @FXML
-    private GridPane gridDynamique;
+    private FlowPane gridDynamique;
     @FXML
     private Button retour;
 
     @FXML
     private Label titreSalle;
     
-    public void setDatas(Stage fenetre, App app) {
+    public void setDatas(Stage fenetre, App app, BorderPane vueListe) {
         this.application = app;
         this.fenetrePrincipale = fenetre;
         this.fenetrePrincipale.setMaximized(true);
+        
+        // vueListe.setMinSize(this.fenetrePrincipale.getHeight(), this.fenetrePrincipale.getHeight());
+        
     }
 
     @FXML
@@ -59,6 +65,9 @@ public class EvolutionGrapheController {
             categories.addAll(data.keySet()); // Récupérer toutes les catégories uniques
         }
 
+        
+        
+
         // Création des graphiques pour chaque catégorie
         for (String category : categories) {
             // Créer un LineChart pour chaque catégorie
@@ -66,6 +75,7 @@ public class EvolutionGrapheController {
             final NumberAxis yAxis = new NumberAxis();
             LineChart<String, Number> lineChart = new LineChart<>(xAxis, yAxis);
             lineChart.setTitle(category.toUpperCase());
+
 
             // Créer une série pour la catégorie
             XYChart.Series<String, Number> series = new XYChart.Series<>();
@@ -85,10 +95,23 @@ public class EvolutionGrapheController {
     
             // Ajouter la série au graphique
             lineChart.getData().add(series);
-    
+            
+            
             // Ajouter le graphique au GridPane
-            gridDynamique.add(lineChart, col, row);
-    
+            gridDynamique.getChildren().add(lineChart);
+
+            ColumnConstraints col1 = new ColumnConstraints();
+            col1.setMaxWidth(600);   // Largeur maximale
+            RowConstraints row1 = new RowConstraints();
+            row1.setMaxHeight(400);   // Hauteur maximale
+
+            // Appliquez ces contraintes au GridPane
+            // gridDynamique.getColumnConstraints().add(col1);
+            // gridDynamique.getRowConstraints().add(row1);
+
+            // for(javafx.scene.Node nd : gridDynamique.getChildren()){
+                // ((LineChart)nd).setMinWidth(this.fenetrePrincipale.getWidth()/3);
+            // }
             // Alterner entre colonnes et lignes
             if (col == 0) {
                 col = 1; // Aller à la colonne suivante
