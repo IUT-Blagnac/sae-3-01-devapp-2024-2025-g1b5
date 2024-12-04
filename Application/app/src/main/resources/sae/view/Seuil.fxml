@@ -23,8 +23,8 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField fx:id="minValueField" text="Valeur seuil MIN" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="maxValueField" prefHeight="31.0" prefWidth="223.0" text="Valeur seuil MAX" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="minValueField" promptText="Valeur seuil MIN" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="maxValueField" prefHeight="31.0" prefWidth="223.0" promptText="Valeur seuil MAX" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Button fx:id="butRetour" mnemonicParsing="false" onAction="#handleRetour" text="Retour" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
             <Button fx:id="butValider" mnemonicParsing="false" onAction="#handleValider" text="Valider" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
             <MenuButton fx:id="choixTypeDonnees" mnemonicParsing="false" text="Type de donnée" GridPane.halignment="CENTER" GridPane.rowIndex="1" />

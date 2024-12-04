@@ -1,9 +1,9 @@
 {
-  "room": "hall-entr\u00e9e-principale",
+  "room": "B108",
   "alarm": {
-    "key": "temperature",
-    "value": 19.8,
+    "key": "humidity",
+    "value": 48.5,
     "alarm_type": "MIN",
-    "timestamp": "2024-12-03 17:40:00"
+    "timestamp": "2024-12-04 10:06:56"
   }
 }

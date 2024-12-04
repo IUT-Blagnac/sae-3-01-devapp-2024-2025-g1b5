@@ -47,7 +47,7 @@ public class SeuilController {
     }
 
 
-    // Méthode pour initialiser la vue, appelant `loadMenuDeroulantDonnees`
+    // Méthode pour initialiser la vue, appelant loadMenuDeroulantDonnees
     @FXML
     private void initialize() {
         loadMenuDeroulantDonnees();  // Appelle la méthode de chargement des données
@@ -63,11 +63,12 @@ public class SeuilController {
             if (item instanceof CheckMenuItem) {
                 CheckMenuItem checkMenuItem = (CheckMenuItem) item;
                 if (!checkMenuItem.equals(selected)) {
-                    checkMenuItem.setSelected(false);  // Désélectionner les autres éléments
+                    checkMenuItem.setSelected(false); // Désélectionner les autres éléments
                 }
             }
         }
     }
+    
 
 
     // Méthode pour charger les données dans le MenuButton
@@ -76,7 +77,7 @@ public class SeuilController {
             // Lecture du fichier de configuration
             List<String> lines = Files.readAllLines(Paths.get("Iot/config.ini"));
             List<String> donneesSalles = new ArrayList<>();
-
+    
             // Extraction des données de la section [data]
             for (String line : lines) {
                 if (line.startsWith("donneesSalles")) {
@@ -85,46 +86,67 @@ public class SeuilController {
                     donneesSalles = List.of(values.split(","))
                             .stream().map(v -> v.trim().replace("'", ""))
                             .collect(Collectors.toList());
-
+    
                     // Ajouter les CheckMenuItem au MenuButton
                     for (String donnee : donneesSalles) {
                         CheckMenuItem cb = new CheckMenuItem(donnee);
                         cb.setUserData(donnee);
-
+    
                         // Ajout du gestionnaire d'événements pour un seul élément sélectionné
-                        cb.setOnAction(event -> handleSelectionUnique(cb));
-
+                        cb.setOnAction(event -> {
+                            handleSelectionUnique(cb);
+                            donneeChoisies(); // Mettre à jour la liste des choix
+                        });
+    
                         choixTypeDonnees.getItems().add(cb);
                     }
                 }
             }
-
+    
             if (donneesSalles.isEmpty()) {
                 System.out.println("Aucune donnée trouvée dans donneesSalles.");
             }
-
+    
+            // Vérification de l'ajout des éléments
+            System.out.println("Éléments ajoutés au MenuButton :");
+            for (MenuItem item : choixTypeDonnees.getItems()) {
+                System.out.println("- " + item.getText());
+            }
+    
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Erreur lors du chargement du fichier de configuration : " + e.getMessage());
         }
     }
+    
 
 
     // Méthode pour récupérer les données choisies
     public void donneeChoisies() {
         ObservableList<MenuItem> obList = choixTypeDonnees.getItems();
+        choices.clear(); // Réinitialiser la liste avant de récupérer la sélection
+        boolean foundSelection = false;
+    
+        System.out.println("Éléments dans le menu déroulant :");
         for (MenuItem item : obList) {
+            System.out.println("- " + item.getText());
             if (item instanceof CheckMenuItem) {
                 CheckMenuItem checkMenuItem = (CheckMenuItem) item;
+                System.out.println("  " + checkMenuItem.getText() + " sélectionné ? " + checkMenuItem.isSelected());
                 if (checkMenuItem.isSelected()) {
-                    // Ajouter l'élément sélectionné à la liste choices
-                    choices.clear();  // On s'assure qu'il n'y a qu'un seul élément dans la liste
                     choices.add(checkMenuItem.getText());
-                    System.out.println("Donnée choisie : " + checkMenuItem.getText());  // Débogage
+                    System.out.println("Donnée choisie mise à jour : " + checkMenuItem.getText());
+                    foundSelection = true;
+                    break;
                 }
             }
         }
+    
+        if (!foundSelection) {
+            System.out.println("Aucune donnée choisie dans le menu déroulant.");
+        }
     }
+    
 
 
     // Gérer le retour au menu précédent
@@ -235,20 +257,31 @@ public class SeuilController {
     private void handleValider() {
         // Étape 1 : Vérifier que les valeurs des TextFields sont valides
         if (areFieldsValid()) {
-            // Étape 2 : Récupérer les valeurs des TextFields et du type de donnée sélectionné
-            String selectedType = ""; // Logique pour obtenir le type de donnée sélectionné
+            // Étape 2 : Récupérer les valeurs des TextFields
             int minValue = Integer.parseInt(minValueField.getText());
             int maxValue = Integer.parseInt(maxValueField.getText());
 
-            // Étape 3 : Mettre à jour le fichier de configuration
+            // Étape 3 : Forcer la mise à jour des données choisies
+            donneeChoisies();
+
+            // Étape 4 : Vérifier si une donnée a été sélectionnée
+            if (choices.isEmpty()) {
+                System.out.println("Aucun type de donnée sélectionné !");
+                return;
+            }
+
+            String selectedType = choices.get(0); // Obtenir le type sélectionné
+
+            // Étape 5 : Mettre à jour le fichier de configuration
             updateConfigFile(minValue, maxValue, selectedType);
 
-            // Étape 4 : Redémarrer le processus Python
+            // Étape 6 : Redémarrer le processus Python
             restartPythonScript();
         } else {
             System.out.println("Les champs sont invalides.");
         }
     }
+
 
     private void restartPythonScript() {
         stopPythonProcess();
