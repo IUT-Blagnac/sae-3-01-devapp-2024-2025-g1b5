@@ -19,6 +19,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -256,6 +257,26 @@ public class AfficherDonneesControllerSolar {
 
     @FXML
     private void actionAfficherGraphique() {
-        application.loadGraphSolar(); // Appelle la méthode dans App pour charger le graphique
+        // Créer une nouvelle fenêtre (Stage) pour afficher le graphique
+        Stage graphiqueStage = new Stage();  // Nouvelle fenêtre
+
+        // Charger le FXML du graphique
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(App.class.getResource("view/graphiqueSolar.fxml"));
+            BorderPane vueGraphique = loader.load();
+
+            // Obtenir le contrôleur du graphique
+            GraphiqueSolarController graphController = loader.getController();
+            graphController.setDatas(graphiqueStage, application);  // Passer la référence de la fenêtre
+
+            // Créer et afficher la nouvelle scène avec le graphique
+            Scene scene = new Scene(vueGraphique);
+            graphiqueStage.setScene(scene);
+            graphiqueStage.setTitle("Graphique Solar");
+            graphiqueStage.show();
+        } catch (IOException e) {
+            System.out.println("Erreur lors de l'ouverture du graphique dans une nouvelle fenêtre : " + e.getMessage());
+        }
     }
 }

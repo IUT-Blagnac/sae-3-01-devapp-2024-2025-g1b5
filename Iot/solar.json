@@ -497,6 +497,12 @@
         "power": 1477.4645
       },
       "lastUpdateTime": "2024-12-04 10:57:34"
+    },
+    "83": {
+      "currentPower": {
+        "power": 1602.1205
+      },
+      "lastUpdateTime": "2024-12-04 11:12:36"
     }
   }
 }

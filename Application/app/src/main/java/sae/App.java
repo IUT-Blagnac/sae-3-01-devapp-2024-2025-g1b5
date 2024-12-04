@@ -78,22 +78,6 @@ public class App extends Application {
         }
     }
 
-    public void loadGraphSolar() {
-        try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(App.class.getResource("view/graphiqueSolar.fxml"));
-            BorderPane vueListe = loader.load();
-
-            GraphiqueSolarController graphSolar = loader.getController(); 
-            graphSolar.setDatas(stage, this);  
-
-            this.rootPane.setCenter(vueListe);
-        } catch (IOException e) {
-            System.out.println("Ressource FXML non disponible : graphiqueSolar.fxml");
-            System.exit(1);
-        }
-    }
-
     public void loadSallesConfig() {
         try {
             FXMLLoader loader = new FXMLLoader();
