@@ -10,37 +10,37 @@
       "currentPower": {
         "power": 0
       },
-      "lastUpdateTime": "2024-12-03 20:28:42"
+      "lastUpdateTime": "2024-12-01 20:28:42"
     },
     "2": {
       "currentPower": {
         "power": 0
       },
-      "lastUpdateTime": "2024-12-03 20:28:42"
+      "lastUpdateTime": "2024-12-01 20:28:42"
     },
     "3": {
       "currentPower": {
         "power": 0
       },
-      "lastUpdateTime": "2024-12-03 20:28:42"
+      "lastUpdateTime": "2024-12-01 20:28:42"
     },
     "4": {
       "currentPower": {
         "power": 0
       },
-      "lastUpdateTime": "2024-12-03 20:28:42"
+      "lastUpdateTime": "2024-12-02 20:28:42"
     },
     "5": {
       "currentPower": {
         "power": 0
       },
-      "lastUpdateTime": "2024-12-03 20:28:42"
+      "lastUpdateTime": "2024-12-02 20:28:42"
     },
     "6": {
       "currentPower": {
         "power": 0
       },
-      "lastUpdateTime": "2024-12-03 20:28:42"
+      "lastUpdateTime": "2024-12-02 20:28:42"
     },
     "7": {
       "currentPower": {
@@ -53,6 +53,450 @@
         "power": 0
       },
       "lastUpdateTime": "2024-12-03 20:28:42"
+    },
+    "9": {
+      "currentPower": {
+        "power": 297.6295
+      },
+      "lastUpdateTime": "2024-12-04 09:32:34"
+    },
+    "10": {
+      "currentPower": {
+        "power": 297.6295
+      },
+      "lastUpdateTime": "2024-12-04 09:32:34"
+    },
+    "11": {
+      "currentPower": {
+        "power": 297.6295
+      },
+      "lastUpdateTime": "2024-12-04 09:32:34"
+    },
+    "12": {
+      "currentPower": {
+        "power": 361.91644
+      },
+      "lastUpdateTime": "2024-12-04 09:48:31"
+    },
+    "13": {
+      "currentPower": {
+        "power": 506.6977
+      },
+      "lastUpdateTime": "2024-12-04 09:48:31"
+    },
+    "14": {
+      "currentPower": {
+        "power": 607.93115
+      },
+      "lastUpdateTime": "2024-12-04 09:48:31"
+    },
+    "15": {
+      "currentPower": {
+        "power": 607.93115
+      },
+      "lastUpdateTime": "2024-12-04 09:48:31"
+    },
+    "16": {
+      "currentPower": {
+        "power": 607.93115
+      },
+      "lastUpdateTime": "2024-12-04 09:48:31"
+    },
+    "17": {
+      "currentPower": {
+        "power": 607.93115
+      },
+      "lastUpdateTime": "2024-12-04 10:04:49"
+    },
+    "18": {
+      "currentPower": {
+        "power": 607.93115
+      },
+      "lastUpdateTime": "2024-12-04 10:04:49"
+    },
+    "19": {
+      "currentPower": {
+        "power": 607.93115
+      },
+      "lastUpdateTime": "2024-12-04 10:04:49"
+    },
+    "20": {
+      "currentPower": {
+        "power": 607.93115
+      },
+      "lastUpdateTime": "2024-12-04 10:04:49"
+    },
+    "21": {
+      "currentPower": {
+        "power": 607.93115
+      },
+      "lastUpdateTime": "2024-12-04 10:04:49"
+    },
+    "22": {
+      "currentPower": {
+        "power": 675.6267
+      },
+      "lastUpdateTime": "2024-12-04 10:04:49"
+    },
+    "23": {
+      "currentPower": {
+        "power": 675.6267
+      },
+      "lastUpdateTime": "2024-12-04 10:04:49"
+    },
+    "24": {
+      "currentPower": {
+        "power": 675.6267
+      },
+      "lastUpdateTime": "2024-12-04 10:04:49"
+    },
+    "25": {
+      "currentPower": {
+        "power": 777.31146
+      },
+      "lastUpdateTime": "2024-12-04 10:04:49"
+    },
+    "26": {
+      "currentPower": {
+        "power": 777.31146
+      },
+      "lastUpdateTime": "2024-12-04 10:04:49"
+    },
+    "27": {
+      "currentPower": {
+        "power": 777.31146
+      },
+      "lastUpdateTime": "2024-12-04 10:04:49"
+    },
+    "28": {
+      "currentPower": {
+        "power": 777.31146
+      },
+      "lastUpdateTime": "2024-12-04 10:04:49"
+    },
+    "29": {
+      "currentPower": {
+        "power": 777.31146
+      },
+      "lastUpdateTime": "2024-12-04 10:04:49"
+    },
+    "30": {
+      "currentPower": {
+        "power": 777.31146
+      },
+      "lastUpdateTime": "2024-12-04 10:04:49"
+    },
+    "31": {
+      "currentPower": {
+        "power": 777.31146
+      },
+      "lastUpdateTime": "2024-12-04 10:04:49"
+    },
+    "32": {
+      "currentPower": {
+        "power": 777.31146
+      },
+      "lastUpdateTime": "2024-12-04 10:04:49"
+    },
+    "33": {
+      "currentPower": {
+        "power": 777.31146
+      },
+      "lastUpdateTime": "2024-12-04 10:04:49"
+    },
+    "34": {
+      "currentPower": {
+        "power": 777.31146
+      },
+      "lastUpdateTime": "2024-12-04 10:04:49"
+    },
+    "35": {
+      "currentPower": {
+        "power": 867.54266
+      },
+      "lastUpdateTime": "2024-12-04 10:04:49"
+    },
+    "36": {
+      "currentPower": {
+        "power": 867.54266
+      },
+      "lastUpdateTime": "2024-12-04 10:04:49"
+    },
+    "37": {
+      "currentPower": {
+        "power": 943.521
+      },
+      "lastUpdateTime": "2024-12-04 10:19:58"
+    },
+    "38": {
+      "currentPower": {
+        "power": 943.521
+      },
+      "lastUpdateTime": "2024-12-04 10:19:58"
+    },
+    "39": {
+      "currentPower": {
+        "power": 943.521
+      },
+      "lastUpdateTime": "2024-12-04 10:19:58"
+    },
+    "40": {
+      "currentPower": {
+        "power": 943.521
+      },
+      "lastUpdateTime": "2024-12-04 10:19:58"
+    },
+    "41": {
+      "currentPower": {
+        "power": 943.521
+      },
+      "lastUpdateTime": "2024-12-04 10:19:58"
+    },
+    "42": {
+      "currentPower": {
+        "power": 943.521
+      },
+      "lastUpdateTime": "2024-12-04 10:19:58"
+    },
+    "43": {
+      "currentPower": {
+        "power": 943.521
+      },
+      "lastUpdateTime": "2024-12-04 10:19:58"
+    },
+    "44": {
+      "currentPower": {
+        "power": 997.26447
+      },
+      "lastUpdateTime": "2024-12-04 10:19:58"
+    },
+    "45": {
+      "currentPower": {
+        "power": 997.26447
+      },
+      "lastUpdateTime": "2024-12-04 10:19:58"
+    },
+    "46": {
+      "currentPower": {
+        "power": 1066.4653
+      },
+      "lastUpdateTime": "2024-12-04 10:19:58"
+    },
+    "47": {
+      "currentPower": {
+        "power": 1066.4653
+      },
+      "lastUpdateTime": "2024-12-04 10:19:58"
+    },
+    "48": {
+      "currentPower": {
+        "power": 1066.4653
+      },
+      "lastUpdateTime": "2024-12-04 10:19:58"
+    },
+    "49": {
+      "currentPower": {
+        "power": 1066.4653
+      },
+      "lastUpdateTime": "2024-12-04 10:19:58"
+    },
+    "50": {
+      "currentPower": {
+        "power": 1066.4653
+      },
+      "lastUpdateTime": "2024-12-04 10:19:58"
+    },
+    "51": {
+      "currentPower": {
+        "power": 1066.4653
+      },
+      "lastUpdateTime": "2024-12-04 10:35:34"
+    },
+    "52": {
+      "currentPower": {
+        "power": 1066.4653
+      },
+      "lastUpdateTime": "2024-12-04 10:35:34"
+    },
+    "53": {
+      "currentPower": {
+        "power": 1132.2245
+      },
+      "lastUpdateTime": "2024-12-04 10:35:34"
+    },
+    "54": {
+      "currentPower": {
+        "power": 1208.1744
+      },
+      "lastUpdateTime": "2024-12-04 10:40:34"
+    },
+    "55": {
+      "currentPower": {
+        "power": 1208.1744
+      },
+      "lastUpdateTime": "2024-12-04 10:40:34"
+    },
+    "56": {
+      "currentPower": {
+        "power": 1208.1744
+      },
+      "lastUpdateTime": "2024-12-04 10:40:34"
+    },
+    "57": {
+      "currentPower": {
+        "power": 1208.1744
+      },
+      "lastUpdateTime": "2024-12-04 10:40:34"
+    },
+    "58": {
+      "currentPower": {
+        "power": 1208.1744
+      },
+      "lastUpdateTime": "2024-12-04 10:40:34"
+    },
+    "59": {
+      "currentPower": {
+        "power": 1208.1744
+      },
+      "lastUpdateTime": "2024-12-04 10:40:34"
+    },
+    "60": {
+      "currentPower": {
+        "power": 1284.0374
+      },
+      "lastUpdateTime": "2024-12-04 10:40:34"
+    },
+    "61": {
+      "currentPower": {
+        "power": 1284.0374
+      },
+      "lastUpdateTime": "2024-12-04 10:40:34"
+    },
+    "62": {
+      "currentPower": {
+        "power": 1345.4022
+      },
+      "lastUpdateTime": "2024-12-04 10:40:34"
+    },
+    "63": {
+      "currentPower": {
+        "power": 1345.4022
+      },
+      "lastUpdateTime": "2024-12-04 10:40:34"
+    },
+    "64": {
+      "currentPower": {
+        "power": 1345.4022
+      },
+      "lastUpdateTime": "2024-12-04 10:40:34"
+    },
+    "65": {
+      "currentPower": {
+        "power": 1345.4022
+      },
+      "lastUpdateTime": "2024-12-04 10:40:34"
+    },
+    "66": {
+      "currentPower": {
+        "power": 1345.4022
+      },
+      "lastUpdateTime": "2024-12-04 10:40:34"
+    },
+    "67": {
+      "currentPower": {
+        "power": 1345.4022
+      },
+      "lastUpdateTime": "2024-12-04 10:40:34"
+    },
+    "68": {
+      "currentPower": {
+        "power": 1345.4022
+      },
+      "lastUpdateTime": "2024-12-04 10:40:34"
+    },
+    "69": {
+      "currentPower": {
+        "power": 1345.4022
+      },
+      "lastUpdateTime": "2024-12-04 10:40:34"
+    },
+    "70": {
+      "currentPower": {
+        "power": 1345.4022
+      },
+      "lastUpdateTime": "2024-12-04 10:40:34"
+    },
+    "71": {
+      "currentPower": {
+        "power": 1345.4022
+      },
+      "lastUpdateTime": "2024-12-04 10:40:34"
+    },
+    "72": {
+      "currentPower": {
+        "power": 1345.4022
+      },
+      "lastUpdateTime": "2024-12-04 10:40:34"
+    },
+    "73": {
+      "currentPower": {
+        "power": 1345.4022
+      },
+      "lastUpdateTime": "2024-12-04 10:40:34"
+    },
+    "74": {
+      "currentPower": {
+        "power": 1345.4022
+      },
+      "lastUpdateTime": "2024-12-04 10:40:34"
+    },
+    "75": {
+      "currentPower": {
+        "power": 1417.9152
+      },
+      "lastUpdateTime": "2024-12-04 10:57:34"
+    },
+    "76": {
+      "currentPower": {
+        "power": 1417.9152
+      },
+      "lastUpdateTime": "2024-12-04 10:57:34"
+    },
+    "77": {
+      "currentPower": {
+        "power": 1417.9152
+      },
+      "lastUpdateTime": "2024-12-04 10:57:34"
+    },
+    "78": {
+      "currentPower": {
+        "power": 1417.9152
+      },
+      "lastUpdateTime": "2024-12-04 10:57:34"
+    },
+    "79": {
+      "currentPower": {
+        "power": 1417.9152
+      },
+      "lastUpdateTime": "2024-12-04 10:57:34"
+    },
+    "80": {
+      "currentPower": {
+        "power": 1417.9152
+      },
+      "lastUpdateTime": "2024-12-04 10:57:34"
+    },
+    "81": {
+      "currentPower": {
+        "power": 1417.9152
+      },
+      "lastUpdateTime": "2024-12-04 10:57:34"
+    },
+    "82": {
+      "currentPower": {
+        "power": 1477.4645
+      },
+      "lastUpdateTime": "2024-12-04 10:57:34"
     }
   }
 }

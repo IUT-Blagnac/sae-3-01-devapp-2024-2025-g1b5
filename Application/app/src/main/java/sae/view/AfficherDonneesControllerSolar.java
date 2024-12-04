@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,10 +19,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import sae.App;
-import sae.view.AfficherGraphiqueControllerSolar;
 
 public class AfficherDonneesControllerSolar {
 
@@ -45,6 +46,8 @@ public class AfficherDonneesControllerSolar {
     private JSONObject solarData; // Champ pour stocker les données JSON
 
     private List<String> selectedChoices = new ArrayList<>(); // Déclaration de selectedChoices
+
+    private static final Map<String, String> traductionAttributs = new HashMap<>();
 
     /**
      * Configure les données de la fenêtre principale et de l'application
@@ -95,63 +98,103 @@ public class AfficherDonneesControllerSolar {
         afficherDonneesFiltrees(solarData, selectedChoices);
     }
 
+    
+    static {
+        // Ajout des traductions pour les attributs
+        traductionAttributs.put("lastUpdateTime", "Dernière mise à jour");
+        traductionAttributs.put("currentPower", "Puissance actuelle");
+        traductionAttributs.put("power", "Puissance");
+        traductionAttributs.put("lifeTimeData", "Energie générée depuis le début");
+        traductionAttributs.put("lastMonthData", "Energie générée le mois dernier en W");
+        traductionAttributs.put("lastYearData", "Energie générée l'année dernière en W");
+        // Ajoutez d'autres attributs et leurs traductions ici si nécessaire
+    }
+
+
+
+    public void initialize() {
+        // Définir des contraintes pour les colonnes
+        ColumnConstraints col1 = new ColumnConstraints();
+        col1.setPercentWidth(25);  // 25% de la largeur totale pour la colonne des clés
+        ColumnConstraints col2 = new ColumnConstraints();
+        col2.setPercentWidth(35);  // 35% pour la colonne des attributs
+        ColumnConstraints col3 = new ColumnConstraints();
+        col3.setPercentWidth(40);  // 40% pour la colonne des valeurs
+    
+        gridDynamique.getColumnConstraints().addAll(col1, col2, col3);  // Ajouter les contraintes au GridPane
+    }
+    
+
     /**
      * Affiche les données filtrées en fonction des attributs sélectionnés
      */
-private void afficherDonneesFiltrees(JSONObject solarData, List<String> attributsSelectionnes) {
-    gridDynamique.getChildren().clear(); // Effacer le contenu précédent de la grille
-
+    private void afficherDonneesFiltrees(JSONObject solarData, List<String> attributsSelectionnes) {
+        gridDynamique.getChildren().clear(); // Effacer le contenu précédent de la grille
+    
         JSONObject solar = (JSONObject) solarData.get("solar");
         if (solar == null) {
             System.out.println("Aucune donnée 'solar' trouvée dans le JSON.");
             return;
         }
-
+    
         // Titre des colonnes
         Label titreCle = new Label("Clé");
+        Label titreAttribut = new Label("Attribut");
         Label titreValeur = new Label("Valeur");
         gridDynamique.add(titreCle, 0, 0);
-        gridDynamique.add(titreValeur, 1, 0);
-
+        gridDynamique.add(titreAttribut, 1, 0);
+        gridDynamique.add(titreValeur, 2, 0);
+    
         // Mettre en valeur les titres
         titreCle.setStyle("-fx-font-weight: bold;");
+        titreAttribut.setStyle("-fx-font-weight: bold;");
         titreValeur.setStyle("-fx-font-weight: bold;");
-
+    
         // Définir un espacement interne pour les cellules
         GridPane.setMargin(titreCle, new javafx.geometry.Insets(5));
+        GridPane.setMargin(titreAttribut, new javafx.geometry.Insets(5));
         GridPane.setMargin(titreValeur, new javafx.geometry.Insets(5));
-
+    
         int rowIndex = 1; // Commence après la ligne des titres
-
+    
         // Extraire les clés et les trier dans l'ordre numérique décroissant
         List<Integer> sortedKeys = new ArrayList<>();
         for (Object key : solar.keySet()) {
             sortedKeys.add(Integer.parseInt(key.toString())); // Convertir la clé en entier
         }
         sortedKeys.sort(Collections.reverseOrder()); // Tri décroissant (du plus grand au plus petit)
-
+    
         // Parcourir les clés triées
         for (Integer key : sortedKeys) {
             JSONObject solarEntry = (JSONObject) solar.get(key.toString());
+    
+            // Ajouter la clé dans la première colonne
             gridDynamique.add(new Label(key.toString()), 0, rowIndex);
-
-            // Ajouter uniquement les valeurs des attributs sélectionnés
+    
+            // Ajouter les traductions des attributs et les valeurs
             for (String attribut : attributsSelectionnes) {
                 Object value = solarEntry.get(attribut); // Récupérer la valeur de l'attribut
                 String texte = (value != null ? formatValue(value) : "Non disponible");
-
-                // Créer un label avec de l'espacement à droite
-                Label valeurLabel = new Label(texte);
-                valeurLabel.setStyle("-fx-padding: 0 10px 0 0;"); // Ajouter un padding à droite
-
-                // Afficher uniquement la valeur
-                gridDynamique.add(valeurLabel, 1, rowIndex++);
+    
+                // Récupérer le nom en français de l'attribut à partir de la map
+                String nomAttribut = traductionAttributs.getOrDefault(attribut, attribut); // Utiliser l'attribut comme fallback si pas trouvé
+    
+                // Créer un label pour le nom de l'attribut en français et la valeur
+                Label labelAttribut = new Label(nomAttribut); // Afficher le nom de l'attribut
+                Label valeurLabel = new Label(texte); // Afficher la valeur de l'attribut
+    
+                // Ajouter les labels dans les bonnes colonnes
+                gridDynamique.add(labelAttribut, 1, rowIndex); // Afficher l'attribut
+                gridDynamique.add(valeurLabel, 2, rowIndex++); // Afficher la valeur
             }
-
+    
             // Ajouter un espace après chaque entrée de clé pour un meilleur espacement visuel
             gridDynamique.add(new Label(" "), 0, rowIndex++); // Espacement entre les clés
         }
     }
+    
+    
+    
 
 
 
