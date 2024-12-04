@@ -388,7 +388,7 @@ public class App extends Application {
             
             // Transmission des données nécessaires au contrôleur
             graphe.setDatas(stage, this);
-            //graphe.lignePts(numSalle, map);
+            graphe.afficherGraphes(numSalle, map);
             
             // Remplacement du contenu central de rootPane par la vue chargée
             this.rootPane.setCenter(vueListe);

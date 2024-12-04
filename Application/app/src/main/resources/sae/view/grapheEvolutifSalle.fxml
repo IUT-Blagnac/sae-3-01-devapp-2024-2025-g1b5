@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="557.0" prefWidth="753.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sae.view.EvolutionGrapheController">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sae.view.EvolutionGrapheController">
    <center>
-      <GridPane prefHeight="428.0" prefWidth="652.0" BorderPane.alignment="CENTER">
+      <GridPane alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="195.0" minWidth="0.0" prefWidth="15.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="733.0" minWidth="10.0" prefWidth="727.0" />
@@ -21,13 +21,13 @@
           <RowConstraints maxHeight="159.0" minHeight="2.0" prefHeight="53.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="retour" mnemonicParsing="false" onAction="#actionRetour" prefHeight="31.0" prefWidth="764.0" text="Retour" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <GridPane fx:id="gridDynamique" prefHeight="451.0" prefWidth="727.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Button fx:id="retour" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#actionRetour" prefHeight="25.0" prefWidth="941.0" text="Retour" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <GridPane fx:id="gridDynamique" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="1">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
             </GridPane>
-            <Label fx:id="titreSalle" alignment="CENTER" prefHeight="17.0" prefWidth="738.0" text="Label" textAlignment="CENTER" GridPane.columnIndex="1" />
+            <Label fx:id="titreSalle" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="926.0" text="Label" textAlignment="CENTER" GridPane.columnIndex="1" />
          </children>
       </GridPane>
    </center>
