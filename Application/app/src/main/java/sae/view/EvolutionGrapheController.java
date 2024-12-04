@@ -17,8 +17,6 @@ public class EvolutionGrapheController {
     private App application;
 
     @FXML
-    private BorderPane pane;
-    @FXML
     private GridPane gridDynamique;
     @FXML
     private Button retour;
@@ -29,9 +27,6 @@ public class EvolutionGrapheController {
     public void setDatas(Stage fenetre, App app) {
         this.application = app;
         this.fenetrePrincipale = fenetre;
-        Scene scene = new Scene(pane);       
-        fenetrePrincipale.setScene(scene);
-        fenetrePrincipale.setResizable(true);
         this.fenetrePrincipale.setMaximized(true);
     }
 
