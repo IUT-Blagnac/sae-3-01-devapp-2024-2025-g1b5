@@ -10,6 +10,50 @@
    "infrared": 17,
    "infrared_and_visible": 59,
    "pressure": 1004.2
+  },
+  "1": {
+   "temperature": 21.1,
+   "humidity": 49.5,
+   "co2": 1361,
+   "tvoc": 131,
+   "activity": 275,
+   "illumination": 24,
+   "infrared": 14,
+   "infrared_and_visible": 38,
+   "pressure": 1003.1
+  },
+  "2": {
+   "temperature": 21.1,
+   "humidity": 49.5,
+   "co2": 1361,
+   "tvoc": 131,
+   "activity": 275,
+   "illumination": 24,
+   "infrared": 14,
+   "infrared_and_visible": 38,
+   "pressure": 1003.1
+  },
+  "3": {
+   "temperature": 21.2,
+   "humidity": 50,
+   "co2": 1412,
+   "tvoc": 128,
+   "activity": 274,
+   "illumination": 26,
+   "infrared": 13,
+   "infrared_and_visible": 37,
+   "pressure": 1003.1
+  },
+  "4": {
+   "temperature": 21.2,
+   "humidity": 51,
+   "co2": 1645,
+   "tvoc": 145,
+   "activity": 266,
+   "illumination": 26,
+   "infrared": 13,
+   "infrared_and_visible": 37,
+   "pressure": 1003
   }
  },
  "E006": {
@@ -23,6 +67,50 @@
    "infrared": 14,
    "infrared_and_visible": 61,
    "pressure": 1004.4
+  },
+  "1": {
+   "temperature": 20.7,
+   "humidity": 38.5,
+   "co2": 954,
+   "tvoc": 166,
+   "activity": 104,
+   "illumination": 46,
+   "infrared": 14,
+   "infrared_and_visible": 49,
+   "pressure": 1003.3
+  },
+  "2": {
+   "temperature": 20.7,
+   "humidity": 38.5,
+   "co2": 954,
+   "tvoc": 166,
+   "activity": 104,
+   "illumination": 46,
+   "infrared": 14,
+   "infrared_and_visible": 49,
+   "pressure": 1003.3
+  },
+  "3": {
+   "temperature": 20.7,
+   "humidity": 39.5,
+   "co2": 1113,
+   "tvoc": 187,
+   "activity": 47,
+   "illumination": 48,
+   "infrared": 13,
+   "infrared_and_visible": 48,
+   "pressure": 1003.3
+  },
+  "4": {
+   "temperature": 20.8,
+   "humidity": 40,
+   "co2": 1148,
+   "tvoc": 196,
+   "activity": 71,
+   "illumination": 46,
+   "infrared": 13,
+   "infrared_and_visible": 47,
+   "pressure": 1003.2
   }
  },
  "E209": {
@@ -36,6 +124,39 @@
    "infrared": 6,
    "infrared_and_visible": 29,
    "pressure": 1004.1
+  },
+  "1": {
+   "temperature": 21.8,
+   "humidity": 36.5,
+   "co2": 1034,
+   "tvoc": 158,
+   "activity": 331,
+   "illumination": 49,
+   "infrared": 10,
+   "infrared_and_visible": 43,
+   "pressure": 1003
+  },
+  "2": {
+   "temperature": 21.8,
+   "humidity": 36.5,
+   "co2": 1034,
+   "tvoc": 158,
+   "activity": 331,
+   "illumination": 49,
+   "infrared": 10,
+   "infrared_and_visible": 43,
+   "pressure": 1003
+  },
+  "3": {
+   "temperature": 21.9,
+   "humidity": 37.5,
+   "co2": 1118,
+   "tvoc": 142,
+   "activity": 275,
+   "illumination": 57,
+   "infrared": 9,
+   "infrared_and_visible": 45,
+   "pressure": 1003
   }
  },
  "E003": {
@@ -49,6 +170,39 @@
    "infrared": 33,
    "infrared_and_visible": 109,
    "pressure": 1005.1
+  },
+  "1": {
+   "temperature": 22.2,
+   "humidity": 32.5,
+   "co2": 514,
+   "tvoc": 152,
+   "activity": 0,
+   "illumination": 525,
+   "infrared": 226,
+   "infrared_and_visible": 678,
+   "pressure": 1003.9
+  },
+  "2": {
+   "temperature": 22.2,
+   "humidity": 32.5,
+   "co2": 514,
+   "tvoc": 152,
+   "activity": 0,
+   "illumination": 525,
+   "infrared": 226,
+   "infrared_and_visible": 678,
+   "pressure": 1003.9
+  },
+  "3": {
+   "temperature": 22.3,
+   "humidity": 32,
+   "co2": 501,
+   "tvoc": 150,
+   "activity": 0,
+   "illumination": 465,
+   "infrared": 203,
+   "infrared_and_visible": 606,
+   "pressure": 1003.9
   }
  },
  "E007": {
@@ -62,6 +216,31 @@
    "infrared": 20,
    "infrared_and_visible": 57,
    "pressure": 1005.4
+  },
+  "1": {
+   "temperature": 19.7,
+   "humidity": 39,
+   "co2": 840,
+   "tvoc": 102,
+   "activity": 54,
+   "illumination": 140,
+   "infrared": 26,
+   "infrared_and_visible": 117,
+   "pressure": 1004.3
+  },
+  "2": {
+   "temperature": 19.7,
+   "humidity": 39,
+   "co2": 840,
+   "tvoc": 102,
+   "activity": 54,
+   "illumination": 140,
+   "infrared": 26,
+   "infrared_and_visible": 117,
+   "pressure": 1004.3
+  },
+  "3": {
+   "co2": 1057
   }
  },
  "C102": {
@@ -75,6 +254,31 @@
    "infrared": 2,
    "infrared_and_visible": 7,
    "pressure": 1005
+  },
+  "1": {
+   "temperature": 18.4,
+   "humidity": 46,
+   "co2": 638,
+   "tvoc": 45,
+   "activity": 0,
+   "illumination": 4,
+   "infrared": 3,
+   "infrared_and_visible": 8,
+   "pressure": 1003.9
+  },
+  "2": {
+   "temperature": 18.4,
+   "humidity": 46,
+   "co2": 638,
+   "tvoc": 45,
+   "activity": 0,
+   "illumination": 4,
+   "infrared": 3,
+   "infrared_and_visible": 8,
+   "pressure": 1003.9
+  },
+  "3": {
+   "co2": 626
   }
  },
  "B106": {
@@ -88,6 +292,9 @@
    "infrared": 10,
    "infrared_and_visible": 43,
    "pressure": 1004.9
+  },
+  "1": {
+   "temperature": 20.8
   }
  },
  "B001": {
@@ -101,6 +308,9 @@
    "infrared": 25,
    "infrared_and_visible": 79,
    "pressure": 1005
+  },
+  "1": {
+   "temperature": 21.5
   }
  },
  "E106": {
@@ -114,6 +324,9 @@
    "infrared": 5,
    "infrared_and_visible": 16,
    "pressure": 1004.6
+  },
+  "1": {
+   "temperature": 20.6
   }
  },
  "E004": {
@@ -127,6 +340,9 @@
    "infrared": 69,
    "infrared_and_visible": 217,
    "pressure": 1005.3
+  },
+  "1": {
+   "temperature": 21.7
   }
  },
  "Local-velo": {
@@ -140,6 +356,17 @@
    "infrared": 615,
    "infrared_and_visible": 1612,
    "pressure": 1003.3
+  },
+  "1": {
+   "temperature": 17.5,
+   "humidity": 39.5,
+   "co2": 441,
+   "tvoc": 11466,
+   "activity": 17,
+   "illumination": 873,
+   "infrared": 621,
+   "infrared_and_visible": 1586,
+   "pressure": 1002.1
   }
  },
  "B202": {
@@ -153,6 +380,705 @@
    "infrared": 7,
    "infrared_and_visible": 31,
    "pressure": 1004.7
+  },
+  "1": {
+   "temperature": 22.8,
+   "humidity": 51.5,
+   "co2": 2812,
+   "tvoc": 232,
+   "activity": 136,
+   "illumination": 28,
+   "infrared": 8,
+   "infrared_and_visible": 29,
+   "pressure": 1003.5
+  }
+ },
+ "B217": {
+  "0": {
+   "temperature": 20.9,
+   "humidity": 43,
+   "co2": 1070,
+   "tvoc": 71,
+   "activity": 9,
+   "illumination": 34,
+   "infrared": 12,
+   "infrared_and_visible": 39,
+   "pressure": 1002.9
+  },
+  "1": {
+   "temperature": 21.1,
+   "humidity": 43,
+   "co2": 1096,
+   "tvoc": 79,
+   "activity": 0,
+   "illumination": 49,
+   "infrared": 17,
+   "infrared_and_visible": 56,
+   "pressure": 1003.1
+  },
+  "2": {
+   "temperature": 21.1,
+   "humidity": 43,
+   "co2": 1096,
+   "tvoc": 79,
+   "activity": 0,
+   "illumination": 49,
+   "infrared": 17,
+   "infrared_and_visible": 56,
+   "pressure": 1003.1
+  },
+  "3": {
+   "temperature": 21.3,
+   "humidity": 42.5,
+   "co2": 1060,
+   "tvoc": 81,
+   "activity": 0,
+   "illumination": 52,
+   "infrared": 19,
+   "infrared_and_visible": 61,
+   "pressure": 1003
+  }
+ },
+ "C002": {
+  "0": {
+   "temperature": 21.7,
+   "humidity": 40.5,
+   "co2": 1014,
+   "tvoc": 50,
+   "activity": 6,
+   "illumination": 40,
+   "infrared": 12,
+   "infrared_and_visible": 42,
+   "pressure": 1003.7
+  },
+  "1": {
+   "temperature": 21.8,
+   "humidity": 40.5,
+   "co2": 1046,
+   "tvoc": 51,
+   "activity": 10,
+   "illumination": 35,
+   "infrared": 9,
+   "infrared_and_visible": 34,
+   "pressure": 1003.9
+  },
+  "2": {
+   "temperature": 21.9,
+   "humidity": 40.5,
+   "co2": 1050,
+   "tvoc": 46,
+   "activity": 135,
+   "illumination": 39,
+   "infrared": 9,
+   "infrared_and_visible": 36,
+   "pressure": 1003.9
+  }
+ },
+ "B112": {
+  "0": {
+   "temperature": 21,
+   "humidity": 47,
+   "co2": 1473,
+   "tvoc": 97,
+   "activity": 109,
+   "illumination": 91,
+   "infrared": 25,
+   "infrared_and_visible": 91,
+   "pressure": 1002.9
+  },
+  "1": {
+   "temperature": 21.4,
+   "humidity": 48.5,
+   "co2": 1619,
+   "tvoc": 131,
+   "activity": 137,
+   "illumination": 95,
+   "infrared": 26,
+   "infrared_and_visible": 95,
+   "pressure": 1003.2
+  },
+  "2": {
+   "temperature": 21.4,
+   "humidity": 48.5,
+   "co2": 1619,
+   "tvoc": 131,
+   "activity": 137,
+   "illumination": 95,
+   "infrared": 26,
+   "infrared_and_visible": 95,
+   "pressure": 1003.2
+  },
+  "3": {
+   "temperature": 21.8,
+   "humidity": 49.5,
+   "co2": 1791,
+   "tvoc": 165,
+   "activity": 181,
+   "illumination": 89,
+   "infrared": 27,
+   "infrared_and_visible": 94,
+   "pressure": 1003.2
+  }
+ },
+ "B002": {
+  "0": {
+   "temperature": 19.8,
+   "humidity": 44,
+   "co2": 1918,
+   "tvoc": 25,
+   "activity": 0,
+   "illumination": 22,
+   "infrared": 8,
+   "infrared_and_visible": 26,
+   "pressure": 1003.9
+  },
+  "1": {
+   "pressure": 1003.8
+  }
+ },
+ "Salle-conseil": {
+  "0": {
+   "temperature": 24,
+   "humidity": 32.5,
+   "co2": 526,
+   "tvoc": 85,
+   "activity": 27,
+   "illumination": 162,
+   "infrared": 77,
+   "infrared_and_visible": 223,
+   "pressure": 1003.5
+  },
+  "1": {
+   "pressure": 1003.4
+  }
+ },
+ "B111": {
+  "0": {
+   "temperature": 23.3,
+   "humidity": 46.5,
+   "co2": 2081,
+   "tvoc": 132,
+   "activity": 420,
+   "illumination": 9,
+   "infrared": 3,
+   "infrared_and_visible": 10,
+   "pressure": 1003.6
+  },
+  "1": {
+   "temperature": 23.3,
+   "humidity": 46.5,
+   "co2": 2081,
+   "tvoc": 132,
+   "activity": 420,
+   "illumination": 9,
+   "infrared": 3,
+   "infrared_and_visible": 10,
+   "pressure": 1003.6
+  },
+  "2": {
+   "temperature": 23.7,
+   "humidity": 48.5,
+   "co2": 2544,
+   "tvoc": 160,
+   "activity": 313,
+   "illumination": 11,
+   "infrared": 4,
+   "infrared_and_visible": 13,
+   "pressure": 1003.6
+  }
+ },
+ "B105": {
+  "0": {
+   "temperature": 21.3,
+   "humidity": 46,
+   "co2": 1408,
+   "tvoc": 225,
+   "activity": 9,
+   "illumination": 35,
+   "infrared": 8,
+   "infrared_and_visible": 32,
+   "pressure": 1003.4
+  },
+  "1": {
+   "temperature": 21.3,
+   "humidity": 46,
+   "co2": 1408,
+   "tvoc": 225,
+   "activity": 9,
+   "illumination": 35,
+   "infrared": 8,
+   "infrared_and_visible": 32,
+   "pressure": 1003.4
+  },
+  "2": {
+   "temperature": 21.3,
+   "humidity": 46,
+   "co2": 1408,
+   "tvoc": 225,
+   "activity": 9,
+   "illumination": 35,
+   "infrared": 8,
+   "infrared_and_visible": 32,
+   "pressure": 1003.4
+  },
+  "3": {
+   "temperature": 21.3,
+   "humidity": 46,
+   "co2": 1408,
+   "tvoc": 225,
+   "activity": 9,
+   "illumination": 35,
+   "infrared": 8,
+   "infrared_and_visible": 32,
+   "pressure": 1003.4
+  },
+  "4": {
+   "temperature": 21.2,
+   "humidity": 45,
+   "co2": 1291,
+   "tvoc": 213,
+   "activity": 0,
+   "illumination": 20,
+   "infrared": 6,
+   "infrared_and_visible": 21,
+   "pressure": 1003.4
+  },
+  "5": {
+   "temperature": 21.2,
+   "humidity": 45,
+   "co2": 1291,
+   "tvoc": 213,
+   "activity": 0,
+   "illumination": 20,
+   "infrared": 6,
+   "infrared_and_visible": 21,
+   "pressure": 1003.4
+  }
+ },
+ "Foyer-etudiants-entr\u00e9e": {
+  "0": {
+   "temperature": 49.7,
+   "humidity": 40.5,
+   "co2": 757,
+   "tvoc": 124,
+   "activity": 22,
+   "illumination": 99,
+   "infrared": 27,
+   "infrared_and_visible": 99,
+   "pressure": 1004.2
+  },
+  "1": {
+   "temperature": 49.7,
+   "humidity": 40.5,
+   "co2": 757,
+   "tvoc": 124,
+   "activity": 22,
+   "illumination": 99,
+   "infrared": 27,
+   "infrared_and_visible": 99,
+   "pressure": 1004.2
+  },
+  "2": {
+   "temperature": 49.6,
+   "humidity": 39.5,
+   "co2": 653,
+   "tvoc": 95,
+   "activity": 47,
+   "illumination": 108,
+   "infrared": 28,
+   "infrared_and_visible": 105,
+   "pressure": 1004.1
+  }
+ },
+ "B234": {
+  "0": {
+   "temperature": 22.4,
+   "humidity": 39.5,
+   "co2": 1204,
+   "tvoc": 41,
+   "activity": 0,
+   "illumination": 64,
+   "infrared": 9,
+   "infrared_and_visible": 48,
+   "pressure": 1003.2
+  },
+  "1": {
+   "temperature": 22.4,
+   "humidity": 39.5,
+   "co2": 1204,
+   "tvoc": 41,
+   "activity": 0,
+   "illumination": 64,
+   "infrared": 9,
+   "infrared_and_visible": 48,
+   "pressure": 1003.2
+  },
+  "2": {
+   "temperature": 22.4,
+   "humidity": 39,
+   "co2": 1053,
+   "tvoc": 34,
+   "activity": 78,
+   "illumination": 65,
+   "infrared": 8,
+   "infrared_and_visible": 47,
+   "pressure": 1003.1
+  }
+ },
+ "E001": {
+  "0": {
+   "temperature": 20.8,
+   "humidity": 40.5,
+   "co2": 1160,
+   "tvoc": 296,
+   "activity": 248,
+   "illumination": 22,
+   "infrared": 9,
+   "infrared_and_visible": 28,
+   "pressure": 1004.3
+  },
+  "1": {
+   "temperature": 20.8,
+   "humidity": 40.5,
+   "co2": 1160,
+   "tvoc": 296,
+   "activity": 248,
+   "illumination": 22,
+   "infrared": 9,
+   "infrared_and_visible": 28,
+   "pressure": 1004.3
+  }
+ },
+ "B108": {
+  "0": {
+   "temperature": 20.9,
+   "humidity": 51.5,
+   "co2": 2146,
+   "tvoc": 137,
+   "activity": 0,
+   "illumination": 13,
+   "infrared": 5,
+   "infrared_and_visible": 16,
+   "pressure": 1003.5
+  },
+  "1": {
+   "temperature": 20.9,
+   "humidity": 51.5,
+   "co2": 2146,
+   "tvoc": 137,
+   "activity": 0,
+   "illumination": 13,
+   "infrared": 5,
+   "infrared_and_visible": 16,
+   "pressure": 1003.5
+  },
+  "2": {
+   "temperature": 20.9,
+   "humidity": 51.5,
+   "co2": 2108,
+   "tvoc": 135,
+   "activity": 0,
+   "illumination": 9,
+   "infrared": 5,
+   "infrared_and_visible": 14,
+   "pressure": 1003.4
+  }
+ },
+ "amphi1": {
+  "0": {
+   "temperature": 20.9,
+   "humidity": 38.5,
+   "co2": 439,
+   "tvoc": 20,
+   "activity": 0,
+   "illumination": 1,
+   "infrared": 1,
+   "infrared_and_visible": 1,
+   "pressure": 1003.8
+  }
+ },
+ "B203": {
+  "0": {
+   "temperature": 24.5,
+   "humidity": 47.5,
+   "co2": 2177,
+   "tvoc": 162,
+   "activity": 276,
+   "illumination": 77,
+   "infrared": 20,
+   "infrared_and_visible": 75,
+   "pressure": 1003.1
+  }
+ },
+ "E208": {
+  "0": {
+   "temperature": 19.5,
+   "humidity": 40,
+   "co2": 855,
+   "tvoc": 113,
+   "activity": 45,
+   "illumination": 11,
+   "infrared": 5,
+   "infrared_and_visible": 15,
+   "pressure": 1003.1
+  },
+  "1": {
+   "temperature": 19.5,
+   "humidity": 40,
+   "co2": 855,
+   "tvoc": 113,
+   "activity": 45,
+   "illumination": 11,
+   "infrared": 5,
+   "infrared_and_visible": 15,
+   "pressure": 1003.1
+  },
+  "2": {
+   "temperature": 19.5,
+   "humidity": 40,
+   "co2": 855,
+   "tvoc": 113,
+   "activity": 45,
+   "illumination": 11,
+   "infrared": 5,
+   "infrared_and_visible": 15,
+   "pressure": 1003.1
+  }
+ },
+ "E210": {
+  "0": {
+   "temperature": 22.3,
+   "humidity": 37.5,
+   "co2": 848,
+   "tvoc": 69,
+   "activity": 313,
+   "illumination": 345,
+   "infrared": 100,
+   "infrared_and_visible": 355,
+   "pressure": 1002.4
+  }
+ },
+ "B103": {
+  "0": {
+   "temperature": 22.8,
+   "humidity": 39,
+   "co2": 2896,
+   "tvoc": 78,
+   "activity": 195,
+   "illumination": 21,
+   "infrared": 12,
+   "infrared_and_visible": 33,
+   "pressure": 1003.7
+  },
+  "1": {
+   "temperature": 22.8,
+   "humidity": 39,
+   "co2": 2896,
+   "tvoc": 78,
+   "activity": 195,
+   "illumination": 21,
+   "infrared": 12,
+   "infrared_and_visible": 33,
+   "pressure": 1003.7
+  },
+  "2": {
+   "temperature": 22.8,
+   "humidity": 39,
+   "co2": 2896,
+   "tvoc": 78,
+   "activity": 195,
+   "illumination": 21,
+   "infrared": 12,
+   "infrared_and_visible": 33,
+   "pressure": 1003.7
+  }
+ },
+ "E207": {
+  "0": {
+   "temperature": 20.1,
+   "humidity": 36,
+   "co2": 521,
+   "tvoc": 14,
+   "activity": 0,
+   "illumination": 907,
+   "infrared": 249,
+   "infrared_and_visible": 907,
+   "pressure": 1003.2
+  }
+ },
+ "E101": {
+  "0": {
+   "temperature": 20.1,
+   "humidity": 38,
+   "co2": 926,
+   "tvoc": 182,
+   "activity": 289,
+   "illumination": 152,
+   "infrared": 56,
+   "infrared_and_visible": 179,
+   "pressure": 1003.4
+  }
+ },
+ "C006": {
+  "0": {
+   "temperature": 20.3,
+   "humidity": 48.5,
+   "co2": 1541,
+   "tvoc": 136,
+   "activity": 60,
+   "illumination": 81,
+   "infrared": 13,
+   "infrared_and_visible": 64,
+   "pressure": 1004.1
+  }
+ },
+ "hall-amphi": {
+  "0": {
+   "temperature": 19.4,
+   "humidity": 40,
+   "co2": 662,
+   "tvoc": 233,
+   "activity": 8,
+   "illumination": 18,
+   "infrared": 8,
+   "infrared_and_visible": 24,
+   "pressure": 1003.5
+  },
+  "1": {
+   "temperature": 19.4,
+   "humidity": 40,
+   "co2": 662,
+   "tvoc": 233,
+   "activity": 8,
+   "illumination": 18,
+   "infrared": 8,
+   "infrared_and_visible": 24,
+   "pressure": 1003.5
+  },
+  "2": {
+   "temperature": 19.4,
+   "humidity": 40,
+   "co2": 662,
+   "tvoc": 233,
+   "activity": 8,
+   "illumination": 18,
+   "infrared": 8,
+   "infrared_and_visible": 24,
+   "pressure": 1003.5
+  }
+ },
+ "E100": {
+  "0": {
+   "temperature": 24.6,
+   "humidity": 29,
+   "co2": 566,
+   "tvoc": 8,
+   "activity": 0,
+   "illumination": 2,
+   "infrared": 2,
+   "infrared_and_visible": 5,
+   "pressure": 1003.7
+  }
+ },
+ "E103": {
+  "0": {
+   "temperature": 20.3,
+   "humidity": 38,
+   "co2": 762,
+   "tvoc": 205,
+   "activity": 217,
+   "illumination": 167,
+   "infrared": 50,
+   "infrared_and_visible": 175,
+   "pressure": 1003.7
+  }
+ },
+ "hall-entr\u00e9e-principale": {
+  "0": {
+   "temperature": 20,
+   "humidity": 37.5,
+   "co2": 636,
+   "tvoc": 340,
+   "activity": 6,
+   "illumination": 11,
+   "infrared": 5,
+   "infrared_and_visible": 15,
+   "pressure": 1004.2
+  }
+ },
+ "E102": {
+  "0": {
+   "temperature": 21.2,
+   "humidity": 37,
+   "co2": 831,
+   "tvoc": 105,
+   "activity": 272,
+   "illumination": 105,
+   "infrared": 50,
+   "infrared_and_visible": 145,
+   "pressure": 1002.9
+  }
+ },
+ "B110": {
+  "0": {
+   "temperature": 22.3,
+   "humidity": 39.5,
+   "co2": 1142,
+   "tvoc": 106,
+   "activity": 134,
+   "illumination": 109,
+   "infrared": 31,
+   "infrared_and_visible": 111,
+   "pressure": 1003.7
+  }
+ },
+ "C004": {
+  "0": {
+   "temperature": 19.1,
+   "humidity": 44,
+   "co2": 733,
+   "tvoc": 5,
+   "activity": 0,
+   "illumination": 8,
+   "infrared": 2,
+   "infrared_and_visible": 8,
+   "pressure": 1004
+  }
+ },
+ "B201": {
+  "0": {
+   "temperature": 23.2,
+   "humidity": 47.5,
+   "co2": 2202,
+   "tvoc": 151,
+   "activity": 426,
+   "illumination": 72,
+   "infrared": 18,
+   "infrared_and_visible": 69
+  }
+ },
+ "C001": {
+  "0": {
+   "temperature": 22.1,
+   "humidity": 37,
+   "co2": 573,
+   "tvoc": 59,
+   "activity": 0,
+   "illumination": 2,
+   "infrared": 0,
+   "infrared_and_visible": 1
+  }
+ },
+ "B109": {
+  "0": {
+   "temperature": 22.9,
+   "humidity": 41.5,
+   "co2": 1129,
+   "tvoc": 102,
+   "activity": 0,
+   "illumination": 94,
+   "infrared": 30,
+   "infrared_and_visible": 102
   }
  }
 }

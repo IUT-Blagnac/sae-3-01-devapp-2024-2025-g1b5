@@ -25,7 +25,7 @@ import sae.view.SeuilController;
 import sae.view.SolarConfigController;
 import sae.view.AlarmesController;
 
-import sae.appli.MqttAlarmListener;
+import sae.appli.FlagFileWatcher;
 import sae.view.AlarmPopUpController;
 
 
@@ -52,13 +52,14 @@ public class App extends Application {
         primaryStage.setTitle("Menu");
         primaryStage.show();
 
-        // Lancer l'écoute des alarmes MQTT
-        startMqttListener();
+
         startPythonScript();
 
+        // Démarrer la surveillance du fichier trigger.flag
+        FlagFileWatcher fileWatcher = new FlagFileWatcher();
+        fileWatcher.startWatching();
+
         primaryStage.setOnCloseRequest(event -> {
-            // Arrêter les alarmes et fermer proprement l'application
-            stopAlarmListener();
             stopPythonProcess();  // Arrêter le processus Python
             System.exit(0);  // Fermer l'application
         });
@@ -86,27 +87,6 @@ public class App extends Application {
         pythonThread.start();
     }
 
-    // Méthode pour démarrer l'écouteur MQTT
-    private void startMqttListener() {
-        MqttAlarmListener mqttListener = new MqttAlarmListener();
-        mqttListener.start();
-    
-        // Vérifier périodiquement si le fichier trigger.flag a été mis à jour
-        new Thread(() -> {
-            while (isAlarmListenerActive) { // Le thread continue tant que cette variable est true
-                checkForAlarms();
-                try {
-                    Thread.sleep(5000); // Vérifier toutes les 5 secondes
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
-    }
-    
-    public void stopAlarmListener() {
-        isAlarmListenerActive = false;  // Cette ligne arrête le thread
-    }
     
 
     // Méthode pour vérifier si une alarme a été déclenchée
