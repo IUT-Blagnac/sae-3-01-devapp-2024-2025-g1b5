@@ -37,8 +37,11 @@ public class AfficherDonneesController {
 
   private JSONObject sallesData; // Champ pour stocker les données JSON
 
-  Map<String, Object> dicoTypeValeur ;
-  Map<String, Object> dicoGraphe ;
+  Map<String, Object> dicoTypeValeur ; //recupere toutes les valeurs du config.ini
+  Map<String, Object> dicoGraphe ; //recupere seulement les données selectionnées
+
+  Map<String, Map<String, Object> > dicoHist ; //recupere l'gistorique des données
+  Map<String, Map<String, Object> > dicoGrapheHist ; //recupere l'gistorique des données pour le graphe
 
 
   public void setDatas(Stage fenetre, App app) {
@@ -56,8 +59,10 @@ public class AfficherDonneesController {
   }
 
   @FXML
-  private void actionAfficher() {;
+  private void actionAfficher() {
+    System.out.println(dicoHist);
       application.loadGraphe(numSalle, dicoGraphe);
+      application.loadGraphe2(numSalle, dicoGraphe);
   }
 
   @FXML
@@ -67,16 +72,34 @@ public class AfficherDonneesController {
 
   public void afficherDonnees() {
     dicoTypeValeur = chargerFichierSalle();
-    System.out.println(dicoTypeValeur);
+    //System.out.println(dicoTypeValeur);
     
     dicoGraphe = new HashMap<String,Object>();
+    dicoGrapheHist = new HashMap<String, Map<String, Object> >();
+
+    System.out.println("------------------------------------------------");
+    System.out.println(dicoHist);
+
 
     for (int i = 0; i < donnees.size(); i++) { 
       gridDynamique.add(new Label( donnees.get(i).toUpperCase() + " :"), 0, i);
       gridDynamique.add(new Label( dicoTypeValeur.get(donnees.get(i)) + "" ), 1, i);
 
       dicoGraphe.put(donnees.get(i), dicoTypeValeur.get(donnees.get(i)));
+
+      for (Map.Entry<String, Map<String, Object>> entry1 : dicoHist.entrySet()) {
+        Map<String, Object> dico2 = entry1.getValue();
+
+        for (Map.Entry<String, Map<String, Object>> entry2 : dicoHist.entrySet()) {
+          dico2.put(donnees.get(i), dicoTypeValeur.get(donnees.get(i)));
+        }
+
+      }
+      
     }
+
+    System.out.println("------------------------------------------------");
+    System.out.println(dicoHist);
 
   }
 
@@ -108,6 +131,7 @@ public class AfficherDonneesController {
             if (json.containsKey(numSalle)) {
               JSONObject salleChoisie = (JSONObject) json.get(numSalle);
               System.out.println(salleChoisie.toJSONString());
+              this.dicoHist = salleChoisie;
 
               // Récupérer toutes les valeurs pour cette clé spécifique
               Set<String> allKeys = salleChoisie.keySet();

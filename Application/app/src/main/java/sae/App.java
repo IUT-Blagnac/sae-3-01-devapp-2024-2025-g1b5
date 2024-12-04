@@ -375,5 +375,30 @@ public class App extends Application {
         }
     }
 
+    public void loadGraphe2(String numSalle, Map<String, Object> map) {
+        try {
+            
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(App.class.getResource("view/grapheEvolutifSalle.fxml"));
+
+            BorderPane vueListe = loader.load();
+            
+            GrapheController graphe = loader.getController();
+            
+            // Transmission des données nécessaires au contrôleur
+            graphe.setDatas(stage, this);
+            graphe.lignePts(numSalle, map);
+            
+            // Remplacement du contenu central de rootPane par la vue chargée
+            this.rootPane.setCenter(vueListe);
+
+        } catch (IOException e) {
+            // Gestion des erreurs si le fichier FXML est introuvable ou mal configuré
+            System.out.println("Ressource FXML non disponible : grapheEvolutifSalle.fxml");
+            e.printStackTrace();
+            System.exit(1);
+        }
+    }
+
 
 }
