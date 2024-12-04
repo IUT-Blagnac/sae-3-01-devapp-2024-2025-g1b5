@@ -13,6 +13,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import sae.App;
+import sae.appli.Seuils;
 import sae.appli.TypeDonnee;
 import sae.view.AppState;
 
@@ -79,15 +80,17 @@ public class SallesConfigController {
 
     public void updateConfig(List<String> donneesSalles) {
         try {
-            // Créer les nouvelles listes pour les seuils
+            // Liste pour stocker les seuils min et max
             List<Integer> seuilMinList = new ArrayList<>();
             List<Integer> seuilMaxList = new ArrayList<>();
     
+            // Liste de tous les seuils, récupérée d'une manière ou d'une autre    
             for (String salle : donneesSalles) {
-                if (TypeDonnee.containsType(salle)) {
-                    int[] seuils = TypeDonnee.getSeuilsByNom(salle);
-                    seuilMinList.add(seuils[0]);
-                    seuilMaxList.add(seuils[1]);
+                // Trouver l'objet Seuils correspondant à la salle
+                Seuils seuil = Seuils.findSeuilByNom(Seuils.getAllSeuils(), salle);
+                if (seuil != null) {
+                    seuilMinList.add(seuil.getSeuilMin());
+                    seuilMaxList.add(seuil.getSeuilMax());
                 }
             }
     
@@ -102,7 +105,7 @@ public class SallesConfigController {
                     .map(String::valueOf)
                     .collect(Collectors.joining(", ")) + "]";
     
-            // Charger les lignes existantes
+            // Charger les lignes existantes du fichier de configuration
             List<String> lines = Files.readAllLines(Paths.get(CONFIG_FILE));
             List<String> updatedLines = new ArrayList<>();
             boolean donneesSallesFound = false;
@@ -130,7 +133,7 @@ public class SallesConfigController {
             if (!seuilMinFound) updatedLines.add(newSeuilMinLine);
             if (!seuilMaxFound) updatedLines.add(newSeuilMaxLine);
     
-            // Écrire les nouvelles lignes dans le fichier
+            // Écrire les nouvelles lignes dans le fichier de configuration
             Files.write(Paths.get(CONFIG_FILE), updatedLines);
             System.out.println("Fichier de configuration mis à jour avec succès.");
             lblInfo.setText("Modifications enregistrées avec succès !");
@@ -151,6 +154,7 @@ public class SallesConfigController {
             System.out.println("Erreur lors de la mise à jour du fichier de configuration : " + e.getMessage());
         }
     }
+    
     
 
     @FXML
