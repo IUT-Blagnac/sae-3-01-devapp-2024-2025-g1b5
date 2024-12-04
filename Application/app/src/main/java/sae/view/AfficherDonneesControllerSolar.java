@@ -8,10 +8,6 @@ import java.util.Map;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.print.DocFlavor.URL;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;

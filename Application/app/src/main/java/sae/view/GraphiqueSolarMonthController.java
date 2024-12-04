@@ -6,8 +6,8 @@ import javafx.scene.chart.XYChart;
 import javafx.stage.Stage;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import java.io.File;
@@ -32,11 +32,8 @@ public class GraphiqueSolarMonthController {
 
     public void setDatas(Stage stage) {
         this.graphiqueStage = stage;
-
-        // Vous pouvez ajouter d'autres initialisations ou traitements des données ici
-        // Par exemple, vous pouvez charger des données de graphique, configurer des éléments de la vue, etc.
     }
-    
+
     @FXML
     public void initialize() {
         // Charger les données depuis le fichier JSON
@@ -123,5 +120,11 @@ public class GraphiqueSolarMonthController {
         // Ajouter la série au graphique
         barChart.getData().clear();
         barChart.getData().add(series);
+    }
+
+    @FXML
+    private void actionRetour(ActionEvent event) {
+        Stage stage = (Stage) barChart.getScene().getWindow(); 
+        stage.close();  
     }
 }

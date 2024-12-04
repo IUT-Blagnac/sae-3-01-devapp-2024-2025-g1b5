@@ -6,7 +6,6 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.stage.Stage;
 import sae.App;
-import sae.view.DataPoint;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -123,10 +122,6 @@ public class GraphiqueSolarController {
         lineChart.getData().add(series);
     }
     
-    
-    
-
-
 
     /**
      * Charge le fichier JSON et stocke les données dans le champ solarData

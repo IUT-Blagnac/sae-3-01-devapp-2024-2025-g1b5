@@ -3,8 +3,13 @@
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.Button?>
 
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="sae.view.GraphiqueSolarDayController">
+    <top>
+        <!-- Ajout du bouton Retour en haut -->
+        <Button fx:id="buttonRetour" text="Retour" onAction="#actionRetour" prefHeight="30" prefWidth="100"/>
+    </top>
     <center>
         <BarChart fx:id="barChart"
                   prefWidth="800" prefHeight="600"
