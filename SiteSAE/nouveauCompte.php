@@ -1,12 +1,13 @@
 <?php
 include "header.php";
+include "Connect.inc.php";
 ?>
 
-    <main class="d-flex justify-content-center align-items-center" 
-      style="height: 150vh; background-color: #f9f9f9; margin-top: 0;">
+<main class="d-flex justify-content-center align-items-center"
+    style="height: 150vh; background-color: #f9f9f9; margin-top: 0;">
     <div class="card p-4 shadow" style="width: 350px;">
         <h2 class="text-center mb-4" style="color: #FF1F11;">Créer compte</h2>
-        <form>
+        <form method="post">
             <div class="mb-3">
                 <label for="prenom" class="form-label">Prénom</label>
                 <input type="text" class="form-control" id="prenom" placeholder="Entrez votre prénom" required>
@@ -48,14 +49,12 @@ include "header.php";
                 <a href="connexionCompte.php" class="text-muted" style="font-size: 14px;">Se connecter</a>
             </div>
         </form>
+
     </div>
-    </main>
-
-
-
-
+</main>
 <?php
 include "footer.php";
 ?>
 </body>
+
 </html>
