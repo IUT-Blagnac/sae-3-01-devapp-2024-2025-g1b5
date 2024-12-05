@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="557.0" prefWidth="753.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sae.view.GrapheSalleController">
+   <center>
+      <GridPane prefHeight="428.0" prefWidth="652.0" BorderPane.alignment="CENTER">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="195.0" minWidth="0.0" prefWidth="78.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="639.0" minWidth="10.0" prefWidth="512.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="135.0" minWidth="10.0" prefWidth="91.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="126.0" minHeight="0.0" prefHeight="47.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="432.0" minHeight="10.0" prefHeight="349.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="159.0" minHeight="2.0" prefHeight="159.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <BarChart fx:id="graphe" prefHeight="230.0" prefWidth="533.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" fx:id="xAxe" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis fx:id="yAxe" side="LEFT" />
+              </yAxis>
+            </BarChart>
+            <Button fx:id="retour" mnemonicParsing="false" onAction="#actionRetour" prefHeight="31.0" prefWidth="575.0" text="Retour" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+         </children>
+      </GridPane>
+   </center>
+</BorderPane>
