@@ -100,6 +100,17 @@
    "infrared": 1,
    "infrared_and_visible": 1,
    "pressure": 998.2
+  },
+  "17": {
+   "temperature": 18.5,
+   "humidity": 57,
+   "co2": 518,
+   "tvoc": 143,
+   "activity": 0,
+   "illumination": 1,
+   "infrared": 1,
+   "infrared_and_visible": 1,
+   "pressure": 1001.8
   }
  },
  "hall-amphi": {
@@ -187,6 +198,17 @@
    "infrared": 4,
    "infrared_and_visible": 11,
    "pressure": 997.6
+  },
+  "15": {
+   "temperature": 19.7,
+   "humidity": 54,
+   "co2": 554,
+   "tvoc": 513,
+   "activity": 1,
+   "illumination": 6,
+   "infrared": 3,
+   "infrared_and_visible": 9,
+   "pressure": 1001.2
   }
  },
  "E100": {
@@ -279,6 +301,28 @@
    "infrared": 1,
    "infrared_and_visible": 1,
    "pressure": 997.7
+  },
+  "16": {
+   "temperature": 25.1,
+   "humidity": 40.5,
+   "co2": 840,
+   "tvoc": 163,
+   "activity": 0,
+   "illumination": 2,
+   "infrared": 2,
+   "infrared_and_visible": 5,
+   "pressure": 1001.4
+  },
+  "17": {
+   "temperature": 25.1,
+   "humidity": 40.5,
+   "co2": 840,
+   "tvoc": 163,
+   "activity": 0,
+   "illumination": 2,
+   "infrared": 2,
+   "infrared_and_visible": 5,
+   "pressure": 1001.4
   }
  },
  "C004": {

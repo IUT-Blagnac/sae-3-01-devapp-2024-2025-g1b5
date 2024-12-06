@@ -1,0 +1,9 @@
+{
+  "room": "hall-amphi",
+  "alarm": {
+    "key": "pressure",
+    "value": 1001.2,
+    "alarm_type": "MAX",
+    "timestamp": "2024-12-06 16:39:34"
+  }
+}
