@@ -2,7 +2,7 @@ package sae.appli;
 
 public enum TypeDonnee {
     temperature("temperature", 20, 30),
-    HUMIhumidityDITY("humidity", 50, 70),
+    humidity("humidity", 50, 70),
     co2("co2", 450, 1500),
     tvoc("tvoc", 200, 400),
     activity("activity", 100, 500),
