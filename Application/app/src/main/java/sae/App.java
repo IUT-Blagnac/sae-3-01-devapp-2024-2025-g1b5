@@ -19,7 +19,6 @@ import sae.view.AfficherDonneesController;
 import sae.view.ConfigController;
 import sae.view.EvolutionGrapheController;
 import sae.view.FreqConfigController;
-import sae.view.GrapheSalleController;
 import sae.view.MenuController;
 import sae.view.ParametrageChoixSalles;
 import sae.view.ParametrageSolar;
@@ -36,9 +35,7 @@ public class App extends Application {
     private BorderPane rootPane;
     private Stage stage;
     private Process pythonProcess;
-    private boolean isAlarmListenerActive = true;  // Variable de contrôle pour le thread des alarmes
-
-    
+    private boolean isAlarmListenerActive = true;  // Variable de contrôle pour le thread des alarmes   
     
 
     @Override
@@ -63,6 +60,7 @@ public class App extends Application {
             System.exit(0);  // Fermer l'application
         });
     }
+
     public void loadParametrageSolar() {
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -78,6 +76,7 @@ public class App extends Application {
             System.exit(1);
         }
     }
+
     public void loadSallesConfig() {
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -222,8 +221,8 @@ public class App extends Application {
 
             ParametrageChoixSalles choixSalles = loader.getController();
             choixSalles.setDatas(stage, this);
-            
             choixSalles.loadMenuDeroulantDonnees(listTypeDonnee);
+            
 
             this.rootPane.setCenter(vueListe);
         } catch (IOException e) {
@@ -351,32 +350,8 @@ public class App extends Application {
         Application.launch(args);
     }
 
-    public void loadGraphe(String numSalle, Map<String, Object> map) {
-        try {
-            
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(App.class.getResource("view/grapheSalle.fxml"));
-
-            BorderPane vueListe = loader.load();
-            
-            GrapheSalleController graphe = loader.getController();
-            
-            // Transmission des données nécessaires au contrôleur
-            graphe.setDatas(stage, this);
-            graphe.populateHistogram(numSalle, map);
-            
-            // Remplacement du contenu central de rootPane par la vue chargée
-            this.rootPane.setCenter(vueListe);
-
-        } catch (IOException e) {
-            // Gestion des erreurs si le fichier FXML est introuvable ou mal configuré
-            System.out.println("Ressource FXML non disponible : grapheSalle.fxml");
-            e.printStackTrace();
-            System.exit(1);
-        }
-    }
-
-    public void loadGraphe2(String numSalle, Map< String, Map<String, Object> > map) {
+   
+    public void loadGraphe(String numSalle, Map< String, Map<String, Object> > map) {
         try {
             
             FXMLLoader loader = new FXMLLoader();

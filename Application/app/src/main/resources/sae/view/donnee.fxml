@@ -7,24 +7,24 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sae.view.AfficherDonneesController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="460.0" prefWidth="730.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sae.view.AfficherDonneesController">
    <center>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="193.0" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="334.0" minWidth="10.0" prefWidth="300.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="193.0" minWidth="10.0" prefWidth="166.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="369.0" minWidth="10.0" prefWidth="344.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="238.0" minWidth="10.0" prefWidth="159.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="265.0" minHeight="10.0" prefHeight="265.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="128.0" minHeight="1.0" prefHeight="1.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="156.0" minHeight="10.0" prefHeight="136.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="269.0" minHeight="10.0" prefHeight="245.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="128.0" minHeight="1.0" prefHeight="75.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label fx:id="titreSalle" alignment="CENTER" prefHeight="21.0" prefWidth="333.0" text="Label" GridPane.columnIndex="1" />
-            <Button mnemonicParsing="false" onAction="#actionRetour" prefHeight="25.0" prefWidth="73.0" text="Retour" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" onAction="#actionAfficher" prefHeight="25.0" prefWidth="91.0" text="Afficher Graphe" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <GridPane fx:id="gridDynamique" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Label fx:id="titreSalle" alignment="CENTER" prefHeight="21.0" prefWidth="382.0" styleClass="Titre" text="Label" textAlignment="CENTER" GridPane.columnIndex="1" />
+            <Button mnemonicParsing="false" onAction="#actionRetour" prefHeight="31.0" prefWidth="149.0" text="Retour" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+            <Button mnemonicParsing="false" onAction="#actionAfficher" prefHeight="31.0" prefWidth="149.0" text="Afficher Graphe" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+            <GridPane fx:id="gridDynamique" alignment="TOP_CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>

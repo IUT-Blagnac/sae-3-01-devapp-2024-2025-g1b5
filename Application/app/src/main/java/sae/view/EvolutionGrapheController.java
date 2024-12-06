@@ -40,9 +40,7 @@ public class EvolutionGrapheController {
         this.application = app;
         this.fenetrePrincipale = fenetre;
         this.fenetrePrincipale.setMaximized(true);
-        
-        // vueListe.setMinSize(this.fenetrePrincipale.getHeight(), this.fenetrePrincipale.getHeight());
-        
+               
     }
 
     @FXML
@@ -100,18 +98,6 @@ public class EvolutionGrapheController {
             // Ajouter le graphique au GridPane
             gridDynamique.getChildren().add(lineChart);
 
-            ColumnConstraints col1 = new ColumnConstraints();
-            col1.setMaxWidth(600);   // Largeur maximale
-            RowConstraints row1 = new RowConstraints();
-            row1.setMaxHeight(400);   // Hauteur maximale
-
-            // Appliquez ces contraintes au GridPane
-            // gridDynamique.getColumnConstraints().add(col1);
-            // gridDynamique.getRowConstraints().add(row1);
-
-            // for(javafx.scene.Node nd : gridDynamique.getChildren()){
-                // ((LineChart)nd).setMinWidth(this.fenetrePrincipale.getWidth()/3);
-            // }
             // Alterner entre colonnes et lignes
             if (col == 0) {
                 col = 1; // Aller à la colonne suivante

@@ -62,8 +62,7 @@ public class AfficherDonneesController {
   @FXML
   private void actionAfficher() {
     System.out.println(dicoHist);
-      application.loadGraphe(numSalle, dicoGraphe);
-      application.loadGraphe2(numSalle, dicoHist);
+      application.loadGraphe(numSalle, dicoHist);
   }
 
   @FXML

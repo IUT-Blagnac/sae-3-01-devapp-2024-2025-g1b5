@@ -1,6 +1,5 @@
 package sae.view;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -10,18 +9,13 @@ import java.util.stream.Collectors;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import sae.App;
 import sae.appli.Salle;
@@ -42,7 +36,7 @@ public class ParametrageChoixSalles {
     @FXML
     private MenuButton choixTypeDonnees;
     
-    private String numSalle = "kwadjanib" ;
+    private String numSalle = "" ;
 
     private App application;
 
@@ -102,6 +96,7 @@ public class ParametrageChoixSalles {
       
       
     }
+
 
     public String getSalle () {
       return this.numSalle;
