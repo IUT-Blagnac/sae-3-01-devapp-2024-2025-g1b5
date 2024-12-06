@@ -6,7 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Labeled;
 import javafx.stage.Stage;
 import sae.App;
-import sae.view.AppState;
+import sae.appli.AppState;
 
 import java.io.IOException;
 

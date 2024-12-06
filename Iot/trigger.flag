@@ -1,9 +1,9 @@
 {
-  "room": "E210",
+  "room": "B002",
   "alarm": {
-    "key": "infrared",
-    "value": 56.0,
+    "key": "pressure",
+    "value": 1000.3,
     "alarm_type": "MAX",
-    "timestamp": "2024-12-04 16:48:21"
+    "timestamp": "2024-12-06 09:22:22"
   }
 }

@@ -152,5 +152,18 @@
    "infrared_and_visible": 56,
    "pressure": 1003.5
   }
+ },
+ "B002": {
+  "0": {
+   "temperature": 19.3,
+   "humidity": 49,
+   "co2": 1704,
+   "tvoc": 85,
+   "activity": 0,
+   "illumination": 6,
+   "infrared": 3,
+   "infrared_and_visible": 9,
+   "pressure": 1000.3
+  }
  }
 }

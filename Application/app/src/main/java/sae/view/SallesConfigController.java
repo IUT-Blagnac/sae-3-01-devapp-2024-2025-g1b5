@@ -14,7 +14,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import sae.App;
 import sae.appli.TypeDonnee;
-import sae.view.AppState;
+import sae.appli.AppState;
 
 import java.util.ArrayList;
 

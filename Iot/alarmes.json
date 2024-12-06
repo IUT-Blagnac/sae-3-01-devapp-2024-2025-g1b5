@@ -334,5 +334,43 @@
    "alarm_type": "MAX",
    "timestamp": "2024-12-04 16:48:21"
   }
+ },
+ "B002": {
+  "0": {
+   "key": "temperature",
+   "value": 19.3,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-06 09:22:22"
+  },
+  "1": {
+   "key": "humidity",
+   "value": 49.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-06 09:22:22"
+  },
+  "2": {
+   "key": "co2",
+   "value": 1704.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-06 09:22:22"
+  },
+  "3": {
+   "key": "tvoc",
+   "value": 85.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-06 09:22:22"
+  },
+  "4": {
+   "key": "activity",
+   "value": 0.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-06 09:22:22"
+  },
+  "5": {
+   "key": "pressure",
+   "value": 1000.3,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-06 09:22:22"
+  }
  }
 }

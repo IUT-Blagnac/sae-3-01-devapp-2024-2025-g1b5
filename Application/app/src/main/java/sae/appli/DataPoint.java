@@ -1,5 +1,5 @@
 
-package sae.view;
+package sae.appli;
 
 
 public class DataPoint {
