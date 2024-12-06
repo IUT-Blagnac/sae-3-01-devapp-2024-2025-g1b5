@@ -34,7 +34,7 @@
                </GridPane.margin>
             </Button>
             <Button fx:id="butConfigFreq" mnemonicParsing="false" onAction="#actionFreqConfig" prefHeight="25.0" prefWidth="332.0" text="Config Fréquence" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Button fx:id="butConfigSeuil" mnemonicParsing="false" onAction="#actionSeuilConfig" prefHeight="25.0" prefWidth="408.0" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Button fx:id="butConfigSeuil" mnemonicParsing="false" onAction="#actionSeuilConfig" prefHeight="25.0" prefWidth="408.0" text="Config Seuils" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
       </GridPane>
    </center>
