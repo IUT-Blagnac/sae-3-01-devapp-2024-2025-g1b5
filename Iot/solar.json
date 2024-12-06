@@ -125,6 +125,7 @@
         "energy": 3446222
       },
       "lastUpdateTime": "2024-12-04 16:42:34"
+<<<<<<< HEAD
     },
     "7": {
       "currentPower": {
@@ -287,6 +288,8 @@
         "energy": 3464141
       },
       "lastUpdateTime": "2024-12-06 16:35:33"
+=======
+>>>>>>> parent of 36bae67 (amelioration structure code)
     }
   }
 }

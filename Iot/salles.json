@@ -185,6 +185,7 @@
    "infrared_and_visible": 56,
    "pressure": 1003.5
   }
+<<<<<<< HEAD
  },
  "B002": {
   "0": {
@@ -250,5 +251,7 @@
    "infrared_and_visible": 3,
    "pressure": 1001.4
   }
+=======
+>>>>>>> parent of 36bae67 (amelioration structure code)
  }
 }

@@ -448,6 +448,7 @@
    "alarm_type": "MAX",
    "timestamp": "2024-12-06 16:48:20"
   }
+<<<<<<< HEAD
  },
  "B002": {
   "0": {
@@ -634,5 +635,7 @@
    "alarm_type": "MAX",
    "timestamp": "2024-12-06 16:48:33"
   }
+=======
+>>>>>>> parent of 36bae67 (amelioration structure code)
  }
 }

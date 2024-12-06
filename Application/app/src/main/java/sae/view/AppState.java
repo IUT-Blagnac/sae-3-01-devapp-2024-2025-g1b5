@@ -1,4 +1,4 @@
-package sae.appli ;
+package sae.view ;
 
 public class AppState {
     private static long pythonPID = -1;

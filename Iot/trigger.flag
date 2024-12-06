@@ -1,9 +1,18 @@
 {
+<<<<<<< HEAD
   "room": "B103",
   "alarm": {
     "key": "pressure",
     "value": 1001.4,
     "alarm_type": "MAX",
     "timestamp": "2024-12-06 16:48:33"
+=======
+  "room": "E210",
+  "alarm": {
+    "key": "infrared",
+    "value": 56.0,
+    "alarm_type": "MAX",
+    "timestamp": "2024-12-04 16:48:21"
+>>>>>>> parent of 36bae67 (amelioration structure code)
   }
 }

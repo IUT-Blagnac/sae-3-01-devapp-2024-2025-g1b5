@@ -14,7 +14,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import sae.appli.TypeDonnee;
 import sae.view.AfficherDonneesControllerSolar;
-import sae.appli.AppState;
+import sae.view.AppState;
 import sae.view.AfficherDonneesController;
 import sae.view.ConfigController;
 import sae.view.FreqConfigController;
