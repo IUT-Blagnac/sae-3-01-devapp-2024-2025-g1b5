@@ -3,14 +3,11 @@ include "header.php";
 include "Connect.inc.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Validation et assainissement des entrées utilisateur
+    // Validation des entrées utilisateur
     $prenom = htmlspecialchars(trim($_POST['prenom']));
     $nom = htmlspecialchars(trim($_POST['nom']));
     $date_naissance = htmlspecialchars(trim($_POST['date-naissance']));
     $num_telephone = htmlspecialchars(trim($_POST['num-telephone']));
-    if (!preg_match('/^\d{10}$/', $num_telephone)) {
-        echo "<center>Le numéro de téléphone doit contenir exactement 10 chiffres.</center>";
-    }
     $genre = htmlspecialchars(trim($_POST['genre']));
     $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
     $password = $_POST['password'];
@@ -19,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Hachage du mot de passe
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    // Conversion du genre
+    // Conversion du genre pour la BD (H ou F)
     if ($genre === "homme") {
         $genre = "H";
     } elseif ($genre === "femme") {
@@ -129,7 +126,7 @@ function numTelrespect() {
     if (numTel === "") {
         message.textContent = "";
     } else if (!/^0\d{9}$/.test(numTel)) {
-        message.textContent = "Le numéro de téléphone doit contenir exactement 10 chiffres.";
+        message.textContent = "Le numéro de téléphone doit contenir exactement 10 chiffres et doit commencer par 0.";
     } else {
         message.textContent = "";
         numTelInput.value = formatNumTel(numTel); // Formater le numéro de téléphone

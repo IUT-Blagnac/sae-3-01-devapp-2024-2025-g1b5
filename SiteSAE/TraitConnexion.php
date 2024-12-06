@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             // Si "Se souvenir de moi" est coché, créer les cookies
             if ($remember) {
-                setcookie('CidClient', $user['email'], time() + 60*10, "/"); // 10 minutes
+                setcookie('CidClient', $user['email'], time() + 60*60, "/"); // 1 heure8
             }
 
             // Redirection vers la page de détail du compte

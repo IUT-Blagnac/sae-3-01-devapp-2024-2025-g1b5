@@ -19,7 +19,7 @@ include "header.php";
         </ul>
     </nav>
     <section class="client-info">
-        <h2>Bienvenue, <?php echo isset($_SESSION['client_prenom']) ? htmlspecialchars($_SESSION['client_prenom']) : 'Invité'; ?></h2>
+        <h2>Bienvenue, <?php echo isset($_SESSION['client_prenom']) ? htmlspecialchars($_SESSION['client_prenom']) : 'Invite'; ?></h2>
         <div class="info-section">
             <h3>Informations personnelles</h3>
             <p>Prenom : <?php echo isset($_SESSION['client_prenom']) ? htmlspecialchars($_SESSION['client_prenom']) : 'Non défini'; ?></p>

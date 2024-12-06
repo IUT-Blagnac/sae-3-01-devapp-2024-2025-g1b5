@@ -1,7 +1,7 @@
 <?php
 include "header.php";
 
-$email_value = isset($_COOKIE['ClientEmail']) ? htmlspecialchars($_COOKIE['ClientEmail']) : '';
+$email_value = isset($_COOKIE['CidClient']) ? htmlspecialchars($_COOKIE['CidClient']) : '';
 ?>
 
 <main class="d-flex justify-content-center align-items-center" style="height: 80vh; background-color: #f9f9f9;">
@@ -15,7 +15,8 @@ $email_value = isset($_COOKIE['ClientEmail']) ? htmlspecialchars($_COOKIE['Clien
         <form method="post" action="TraitConnexion.php">
             <div class="mb-3">
                 <label for="email" class="form-label">Adresse e-mail</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Entrez votre email" value="<?php echo $email_value; ?>" required>
+                <input type="email" class="form-control" id="email" name="email" 
+                placeholder="Entrez votre email" value="<?php echo $email_value; ?>" required>
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Mot de passe</label>
