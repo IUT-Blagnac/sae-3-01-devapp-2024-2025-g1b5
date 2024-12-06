@@ -405,6 +405,48 @@
    "value": 56.0,
    "alarm_type": "MAX",
    "timestamp": "2024-12-04 16:48:21"
+  },
+  "5": {
+   "key": "humidity",
+   "value": 45.5,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-06 16:48:20"
+  },
+  "6": {
+   "key": "tvoc",
+   "value": 187.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-06 16:48:20"
+  },
+  "7": {
+   "key": "activity",
+   "value": 0.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-06 16:48:20"
+  },
+  "8": {
+   "key": "illumination",
+   "value": 111.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-06 16:48:20"
+  },
+  "9": {
+   "key": "infrared",
+   "value": 31.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-06 16:48:20"
+  },
+  "10": {
+   "key": "infrared_and_visible",
+   "value": 112.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-06 16:48:20"
+  },
+  "11": {
+   "key": "pressure",
+   "value": 1000.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-06 16:48:20"
   }
  },
  "B002": {
@@ -565,6 +607,32 @@
    "value": 351.0,
    "alarm_type": "MAX",
    "timestamp": "2024-12-06 16:21:33"
+  }
+ },
+ "B103": {
+  "0": {
+   "key": "co2",
+   "value": 2693.0,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-06 16:48:33"
+  },
+  "1": {
+   "key": "tvoc",
+   "value": 197.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-06 16:48:33"
+  },
+  "2": {
+   "key": "activity",
+   "value": 0.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-06 16:48:33"
+  },
+  "3": {
+   "key": "pressure",
+   "value": 1001.4,
+   "alarm_type": "MAX",
+   "timestamp": "2024-12-06 16:48:33"
   }
  }
 }

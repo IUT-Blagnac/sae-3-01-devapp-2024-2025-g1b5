@@ -224,5 +224,31 @@
    "infrared_and_visible": 121,
    "pressure": 1000.6
   }
+ },
+ "E210": {
+  "0": {
+   "temperature": 22.5,
+   "humidity": 45.5,
+   "co2": 414,
+   "tvoc": 187,
+   "activity": 0,
+   "illumination": 111,
+   "infrared": 31,
+   "infrared_and_visible": 112,
+   "pressure": 1000
+  }
+ },
+ "B103": {
+  "0": {
+   "temperature": 21.9,
+   "humidity": 51,
+   "co2": 2693,
+   "tvoc": 197,
+   "activity": 0,
+   "illumination": 2,
+   "infrared": 1,
+   "infrared_and_visible": 3,
+   "pressure": 1001.4
+  }
  }
 }
