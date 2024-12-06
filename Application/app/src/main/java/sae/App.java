@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
+import java.util.Map;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +17,7 @@ import sae.view.AfficherDonneesControllerSolar;
 import sae.view.AppState;
 import sae.view.AfficherDonneesController;
 import sae.view.ConfigController;
+import sae.view.EvolutionGrapheController;
 import sae.view.FreqConfigController;
 import sae.view.MenuController;
 import sae.view.ParametrageChoixSalles;
@@ -35,10 +36,6 @@ public class App extends Application {
     private Stage stage;
     private Process pythonProcess;
     
-    
-    // Partager des données entre controllers
-    private String numSalle;
-    private ArrayList<String> donneesChoisies = new ArrayList<>();
     
 
     @Override
@@ -199,10 +196,6 @@ public class App extends Application {
 
             ParametrageChoixSalles choixSalles = loader.getController();
             choixSalles.setDatas(stage, this);
-
-            this.numSalle = choixSalles.getSalle();
-            this.donneesChoisies = choixSalles.getTabDonnee();
-
             choixSalles.loadMenuDeroulantDonnees(listTypeDonnee);
 
             this.rootPane.setCenter(vueListe);
@@ -213,7 +206,7 @@ public class App extends Application {
     }
     
 
-    public void loadDonnees() {
+    public void loadDonnees( String numSalle, ArrayList<String> donneesChoisies ) {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(App.class.getResource("view/donnee.fxml"));
@@ -223,7 +216,7 @@ public class App extends Application {
             AfficherDonneesController affichage = loader.getController();
 
             affichage.setDatas(stage, this);
-            affichage.setSalle(this.numSalle);
+            affichage.setSalle(numSalle);
             affichage.setTab(donneesChoisies);
 
             affichage.afficherDonnees();
@@ -349,5 +342,31 @@ public class App extends Application {
 
     public static void main2(String[] args) {
         Application.launch(args);
+    }
+
+    public void loadGraphe(String numSalle, Map< String, Map<String, Object> > map) {
+        try {
+            
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(App.class.getResource("view/grapheEvolutifSalle.fxml"));
+
+            BorderPane vueListe = loader.load();
+            
+            EvolutionGrapheController graphe = loader.getController();
+            
+            // Transmission des données nécessaires au contrôleur
+            graphe.setDatas(stage, this,vueListe);
+            graphe.afficherGraphes(numSalle, map);
+            
+
+            // Remplacement du contenu central de rootPane par la vue chargée
+            this.rootPane.setCenter(vueListe);
+
+        } catch (IOException e) {
+            // Gestion des erreurs si le fichier FXML est introuvable ou mal configuré
+            System.out.println("Ressource FXML non disponible : grapheEvolutifSalle.fxml");
+            e.printStackTrace();
+            System.exit(1);
+        }
     }
 }

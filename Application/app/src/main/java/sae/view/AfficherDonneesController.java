@@ -5,11 +5,16 @@ import java.io.FileReader;
 import java.net.URL;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -25,10 +30,20 @@ public class AfficherDonneesController {
   @FXML
   private Label titreSalle;
 
+  private String numSalle ;
+
   @FXML
   private GridPane gridDynamique;
 
   private ArrayList<String> donnees = new ArrayList<>();
+
+  private JSONObject sallesData; // Champ pour stocker les données JSON
+
+  Map<String, Object> dicoTypeValeur ; //recupere toutes les valeurs du config.ini
+  Map<String, Object> dicoGraphe ; //recupere seulement les données selectionnées
+
+  Map<String, Map<String, Object> > dicoHist ; //recupere l'historique des données
+
 
   public void setDatas(Stage fenetre, App app) {
     this.application = app;
@@ -37,6 +52,7 @@ public class AfficherDonneesController {
 
   public void setSalle(String salle) {
     this.titreSalle.setText(salle);
+    this.numSalle = salle;
   }
 
   public void setTab(ArrayList<String> list) {
@@ -45,10 +61,8 @@ public class AfficherDonneesController {
 
   @FXML
   private void actionAfficher() {
-    System.out.println("A faire !");
-    // lecture();
-    System.out.println(donnees);
-    chargerFichierSalle();
+    System.out.println(dicoHist);
+      application.loadGraphe(numSalle, dicoHist);
   }
 
   @FXML
@@ -57,62 +71,69 @@ public class AfficherDonneesController {
   }
 
   public void afficherDonnees() {
-    for (int i = 0; i < donnees.size(); i++) {
-      gridDynamique.add(new Label(donnees.get(i) + " :"), 0, i);
+    chargerFichierSalle();
+    dicoGraphe = new HashMap<String,Object>();
+
+    for (int i = 0; i < donnees.size(); i++) { 
+      gridDynamique.add(new Label( donnees.get(i).toUpperCase() + " :"), 0, i);
+      gridDynamique.add(new Label( dicoTypeValeur.get(donnees.get(i)) + "" ), 1, i);
+
+      dicoGraphe.put(donnees.get(i), dicoTypeValeur.get(donnees.get(i)));
     }
+  
+    for (Map.Entry<String, Map<String, Object>> entry1 : dicoHist.entrySet()) {
+      entry1.getValue().entrySet().removeIf((entry) -> {
+        return !donnees.contains(entry.getKey());
+      }); //retire les valeurs qui n'existe pas dans le tableau
+    }
+
+
   }
 
   public void chargerFichierSalle() {
 
-    JSONParser parser = new JSONParser();
+     JSONParser parser = new JSONParser();
 
-    try {
-      URL resource = getClass().getClassLoader().getResource("Iot/salles.json");
+        try {
+            File file = new File("Iot/salles.json");
 
-      if (resource == null) {
-        System.out.println("Le fichier salles.json est introuvable.");
-        return;
-      }
+            if (!file.exists()) {
+                Alert alert = new Alert(AlertType.ERROR, "Erreur : Le fichier salles.json est introuvable !");
+                alert.show();
+            }
 
-      FileReader reader = new FileReader(Paths.get(resource.toURI()).toFile());
-      JSONObject jsonObject = (JSONObject) parser.parse(reader);
+            // Lire et analyser le fichier JSON
+            FileReader reader = new FileReader(file);
+            JSONObject json = (JSONObject) parser.parse(reader);
 
-      // Test: Afficher le contenu du fichier JSON
-      System.out.println("Fichier chargé avec succès : ");
-      // System.out.println(jsonObject.toJSONString()); // Affiche le contenu du JSON
-      // en format lisible
+            // Stocker les données dans la variable
+            this.sallesData = json;  
+            
+            System.out.println(numSalle);
 
-      // Recherche de la salle B110
-      if (jsonObject.containsKey("E004")) {
-        JSONObject salleB110 = (JSONObject) jsonObject.get("E004");
-        System.out.println(salleB110.toJSONString());
-      } else {
-        System.out.println("La salle E004 n'existe pas dans le fichier JSON.");
-      }
+            if (json.containsKey(numSalle)) {
+              JSONObject salleChoisie = (JSONObject) json.get(numSalle);
+              this.dicoHist = salleChoisie; 
+              //attribut toutes les données existantes dans un dictionnaire
 
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
+              // Récupérer toutes les valeurs pour cette clé spécifique
+              Set<String> allKeys = salleChoisie.keySet();
 
-  }
+              JSONObject dernierClé = (JSONObject) salleChoisie.get( (allKeys.size() - 1) + "" );
+              this.dicoTypeValeur = dernierClé;  
+              //récupère les dernières données de la salle et les attributs à un dictionnaire
 
-  public void modifConfig() {
+            } else {
+               Alert alert = new Alert(AlertType.ERROR, "Erreur : La salle n'existe pas !");
+               alert.show();
+            }
 
-  }
-
-  public void lecture() {
-
-    // Chemin relatif du fichier Python
-    String pythonScriptPath = "main2.py"; // Le fichier Python est dans le même dossier
-
-    // Créer un objet File avec le chemin relatif
-    File file = new File(pythonScriptPath);
-
-    // Vérifier si le fichier existe
-    if (file.exists())
-      System.out.println("Le fichier Python existe : " + pythonScriptPath);
-    else
-      System.out.println("nexiste pas");
+            reader.close();
+            
+        } catch (Exception e) {
+            System.out.println("Erreur lors du chargement du fichier salles.json : " + e.getMessage());
+            e.printStackTrace();
+        }
 
   }
 

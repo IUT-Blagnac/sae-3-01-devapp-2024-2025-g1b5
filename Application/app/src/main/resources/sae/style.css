@@ -9,19 +9,17 @@
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 5, 0.2, 2, 2); /* Ombre portée */
 }
 
+.Titre {
+    -fx-font-size: 20px; 
+    -fx-font-family: "Arial Black";
+}
+
 .Button {
     -fx-background-color: linear-gradient(to bottom, #00c6ff, #0072ff); /* Dégradé bleu clair */
     -fx-text-fill: white; 
     -fx-font-weight: bold; 
     -fx-border-radius: 5px; 
     -fx-background-radius: 5px; 
-    -fx-margin: 30px; /* Espacement externe */
+    -fx-margin: 30px; /* Espacement externe */ 
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.7), 5, 0.3, 2, 2); /* Ombre portée */
-}
-
-.Connexion{
-    -fx-text-fill: rgb(8, 238, 8); 
-    -fx-font-size: 16px; 
-    -fx-font-family: "Arial Black";
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 5, 0.2, 2, 2); /* Ombre portée */
 }

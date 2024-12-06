@@ -42,7 +42,7 @@ public class ParametrageChoixSalles {
     @FXML
     private MenuButton choixTypeDonnees;
     
-    private String numSalle = "" ;
+    private String numSalle = "";
 
     private App application;
 
@@ -74,6 +74,7 @@ public class ParametrageChoixSalles {
       this.lvSalles.getFocusModel().focus(-1);
       this.lvSalles.getSelectionModel().selectedItemProperty().addListener(e -> this.validateComponentState());
       this.validateComponentState();
+      this.butRecherche.setText("Rechercher");
     }
 
     public void loadMenuDeroulantDonnees(List<TypeDonnee> listType){
@@ -119,7 +120,7 @@ public class ParametrageChoixSalles {
     private void actionValider() {
 		  donneeChoisies();
       if (!choices.isEmpty())
-        application.loadDonnees();
+        application.loadDonnees( this.getSalle(), this.getTabDonnee() );
       else System.out.println("Selectionner des données ! ");
 	  }
 
@@ -173,6 +174,8 @@ public class ParametrageChoixSalles {
     int selectedIndice = this.lvSalles.getSelectionModel().getSelectedIndex();
     if (selectedIndice >= 0) {
       this.butValider.setDisable(false);
+      this.numSalle = this.lvSalles.getSelectionModel().getSelectedItem().toString();
+      System.out.println(numSalle);
     }
 
   }

@@ -13,27 +13,31 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sae.view.ParametrageChoixSalles">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sae.view.ParametrageChoixSalles">
    <bottom>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints />
-            <ColumnConstraints />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="263.0" minWidth="10.0" prefWidth="198.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="338.0" minWidth="10.0" prefWidth="338.0" />
+            <ColumnConstraints maxWidth="0.0" minWidth="0.0" prefWidth="0.0" />
+            <ColumnConstraints maxWidth="190.0" minWidth="190.0" prefWidth="190.0" />
         </columnConstraints>
          <children>
-            <Button fx:id="butValider" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#actionValider" prefHeight="25.0" prefWidth="190.0" text="Validé" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <Button fx:id="butRetour" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#actionRetour" prefHeight="25.0" prefWidth="190.0" text="Retour" GridPane.rowIndex="1" />
+            <Button fx:id="butValider" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#actionValider" prefHeight="31.0" prefWidth="147.0" text="Validé" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+            <Button fx:id="butRetour" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#actionRetour" prefHeight="31.0" prefWidth="147.0" text="Retour" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin></Button>
          </children>
          <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" />
          </rowConstraints>
       </GridPane>
    </bottom>
    <center>
-      <ListView fx:id="lvSalles" prefHeight="323.0" prefWidth="424.0" BorderPane.alignment="CENTER" />
+      <ListView fx:id="lvSalles" prefHeight="310.0" prefWidth="464.0" BorderPane.alignment="CENTER" />
    </center>
    <left>
       <GridPane prefHeight="314.0" prefWidth="135.0" BorderPane.alignment="CENTER">
@@ -67,7 +71,7 @@
       </GridPane>
    </left>
    <top>
-      <GridPane prefHeight="60.0" prefWidth="370.0" BorderPane.alignment="CENTER">
+      <GridPane prefHeight="60.0" prefWidth="370.0" styleClass="Titre" BorderPane.alignment="CENTER">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -79,8 +83,8 @@
             <RowConstraints />
             <RowConstraints />
             <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
+            <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+            <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
         </rowConstraints>
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="37.0" prefWidth="200.0" text="Liste des salles" textAlignment="CENTER" GridPane.columnIndex="1">
