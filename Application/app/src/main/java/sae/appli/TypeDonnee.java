@@ -1,15 +1,15 @@
 package sae.appli;
 
 public enum TypeDonnee {
-    temperature("temperature", 20, 30),
-    humidity("humidity", 50, 70),
-    co2("co2", 450, 1500),
-    tvoc("tvoc", 200, 400),
-    activity("activity", 100, 500),
-    illumination("illumination", 1, 60),
-    infrared("infrared", 1, 15),
-    infrared_and_visible("infrared_and_visible", 1, 40),
-    pressure("pressure", 980, 990);
+    TEMPERATURE("temperature", 20, 30),
+    HUMIDITY("humidity", 50, 70),
+    CO2("co2", 450, 1500),
+    TVOC("tvoc", 200, 400),
+    ACTIVITY("activity", 100, 500),
+    ILLUMINATION("illumination", 1, 60),
+    INFRARED("infrared", 1, 15),
+    INFRARED_AND_VISIBLE("infrared_and_visible", 1, 40),
+    PRESSURE("pressure", 980, 990);
 
     private final String nom;  // Nom de la donnée
     private int seuilMin;  // Seuil minimum (modifiable)
