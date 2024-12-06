@@ -1,6 +1,5 @@
 <?php
 include "header.php";
-
 ?>
 
 <main class="main-container">
@@ -51,5 +50,4 @@ include "footer.php";
 ?>
 
 </body>
-
 </html>
