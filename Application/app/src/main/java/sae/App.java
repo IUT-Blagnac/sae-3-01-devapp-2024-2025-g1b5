@@ -232,6 +232,7 @@ public class App extends Application {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/sae/view/donneeSolar.fxml"));
             Parent root = loader.load();
+            root.getStylesheets().add(App.class.getResource("style.css").toExternalForm());
     
             // Récupérer le contrôleur d'affichage
             AfficherDonneesControllerSolar controller = loader.getController();

@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.FlowPane?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sae.view.EvolutionGrapheController">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="Menu" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sae.view.EvolutionGrapheController">
    <top>
       <Label fx:id="titreSalle" alignment="CENTER" contentDisplay="CENTER" maxHeight="17.0" maxWidth="926.0" prefHeight="17.0" prefWidth="926.0" styleClass="Titre" text="Label" textAlignment="CENTER" BorderPane.alignment="CENTER">
          <BorderPane.margin>
