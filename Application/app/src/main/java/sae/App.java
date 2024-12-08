@@ -1,6 +1,8 @@
 package sae;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -150,7 +152,7 @@ public class App extends Application {
         Thread pythonThread = new Thread(() -> {
             try {
                 // Lancer le processus Python
-                pythonProcess = new ProcessBuilder("python3", "../../Iot/main2.py").start();
+                pythonProcess = new ProcessBuilder("python", "Iot/main2.py").start();
                 long pid = pythonProcess.pid();
 
                 // Sauvegarder le PID dans AppState
@@ -165,6 +167,9 @@ public class App extends Application {
         pythonThread.setDaemon(true); // S'assurer que le thread se termine avec l'application
         pythonThread.start();
     }
+    
+    
+
     
 
 

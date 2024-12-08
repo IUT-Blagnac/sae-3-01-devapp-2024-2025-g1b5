@@ -20,8 +20,8 @@ import java.util.ArrayList;
 
 public class SallesConfigController {
 
-    private static final String PYTHON_SCRIPT = "../../Iot/main2.py"; // Script Python
-    private static final String CONFIG_FILE = "../../Iot/config.ini";
+    private static final String PYTHON_SCRIPT = "Iot/main2.py"; // Script Python
+    private static final String CONFIG_FILE = "Iot/config.ini";
     private Process pythonProcess; // Processus Python en cours
     private long pythonPID; // PID du processus Python en cours
 

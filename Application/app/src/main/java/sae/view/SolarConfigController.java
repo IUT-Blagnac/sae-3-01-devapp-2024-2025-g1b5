@@ -17,8 +17,8 @@ import java.util.stream.Collectors;
 
 public class SolarConfigController {
 
-    private static final String CONFIG_FILE = "../../Iot/config.ini"; // Fichier de configuration
-    private static final String PYTHON_SCRIPT = "../../Iot/main2.py"; // Script Python
+    private static final String CONFIG_FILE = "Iot/config.ini"; // Fichier de configuration
+    private static final String PYTHON_SCRIPT = "Iot/main2.py"; // Script Python
 
     @SuppressWarnings("unused")
     private Stage fenetrePrincipale;

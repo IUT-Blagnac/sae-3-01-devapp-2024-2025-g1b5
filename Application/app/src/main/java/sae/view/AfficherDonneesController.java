@@ -95,7 +95,7 @@ public class AfficherDonneesController {
      JSONParser parser = new JSONParser();
 
         try {
-            File file = new File("../../Iot/salles.json");
+            File file = new File("Iot/salles.json");
 
             if (!file.exists()) {
                 Alert alert = new Alert(AlertType.ERROR, "Erreur : Le fichier salles.json est introuvable !");

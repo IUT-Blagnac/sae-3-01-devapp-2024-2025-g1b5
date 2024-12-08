@@ -17,7 +17,7 @@ public class AlarmPopUpController {
     @FXML
     public void showAlarmPopUp() {
         // Chemin du fichier trigger.flag
-        String filePath = "../../Iot/trigger.flag"; // Assurez-vous que le fichier se trouve à cet emplacement
+        String filePath = "Iot/trigger.flag"; // Assurez-vous que le fichier se trouve à cet emplacement
         String alarmMessage = readAlarmFromFile(filePath);
 
         if (alarmMessage != null && !alarmMessage.isEmpty()) {

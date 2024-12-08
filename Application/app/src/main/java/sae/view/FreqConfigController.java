@@ -15,8 +15,8 @@ import sae.appli.AppState;
 
 public class FreqConfigController {
 
-    private static final String PYTHON_SCRIPT = "../../Iot/main2.py"; // Script Python
-    private static final String CONFIG_FILE = "../../Iot/config.ini";
+    private static final String PYTHON_SCRIPT = "Iot/main2.py"; // Script Python
+    private static final String CONFIG_FILE = "Iot/config.ini";
 
     @SuppressWarnings("unused")
     private Stage fenetrePrincipale;

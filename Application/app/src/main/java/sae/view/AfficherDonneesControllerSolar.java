@@ -229,7 +229,7 @@ public class AfficherDonneesControllerSolar {
 
         try {
             // Définir le chemin du fichier solar.json à la racine du projet
-            File file = new File("../../Iot/solar.json");
+            File file = new File("Iot/solar.json");
 
             if (!file.exists()) {
                 System.out.println("Le fichier solar.json est introuvable à la racine du projet.");

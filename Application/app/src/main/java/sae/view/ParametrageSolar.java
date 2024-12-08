@@ -28,7 +28,7 @@ public class ParametrageSolar {
 
     // Liste qui contiendra les éléments sélectionnés
     private final ArrayList<String> selectedChoices = new ArrayList<>();
-    private static final String CONFIG_FILE = "../../Iot/config.ini";
+    private static final String CONFIG_FILE = "Iot/config.ini";
 
     /**
      * Initialise les données du contrôleur.
