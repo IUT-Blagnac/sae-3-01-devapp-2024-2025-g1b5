@@ -12,7 +12,7 @@
         <id>Eclipse Paho Repository</id>
         <url>https://repo.eclipse.org/content/repositories/paho-releases/</url>
         </repository>
-  </repositories>
+    </repositories>
 
     <properties>
         <sae.app.mainClass>sae.Main</sae.app.mainClass>
@@ -22,7 +22,6 @@
         <javafx.maven.plugin.version>0.0.8</javafx.maven.plugin.version>
         <maven.shade.plugin.version>3.4.1</maven.shade.plugin.version>
     </properties>
-
 
     <dependencies>
         <dependency>
@@ -56,7 +55,7 @@
             <artifactId>json-simple</artifactId>
             <version>1.1.1</version>
         </dependency>
-        
+
         <dependency>
             <groupId>org.eclipse.paho</groupId>
             <artifactId>org.eclipse.paho.client.mqttv3</artifactId>
@@ -74,6 +73,7 @@
                     <mainClass>${sae.app.mainClass}</mainClass>
                 </configuration>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -95,6 +95,28 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <!-- Plugin pour exécuter un script Python avec le bon répertoire de travail -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>python</executable>
+                            <arguments>
+                                <argument>Application/Iot/main2.py</argument> <!-- chemin relatif à partir de "Application" -->
+                            </arguments>
+                            <workingDirectory>${project.basedir}/Application</workingDirectory> <!-- définir le répertoire de travail -->
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
     </build>
 

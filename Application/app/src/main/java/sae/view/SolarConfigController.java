@@ -6,6 +6,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import sae.App;
+import sae.appli.AppState;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -16,8 +17,8 @@ import java.util.stream.Collectors;
 
 public class SolarConfigController {
 
-    private static final String CONFIG_FILE = "Iot/config.ini"; // Fichier de configuration
-    private static final String PYTHON_SCRIPT = "Iot/main2.py"; // Script Python
+    private static final String CONFIG_FILE = "../../Iot/config.ini"; // Fichier de configuration
+    private static final String PYTHON_SCRIPT = "../../Iot/main2.py"; // Script Python
 
     @SuppressWarnings("unused")
     private Stage fenetrePrincipale;

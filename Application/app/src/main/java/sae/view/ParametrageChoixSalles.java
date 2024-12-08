@@ -26,7 +26,7 @@ import sae.appli.TypeDonnee;
 public class ParametrageChoixSalles {
     
     private Stage fenetrePrincipale ;
-    private static final String CONFIG_FILE = "Iot/config.ini";
+    private static final String CONFIG_FILE = "../../Iot/config.ini";
 
     @FXML
     private Button boutton ;

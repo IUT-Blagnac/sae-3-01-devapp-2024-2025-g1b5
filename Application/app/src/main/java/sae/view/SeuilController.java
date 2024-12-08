@@ -9,6 +9,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sae.App;  // Assure-toi d'importer App correctement
+import sae.appli.AppState;
 import sae.appli.TypeDonnee;
 
 import java.io.IOException;
@@ -39,7 +40,7 @@ public class SeuilController {
     private App application;  // Référence à l'application
     private List<String> choices = new ArrayList<>();  // Liste des choix sélectionnés
 
-    private static final String PYTHON_SCRIPT = "Iot/main2.py"; // Script Python
+    private static final String PYTHON_SCRIPT = "../../Iot/main2.py"; // Script Python
 
     // Méthode pour configurer les données du controller
     public void setDatas(Stage stage, App application) {
@@ -76,7 +77,7 @@ public class SeuilController {
     public void loadMenuDeroulantDonnees() {
         try {
             // Lecture du fichier de configuration
-            List<String> lines = Files.readAllLines(Paths.get("Iot/config.ini"));
+            List<String> lines = Files.readAllLines(Paths.get("../../Iot/config.ini"));
             List<String> donneesSalles = new ArrayList<>();
     
             // Extraction des données de la section [data]
@@ -179,7 +180,7 @@ public class SeuilController {
     private void updateConfigFile(int newMin, int newMax, String selectedType) {
         try {
             // Lire toutes les lignes du fichier
-            List<String> lines = Files.readAllLines(Paths.get("Iot/config.ini"));
+            List<String> lines = Files.readAllLines(Paths.get("../../Iot/config.ini"));
             List<String> updatedLines = new ArrayList<>();
             
             List<String> donneesSalles = new ArrayList<>(); // Liste pour stocker les types de données
@@ -236,7 +237,7 @@ public class SeuilController {
             }
     
             // Réécrire uniquement les lignes modifiées
-            Files.write(Paths.get("Iot/config.ini"), updatedLines);
+            Files.write(Paths.get("../../Iot/config.ini"), updatedLines);
             System.out.println("Fichier de configuration mis à jour avec succès.");
         } catch (IOException e) {
             e.printStackTrace();

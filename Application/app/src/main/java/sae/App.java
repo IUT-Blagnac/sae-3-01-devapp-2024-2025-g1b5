@@ -14,7 +14,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import sae.appli.TypeDonnee;
 import sae.view.AfficherDonneesControllerSolar;
-import sae.view.AppState;
 import sae.view.AfficherDonneesController;
 import sae.view.ConfigController;
 import sae.view.EvolutionGrapheController;
@@ -26,7 +25,7 @@ import sae.view.SallesConfigController;
 import sae.view.SeuilController;
 import sae.view.SolarConfigController;
 import sae.view.AlarmesController;
-
+import sae.appli.AppState;
 import sae.appli.FlagFileWatcher;
 
 
@@ -151,7 +150,7 @@ public class App extends Application {
         Thread pythonThread = new Thread(() -> {
             try {
                 // Lancer le processus Python
-                pythonProcess = new ProcessBuilder("python", "Iot/main2.py").start();
+                pythonProcess = new ProcessBuilder("python3", "../../Iot/main2.py").start();
                 long pid = pythonProcess.pid();
 
                 // Sauvegarder le PID dans AppState

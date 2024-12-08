@@ -62,7 +62,7 @@ public class AlarmesController {
 
         // Charger les données depuis le fichier JSON
         try {
-            alarmes.loadFromJson("Iot/alarmes.json");
+            alarmes.loadFromJson("../../Iot/alarmes.json");
         } catch (IOException e) {
             e.printStackTrace();
             showAlert("Erreur", "Impossible de charger les données d'alarmes.", Alert.AlertType.ERROR);

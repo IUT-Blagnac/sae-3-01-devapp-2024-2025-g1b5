@@ -59,7 +59,7 @@ public class GraphiqueSolarDayController {
         JSONParser parser = new JSONParser();
         
         try {
-            File file = new File("Iot/solar.json"); // Chemin du fichier JSON
+            File file = new File("../../Iot/solar.json"); // Chemin du fichier JSON
 
             if (!file.exists()) {
                 System.out.println("Le fichier solar.json est introuvable.");

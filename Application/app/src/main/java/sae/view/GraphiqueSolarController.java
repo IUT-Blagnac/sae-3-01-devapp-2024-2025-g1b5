@@ -6,6 +6,7 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.stage.Stage;
 import sae.App;
+import sae.appli.DataPoint;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -131,7 +132,7 @@ public class GraphiqueSolarController {
 
         try {
             // Charger le fichier JSON
-            File file = new File("Iot/solar.json");
+            File file = new File("../../Iot/solar.json");
 
             if (!file.exists()) {
                 System.out.println("Le fichier solar.json est introuvable à la racine du projet.");
