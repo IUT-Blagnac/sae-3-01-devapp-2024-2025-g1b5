@@ -102,7 +102,9 @@ for($i=0;$i<$nbClient;$i++){
 }
 foreach($tabClient as $client){
     $insert = 'INSERT INTO Client (email, nom, prenom, numTel, password, genreC, dateNaissance, idAdresse) 
-           VALUES ("' . $client['mailClient'] . '", "' . $client['nomClient'] . '", "' . $client['prenomClient'] . '", "' . $client['telClient'] . '", "' . $client['mdpClient'] . '", "' . $client['genre'] . '", "' . $client['dateNaissance'] . '", ' . $client['idAdresse'] . ')';
+           VALUES ("' . $client['mailClient'] . '", "' . $client['nomClient'] . '", 
+           "' . $client['prenomClient'] . '", "' . $client['telClient'] . '", "' . $client['mdpClient'] . '"
+           , "' . $client['genre'] . '", "' . $client['dateNaissance'] . '", ' . $client['idAdresse'] . ')';
 
     $tabInsert[] = $insert;
 }
@@ -122,13 +124,16 @@ function regroupement($nbRP){
         $RP = [
             'nomRP' => $faker->randomElement($tabRP),
         ];
-        $tabInsert[] ='INSERT INTO Regroupement (nomRegroupement) VALUES ("'.$RP['nomRP'].'")';
+        $tabInsert[] ='INSERT INTO Regroupement 
+        (nomRegroupement) VALUES ("'.$RP['nomRP'].'")';
     }
     for($i=0;$i<$nbRP;$i++){
         $RP = [
             'nomRP' => $faker->word,
         ];
-        $tabInsert[] ='INSERT INTO Produit_Regroupement (idProduit,idRegroupement) VALUES ('.random_int(1, 70).','.random_int(1, 4).')';
+        $tabInsert[] ='INSERT INTO Produit_Regroupement 
+        (idProduit,idRegroupement) VALUES 
+        ('.random_int(1, 70).','.random_int(1, 4).')';
     }
     return $tabInsert;
 
@@ -195,7 +200,8 @@ for($i=0;$i<$nbAdresse;$i++){
 }
 
 foreach($tabAdresse as $adresse){
-    $insert = 'INSERT INTO Adresse (rue, ville, codePostal, pays) VALUES ('.
+    $insert = 'INSERT INTO Adresse 
+    (rue, ville, codePostal, pays) VALUES ('.
     "'".$adresse['rue']."'," .
     "'".$adresse['ville']."'," .
     $adresse['codePostal']."," .
@@ -242,14 +248,18 @@ function categorie($tabCategorie, $tabProduits) {
                     $valSousCategorie = mb_substr(mb_strtolower($sousCat3, 'UTF-8'), 0, 3, 'UTF-8');
                     $valSousCategorie = str_replace(' ', '', $valSousCategorie);
 
-                    $insert = "INSERT INTO Categorie (nomCategorie, valCategorie) VALUES ('$sousCat3', '$valSousCategorie');";
+                    $insert = "INSERT INTO Categorie 
+                    (nomCategorie, valCategorie) 
+                    VALUES ('$sousCat3', '$valSousCategorie');";
                     $tabInsert[] = $insert;
 
                     $tab = produit($tabProduits, $cpt3, $sousCat3, $cptproduit);
                     $cptproduit = $tab[1];
                     $tabInsert = array_merge($tabInsert, $tab[0]);
 
-                    $insert = "INSERT INTO SousCategorie(idCategorie, idSousCategorie) VALUES ('$cpt', '$cpt2');";
+                    $insert = "INSERT INTO SousCategorie
+                    (idCategorie, idSousCategorie) VALUES 
+                    ('$cpt', '$cpt2');";
                     $tabInsert[] = $insert;
                 }
 
@@ -294,7 +304,13 @@ function produit ($tabProduit,$idcategorie,$nomCategorie,$compter){
         if($categorie == $nomCategorie){
             foreach($produits as $produit){
                 $donneeDroduit =detailproduit($produit,$categorie,$idcategorie);
-                $insert = "INSERT INTO Produit (nomProduit,age,taille,prix,idCategorie,noteGlobale,description,nbJoueurMax) VALUES ('".$donneeDroduit['nom']."','".$donneeDroduit['age']."','".$donneeDroduit['taille']."','".$donneeDroduit['prix']."','".$donneeDroduit['idCategorie']."','".$donneeDroduit['note']."','".$donneeDroduit['description']."','".$donneeDroduit['nbJoueur']."')";
+                $insert = "INSERT INTO Produit 
+                (nomProduit,age,taille,prix,idCategorie,
+                noteGlobale,description,nbJoueurMax) 
+                VALUES ('".$donneeDroduit['nom']."','".$donneeDroduit['age']."'
+                ,'".$donneeDroduit['taille']."','".$donneeDroduit['prix']."',
+                '".$donneeDroduit['idCategorie']."','".$donneeDroduit['note']."',
+                '".$donneeDroduit['description']."','".$donneeDroduit['nbJoueur']."')";
 
                 $tab []= $insert;
                 $cpt++;
@@ -332,7 +348,9 @@ function commande($nbClient,$nbCommande){
         $dateCommande = $faker->date('Y-m-d', 'now'); // Génère une date au format 'Y-m-d'
         $idAdresse = $n[$i];
         $typeLivraison = $faker->randomElement($array = array ('Livraison à domicile','Point relais','Retrait en magasin'));
-        $insert = " INSERT INTO Commande (idClient,dateCommande,idAdresse,typeLivraison) VALUES ('$idClient','$dateCommande','$idAdresse','$typeLivraison')";
+        $insert = " INSERT INTO Commande 
+        (idClient,dateCommande,idAdresse,typeLivraison) 
+        VALUES ('$idClient','$dateCommande','$idAdresse','$typeLivraison')";
         $tabInsert[] = $insert;
 for ($j = 0; $j < random_int(6, 7); $j++) {
     $idProduit = random_int(1, 70);
@@ -345,7 +363,8 @@ for ($j = 0; $j < random_int(6, 7); $j++) {
     if (!in_array($pk, $tabUseProduit)) {
         // Si la combinaison n'est pas utilisée, ajouter et préparer l'insertion
         $tabUseProduit[] = $pk;
-        $insert = "INSERT INTO Composer (idCommande, idProduit, quantite) VALUES ('$i', '$idProduit', '$quantite')";
+        $insert = "INSERT INTO Composer (idCommande, idProduit, quantite) 
+        VALUES ('$i', '$idProduit', '$quantite')";
         $tabInsert[] = $insert;
     }
 }
@@ -379,7 +398,8 @@ function insertCB($nbC){
         $dateExpiration = $faker->creditCardExpirationDate->format('Y-m-d'); // Format YYYY-MM-DD
 
         $cryptogramme = str_pad(mt_rand(0, 999), 3, '0', STR_PAD_LEFT);;
-        $insert = "INSERT INTO CarteBancaire (idClient,numCarte,dateExpiration,codeCarte) VALUES ('$idClient','$numeroCarte','$dateExpiration','$cryptogramme')";
+        $insert = "INSERT INTO CarteBancaire (idClient,numCarte,dateExpiration,codeCarte) VALUES 
+        ('$idClient','$numeroCarte','$dateExpiration','$cryptogramme')";
         $tabInsert[] = $insert;
         
 
@@ -396,7 +416,8 @@ function quantité(){
     $tabInsert=[];
     for($i=1;$i<71;$i++){
         $quantite = random_int(40, 50);
-        $insert = "INSERT INTO Stock (idProduit,quantiteStock) VALUES ('$i','$quantite')";
+        $insert = "INSERT INTO Stock (idProduit,quantiteStock) 
+        VALUES ('$i','$quantite')";
         $tabInsert[] = $insert;
     }
     return $tabInsert;
@@ -418,20 +439,26 @@ function avisetProduitF($nbProduit,$nbClient){
         $idClient =$n[$i];
         $idProduit = $i;
         $note = random_decimal(2, 5, 1); 
-        $dateAvis = $faker->date('Y-m-d', 'now'); // Génère une date au format 'Y-m-d'
-        $commentaire = $faker->randomElement($array = array ('Super produit','Je recommande','Très bon rapport qualité/prix','Je suis satisfait','les enfants adorent','Je recommande pas','envoi rapide','produit conforme à la description'));
+        $dateAvis = $faker->date('Y-m-d', 'now');// Génère une date au format 'Y-m-d'
+        $commentaire = $faker->randomElement($array = array 
+        ('Super produit','Je recommande','Très bon rapport qualité/prix','Je suis satisfait','les enfants adorent',
+        'Je recommande pas','envoi rapide','produit conforme à la description'));
 
-        $insert = "INSERT INTO Avis (idClient,idProduit,dateAvis,note,contenu) VALUES ('$idClient','$idProduit','$dateAvis','$note','$commentaire')";
+        $insert = "INSERT INTO Avis (idClient,idProduit,dateAvis,note,contenu)
+         VALUES ('$idClient','$idProduit','$dateAvis','$note','$commentaire')";
         $tabInsert[] = $insert;
         for($j=0;$j<random_int(0, 1);$j++){
-            $insert = "INSERT INTO Produit_Favoris (idClient,idProduit) VALUES ('$idClient','$idProduit')";
+            $insert = "INSERT INTO Produit_Favoris (idClient,idProduit)
+             VALUES ('$idClient','$idProduit')";
             $tabInsert[] = $insert;
         }
-        
-
     }
     return $tabInsert;
 }
+
+
+
+
 /*
 //demarrer tout les programme
 $nbClient = 50;
@@ -602,3 +629,30 @@ foreach($tabInsert as $insert){
 
 */
 
+$tabinsert []= 
+['categorie'=> 'SELECT COUNT(*) FROM Categorie',
+ 'adresse'=> 'SELECT COUNT(*) FROM Adresse',
+ 'client'=> 'SELECT COUNT(*) FROM Client',
+ 'produit'=> 'SELECT COUNT(*) FROM Produit', 
+ 'commande'=> 'SELECT COUNT(*) FROM Commande',
+  'carte bancaire'=> 'SELECT COUNT(*) FROM CarteBancaire', 
+  'stock'=> 'SELECT COUNT(*) FROM Stock',
+   'composer'=> 'SELECT COUNT(*) FROM Composer', 
+   'avis'=> 'SELECT COUNT(*) FROM Avis',
+    'produit favoris'=> 'SELECT COUNT(*) FROM Produit_Favoris',
+    'regroupement'=> 'SELECT COUNT(*) FROM Regroupement'
+    ,'sous categorie'=> 'SELECT COUNT(*) FROM SousCategorie',
+    'produit regroupement'=> 'SELECT COUNT(*) FROM Produit_Regroupement'
+    ];
+$total = 0;
+foreach($tabinsert as $insert){
+    foreach($insert as $key => $value){
+        
+        $stmt = $conn->prepare($value);
+        $stmt->execute();
+        $result = $stmt->fetch();
+        $total += $result[0];
+        echo $key.' : '.$result[0].'<br>';
+    }
+} 
+echo 'Total : '.$total;
