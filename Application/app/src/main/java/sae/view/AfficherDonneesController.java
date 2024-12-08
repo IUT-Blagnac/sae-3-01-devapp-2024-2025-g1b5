@@ -119,8 +119,8 @@ public class AfficherDonneesController {
               // Récupérer toutes les valeurs pour cette clé spécifique
               Set<String> allKeys = salleChoisie.keySet();
 
-              JSONObject dernierClé = (JSONObject) salleChoisie.get( (allKeys.size() - 1) + "" );
-              this.dicoTypeValeur = dernierClé;  
+              JSONObject dernierCle = (JSONObject) salleChoisie.get( (allKeys.size() - 1) + "" );
+              this.dicoTypeValeur = dernierCle;  
               //récupère les dernières données de la salle et les attributs à un dictionnaire
 
             } else {
