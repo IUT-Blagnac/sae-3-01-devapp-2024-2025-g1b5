@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Compte créé avec succès!";
         header("Location: connexionCompte.php");
     } catch (PDOException $e) {
-        echo "Erreur: " . $e->getMessage();
+        echo "<div class='alert alert-danger' role='alert'>Erreur lors de la création du compte. </div>";
     }
 }
 ?>
