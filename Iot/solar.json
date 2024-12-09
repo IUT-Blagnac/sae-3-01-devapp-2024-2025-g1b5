@@ -53,6 +53,24 @@
         "energy": 3472099
       },
       "lastUpdateTime": "2024-12-09 11:47:33"
+    },
+    "3": {
+      "currentPower": {
+        "power": 320.19626
+      },
+      "lastDayData": {
+        "energy": 599
+      },
+      "lastMonthData": {
+        "energy": 56663
+      },
+      "lastYearData": {
+        "energy": 2991069
+      },
+      "lifeTimeData": {
+        "energy": 3472099
+      },
+      "lastUpdateTime": "2024-12-09 11:47:33"
     }
   }
 }

@@ -137,5 +137,44 @@
    "infrared_and_visible": 8,
    "pressure": 991.8
   }
+ },
+ "E100": {
+  "0": {
+   "temperature": 24.7,
+   "humidity": 33,
+   "co2": 832,
+   "tvoc": 92,
+   "activity": 0,
+   "illumination": 0,
+   "infrared": 1,
+   "infrared_and_visible": 2,
+   "pressure": 992
+  }
+ },
+ "C006": {
+  "0": {
+   "temperature": 19.4,
+   "humidity": 49.5,
+   "co2": 1001,
+   "tvoc": 117,
+   "activity": 0,
+   "illumination": 1,
+   "infrared": 1,
+   "infrared_and_visible": 1,
+   "pressure": 992.4
+  }
+ },
+ "hall-amphi": {
+  "0": {
+   "temperature": 17.6,
+   "humidity": 48.5,
+   "co2": 519,
+   "tvoc": 271,
+   "activity": 49,
+   "illumination": 16,
+   "infrared": 7,
+   "infrared_and_visible": 21,
+   "pressure": 991.8
+  }
  }
 }
