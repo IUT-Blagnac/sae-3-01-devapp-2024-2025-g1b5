@@ -9,13 +9,13 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sae.view.SolarConfigController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" styleClass="Menu" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sae.view.SolarConfigController">
    <center>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="383.0" minWidth="10.0" prefWidth="370.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="195.0" minWidth="10.0" prefWidth="87.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="205.0" minWidth="10.0" prefWidth="189.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="424.0" minWidth="10.0" prefWidth="423.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="207.0" minWidth="10.0" prefWidth="188.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -31,54 +31,54 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label fx:id="lblInfo" text="" style="-fx-text-fill: green;" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="9">
+            <Label fx:id="lblInfo" style="-fx-text-fill: green;" text="" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="9">
                <GridPane.margin>
                   <Insets left="60.0" />
                </GridPane.margin>
             </Label>
             <CheckBox fx:id="cbCurrentPower" mnemonicParsing="false" text="CurrentPower" GridPane.columnIndex="1" GridPane.rowIndex="8">
                <GridPane.margin>
-                  <Insets left="120.0" />
+                  <Insets left="150.0" />
                </GridPane.margin>
             </CheckBox>
             <CheckBox fx:id="cbLastDayData" mnemonicParsing="false" text="lastDayData" GridPane.columnIndex="1" GridPane.rowIndex="7">
                <GridPane.margin>
-                  <Insets left="120.0" />
+                  <Insets left="150.0" />
                </GridPane.margin>
             </CheckBox>
             <CheckBox fx:id="cbLastMonthData" mnemonicParsing="false" text="lastMonthData" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <GridPane.margin>
-                  <Insets left="120.0" />
+                  <Insets left="150.0" />
                </GridPane.margin>
             </CheckBox>
             <CheckBox fx:id="cbLastYearData" mnemonicParsing="false" text="lastYearData" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <GridPane.margin>
-                  <Insets left="120.0" />
+                  <Insets left="150.0" />
                </GridPane.margin>
             </CheckBox>
             <CheckBox fx:id="cbLifeTimeData" mnemonicParsing="false" text="lifeTimeData" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <GridPane.margin>
-                  <Insets left="120.0" />
+                  <Insets left="150.0" />
                </GridPane.margin>
             </CheckBox>
             <CheckBox fx:id="cbLastUpdateTime" mnemonicParsing="false" text="lastUpdateTime" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <GridPane.margin>
-                  <Insets left="120.0" />
+                  <Insets left="150.0" />
                </GridPane.margin>
             </CheckBox>
-            <Button fx:id="butValider" mnemonicParsing="false" onAction="#actionValid" text="Valider" GridPane.columnIndex="2" GridPane.rowIndex="10">
+            <Button fx:id="butValider" mnemonicParsing="false" onAction="#actionValid" prefHeight="25.0" prefWidth="120.0" text="Valider" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="10" GridPane.valignment="TOP">
                <GridPane.margin>
-                  <Insets left="15.0" />
+                  <Insets />
                </GridPane.margin>
             </Button>
-            <Label text="Choisissez les informations des panneaux solaires à enregistrer" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="420.0" styleClass="Sous-titre" text="Choisissez les informations des panneaux solaires à enregistrer" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
-                  <Insets left="20.0" />
+                  <Insets />
                </GridPane.margin>
             </Label>
-            <Button fx:id="butRetour" mnemonicParsing="false" onAction="#actionRetour" text="Retour" GridPane.rowIndex="10">
+            <Button fx:id="butRetour" alignment="CENTER" mnemonicParsing="false" onAction="#actionRetour" prefHeight="25.0" prefWidth="120.0" text="Retour" GridPane.halignment="RIGHT" GridPane.rowIndex="10" GridPane.valignment="TOP">
                <GridPane.margin>
-                  <Insets left="40.0" />
+                  <Insets />
                </GridPane.margin>
             </Button>
          </children>

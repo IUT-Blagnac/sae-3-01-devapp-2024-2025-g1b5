@@ -6,6 +6,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import sae.App;
+import sae.appli.AppState;
 
 import java.io.IOException;
 import java.nio.file.Files;

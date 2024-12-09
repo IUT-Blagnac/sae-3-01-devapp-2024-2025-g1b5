@@ -11,7 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sae.App;
-import sae.view.AppState;
+import sae.appli.AppState;
 
 public class FreqConfigController {
 

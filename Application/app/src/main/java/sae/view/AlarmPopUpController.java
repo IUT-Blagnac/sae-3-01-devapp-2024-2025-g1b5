@@ -9,6 +9,8 @@ import org.json.simple.parser.JSONParser;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class AlarmPopUpController {
 
@@ -32,9 +34,14 @@ public class AlarmPopUpController {
     }
 
     private String readAlarmFromFile(String filePath) {
-        // Lire le fichier trigger.flag et parser le JSON
         JSONParser parser = new JSONParser();
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            // Vérifier si le fichier n'est pas vide
+            if (Files.size(Paths.get(filePath)) == 0) {
+                System.out.println("Le fichier est vide, aucune alarme à lire.");
+                return null;
+            }
+
             String line;
             StringBuilder jsonContent = new StringBuilder();
             while ((line = reader.readLine()) != null) {
@@ -49,25 +56,20 @@ public class AlarmPopUpController {
             JSONObject alarm = (JSONObject) jsonObject.get("alarm");
             String key = (String) alarm.get("key");
 
-            // Gestion des valeurs numériques et de chaînes pour 'value'
             Object valueObj = alarm.get("value");
-            String value;
-            if (valueObj instanceof Number) {
-                value = String.valueOf(valueObj); // Si c'est un nombre, on le convertit en chaîne
-            } else {
-                value = (String) valueObj; // Sinon, on le prend comme une chaîne
-            }
+            String value = valueObj instanceof Number ? String.valueOf(valueObj) : (String) valueObj;
 
             String alarmType = (String) alarm.get("alarm_type");
-            String timestamp = (String) alarm.get("timestamp");
+            String timestamp = (String) jsonObject.get("timestamp");
 
-            // Formater le message d'alarme
-            return String.format("Alarme dans la salle : %s\nDonnée : %s\nValeur : %s\nType : %s\nDate : %s",
-                    room, key, value, alarmType, timestamp);
+            return String.format(
+                "Alarme dans la salle : %s\nDonnée : %s\nValeur : %s\nType : %s\nDate : %s",
+                room, key, value, alarmType, timestamp);
 
         } catch (Exception e) {
             e.printStackTrace();
+            return null; // En cas d'erreur, retourne null
         }
-        return null;
     }
+
 }

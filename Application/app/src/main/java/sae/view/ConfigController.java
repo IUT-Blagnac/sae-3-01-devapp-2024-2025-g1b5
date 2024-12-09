@@ -22,6 +22,9 @@ public class ConfigController  {
     private Button butConfigFreq;
 
     @FXML
+    private Button butConfigSeuil;
+
+    @FXML
     private Button butRetour;
     
     private App application;
@@ -52,6 +55,11 @@ public class ConfigController  {
     @FXML
     private void actionFreqConfig() {
         application.loadFreqConfig();
+    }
+
+    @FXML
+    private void actionSeuilConfig() {
+        application.loadSeuilConfig();
     }
    
 }

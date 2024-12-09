@@ -9,36 +9,34 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sae.view.FreqConfigController">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" styleClass="Menu" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sae.view.FreqConfigController">
    <center>
-      <GridPane BorderPane.alignment="CENTER">
+      <GridPane alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="144.0" minWidth="10.0" prefWidth="58.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="435.0" minWidth="10.0" prefWidth="412.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="194.0" minWidth="10.0" prefWidth="80.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="221.0" minWidth="10.0" prefWidth="175.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="496.0" minWidth="10.0" prefWidth="437.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="243.0" minWidth="10.0" prefWidth="173.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="175.0" minHeight="10.0" prefHeight="146.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="307.0" minHeight="10.0" prefHeight="265.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="120.0" minHeight="10.0" prefHeight="87.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Veuillez entrer la fréquence (en secondes) :" GridPane.columnIndex="1" />
-            <TextField fx:id="freqInput" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="534.0" styleClass="Sous-titre" text="Veuillez entrer la Fréquence (en secondes) :" textAlignment="CENTER" GridPane.columnIndex="1" />
+            <TextField fx:id="freqInput" prefHeight="25.0" prefWidth="317.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <GridPane.margin>
-                  <Insets left="10.0" right="10.0" />
+                  <Insets left="50.0" right="50.0" />
                </GridPane.margin>
             </TextField>
-            <Label fx:id="lblInfo" text="" GridPane.columnIndex="1" GridPane.rowIndex="2" visible="false" />
-            <Button fx:id="butRetour" text="Retour" onAction="#actionRetour" GridPane.rowIndex="3">
+            <Button fx:id="butRetour" onAction="#actionRetour" prefHeight="25.0" prefWidth="120.0" text="Retour" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="TOP">
                <GridPane.margin>
-                  <Insets left="15.0" />
+                  <Insets />
                </GridPane.margin>
             </Button>
-            <Button fx:id="butValider" text="Valider" onAction="#actionValid" GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <Button fx:id="butValider" onAction="#actionValid" prefHeight="25.0" prefWidth="120.0" text="Valider" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="TOP">
                <GridPane.margin>
-                  <Insets left="25.0" />
+                  <Insets />
                </GridPane.margin>
             </Button>
          </children>

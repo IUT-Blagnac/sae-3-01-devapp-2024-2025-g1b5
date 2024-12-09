@@ -6,7 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Labeled;
 import javafx.stage.Stage;
 import sae.App;
-import sae.view.AppState;
+import sae.appli.AppState;
 
 import java.io.IOException;
 
@@ -68,7 +68,7 @@ public class MenuController {
             
           } else {
             labelTestCo.setText("Connexion échouée");
-            labelTestCo.setStyle("-fx-text-fill: red;");
+            labelTestCo.setStyle("-fx-text-fill: green;");
             System.out.println("Connexion échouée");
           }
       } catch (MqttException e) {
