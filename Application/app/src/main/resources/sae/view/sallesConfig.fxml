@@ -38,7 +38,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="659.0" styleClass="Sous-titre" text="Choisissez les informations des panneaux solaires à enregistrer" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="659.0" styleClass="Sous-titre" text="Choisissez les informations des salles à enregistrer" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
    </top>
