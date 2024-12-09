@@ -7,7 +7,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $prenom = htmlspecialchars(trim($_POST['prenom']));
     $nom = htmlspecialchars(trim($_POST['nom']));
     $date_naissance = htmlspecialchars(trim($_POST['date-naissance']));
+
     $num_telephone = htmlspecialchars(trim($_POST['num-telephone']));
+    $num_telephone = htmlspecialchars(trim($_POST['num-telephone']));
+    $numTel = str_replace(' ', '', $num_telephone); // Retirer les espaces
+    if (strlen($numTel) != 10 || !ctype_digit($numTel)) {
+        echo "Le numéro de téléphone doit contenir exactement 10 chiffres.";
+        exit;
+    }
+    // Formatage pour l'affichage (par exemple : 06 12 34 56 78)
+    $numTelAffiche = implode(' ', str_split($numTel, 2));
+
     $genre = htmlspecialchars(trim($_POST['genre']));
     $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
     $password = $_POST['password'];
@@ -29,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $client->bindParam(':prenom', $prenom);
         $client->bindParam(':nom', $nom);
         $client->bindParam(':date_naissance', $date_naissance);
-        $client->bindParam(':num_telephone', $num_telephone);
+        $client->bindParam(':num_telephone', $numTel);
         $client->bindParam(':genre', $genre);
         $client->bindParam(':email', $email);
         $client->bindParam(':password', $hashed_password);
