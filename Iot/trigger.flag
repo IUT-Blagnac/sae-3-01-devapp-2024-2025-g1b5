@@ -1,9 +1,9 @@
 {
-  "room": "hall-amphi",
+  "room": "C102",
   "alarm": {
-    "key": "pressure",
-    "value": 991.8,
-    "alarm_type": "MAX",
-    "timestamp": "2024-12-09 11:59:34"
+    "key": "humidity",
+    "value": 47.5,
+    "alarm_type": "MIN",
+    "timestamp": "2024-12-09 13:27:20"
   }
-}
+}}

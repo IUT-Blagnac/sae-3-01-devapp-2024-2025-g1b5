@@ -10,6 +10,17 @@
    "infrared": 10,
    "infrared_and_visible": 57,
    "pressure": 992.2
+  },
+  "1": {
+   "temperature": 17.8,
+   "humidity": 47.5,
+   "co2": 525,
+   "tvoc": 131,
+   "activity": 0,
+   "illumination": 0,
+   "infrared": 1,
+   "infrared_and_visible": 2,
+   "pressure": 991.7
   }
  },
  "E007": {

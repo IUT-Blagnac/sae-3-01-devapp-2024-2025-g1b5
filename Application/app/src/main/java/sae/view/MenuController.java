@@ -68,7 +68,7 @@ public class MenuController {
             
           } else {
             labelTestCo.setText("Connexion échouée");
-            labelTestCo.setStyle("-fx-text-fill: red;");
+            labelTestCo.setStyle("-fx-text-fill: green;");
             System.out.println("Connexion échouée");
           }
       } catch (MqttException e) {

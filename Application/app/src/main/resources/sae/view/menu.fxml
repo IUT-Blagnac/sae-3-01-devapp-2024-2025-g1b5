@@ -19,8 +19,8 @@
         </columnConstraints>
         <rowConstraints>
           <RowConstraints maxHeight="129.0" minHeight="10.0" prefHeight="92.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="129.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="266.0" minHeight="10.0" prefHeight="261.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="129.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="295.0" minHeight="10.0" prefHeight="288.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="96.0" minHeight="10.0" prefHeight="71.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
@@ -69,6 +69,7 @@
                   <Insets top="20.0" />
                </GridPane.margin>
             </Label>
+            <Label fx:id="labelTestCo" styleClass="Connexion" text=" " GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
    </center>

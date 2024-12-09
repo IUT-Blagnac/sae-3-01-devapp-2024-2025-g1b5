@@ -41,6 +41,42 @@
    "value": 992.2,
    "alarm_type": "MAX",
    "timestamp": "2024-12-09 11:57:21"
+  },
+  "7": {
+   "key": "temperature",
+   "value": 17.8,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-09 13:27:20"
+  },
+  "8": {
+   "key": "humidity",
+   "value": 47.5,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-09 13:27:20"
+  },
+  "9": {
+   "key": "tvoc",
+   "value": 131.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-09 13:27:20"
+  },
+  "10": {
+   "key": "activity",
+   "value": 0.0,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-09 13:27:20"
+  },
+  "11": {
+   "key": "temperature",
+   "value": 17.8,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-09 13:27:20"
+  },
+  "12": {
+   "key": "humidity",
+   "value": 47.5,
+   "alarm_type": "MIN",
+   "timestamp": "2024-12-09 13:27:20"
   }
  },
  "E007": {
@@ -407,4 +443,4 @@
    "timestamp": "2024-12-09 11:59:34"
   }
  }
-}
+}}

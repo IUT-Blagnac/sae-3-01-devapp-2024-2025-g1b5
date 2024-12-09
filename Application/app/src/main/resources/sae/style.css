@@ -32,3 +32,9 @@
     -fx-font-size: 14px; 
 }
 
+.Connexion {
+    -fx-text-fill: green; /* Couleur gris moyen pour un texte apaisant */
+    -fx-font-size: 20px; /* Taille de police légèrement réduite */
+    -fx-font-family: "Arial";
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 2, 0.1, 1, 1); /* Ombre très légère */
+}
