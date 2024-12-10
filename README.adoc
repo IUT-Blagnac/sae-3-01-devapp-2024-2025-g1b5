@@ -333,6 +333,10 @@ Un Sprint durera 2 semaines
 Odj /CR évalués concernent la réunion de rétrospective de sprint de l'équipe, je ne l'ai pas pour la semaine 48!  J'ai évalué exceptionnellement semaine 47 à la plaçe. ODJ : Il manque qui va rédiger le compte rendu, qui est responsable de chaque rubrique (cf. exemple). CR : Il manque le plan avec les rubriques de l'ODJ, il manque le point réunion client, il manque l'analyse difficultés -réussites du sprint, il manque qui se charge de l'organisation de la prochaine réunion.
 note: 1,2/3
 
+==== Evaluation communication semaine 49 par EP
+ODJ : Attention soucis sur date du Compte rendu antérieure à la réunion ! CR: manque abs/present, il reste des fautes, analyse assez succinte, manque retour client site Web.
+note : 1,6/3
+
 
 
 === Voici un exemple d'évaluation :
