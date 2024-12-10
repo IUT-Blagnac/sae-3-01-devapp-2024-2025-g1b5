@@ -95,7 +95,7 @@ for($i=0;$i<$nbClient;$i++){
 
         'mdpClient' => $faker->bothify('??##?##??#'),
         'genre' => $faker->randomElement($array = array ('H','F')),
-        'dateNaissance' => $faker->date($format = 'Y-m-d', $max = 'now'),
+        'dateNaissance' => $faker->date($format = 'd/m/Y', $max = 'now'),
         'idAdresse' => $numbers[$i]
     ];
     $tabClient[] = $Client;

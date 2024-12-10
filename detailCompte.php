@@ -24,7 +24,7 @@ include "header.php";
             <h3>Informations personnelles</h3>
             <p>Prenom : <?php echo isset($_SESSION['client_prenom']) ? htmlspecialchars($_SESSION['client_prenom']) : 'Non défini'; ?></p>
             <p>Email : <?php echo isset($_SESSION['client_email']) ? htmlspecialchars($_SESSION['client_email']) : 'Non défini'; ?></p>
-            <p>Adresse :<?php echo isset($_SESSION['client_adresse']) ? htmlspecialchars($_SESSION['client_adresse']) : 'Non défini'; ?></p>
+            <p>Adresse :<?php echo isset($_SESSION['client_adresse']) ? htmlspecialchars($_SESSION['client_adresse']) : ' Non défini'; ?></p>
             <button class="button">Modifier</button>
         </div>
         <div class="info-section">
