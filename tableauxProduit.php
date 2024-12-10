@@ -424,25 +424,31 @@ function quantité(){
 }
 
 //insertion des avis
-function avisetProduitF($nbProduit,$nbClient){
+function avisetProduitF($nbProduit,$nbClient ,$nbAvis){
     $faker = Factory::create('fr_FR');
     $cpt = 1;
     $tabInsert=[];
     $n =range(1, $nbClient);
-    while(count($n) < $nbProduit){
-        if(count($n) < $nbProduit){
+
+    while(count($n) < $nbAvis){
+        if(count($n) < $nbAvis){
             $n = array_merge($n,range(1, $nbClient));
         }
     }
     shuffle($n);
-    for ($i = 1; $i < $nbProduit; $i++){
+    for ($i = 1; $i < $nbAvis; $i++){
         $idClient =$n[$i];
-        $idProduit = $i;
+        $idProduit = random_decimal(1, $nbProduit, 0);
         $note = random_decimal(2, 5, 1); 
         $dateAvis = $faker->date('Y-m-d', 'now');// Génère une date au format 'Y-m-d'
         $commentaire = $faker->randomElement($array = array 
-        ('Super produit','Je recommande','Très bon rapport qualité/prix','Je suis satisfait','les enfants adorent',
-        'Je recommande pas','envoi rapide','produit conforme à la description'));
+        ('Javais des doutes en commandant ce jouet en ligne, mais il est arrivé rapidement et parfaitement emballé. Les matériaux sont solides, et les finitions sont impeccables. Mes enfants adorent jouer avec, et je trouve que c’est éducatif. Franchement, pour le prix, je ne pouvais pas espérer mieux !',
+        'Ce jouet a dépassé mes attentes. Non seulement il est coloré et attrayant, mais il aide aussi à développer la créativité et la motricité fine. Mon enfant passe des heures à samuser avec, et je remarque déjà des progrès dans ses compétences. Une belle surprise pour un produit à ce prix !','Très bon rapport qualité/prix','Je suis satisfait','les enfants adorent',
+        'Le jouet est tel que décrit, mais il n’a pas captivé l’attention de mes enfants autant que je l’espérais. Peut-être plus adapté à un autre âge.','La livraison a été très rapide, et le jouet est arrivé en parfait état. Un grand merci pour ce service impeccable !','produit conforme à la description',
+        'J ai offert ce jouet à mon fils pour son anniversaire, et il ladore. Les matériaux sont de bonne qualité et il semble vraiment durable. Très satisfait de cet achat.',
+        'Le jouet correspond parfaitement à la description. Mes enfants passent des heures à jouer avec, et cela stimule vraiment leur imagination. Très bon choix !',
+        'Cest un jouet bien conçu, solide, et qui a beaucoup plu. Pour le prix, c’est une excellente affaire. Je pense même en racheter un pour mon neveu.',
+    'Le jouet est globalement bon, mais certaines parties pourraient être un peu plus solides. Cela dit, mes enfants ladorent et cest ce qui compte.'));
 
         $insert = "INSERT INTO Avis (idClient,idProduit,dateAvis,note,contenu)
          VALUES ('$idClient','$idProduit','$dateAvis','$note','$commentaire')";
@@ -457,16 +463,17 @@ function avisetProduitF($nbProduit,$nbClient){
 }
 
 
-
-
 /*
-//demarrer tout les programme
+
 $nbClient = 50;
+$tabInsert  = array_merge($tabInsert,avisetProduitF(70,$nbClient,120));
+
+
+//demarrer tout les programme
 /$tabInsert = array_merge($tabInsert,adresse($nbClient));
 $tabInsert = array_merge($tabInsert,client($nbClient));
 $tabInsert = array_merge($tabInsert,categorie($tabCategorie,$tabProduit));
 $tabInsert = array_merge($tabInsert,commande($nbClient,110,$conn));
-$tabInsert = array_merge($tabInsert,avisetProduitF(70,$nbClient));
 $tabInsert = array_merge($tabInsert,insertCB($nbClient));
 $tabInsert = array_merge($tabInsert,quantité());
 $tabInsert = array_merge($tabInsert,regroupement(30));
@@ -627,7 +634,6 @@ foreach($tabInsert as $insert){
 }
 }
 
-*/
 
 $tabinsert []= 
 ['categorie'=> 'SELECT COUNT(*) FROM Categorie',
@@ -635,24 +641,25 @@ $tabinsert []=
  'client'=> 'SELECT COUNT(*) FROM Client',
  'produit'=> 'SELECT COUNT(*) FROM Produit', 
  'commande'=> 'SELECT COUNT(*) FROM Commande',
-  'carte bancaire'=> 'SELECT COUNT(*) FROM CarteBancaire', 
-  'stock'=> 'SELECT COUNT(*) FROM Stock',
-   'composer'=> 'SELECT COUNT(*) FROM Composer', 
-   'avis'=> 'SELECT COUNT(*) FROM Avis',
-    'produit favoris'=> 'SELECT COUNT(*) FROM Produit_Favoris',
-    'regroupement'=> 'SELECT COUNT(*) FROM Regroupement'
-    ,'sous categorie'=> 'SELECT COUNT(*) FROM SousCategorie',
-    'produit regroupement'=> 'SELECT COUNT(*) FROM Produit_Regroupement'
-    ];
+ 'carte bancaire'=> 'SELECT COUNT(*) FROM CarteBancaire', 
+ 'stock'=> 'SELECT COUNT(*) FROM Stock',
+ 'composer'=> 'SELECT COUNT(*) FROM Composer', 
+ 'avis'=> 'SELECT COUNT(*) FROM Avis',
+ 'produit favoris'=> 'SELECT COUNT(*) FROM Produit_Favoris',
+ 'regroupement'=> 'SELECT COUNT(*) FROM Regroupement'
+ ,'sous categorie'=> 'SELECT COUNT(*) FROM SousCategorie',
+ 'produit regroupement'=> 'SELECT COUNT(*) FROM Produit_Regroupement'
+];
 $total = 0;
 foreach($tabinsert as $insert){
     foreach($insert as $key => $value){
         
-        $stmt = $conn->prepare($value);
-        $stmt->execute();
-        $result = $stmt->fetch();
-        $total += $result[0];
-        echo $key.' : '.$result[0].'<br>';
-    }
+    $stmt = $conn->prepare($value);
+    $stmt->execute();
+    $result = $stmt->fetch();
+    $total += $result[0];
+    echo $key.' : '.$result[0].'<br>';
+}
 } 
 echo 'Total : '.$total;
+*/
