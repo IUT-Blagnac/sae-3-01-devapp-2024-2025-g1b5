@@ -336,7 +336,7 @@ note: 1,2/3
 ==== Evaluation communication semaine 49 par EP
 ODJ : Attention soucis sur date du Compte rendu antérieure à la réunion ! CR: manque abs/present, il reste des fautes, analyse assez succinte, manque retour client site Web.
 note : 1,6/3
-
+Note Appel offre : 11,02/20
 
 
 === Voici un exemple d'évaluation :
