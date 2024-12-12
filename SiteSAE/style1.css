@@ -1,11 +1,15 @@
 html, body {
     height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
 }
+
 header{
     color: white;
 }
+
 body {
-    margin: 0;
     font-family: 'Fredoka One', Arial, sans-serif;
     background-color: white; 
     background-size: cover; /* Ensure the background image covers the entire screen*/
@@ -15,11 +19,27 @@ body {
 }
 
 main {
-    font-family: Arial, Helvetica, sans-serif;
+    flex: 1; /* Take up remaining space */
     display: flex;
     flex-direction: column;
-    height: 100%;
 }
+
+.espaceAdmin {
+    background-color: white; 
+    color: #333; 
+    border-radius: 20px; 
+    padding: 5px 10px; 
+    font-size: 16px; 
+    cursor: pointer; 
+    transition: background-color 0.3s, border-color 0.3s; 
+}
+
+.espaceAdmin:hover {
+    background-color: #f0f0f0; 
+}
+
+
+/* Header */
 
 .header {
     background-color: #ff1f11;
@@ -186,7 +206,7 @@ main {
   }
 
 
-/* detailProduit */
+
 
 /* description du produit*/
 
@@ -384,16 +404,17 @@ main {
     margin-top: 10%;
 }
 
+
 /* footer */
 
-
 footer {
-    margin-top: 12%;
     background-color: #000;
     color: #fff;
     padding: 10px 0;
     font-size: 14px;
     font-family: sans-serif, Arial;
+    margin-top: 12%; /* Ensure there is space at the top */
+    flex-shrink: 0; /* Prevent the footer from shrinking */
 }
 
 .footer-contenu {
@@ -425,13 +446,16 @@ footer {
     color: #aaa;
 }
 
+/* DetailClient */
+
 .client-info {
     padding: 20px;
     background-color: #f9f9f9;
     margin: 20px auto;
-    width: 60%;
+    width: 100%;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px; /* Ensure there is space at the bottom */
 }
 
 .client-info h2 {
@@ -477,22 +501,28 @@ footer {
 }
 
 .button:hover {
-    background-color: #e01b0f;
+    background-color: #e60000;
 }
 
 .main-container {
+    flex: 1; /* Take up remaining space */
     display: flex;
     flex-direction: row;
-    height: 100%;
+    align-items: flex-start;
 }
 
+/* Menu latéral */
 .side-menu {
     width: 20%;
     background-color: #f1f1f1;
     padding: 20px;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    flex: 0 0 20%;
+    border-radius: 8px;
+    margin-top: 20px; /* Add margin from the top */
 }
 
+/* Autres styles */
 .side-menu ul {
     list-style-type: none;
     padding: 0;
@@ -510,4 +540,29 @@ footer {
 
 .side-menu ul li a:hover {
     color: #ff1f11;
+}
+
+.client-info {
+    flex: 0 5 60em; /* Take up remaining space */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    background-color: #F1F1F1;
+    margin-bottom: 20px; /* Ensure there is space at the bottom */
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff1f11;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.button:hover {
+    background-color: #e60000;
 }

@@ -28,7 +28,7 @@ include "Connect.inc.php";
   </div>
 
   <div>
-    <img src="images/pistolet-enfant-16-flechettes.png" alt="Image pistolet enfant" width="120%">
+    <a href="descriptionDetail.php?idProduit=1"> <img src="images/produits/Prod1.jpg" alt="Monopoly" width="80%"> </a>
     <p>Pistolet enfant + 16 fléchettes en mousses</p>
     <div class="prix">
       <p>34,99 €</p>
@@ -37,6 +37,7 @@ include "Connect.inc.php";
   </div>
 
 </section>
+
 <?PHP
 include "footer.php";
 ?>

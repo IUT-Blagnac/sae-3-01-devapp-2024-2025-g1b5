@@ -26,6 +26,7 @@ function afficherEtoiles($note, $maxEtoiles = 5) {
     return $html;
 }
 
+
 ?>
 
 <section class="presentation">
@@ -39,8 +40,8 @@ function afficherEtoiles($note, $maxEtoiles = 5) {
             <h2>  <?php echo $produit['prix'] ; ?> €</h2>
         </div>
 
-        <button type="button" class="button" onclick="">Ajouter au panier</button>
-        <button type="button" class="butFavoris" onclick=""> <img src="images/petit-coeur-rouge.png" alt="petit coeur" width="20px"> </button>
+        <button type="button" class="button" onclick="window.location.href='ajouterPanier.php'">Ajouter au panier</button>
+        <button type="button" class="butFavoris"> <img src="images/petit-coeur-rouge.png" alt="petit coeur" width="20px"> </button>
     </div>
 </section>
 
@@ -92,7 +93,7 @@ function afficherEtoiles($note, $maxEtoiles = 5) {
             echo '<section class="evaluation">';
 
             echo '<div class="notes">
-                    <button type="button" class="butAvatar" onclick=""> <img src="images/perso-avatar.png" alt="avatar"> </button>' ;
+                    <button type="button" class="butAvatar" onclick=" "> <img src="images/perso-avatar.png" alt="avatar"> </button>' ;
             echo '<h3>'. $client['nom'] . " " . $client['prenom'] .'</h3>';
             echo afficherEtoiles($avis['note']) ; //appel de fonction affcherEtoiles
             echo '<h3>'. $avis['note'] .'/5</h3>
@@ -126,7 +127,7 @@ function afficherEtoiles($note, $maxEtoiles = 5) {
 
 
 <?php
-include "footer.php";
+    include "footer.php";
 ?>
 
 </body>

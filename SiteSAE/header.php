@@ -1,5 +1,7 @@
 <?php
+    if (session_status() === PHP_SESSION_NONE) {
     session_start();
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -20,17 +22,38 @@
             <input type="text" placeholder="Recherche...">
             <img src="images/loupe.png" alt="Search"> 
         </div>
+
         
         <div class="icons">
-            <img src="images/coeur.jpg" alt="Favoris"> 
-            <a href="panier.php"><img src="images/cart.jpg" alt="Cart"></a>
-            <?php
-            if (isset($_SESSION['client_email']) || isset($_COOKIE['CidClient'])) {
-                echo '<a href="detailCompte.php"><img src="images/user.jpg" alt="User"></a>';
-            } else {
-                echo '<a href="connexionCompte.php"><img src="images/user.jpg" alt="User"></a>';
-            }
-            ?>
+			<div>
+				<?php
+					if ((isset($_SESSION['client_email']) || isset($_COOKIE['CidClient']))) {
+						include "Connect.inc.php";
+						
+						$email = isset($_SESSION['client_email']) ? $_SESSION['client_email'] : $_COOKIE['CidClient'];
+						
+						$query = $conn->prepare("SELECT role FROM Client WHERE email = :email");
+						$query->bindParam(':email', $email);
+						$query->execute();
+						$result = $query->fetch(PDO::FETCH_ASSOC);
+						
+						if (isset($result['role']) && $result['role'] !== NULL) {
+							echo '<a href="menuAdmin.php"><button class="espaceAdmin">Espace Admin</button></a>';
+						}
+					}
+				?>
+			</div>
+			<div>
+				<img src="images/coeur.jpg" alt="Favoris"> 
+				<a href="panier.php"><img src="images/cart.jpg" alt="Cart"></a>
+				<?php
+				if (isset($_SESSION['client_email']) || isset($_COOKIE['CidClient'])) {
+					echo '<a href="detailCompte.php"><img src="images/user.jpg" alt="User"></a>';
+				} else {
+					echo '<a href="connexionCompte.php"><img src="images/user.jpg" alt="User"></a>';
+				}
+				?>
+			</div>
             <div class="langue">
                 <span>Langue :</span>
                 <img src="images/france.png" alt="Langue"> 

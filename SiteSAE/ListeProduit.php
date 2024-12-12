@@ -2,19 +2,27 @@
 include 'header.php';
 include 'tableauxProduit.php';
 
-
 echo '<br>';
+$choix = isset($_POST['choix']) ? $_POST['choix'] : "0";
+
 echo '<form action="ListeProduit.php" method="post">';
-
 echo '<select name="choix">';
-echo '<option value="0">Trie par defaut</option>';
-echo '<option value="1">Trie par categorie</option>';
-echo '<option value="2">Trie par prix croissant</option>';
-echo '<option value="3">Trie par prix decroissant</option>';
-echo '<option value="4">Trie par note croissante</option>';
-echo '<option value="5">Trie par note decroissante</option>';
-echo '<option value="6">Trie par nom</option>';
 
+// Générer les options avec "selected" pour la valeur choisie
+$options = [
+    "0" => "Trie par défaut",
+    "1" => "Trie par nom",
+    "2" => "Trie par prix croissant",
+    "3" => "Trie par prix décroissant",
+    "4" => "Trie par note croissante",
+    "5" => "Trie par note décroissante",
+];
+
+foreach ($options as $key => $value) {
+    // Vérifie si la clé correspond à la valeur postée
+    $selected = ($key == $choix) ? 'selected' : '';
+    echo '<option value="' . $key . '" ' . $selected . '>' . $value . '</option>';
+}
 
 
 echo '</select>';
@@ -25,9 +33,8 @@ echo '<input type="number" name="prixMax" placeholder="Prix max" />';
 echo '<input type="submit" value="Valider" />';
 echo '</form>';
 
-/*Bouton déroulant de choix d'affichage
-fonction qui retourne une case de tableau qui contient les informations d'un produit sont nom limage associer sont prix et sa note en etoile 
-*/
+//Bouton déroulant de choix d'affichage
+//fonction qui retourne une case de tableau qui contient les informations d'un produit sont nom limage associer sont prix et sa note en etoile 
 
 //fonction qui donne un tableau de produit fictif avec faker
 
@@ -114,31 +121,63 @@ function triProduit($produit,$choix){
     return $produit;
 }
 
-//fonction qui permet dafficher un tableau de produit et appel la fonction afficherProduit pour chaque produit
-function afficherTableauProduit($tableauProduit,$nbcase){
-    //table adapter a la taille de l'ecran
-    echo '<table style="width:100%">';
+//fonction qui affiche sur une tranche de prix donner
+function filtrePrix($produit,$prixMin,$prixMax){
+    $produitFiltre = [];
+    foreach($produit as $p){
+        if($p['prix'] >= $prixMin && $p['prix'] <= $prixMax){
+            $produitFiltre []= $p;
+        }
+    }
+    return $produitFiltre;
+}
 
-    echo '</tr >';
-    foreach($tableauProduit as $produit){
-        if($produit['id']%$nbcase==1){
+
+//fonction qui permet dafficher un tableau de produit et appel la fonction afficherProduit pour chaque produit
+function afficherTableauProduit($tableauProduit, $nbColonnes = 3) {
+    // Début de la table
+    echo '<table style="width:100%; text-align:center;">';
+    
+    // Initialisation de l'indice pour suivre la position
+    $compteur = 0;
+
+    foreach ($tableauProduit as $produit) {
+        // Ouvrir une nouvelle rangée au début ou après chaque ligne complète
+        if ($compteur % $nbColonnes == 0) {
             echo '<tr>';
         }
 
-        afficherProduit($produit,$nbcase);
+        // Afficher le produit
+        afficherProduit($produit, $nbColonnes);
 
-        if($produit['id']%$nbcase==0){
+        $compteur++;
+
+        // Fermer la rangée après un certain nombre de colonnes
+        if ($compteur % $nbColonnes == 0) {
             echo '</tr>';
         }
     }
+
+    // Compléter la dernière rangée si elle est incomplète
+    if ($compteur % $nbColonnes != 0) {
+        $casesRestantes = $nbColonnes - ($compteur % $nbColonnes);
+        for ($i = 0; $i < $casesRestantes; $i++) {
+            echo '<td></td>'; // Cases vides
+        }
+        echo '</tr>'; // Fermer la dernière rangée
+    }
+
+    // Fin de la table
     echo '</table>';
 }
 
+
 //test de la fonction de tri
 $produit = defProduit(20);
-//$produit = triProduit($produit,1);
-//test de la fonction afficherTableauProduit
+$produit = triProduit($produit,isset($_POST['choix']) ? $_POST['choix'] : 0);
+$produit = filtrePrix($produit,isset($_POST['prixMin']) ? $_POST['prixMin'] : 0,isset($_POST['prixMax']) ? $_POST['prixMax'] : 100);
 afficherTableauProduit($produit,5);
+//test de la fonction afficherTableauProduit
 
 
 ?>
