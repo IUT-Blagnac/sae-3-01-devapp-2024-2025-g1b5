@@ -2,7 +2,7 @@
 include 'header.php';
 include 'tableauxProduit.php';
 
-
+/*
 echo '<br>';
 $choix = isset($_POST['choix']) ? $_POST['choix'] : "0";
 
@@ -34,9 +34,8 @@ echo '<input type="number" name="prixMax" placeholder="Prix max" />';
 echo '<input type="submit" value="Valider" />';
 echo '</form>';
 
-/*Bouton déroulant de choix d'affichage
-fonction qui retourne une case de tableau qui contient les informations d'un produit sont nom limage associer sont prix et sa note en etoile 
-*/
+//Bouton déroulant de choix d'affichage
+//fonction qui retourne une case de tableau qui contient les informations d'un produit sont nom limage associer sont prix et sa note en etoile 
 
 //fonction qui donne un tableau de produit fictif avec faker
 
@@ -181,7 +180,7 @@ $produit = filtrePrix($produit,isset($_POST['prixMin']) ? $_POST['prixMin'] : 0,
 afficherTableauProduit($produit,5);
 //test de la fonction afficherTableauProduit
 
-
+*/
 ?>
 
 

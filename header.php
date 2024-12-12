@@ -1,5 +1,6 @@
 <?php
     session_start();
+    include("gestioncategorie.php");
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -60,15 +61,18 @@
         <div class="menu-type">
             <button class="deroulant">Type</button> 
             <div class="liste-deroulant">
-                <a href="#">Educatif</a>
-                <a href="#">Scientifique</a>
-                <a href="#">Decouverte</a>
-                <a href="#">Figurines</a>
-                <a href="#">Exterieur</a>
-                <a href="#">Musicale</a>
-                <a href="#">Construction</a>
-                <a href="#">Eveil</a>
-                <a href="#">Guerre</a>
+                <li><a href="#">jouet</a></li>
+
+                    <ul>
+                        <li><a href="#">Poupée</a></li>
+                        <li><a href="#">Jouet en bois</a></li>
+                    </ul>
+                </li>
+                <ul>
+                    <li><a href="#">Poupée</a></li>
+                    <li><a href="#">Jouet en bois</a></li>
+                </ul>
+
             </div>
         </div>
 
