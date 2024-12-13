@@ -1,0 +1,120 @@
+@startuml
+
+class Client {
+    +idClient: INT
+    +email: VARCHAR(255)
+    +password: VARCHAR(255)
+    +role: VARCHAR(50)
+    +nom: VARCHAR(100)
+    +prenom: VARCHAR(100)
+    +numTel: CHAR(10)
+    +genreC: CHAR(1)
+    +dateNaissance: DATE
+    +carteCB: CHAR(16)
+    +idAdresse: INT
+}
+
+class Adresse {
+    +idAdresse: INT
+    +codePostal: CHAR(5)
+    +ville: VARCHAR(100)
+    +rue: VARCHAR(255)
+    +pays: VARCHAR(50)
+}
+
+class Categorie {
+    +idCategorie: INT
+    +nomCategorie: VARCHAR(100)
+    +valCategorie: VARCHAR(100)
+}
+
+class SousCategorie {
+    +idCategorie: INT
+    +idSousCategorie: INT
+}
+
+class Produit {
+    +idProduit: INT
+    +age: INT
+    +taille: VARCHAR(10)
+    +nbJoueurMax: INT
+    +description: TEXT
+    +prix: DECIMAL(10,2)
+    +nomProduit: VARCHAR(255)
+    +noteGlobale: DECIMAL(3,2)
+    +idCategorie: INT
+}
+
+class Commande {
+    +idCommande: INT
+    +typeLivraison: VARCHAR(50)
+    +dateCommande: DATE
+    +idClient: INT
+    +idAdresse: INT
+}
+
+class CarteBancaire {
+    +numCarte: CHAR(16)
+    +dateExpiration: DATE
+    +codeCarte: CHAR(3)
+    +idClient: INT
+}
+
+class Stock {
+    +idProduit: INT
+    +quantiteStock: INT
+}
+
+class Regroupement {
+    +idRegroupement: INT
+    +nomRegroupement: VARCHAR(100)
+}
+
+class Produit_Regroupement {
+    +idProduit: INT
+    +idRegroupement: INT
+}
+
+class Composer {
+    +idCommande: INT
+    +idProduit: INT
+    +quantite: INT
+}
+
+class Panier_Client {
+    +idProduit: INT
+    +idClient: INT
+}
+
+class Avis {
+    +idProduit: INT
+    +idClient: INT
+    +contenu: TEXT
+    +note: INT
+    +dateAvis: DATE
+}
+
+class Produit_Favoris {
+    +idProduit: INT
+    +idClient: INT
+}
+
+Client -- Adresse : "idAdresse" [1..1]
+SousCategorie -- Categorie : "idCategorie" [0..*]
+Produit -- Categorie : "idCategorie" [1..*]
+Commande -- Client : "idClient" [1..1]
+Commande -- Adresse : "idAdresse" [1..1]
+CarteBancaire -- Client : "idClient" [1..1]
+Stock -- Produit : "idProduit" [1..1]
+Produit_Regroupement -- Produit : "idProduit" [0..*]
+Produit_Regroupement -- Regroupement : "idRegroupement" [0..*]
+Composer -- Commande : "idCommande" [1..*]
+Composer -- Produit : "idProduit" [1..*]
+Panier_Client -- Produit : "idProduit" [0..*]
+Panier_Client -- Client : "idClient" [1..1]
+Avis -- Produit : "idProduit" [0..*]
+Avis -- Client : "idClient" [1..*]
+Produit_Favoris -- Produit : "idProduit" [0..*]
+Produit_Favoris -- Client : "idClient" [1..*]
+
+@enduml
