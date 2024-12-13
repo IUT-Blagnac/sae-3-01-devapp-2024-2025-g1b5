@@ -2,7 +2,23 @@
 
 image::GPO/images/Lutin.PNG[]
 
-== 1. Mentions légales obligatoires du site web
+== Table des matières
+
+- <<introduction,Introduction>>
+- <<mentions_legales,Mentions légales obligatoires du site web>>
+- <<processus_vente,Description détaillée du processus de vente en ligne (BPMN)>>
+- <<protection_donnees,Mesures de protection des données et modalités de mise en œuvre>>
+- <<securite_donnees,Mesures de sécurité des données et modalités de mise en œuvre>>
+- <<user_stories,User Stories à ajouter au dernier sprint>>
+- <<conclusion,Conclusion>>
+
+[[introduction]]
+== Introduction
+
+Le site e-commerce Lutin&Co, afin de garantir une expérience de vente en ligne fluide et conforme aux exigences légales et sécuritaires, doit adopter des pratiques respectueuses des obligations juridiques et des normes de protection des données. Ce document présente les conseils et les mesures indispensables à mettre en place pour assurer la conformité avec la législation française et européenne en matière de données personnelles, ainsi que des recommandations pour sécuriser le processus de vente et protéger les informations des utilisateurs.
+
+[[mentions_legales]]
+== Mentions légales obligatoires du site web
 
 Les mentions légales d’un site e-commerce doivent respecter les obligations légales imposées par la réglementation en vigueur, notamment en matière de protection des données personnelles. Voici la liste des mentions légales que doit comporter le site web de Lutin&Co :
 
@@ -20,7 +36,8 @@ Mentions manquantes sur le site de Lutin&Co :
 - Politique de confidentialité non clairement détaillée.
 - Consentement pour l’utilisation des cookies pas explicite.
 
-== 2. Description détaillée du processus de vente en ligne (BPMN)
+[[processus_vente]]
+== Description détaillée du processus de vente en ligne (BPMN)
 
 Le diagramme de collaboration BPMN pour le processus de vente en ligne doit comprendre les étapes suivantes :
 
@@ -36,9 +53,10 @@ Le diagramme de collaboration BPMN pour le processus de vente en ligne doit comp
 
 image::imageDroit/BPMN.png[]
 
-== 3. Mesures de protection des données et modalités de mise en œuvre
+[[protection_donnees]]
+== Mesures de protection des données et modalités de mise en œuvre
 
-Voici une liste des mesures à mettre en place pour assurer la protection des données personnelles, ainsi que leur mode de mise en œuvre, certaines données ont déjà été mise en oeuvre :
+Voici une liste des mesures à mettre en place pour assurer la protection des données personnelles, ainsi que leur mode de mise en œuvre, certaines données ont déjà été mises en œuvre :
 
 [cols="3,5,2"]
 |===
@@ -51,7 +69,8 @@ Voici une liste des mesures à mettre en place pour assurer la protection des do
 | Sécurisation des données lors de leur transfert | Utiliser un protocole de sécurité (TLS) pour crypter les données sensibles lors des transactions | Haute
 |===
 
-== 4. Mesures de sécurité des données et modalités de mise en œuvre
+[[securite_donnees]]
+== Mesures de sécurité des données et modalités de mise en œuvre
 
 Voici les mesures pour sécuriser les données sur le site de Lutin&Co :
 
@@ -66,7 +85,8 @@ Voici les mesures pour sécuriser les données sur le site de Lutin&Co :
 | Surveillance des activités suspectes | Mettre en place des outils de surveillance pour détecter les accès suspects et prévenir les intrusions | Haute
 |===
 
-== 5. User Stories à ajouter au dernier sprint
+[[user_stories]]
+== User Stories à ajouter au dernier sprint
 
 Voici quelques User Stories (US) à ajouter au dernier sprint pour assurer la mise en conformité du site avec les exigences légales et sécuritaires :
 
@@ -80,3 +100,8 @@ Voici quelques User Stories (US) à ajouter au dernier sprint pour assurer la mi
 | US004 | En tant qu’utilisateur, je souhaite recevoir un email de confirmation de ma commande avec les informations nécessaires (produits, prix, délais de livraison). | Moyenne
 | US005 | En tant que responsable sécurité, je souhaite implémenter une double authentification pour les connexions aux comptes utilisateurs. | Haute
 |===
+
+[[conclusion]]
+== Conclusion
+
+Lutin&Co doit veiller à respecter toutes les obligations légales liées à la protection des données personnelles et à la sécurité des informations utilisateurs, conformément au RGPD et aux autres régulations en vigueur. La mise en œuvre des recommandations juridiques et sécuritaires présentées dans ce document permettra de garantir non seulement la conformité du site, mais également de renforcer la confiance des utilisateurs en assurant un environnement sécurisé pour leurs achats en ligne. Le respect de ces bonnes pratiques est essentiel pour assurer la pérennité du site et la satisfaction de ses clients.
