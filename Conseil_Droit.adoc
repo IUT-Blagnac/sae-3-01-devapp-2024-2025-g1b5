@@ -1,4 +1,7 @@
 = Fiche de conseils juridiques et de sécurité pour le site e-commerce Lutin&Co
+
+image::GPO/images/Lutin.PNG[]
+
 == 1. Mentions légales obligatoires du site web
 
 Les mentions légales d’un site e-commerce doivent respecter les obligations légales imposées par la réglementation en vigueur, notamment en matière de protection des données personnelles. Voici la liste des mentions légales que doit comporter le site web de Lutin&Co :
@@ -31,7 +34,7 @@ Le diagramme de collaboration BPMN pour le processus de vente en ligne doit comp
 8. **Expédition et livraison** : les produits sont expédiés et livrés au client.
 9. **Facturation et suivi de la commande** : une facture est générée, le client peut suivre son colis.
 
-*(Diagramme BPMN à insérer ici)*
+image::imageDroit/BPMN.png[]
 
 == 3. Mesures de protection des données et modalités de mise en œuvre
 
