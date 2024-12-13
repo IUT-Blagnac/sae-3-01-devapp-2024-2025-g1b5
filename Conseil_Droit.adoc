@@ -38,14 +38,14 @@ image::imageDroit/BPMN.png[]
 
 == 3. Mesures de protection des données et modalités de mise en œuvre
 
-Voici une liste des mesures à mettre en place pour assurer la protection des données personnelles, ainsi que leur mode de mise en œuvre :
+Voici une liste des mesures à mettre en place pour assurer la protection des données personnelles, ainsi que leur mode de mise en œuvre, certaines données ont déjà été mise en oeuvre :
 
 [cols="3,5,2"]
 |===
 | **Mesure** | **Modalités** | **Priorité**
 
 | Consentement explicite pour la collecte des données | Ajouter une case à cocher lors de la création du compte ou lors de la première connexion pour recueillir le consentement explicite des utilisateurs | Haute
-| Anonymisation des données sensibles | Anonymiser ou pseudonymiser les données sensibles (par exemple, numéros de carte bancaire) lors du traitement | Haute
+| Chiffrer les données sensibles | Chiffrer ou pseudonymiser les données sensibles (par exemple, numéros de carte bancaire) lors du traitement | Haute
 | Limitation de la durée de conservation des données | Mettre en place un système de suppression automatique des données personnelles après un certain délai d'inactivité | Moyenne
 | Droit d'accès, de rectification, et de suppression des données | Implémenter une interface utilisateur permettant de consulter, modifier ou supprimer les données personnelles | Moyenne
 | Sécurisation des données lors de leur transfert | Utiliser un protocole de sécurité (TLS) pour crypter les données sensibles lors des transactions | Haute
