@@ -1,11 +1,15 @@
 html, body {
     height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
 }
+
 header{
     color: white;
 }
+
 body {
-    margin: 0;
     font-family: 'Fredoka One', Arial, sans-serif;
     background-color: white; 
     background-size: cover; /* Ensure the background image covers the entire screen*/
@@ -15,11 +19,213 @@ body {
 }
 
 main {
-    font-family: Arial, Helvetica, sans-serif;
+    flex: 1; /* Take up remaining space */
     display: flex;
     flex-direction: column;
-    height: 100%;
 }
+
+.espaceAdmin {
+    background-color: white; 
+    color: #333; 
+    border-radius: 20px; 
+    padding: 5px 10px; 
+    font-size: 16px; 
+    cursor: pointer; 
+    transition: background-color 0.3s, border-color 0.3s; 
+}
+
+.espaceAdmin:hover {
+    background-color: #f0f0f0; 
+}
+
+        .gestion-produits {
+            text-align: center;
+            margin: 20px auto;
+            max-width: 800px;
+        }
+        .formulaire-recherche {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .formulaire-recherche select,
+        .formulaire-recherche input,
+        .formulaire-recherche button {
+            margin: 5px 0;
+            padding: 10px;
+            width: 200px;
+        }
+        .tableau-produits {
+            margin: 20px auto;
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .tableau-produits th, .tableau-produits td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        .tableau-produits th {
+            background-color: #f2f2f2;
+        }
+		
+/* Conteneur du formulaire */
+.modifier-produit {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Titre du formulaire */
+.modifier-produit h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Style des labels */
+.modifier-produit label {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+/* Style des champs de saisie */
+.modifier-produit input[type="text"],
+.modifier-produit input[type="number"],
+.modifier-produit select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.modifier-produit input[readonly] {
+    background-color: #f0f0f0; /* Gris clair pour un champ readonly */
+    cursor: not-allowed;
+}
+
+/* Bouton de soumission */
+.modifier-produit button {
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.modifier-produit button:hover {
+    background-color: #45a049;
+}
+
+/* Espacement entre les éléments */
+.modifier-produit form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Ajustement pour les petits écrans */
+@media (max-width: 600px) {
+    .modifier-produit {
+        width: 100%;
+        padding: 15px;
+    }
+    .modifier-produit button {
+        font-size: 1rem;
+    }
+}
+
+
+.supp-compte {
+    margin: 20px;
+    padding: 20px;
+	align-items: center;
+}
+
+/* Formulaire de recherche */
+.formulaire-recherche {
+    display: flex;
+    justify-content: center; /* Centrage horizontal */
+    flex-direction: column;
+    align-items: center; /* Centrage vertical */
+    margin-bottom: 20px;
+}
+
+.formulaire-recherche form {
+    display: flex;
+    flex-direction: column; /* Aligner les éléments en colonne */
+    gap: 10px;
+    justify-content: center; /* Centrage horizontal des champs et du bouton */
+    width: 100%; /* 100% de la largeur disponible */
+    max-width: 500px; /* Limite la largeur du formulaire */
+}
+
+.formulaire-recherche label {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.formulaire-recherche input {
+    padding: 8px;
+    font-size: 14px;
+    width: 100%; /* Les champs de recherche prennent toute la largeur */
+    max-width: 400px; /* Limite la largeur des champs */
+    box-sizing: border-box;
+}
+
+.formulaire-recherche button {
+    padding: 10px 15px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    width: 100%; /* Le bouton occupe toute la largeur disponible */
+    max-width: 400px; /* Limite la largeur du bouton */
+}
+
+
+/* Tableau des clients */
+.tableau-clients table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.tableau-clients th,
+.tableau-clients td {
+    text-align: left;
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+
+.tableau-clients tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.tableau-clients tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Message lorsqu'aucun client n'est trouvé */
+.tableau-clients td[colspan="7"] {
+    text-align: center;
+    color: #999;
+}
+
+/* Header */
 
 .header {
     background-color: #ff1f11;
@@ -186,7 +392,7 @@ main {
   }
 
 
-/* detailProduit */
+
 
 /* description du produit*/
 
@@ -384,16 +590,17 @@ main {
     margin-top: 10%;
 }
 
+
 /* footer */
 
-
 footer {
-    margin-top: 12%;
     background-color: #000;
     color: #fff;
     padding: 10px 0;
     font-size: 14px;
     font-family: sans-serif, Arial;
+    margin-top: 12%; /* Ensure there is space at the top */
+    flex-shrink: 0; /* Prevent the footer from shrinking */
 }
 
 .footer-contenu {
@@ -415,8 +622,13 @@ footer {
     cursor: pointer;
 }
 
-.footer-column p:hover {
-    text-decoration: underline;
+.footer-column p a {
+    color: #fff; /* Liens en blanc */
+    text-decoration: none; /* Enlever le soulignement par défaut */
+}
+
+.footer-column p a:hover {
+    text-decoration: underline; /* Souligner les liens au survol */
 }
 
 .footer-bottom {
@@ -425,13 +637,17 @@ footer {
     color: #aaa;
 }
 
+
+/* DetailClient */
+
 .client-info {
     padding: 20px;
     background-color: #f9f9f9;
     margin: 20px auto;
-    width: 60%;
+    width: 100%;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px; /* Ensure there is space at the bottom */
 }
 
 .client-info h2 {
@@ -477,22 +693,28 @@ footer {
 }
 
 .button:hover {
-    background-color: #e01b0f;
+    background-color: #e60000;
 }
 
 .main-container {
+    flex: 1; /* Take up remaining space */
     display: flex;
     flex-direction: row;
-    height: 100%;
+    align-items: flex-start;
 }
 
+/* Menu latéral */
 .side-menu {
     width: 20%;
     background-color: #f1f1f1;
     padding: 20px;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    flex: 0 0 20%;
+    border-radius: 8px;
+    margin-top: 20px; /* Add margin from the top */
 }
 
+/* Autres styles */
 .side-menu ul {
     list-style-type: none;
     padding: 0;
@@ -511,3 +733,214 @@ footer {
 .side-menu ul li a:hover {
     color: #ff1f11;
 }
+
+.client-info {
+    flex: 0 5 60em; /* Take up remaining space */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    background-color: #F1F1F1;
+    margin-bottom: 20px; /* Ensure there is space at the bottom */
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff1f11;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.button:hover {
+    background-color: #e60000;
+}
+/* Conteneur principal *//* Style pour le menu principal */
+.menu-categories {
+    list-style: none; 
+    padding: 0; 
+    margin: 0;
+    background-color: #f1f1f1; /* Couleur de fond du menu principal */
+    width: 200px; /* Largeur fixe pour le menu principal */
+    border-radius: 4px;
+}
+
+/* Style des éléments principaux */
+.menu-item {
+    position: relative;
+    margin: 0;
+    border-bottom: 1px solid #ddd; /* Ligne de séparation */
+}
+
+.menu-item > a {
+    text-decoration: none; 
+    color: #333; 
+    padding: 10px 15px; 
+    display: block; 
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.menu-promo > a {
+    text-decoration: none; 
+    color: #ffffff; 
+    padding: 10px 15px; 
+    transition: background-color 0.3s, color 0.3s;
+}
+.menu-meilleur-ventes  > a {
+    text-decoration: none; 
+    color: #ffffff; 
+    padding: 10px 15px; 
+    transition: background-color 0.3s, color 0.3s;
+}
+
+
+.menu-item > a:hover {
+    background-color: #ddd; 
+    color: #000;
+}
+
+/* Sous-menus (niveau 2 et suivants) */
+.submenu {
+    display: none; /* Masque par défaut */
+    list-style: none;
+    padding: 0; 
+    margin: 0;
+    background-color: #f9f9f9; 
+    position: absolute; 
+    left: 100%; /* Positionné à droite de l'élément parent */
+    top: 0; 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+    border-radius: 4px;
+    z-index: 1000; 
+    min-width: 180px; /* Largeur minimum des sous-menus */
+}
+
+/* Style des sous-éléments */
+.submenu-item > a {
+    text-decoration: none; 
+    color: #333; 
+    padding: 10px 15px; 
+    display: block;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.submenu-item > a:hover {
+    background-color: #ddd; 
+    color: #000;
+}
+
+/* Afficher les sous-menus au survol */
+.menu-item:hover > .submenu,
+.submenu-item:hover > .submenu {
+    display: block; /* Affiche le sous-menu */
+}
+
+/* Alignement des sous-sous-menus */
+.submenu .submenu {
+    top: 0; 
+    left: 100%; /* Positionné à droite de l'élément parent */
+    margin-left: 1px; /* Petit espace entre les niveaux */
+}
+
+/* Mise en page des pages d'information */
+/* Applique l'image de fond seulement aux pages avec la classe "background-page" */
+body.background-page {
+    background: url('images/testfondinfo.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh; /* S'assure que la page couvre toute la hauteur de l'écran */
+    color: #333;
+}
+/* Nouveau design plus élégant et moderne pour la pageInfo */
+.pageInfo {
+    background: linear-gradient(135deg, #f8f9fa, #ffffff); /* Dégradé de fond doux pour une ambiance lumineuse */
+    padding: 40px 50px; /* Espacement généreux autour du texte */
+    border-radius: 12px; /* Coins arrondis pour un look moderne */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); /* Ombre subtile pour la profondeur */
+    margin: 20px auto;
+    max-width: 1100px; /* Largeur maximale pour un design plus centré */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Police moderne et lisible */
+    color: #333; /* Texte sombre pour un contraste élevé */
+    line-height: 1.8; /* Meilleure lisibilité */
+}
+
+.pageInfo h1 {
+    font-size: 3rem; /* Grand titre pour attirer l'attention */
+    color: #e74c3c; /* Rouge vif rappelant l'esprit de Noël */
+    text-align: center; /* Titre centré */
+    margin-bottom: 30px;
+    font-weight: bold;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2); /* Ombre douce pour ajouter du relief au titre */
+}
+
+.pageInfo h2 {
+    font-size: 2rem; /* Taille réduite pour les sous-titres */
+    color: #2c3e50; /* Une couleur plus foncée pour les sous-titres */
+    margin-bottom: 15px;
+    font-weight: 600; /* Plus de poids pour les sous-titres */
+}
+
+.pageInfo p {
+    font-size: 1.1rem;
+    color: #555; /* Couleur légèrement plus claire pour les paragraphes */
+    text-align: justify; /* Justification pour un texte plus propre */
+    margin-bottom: 25px;
+}
+
+.pageInfo ul {
+    list-style: none; /* Retirer les puces */
+    padding-left: 0;
+    margin-top: 20px; /* Espacement supérieur pour la liste */
+}
+
+.pageInfo ul li {
+    font-size: 1rem;
+    line-height: 1.6;
+    padding-left: 30px; /* Espacement de chaque élément */
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.pageInfo ul li::before {
+    content: '•'; /* Ajout d'une puce personnalisée */
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 1.5rem; /* Taille de la puce */
+    color: #e74c3c; /* Couleur rouge pour les puces */
+}
+
+.pageInfo a {
+    color: #e74c3c; /* Liens en rouge pour rappeler l'esprit de Noël */
+    text-decoration: none;
+    font-weight: 600; /* Mettre en valeur les liens */
+    border-bottom: 2px solid #e74c3c; /* Lien souligné */
+    transition: all 0.3s ease; /* Transition pour l'effet au survol */
+}
+
+.pageInfo a:hover {
+    color: #2980b9; /* Changer la couleur au survol */
+    border-color: #2980b9; /* Souligner avec une autre couleur au survol */
+}
+
+.pageInfo iframe {
+    border-radius: 12px; /* Coins arrondis pour la carte Google Maps */
+    width: 100%;
+    max-width: 800px; /* Limiter la largeur de la carte pour un meilleur rendu */
+    height: 450px;
+    margin-top: 30px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+
+
+
