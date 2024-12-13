@@ -27,8 +27,8 @@ $tabProduit = [
     'Appareils photo et caméras' => ['Vtech', 'Fisher Price', 'Nikon'],
     'Jouets d’éveil' => ['Sophie la Girafe', 'Tapis d’éveil', 'Mobile'],
     'Jeux pour bébé' => ['Cubes', 'Puzzles', 'Livres'],
-    'Ballons' => ['de Foot', ' de Basket', ' de Rugby'],
-    'Raquettes' => [' de Tennis', ' de Badminton', ' de Ping Pong '],
+    'Ballons' => ['Ballons de Foot', 'Ballons de Basket', 'Ballons de Rugby'],
+    'Raquettes' => [' Raquettes de Tennis', 'Raquettes de Badminton', 'Raquettes de Ping Pong '],
 
 
 ];
@@ -122,7 +122,7 @@ function regroupement($nbRP)
 {
     $tabInsert = [];
     $faker = Factory::create('fr_FR');
-    $tabRP = ['Enfant', 'Adolescent', 'Adulte', 'Senior'];
+    $tabRP = ['Promotion', 'Nouveauté', 'Best-seller', 'Coup de coeur'];
     for ($i = 0; $i < 4; $i++) {
         $RP = [
             'nomRP' => $faker->randomElement($tabRP),
@@ -159,8 +159,8 @@ function detailproduit($nomProduit, $typeProduit, $idcategorie)
 
     // Créer une description personnalisée avec Faker
     $descriptions = [
-        "un {$typeProduit} {$nomProduit} de la marque {$nomMarque}, conçu pour les enfants à partir de {$age} ans. Ce produit offre une expérience unique grâce à ses dimensions compactes de {$taille} et son design adapté. Avec une note de {$note}/5, il est apprécié pour sa qualité et ses fonctionnalités. Parfait pour {$nbJoueur} joueur(s), il garantit des heures d'amusement.",
-        "Le {$typeProduit} {$nomProduit} de la marque {$nomMarque} est idéal pour les enfants dès {$age} ans. Avec ses dimensions de {$taille}, il offre une expérience de jeu exceptionnelle. Note de {$note}/5, c'est un produit de qualité apprécié pour sa robustesse et son design pratique. Convient à {$nbJoueur} joueur(s), pour des heures de divertissement garanties.",
+        "Un(e) {$typeProduit} {$nomProduit} de la marque {$nomMarque}, conçu pour les enfants à partir de {$age} ans. Ce produit offre une expérience unique grâce à ses dimensions compactes de {$taille} et son design adapté. Avec une note de {$note}/5, il est apprécié pour sa qualité et ses fonctionnalités. Parfait pour {$nbJoueur} joueur(s), il garantit des heures d'amusement.",
+        " {$typeProduit} {$nomProduit} de la marque {$nomMarque} est idéal pour les enfants dès {$age} ans. Avec ses dimensions de {$taille}, il offre une expérience de jeu exceptionnelle. Note de {$note}/5, c'est un produit de qualité apprécié pour sa robustesse et son design pratique. Convient à {$nbJoueur} joueur(s), pour des heures de divertissement garanties.",
         "Découvrez le {$typeProduit} {$nomProduit} de la marque {$nomMarque}, spécialement conçu pour les enfants à partir de {$age} ans. Son design compact de {$taille} et sa qualité en font un choix parfait. Note {$note}/5, il est apprécié pour sa simplicité et ses caractéristiques. Idéal pour {$nbJoueur} joueur(s), il garantit des moments inoubliables.",
         "Le {$typeProduit} {$nomProduit} de {$nomMarque} est conçu pour les enfants dès {$age} ans. Ce produit est compact avec des dimensions de {$taille} et offre une expérience ludique. Sa note de {$note}/5 témoigne de sa popularité pour sa qualité. Idéal pour {$nbJoueur} joueur(s), il promet des heures de jeu fun et divertissantes."
     ];
@@ -341,8 +341,15 @@ function categorie($tabCategorie, $tabProduits)
 
 function createValCategorie($name)
 {
-$valCategorie = mb_substr(mb_strtolower($name, 'UTF-8'), 0, 3, 'UTF-8');
-return $valCategorie;
+    $valSousCategorie = getInitials($name);
+
+    if (strlen($valSousCategorie) < 3) {
+        $valSousCategorie = str_replace(' ', '', $name);
+        $valSousCategorie = mb_substr($valSousCategorie, 0, 3, 'UTF-8');
+    }
+    //passer en minuscule et enlever les accents
+    $valSousCategorie = mb_strtolower($valSousCategorie, 'UTF-8');
+    return $valSousCategorie;
 }
 
 
@@ -555,7 +562,7 @@ $nbClient = 50;
 
 //demarrer tout les programme
 //$tabInsert = array_merge($tabInsert, adresse($nbClient));
-//$tabInsert = array_merge($tabInsert, client($nbClient));
+/*$tabInsert = array_merge($tabInsert, client($nbClient));
 $tabInsert = array_merge($tabInsert, categorie($tabCategorie, $tabProduit));
 $tabInsert = array_merge($tabInsert, commande($nbClient, 110, $conn));
 $tabInsert = array_merge($tabInsert, avisetProduitF(70, $nbClient, 290));
@@ -739,4 +746,5 @@ foreach ($tabinsert as $insert) {
     }
 }
 echo 'Total : ' . $total;
+*/
 ?>

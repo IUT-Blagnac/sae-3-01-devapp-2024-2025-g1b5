@@ -22,7 +22,7 @@
             <h3>Informations légales</h3>
             <p><a href="cgv.php">Conditions générales de vente</a></p>
             <p><a href="mentions-legales.php">Mentions légales</a></p>
-            <p><a href="cookies.php">Politique de cookies</a></p>
+            <p><a href="politique-cookies.php">Politique de cookies</a></p>
             <p><a href="gestion-cookies.php">Gestion des cookies</a></p>
             <p><a href="confidentialite.php">Politique de confidentialité</a></p>
         </div>

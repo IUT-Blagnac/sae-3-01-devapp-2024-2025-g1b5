@@ -9,15 +9,11 @@
 <section class="produits-accueil">
 
   <div>
-    <a href ="supprimerCompte.php"><button type="button" class="button" onclick="">Supprimer Client</button></a>
+    <a href ="gestionCompte.php"><button type="button" class="button" onclick="">Gestion Comptes</button></a>
   </div>
 
   <div>
-    <button type="button" class="button" onclick="">Ajouter admin</button>
-  </div>
-
-  <div>
-    <button type="button" class="button" onclick="">Ajouter au panier</button>
+    <a href ="gestionProduit.php"><button type="button" class="button" onclick="">Gestion produits</button></a>
   </div>
 
 </section>

@@ -1,7 +1,9 @@
 <?php
+$test="";
     if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+		session_start();
+	}
+    include("gestioncategorie.php");
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -22,38 +24,31 @@
             <input type="text" placeholder="Recherche...">
             <img src="images/loupe.png" alt="Search"> 
         </div>
-
         
         <div class="icons">
 			<div>
-				<?php
-					if ((isset($_SESSION['client_email']) || isset($_COOKIE['CidClient']))) {
-						include "Connect.inc.php";
-						
-						$email = isset($_SESSION['client_email']) ? $_SESSION['client_email'] : $_COOKIE['CidClient'];
-						
+			<?php
+				if (isset($_SESSION['client_email']) || isset($_COOKIE['CidClient'])) {
+					    $email = isset($_SESSION['client_email']) ? $_SESSION['client_email'] : $_COOKIE['CidClient'];
 						$query = $conn->prepare("SELECT role FROM Client WHERE email = :email");
 						$query->bindParam(':email', $email);
 						$query->execute();
 						$result = $query->fetch(PDO::FETCH_ASSOC);
-						
-						if (isset($result['role']) && $result['role'] !== NULL) {
-							echo '<a href="menuAdmin.php"><button class="espaceAdmin">Espace Admin</button></a>';
-						}
+					if (isset($result['role']) || $result['role'] !== null) {
+						echo "<a href='menuAdmin.php'><button class='espaceAdmin'>Espace Admin</button></a>";
 					}
-				?>
+				}		
+			?>
 			</div>
-			<div>
-				<img src="images/coeur.jpg" alt="Favoris"> 
-				<a href="panier.php"><img src="images/cart.jpg" alt="Cart"></a>
-				<?php
-				if (isset($_SESSION['client_email']) || isset($_COOKIE['CidClient'])) {
-					echo '<a href="detailCompte.php"><img src="images/user.jpg" alt="User"></a>';
-				} else {
-					echo '<a href="connexionCompte.php"><img src="images/user.jpg" alt="User"></a>';
-				}
-				?>
-			</div>
+            <img src="images/coeur.jpg" alt="Favoris"> 
+            <a href="panier.php"><img src="images/cart.jpg" alt="Cart"></a>
+            <?php
+            if (isset($_SESSION['client_email']) || isset($_COOKIE['CidClient'])) {
+                echo '<a href="detailCompte.php"><img src="images/user.jpg" alt="User"></a>';
+            } else {
+                echo '<a href="connexionCompte.php"><img src="images/user.jpg" alt="User"></a>';
+            }
+            ?>
             <div class="langue">
                 <span>Langue :</span>
                 <img src="images/france.png" alt="Langue"> 
@@ -66,41 +61,32 @@
         <div class="menu-age">
             <button class="deroulant">Âge</button> 
             <div class="liste-deroulant">
-                <a href="#">3 ans et +</a>
-                <a href="#">5 ans et +</a>
-                <a href="#">7 ans et +</a>
-                <a href="#">10 ans et +</a>
-            </div> 
-        </div>
+            <a href="ListeProduit.php?age=0" >Tout âge</a>
 
-        <div class="menu-taille">
-            <button class="deroulant">Taille</button> 
-            <div class="liste-deroulant">
-                <a href="#">-</a>
-            </div>
+                <a href="ListeProduit.php?age=3">3 ans et +</a>
+                <a href="ListeProduit.php?age=5">5 ans et +</a>
+                <a href="ListeProduit.php?age=8">8 ans et +</a>
+                <a href="ListeProduit.php?age=12">12 ans et +</a>
+            </div> 
         </div>
 
         <div class="menu-type">
             <button class="deroulant">Type</button> 
             <div class="liste-deroulant">
-                <a href="#">Educatif</a>
-                <a href="#">Scientifique</a>
-                <a href="#">Decouverte</a>
-                <a href="#">Figurines</a>
-                <a href="#">Exterieur</a>
-                <a href="#">Musicale</a>
-                <a href="#">Construction</a>
-                <a href="#">Eveil</a>
-                <a href="#">Guerre</a>
+            <?php
+            separateur($categorie, $scategorie);
+            ?>
+                
+
             </div>
         </div>
 
         <div class="menu-promo">
-            <button class="deroulant">Promotions</button> 
+            <a href="ListeProduit.php?promo=1" style="text-decoration: none;">Promotions</a>
         </div>
 
         <div class="menu-meilleur-ventes">
-            <button class="deroulant">Nos meilleures ventes</button> 
+            <a href="ListeProduit.php?bestsell=1"style="text-decoration: none;">Nos Meilleures ventes</a>
         </div>
 
     </section> 

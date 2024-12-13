@@ -26,8 +26,28 @@ function afficherEtoiles($note, $maxEtoiles = 5) {
     return $html;
 }
 
+//recupere le nb max de produit en stock
+$req = $conn->prepare("SELECT quantiteStock FROM Stock WHERE idProduit = ?");
+$req->execute([$idProduit]);
+$stock_max = $req->fetchColumn();
+$req->closeCursor();
 
 ?>
+
+<!-- Script js qui permet de choisir une bonne quantite de produit -->
+<script>
+    function ajusterQuantite() {
+        var quantite = document.getElementById("quantite");
+        var stockMax = <?php echo $stock_max; ?>
+
+        if (quantite.value < 1) {
+            quantite.value = 1;
+        }
+        if (quantite.value > stockMax ) {
+            quantite.value = stockMax ; 
+        }
+    }
+</script>
 
 <section class="presentation">
     <img src="images/produits/Prod<?php echo $produit['idProduit'] ; ?>.jpg"  width="50%" alt="<?php echo $produit['nomProduit'] ; ?>">
@@ -39,9 +59,14 @@ function afficherEtoiles($note, $maxEtoiles = 5) {
         <div class="prixDescription">
             <h2>  <?php echo $produit['prix'] ; ?> €</h2>
         </div>
-
-        <button type="button" class="button" onclick="window.location.href='ajouterPanier.php'">Ajouter au panier</button>
+ 
+        <form action="ajouterPanier.php" method="get">
+            <input type="text" value="<?php echo $produit['idProduit'] ; ?>" name="idProduit" hidden>
+            <button type="submit" class="button" >Ajouter au panier</button>
+            <input type="number"  id="quantite" value="1" name="quantite" min="1" oninput="ajusterQuantite()" >
+        </form>
         <button type="button" class="butFavoris"> <img src="images/petit-coeur-rouge.png" alt="petit coeur" width="20px"> </button>
+
     </div>
 </section>
 
@@ -82,7 +107,7 @@ function afficherEtoiles($note, $maxEtoiles = 5) {
 
         $nbAvis = 0 ;
 
-        while( ($avis = $res -> fetch()) && $nbAvis < 3) {  
+        while( ($avis = $res -> fetch()) and $nbAvis < 3) {
 
             //recupere le nom du client qui a ecrit l'avis
             $req = $conn->prepare("SELECT * FROM Client WHERE idClient = ?");
@@ -104,8 +129,12 @@ function afficherEtoiles($note, $maxEtoiles = 5) {
 
                 echo '<p>' . $avis['contenu'] . '</p>';
 
+                $date1 = $avis['dateAvis'];
+                setlocale(LC_TIME, "fr_FR");
+                $date = strftime("%d/%m/%Y", strtotime($date1));
+
                 echo '<p class="date-avis">
-                    Avis du <strong>' . $avis['dateAvis'] . '</strong>
+                    Avis du <strong>' . $date    . '</strong>
                     </p>
 
                 </div>';

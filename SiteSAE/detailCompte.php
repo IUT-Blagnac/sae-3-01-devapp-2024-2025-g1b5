@@ -1,23 +1,18 @@
 <?php
 include "header.php";
-include "Connect.inc.php"; 
+include "Connect.inc.php";
 require "verifConnexion.php";
 
 // Récupérer l'email du client
 $client_email = isset($_SESSION['client_email']) ? $_SESSION['client_email'] : '';
 
-if (!$client_email) {
-    die("Client non trouvé.");
-}
 
 // Récupérer les informations du client
 $query = $conn->prepare("SELECT * FROM Client WHERE email = :client_email");
 $query->bindParam(':client_email', $client_email);
 $query->execute();
 $client = $query->fetch(PDO::FETCH_ASSOC);
-if (!$client) {
-    die("Client non trouvé.");
-}
+
 $client_id = $client['idClient'];
 $idAdresse = $client['idAdresse'];
 
@@ -31,6 +26,20 @@ $ville = $adresse ? $adresse['ville'] : '';
 $codePostal = $adresse ? $adresse['codePostal'] : '';
 $pays = $adresse ? $adresse['pays'] : '';
 $adresseComplete = $rue ? "$rue, $ville, $codePostal, $pays" : 'Adresse non définie';
+
+// Récupérer les informations de la carte bancaire
+$query = $conn->prepare("SELECT * FROM CarteBancaire WHERE idClient = :client_id");
+$query->bindParam(':client_id', $client_id);
+$query->execute();
+$carte = $query->fetch(PDO::FETCH_ASSOC);
+$numCarte = $carte ? $carte['numCarte'] : 'Carte bancaire non définie';
+
+// Fonction pour masquer les numéros de la carte bancaire sauf les 4 derniers chiffres
+function masquerNumCarte($numCarte) {
+    return str_repeat('*', strlen($numCarte) - 4) . substr($numCarte, -4);
+}
+
+$numCarteMasque = $carte ? masquerNumCarte($numCarte) : 'Non définie';
 
 // Récupérer les commandes récentes du client
 $query = $conn->prepare("SELECT * FROM Commande WHERE idClient = :client_id ORDER BY dateCommande DESC LIMIT 5");
@@ -55,6 +64,8 @@ $commandes = $query->fetchAll(PDO::FETCH_ASSOC);
             <p>Prénom : <?php echo htmlspecialchars($client['prenom']); ?></p>
             <p>Email : <?php echo htmlspecialchars($client['email']); ?></p>
             <p>Adresse : <?php echo htmlspecialchars($adresseComplete); ?></p>
+            <p>Carte Bancaire : <?php echo htmlspecialchars($numCarteMasque); ?>
+            </p>
             <a href="modifClient.php"><button class="button">Modifier</button></a>
         </div>
         <div class="info-section">
