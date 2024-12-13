@@ -1,4 +1,4 @@
-= S3.A.01 - Développement appli (Sprint 2)
+= S3.A.01 - Développement appli (Sprint 3)
 
 :icons: font
 :models: models
