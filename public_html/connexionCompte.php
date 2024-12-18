@@ -1,5 +1,5 @@
 <?php
-include "header.php";
+require_once "header.php";
 
 $email_value = isset($_COOKIE['CidClient']) ? htmlspecialchars($_COOKIE['CidClient']) : '';
 ?>

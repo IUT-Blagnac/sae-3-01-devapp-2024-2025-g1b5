@@ -18,6 +18,13 @@
 			echo "<p>Le produit n'a pas été trouvé.</p>";
 			exit;
 		}
+
+		// Récupération de la quantité actuelle dans la table Stock
+		$queryStock = $conn->prepare("SELECT quantiteStock FROM Stock WHERE idProduit = :idProduit");
+		$queryStock->bindParam(':idProduit', $idProduit, PDO::PARAM_INT);
+		$queryStock->execute();
+		$stock = $queryStock->fetch(PDO::FETCH_ASSOC);
+		$quantiteStock = $stock ? $stock['quantiteStock'] : 0;
 	} else {
 		echo "<p>Produit introuvable.</p>";
 		exit;
@@ -38,6 +45,7 @@
 		$description = $_POST['description'];
 		$noteGlobale = $_POST['noteGlobale'];
 		$idCategorie = $_POST['idCategorie'];
+		$newQuantiteStock = $_POST['quantiteStock'];
 		
 		// Gestion de l'image
 if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
@@ -59,7 +67,6 @@ if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
 } else {
     echo "<p class='text-danger'>Erreur d'upload : " . $_FILES['file']['error'] . "</p>";
 }
-
 
 
 		// Mise à jour du produit dans la base de données
@@ -85,9 +92,14 @@ if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
 		$query->bindParam(':idProduit', $idProduit, PDO::PARAM_INT);
 
 		$query->execute();
+
+		// Mise à jour de la quantité dans la table Stock
+		$queryStock = $conn->prepare("UPDATE Stock SET quantiteStock = :quantiteStock WHERE idProduit = :idProduit");
+		$queryStock->bindParam(':quantiteStock', $newQuantiteStock, PDO::PARAM_INT);
+		$queryStock->bindParam(':idProduit', $idProduit, PDO::PARAM_INT);
+		$queryStock->execute();
 		
-		
-		// Déplacez le header avant toute sortie HTML
+		// Redirection
 		header('Location: gestionProduit.php?success=edit');
 		exit;  // Toujours appeler exit après un header pour empêcher d'autres sorties.
 	}
@@ -150,13 +162,17 @@ if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
             </select>
             <br>
 
-            <p>Image actuelle :</p>
-            <?php $imagePath = "./image_Produit/Prod{$produit['idProduit']}.jpg"; ?>
-            <?php if (file_exists($imagePath)): ?>
-                <img src="<?= $imagePath ?>" alt="Image actuelle" style="max-width: 200px;">
-            <?php else: ?>
-                <p>Aucune image associée.</p>
-            <?php endif; ?>
+            <label for="quantiteStock">Quantité en stock</label>
+            <input type="number" id="quantiteStock" name="quantiteStock" value="<?= htmlspecialchars($quantiteStock) ?>" required>
+            <br>
+
+			<p>Image actuelle :</p>
+			<?php $imagePath = "./image_Produit/Prod{$produit['idProduit']}.jpg"; ?>
+			<?php if (file_exists($imagePath)): ?>
+				<img src="<?= $imagePath ?>?<?= time() ?>" alt="Image actuelle" style="max-width: 200px;">
+			<?php else: ?>
+				<p>Aucune image associée.</p>
+			<?php endif; ?>
 
             <!-- Champ pour télécharger une nouvelle image -->
             <label for="file">Remplacer l'image :</label>

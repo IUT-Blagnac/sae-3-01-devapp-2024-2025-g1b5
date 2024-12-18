@@ -1,16 +1,33 @@
 <?php
+	header("Pragma: no-cache");
 	ob_start(); // Commence le tampon de sortie
     include "testAdmin.php"; // Connexion à la base de données
 
     // Suppression d'un produit
-    if (isset($_POST['delete'])) {
-        $idProduit = $_POST['delete'];
-        $query = $conn->prepare("DELETE FROM Produit WHERE idProduit = :idProduit");
-        $query->bindParam(':idProduit', $idProduit, PDO::PARAM_INT);
-        $query->execute();
+	if (isset($_POST['delete'])) {
+		$idProduit = $_POST['delete'];
+
+		// Récupérer le chemin de l'image associée au produit
+		$imagePath = "./image_Produit/Prod{$idProduit}.jpg";
+
+		// Supprimer l'image si elle existe
+		if (file_exists($imagePath)) {
+			unlink($imagePath); // Supprime le fichier
+		}
+		
+		// Supprimer la quantité associée dans la table Stock
+		$queryStock = $conn->prepare("DELETE FROM Stock WHERE idProduit = :idProduit");
+		$queryStock->bindParam(':idProduit', $idProduit, PDO::PARAM_INT);
+		$queryStock->execute();
+		
+		// Supprimer le produit de la base de données
+		$query = $conn->prepare("DELETE FROM Produit WHERE idProduit = :idProduit");
+		$query->bindParam(':idProduit', $idProduit, PDO::PARAM_INT);
+		$query->execute();
+
 		header('location: gestionProduit.php?success=supp');
-        exit;
-    }
+		exit;
+	}
 
     // Récupération des catégories pour le filtre de recherche
     $query = $conn->prepare("SELECT idCategorie, nomCategorie FROM Categorie");
@@ -91,12 +108,22 @@
                     <th>Nom</th>
                     <th>Note</th>
                     <th>Catégorie</th>
+					<th>Quantité</th>
+					<th>Image</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 <?php if (count($produits) > 0): ?>
                     <?php foreach ($produits as $produit): ?>
+						<?php 
+                            // Récupération de la quantité actuelle pour chaque produit
+                            $queryStock = $conn->prepare("SELECT quantiteStock FROM Stock WHERE idProduit = :idProduit");
+                            $queryStock->bindParam(':idProduit', $produit['idProduit'], PDO::PARAM_INT);
+                            $queryStock->execute();
+                            $stock = $queryStock->fetch(PDO::FETCH_ASSOC);
+                            $quantiteStock = $stock ? $stock['quantiteStock'] : 0;
+                        ?>
                         <tr>
                             <td><?= htmlspecialchars($produit['idProduit']) ?></td>
                             <td><?= htmlspecialchars($produit['age']) ?></td>
@@ -106,6 +133,8 @@
                             <td><?= htmlspecialchars($produit['nomProduit']) ?></td>
                             <td><?= htmlspecialchars($produit['noteGlobale']) ?></td>
                             <td><?= htmlspecialchars($produit['nomCategorie'] ?: 'Non spécifiée') ?></td>
+							<td><?= htmlspecialchars($quantiteStock) ?></td>
+							<td><img src='./image_Produit/Prod<?php echo $produit['idProduit']; ?>.jpg?<?php echo time(); ?>' width="50%"></td>
                             <td>
                                 <!-- Formulaire pour supprimer un produit -->
                                 <form method="POST" style="display:inline;">

@@ -1,0 +1,173 @@
+.rappel-produit-panier img {
+    width: 10%;
+}
+
+/* Style global de la section */
+.changement-adresse {
+    max-width: 700px;
+    margin: 0 auto; /* Centrer le formulaire */
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9; /* Fond clair */
+  }
+  
+  /* Style du formulaire */
+  .changement-adresse form {
+    display: flex;
+    flex-wrap: wrap; /* Affichage en grille */
+    gap: 20px; 
+  }
+  
+  /* Style des labels */
+  .changement-adresse label {
+    flex: 1 1 100%; /* Les labels prennent la largeur complète */
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  
+  /* Style des champs input */
+  .changement-adresse input {
+    flex: 1 1 calc(50% - 20px); /* Chaque input prend la moitié de la largeur moins l'espacement */
+    padding: 8px 0;
+    border: none;
+    border-bottom: 2px solid #000; 
+    background: transparent;
+    font-size: 16px;
+    color: #333;
+    outline: none; /* Retire l'outline par défaut */
+    transition: border-color 0.3s;
+  }
+  
+  /* Espacement spécifique pour éviter des chevauchements */
+  .changement-adresse form input[name="pays"] {
+    flex: 100%; /* Pays prend toute la largeur */
+  }
+  
+  /* Style du bouton */
+  .changement-adresse button {
+    flex: 100%;
+    padding: 12px;
+    background-color: #ff1f11;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .changement-adresse button:hover {
+    background-color: #ad170c; /* Jaune foncé au survol */
+  }
+
+
+  /** commande - choix  **/
+
+/* Conteneur principal */
+.paiement-container {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    padding: 20px;
+    text-align: center;
+}
+
+.paiement-container h2 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* Logos de cartes */
+.logos {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.logos img {
+    height: 30px;
+    width: auto;
+}
+
+/* Champs de saisie */
+.input-group {
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #666;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+}
+
+.input-group input:focus {
+    border-color: #4CAF50;
+}
+
+/* Gestion des erreurs */
+.input-group.error input {
+    border-color: #e74c3c;
+}
+
+.input-group .error-text {
+    font-size: 12px;
+    color: #e74c3c;
+    margin-top: 5px;
+}
+
+/* Champs côte à côte */
+.input-row {
+    display: flex;
+    gap: 15px;
+}
+
+.input-row .input-group {
+    flex: 1;
+}
+
+/* Checkbox */
+.input-group.checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #444;
+}
+
+/* Bouton de soumission */
+.submit-btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #ddd;
+    color: #888;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: not-allowed;
+}
+
+.submit-btn:enabled {
+    background-color: #f39c12;
+    color: #fff;
+    cursor: pointer;
+}
+
+.submit-btn:enabled:hover {
+    background-color: #e67e22;
+}
+  
