@@ -147,6 +147,7 @@
                 </div>
 
                 <form action="commande-choix.php" method="POST" >
+                    <input type="hidden" name="quantite" value="' . $quantite . '">
                     <button type="submit" class="valider-panier" onclick="">Valider mon Panier</button>
                 </form>
             ';

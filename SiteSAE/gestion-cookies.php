@@ -55,8 +55,8 @@ $ip_address = isset($_COOKIE['ip_address']) ? htmlspecialchars($_COOKIE['ip_addr
             <!-- Bouton pour détruire les cookies -->
             <?php if ($cid_client): ?>
                 <form method="post" action="">
-                    <button type="submit" name="delete_cookies" class="btn btn-danger" style="background-color: #FF1F11; color: #fff; border: none; padding: 10px 20px; margin-top: 20px; border-radius: 5px;">
-                        Détruire les cookies
+                    <button type="submit" name="delete_cookies" class="btn btn-danger" style="background-color: #e74c3c; color: white; padding: 8px 18px; margin-top: 20px; border-radius: 6px; font-size: 14px; font-weight: bold; box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); transition: background-color 0.3s, transform 0.3s;">
+    Supprimer les cookies
                     </button>
                 </form>
             <?php endif; ?>

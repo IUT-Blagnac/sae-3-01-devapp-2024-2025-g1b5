@@ -1,10 +1,7 @@
 <?php
-    echo '<link rel="stylesheet" href="commande.css">';
 
     include "header.php";
     include "Connect.inc.php";
-
-    //session_start();
 
         if (isset($_SESSION['client_email']) || isset($_COOKIE['CidClient'])) {
 
@@ -30,17 +27,11 @@
 
             if ( $idClient != 0 ) {
 
-                $adr = $conn->prepare("SELECT * FROM Client WHERE idClient = ?");
-                $adr->execute([$idClient]);
-                $adresse = $adr -> fetch();
-                $adr->closeCursor();
-                
-                
-                
-                
                 $panier = $conn->prepare("SELECT * FROM Panier_Client pc, Produit p WHERE pc.idProduit = p.idProduit AND idClient = ?");
                 $panier->execute([$idClient]);
                 
+                echo 'nb Produits : ';
+
                 while( $produit_panier = $panier -> fetch() ) {
                     $nomProduit = $produit_panier['nomProduit'];
                     $idProduit = $produit_panier['idProduit'];
@@ -51,16 +42,102 @@
                     echo '</div>';
                 }
                 
-                $idAdresse = $client['idAdresse'] ;
                 $panier->closeCursor();
             
+                $adr = $conn->prepare("SELECT * FROM Client WHERE idClient = ?");
+                $adr->execute([$idClient]);
+                $adresse = $adr -> fetch();
+                $adr->closeCursor();
+                
+                $idAdresse = $client['idAdresse'] ;
+                $nomClient = $client['nom'] ;
+                $prenomClient = $client['prenom'] ;
+                $telClient = $client['numTel'] ;
+                
 
-                $adre = $conn->prepare("SELECT * FROM Adresse WHERE idAdresse = ?");
-                $adre->execute([$idAdresse]);
-                $adresseClient = $adre -> fetch();
-                $adre->closeCursor();
-                
-                
+                if ($idAdresse != null) {
+                    $adre = $conn->prepare("SELECT * FROM Adresse WHERE idAdresse = ?");
+                    $adre->execute([$idAdresse]);
+                    $adresseClient = $adre -> fetch();
+                    $adre->closeCursor();
+
+                    $codePostal = $adresseClient['codePostal'];
+                    $ville = $adresseClient['ville'];
+                    $rue = $adresseClient['rue'];
+                    $pays = $adresseClient['pays'];
+                    
+                    echo '<h2>Votre moyen de Livraison</h2>';
+
+                    echo $nomClient ,' ', $prenomClient ,'<br>
+                        ', $rue ,'<br>
+                        ', $codePostal ,' ', $ville ,'<br>
+                        ', $pays ,'<br>
+                        ', $telClient ;
+                    
+                    echo '
+                        <form class="choix-adresse" action="modifAdresse.php" method="POST">
+                            <input type="text" name="adresseActuelle" value="', $idAdresse,'" hidden>                    
+                            <button type="submit" class="valider-panier" >Modifier mon Adresse</button>
+                        </form>
+                    ';
+                    
+                }
+
+                    echo '<h2>Votre moyen de Paiement</h2>';
+
+                    $res = $conn->prepare("SELECT * FROM CarteBancaire WHERE idClient = ?");
+                    $res->execute([$idClient]);
+                    $carteBancaire = $res -> fetch();
+                    $res->closeCursor();
+
+                    if ($carteBancaire != null) {
+
+                        $numCarte = $carteBancaire['numCarte'] ;
+                        $dateCarte = $carteBancaire['dateExpiration'] ;
+                        $cvv = $carteBancaire['codeCarte'] ;
+
+                        echo 'yes' ;
+                    } else {
+                        echo 'no' ;
+                    }
+
+
+                    echo'<section class="paiement-container">
+                            <h2>Renseignez votre carte de paiement</h2>
+                            
+                            <form>
+                                <!-- Numéro de carte -->
+                                <div class="input-group error">
+                                    <label for="card-number">Numéro de carte</label>
+                                    <input type="text" id="card-number" placeholder="1234 5678 9012 3456" required>
+                                </div>
+
+                            
+                                <div class="input-row">
+                                    <div class="input-group">
+                                        <label for="expiration">Expiration</label>
+                                        <input type="text" id="expiration" placeholder="MM/AA" required>
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="ccv">CCV</label>
+                                        <input type="text" id="ccv" placeholder="3 chiffres" required>
+                                    </div>
+                                </div>
+
+                                <div class="input-group">
+                                    <label for="cardholder">Titulaire de la carte</label>
+                                    <input type="text" id="cardholder" value="ADRIEN THEOPHILE" required>
+                                </div>
+
+                            
+                                <div class="input-group checkbox">
+                                    <input type="checkbox" id="save-card">
+                                    <label for="save-card"><strong>Enregistrer ma carte bancaire</strong><br>Pour faciliter mes prochains achats</label>
+                                </div>
+
+                                <button type="submit" class="submit-btn">Enregistrer</button>
+                            </form>
+                        </section>';
                 
 
             } 
@@ -68,6 +145,7 @@
         ?>
 
     </div>
+
 
     <div class="recapitulatif">
         <h1>Récapitulatif</h1>
@@ -112,7 +190,7 @@
                     <p>Sous-Total : ' . $prix . ' €</p>
                 </div>
 
-                <button type="button" class="valider-panier" onclick="">Valider mon Panier</button>
+                <button type="button" class="valider-panier" onclick="">Payer</button>
             ';
 
         } 

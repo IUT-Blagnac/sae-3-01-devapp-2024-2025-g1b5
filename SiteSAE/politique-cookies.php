@@ -32,10 +32,7 @@ include "header.php";
             </ul>
 
             <h2>3. Consultez vos cookies</h2>
-            <p>Si vous souhaitez consulter ou gérer les informations actuellement stockées dans vos cookies, veuillez vous rendre sur la page dédiée :</p>
-            <p>
-                <a href="gestion-cookies.php" class="btn">Voir mes cookies</a>
-            </p>
+            <p>Si vous souhaitez consulter ou gérer les informations actuellement stockées dans vos cookies, veuillez vous rendre sur la page de <a href="gestion-cookies.php">gestion des cookies</a>.</p>
 
             <h2>4. Consentement</h2>
             <p>Lors de votre première visite sur notre site, nous vous informons de l'utilisation des cookies via une bannière de consentement. En poursuivant votre navigation sur notre site, vous acceptez l'utilisation de ces cookies. Vous pouvez, à tout moment, modifier vos préférences ou retirer votre consentement en ajustant les paramètres des cookies dans votre navigateur.</p>

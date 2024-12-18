@@ -13,8 +13,14 @@ if ($client_email):
     $client = $query->fetch(PDO::FETCH_ASSOC);
 
     $idClient = $client['idClient'];
+    $client_role = $client['role'];
+    $client_prenom = $client['prenom'];
+    $client_nom = $client['nom'];
 else:
     $idClient = 0;
+    $client_role = null;
+    $client_prenom = '';
+    $client_nom = '';
 endif;
 
 // Récupérer l'idProduit depuis l'URL
@@ -35,16 +41,61 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $idClient = $_POST['idClient'];
         $res = $conn->prepare("DELETE FROM Avis WHERE idProduit = ? AND idClient = ?");
         $res->execute([$idProduit, $idClient]);
+    } elseif (isset($_POST['submitReponse'])) {
+        // Handle add response
+        $idProduit = $_GET['idProduit'];
+        $idClientAvis = $_GET['idClientAvis'];
+        $contenuReponse = $_POST['contenuReponse'];
+        $dateReponse = date('Y-m-d H:i:s');
+
+        // Store response in a session or a file
+        $_SESSION['reponses'][$idProduit][$idClientAvis] = [
+            'contenu' => $contenuReponse,
+            'date' => $dateReponse,
+            'prenom' => $client_prenom,
+            'nom' => $client_nom
+        ];
+    } elseif (isset($_POST['updateReponse'])) {
+        // Handle update response
+        $idProduit = $_GET['idProduit'];
+        $idClientAvis = $_GET['idClientAvis'];
+        $contenuReponse = $_POST['contenuReponse'];
+        $dateReponse = date('Y-m-d H:i:s');
+
+        // Update response in a session or a file
+        $_SESSION['reponses'][$idProduit][$idClientAvis] = [
+            'contenu' => $contenuReponse,
+            'date' => $dateReponse,
+            'prenom' => $client_prenom,
+            'nom' => $client_nom
+        ];
+    } elseif (isset($_POST['deleteReponse'])) {
+        // Handle delete response
+        $idProduit = $_GET['idProduit'];
+        $idClientAvis = $_GET['idClientAvis'];
+
+        // Delete response from a session or a file
+        unset($_SESSION['reponses'][$idProduit][$idClientAvis]);
+    } elseif (isset($_POST['deleteAvis'])) {
+        // Handle delete review
+        $idProduit = $_GET['idProduit'];
+        $idClientAvis = $_GET['idClientAvis'];
+
+        // Delete review from the database
+        $res = $conn->prepare("DELETE FROM Avis WHERE idProduit = ? AND idClient = ?");
+        $res->execute([$idProduit, $idClientAvis]);
     } else {
         // Handle add review
-        $idProduit = $_POST['idProduit'];
-        $idClient = $_POST['idClient'];
-        $note = $_POST['note'];
-        $contenu = $_POST['contenu'];
-        $dateAvis = date('Y-m-d H:i:s');
+        if (isset($_POST['idProduit']) && isset($_POST['idClient'])) {
+            $idProduit = $_POST['idProduit'];
+            $idClient = $_POST['idClient'];
+            $note = $_POST['note'];
+            $contenu = $_POST['contenu'];
+            $dateAvis = date('Y-m-d H:i:s');
 
-        $res = $conn->prepare("INSERT INTO Avis (idProduit, idClient, contenu, note, dateAvis) VALUES (?, ?, ?, ?, ?)");
-        $res->execute([$idProduit, $idClient, $contenu, $note, $dateAvis]);
+            $res = $conn->prepare("INSERT INTO Avis (idProduit, idClient, contenu, note, dateAvis) VALUES (?, ?, ?, ?, ?)");
+            $res->execute([$idProduit, $idClient, $contenu, $note, $dateAvis]);
+        }
     }
     
 }
@@ -102,33 +153,69 @@ $req->closeCursor();
             <button type="submit" class="button">Ajouter au panier</button>
             <input type="number" id="quantite" value="1" name="quantite" min="1" oninput="ajusterQuantite()">
         </form>
-        <button type="button" class="butFavoris" id="favButton">
-            <img src="images/petit-coeur-rouge.png" alt="petit coeur" width="20px" id="favImage">
-        </button>
+		<?php
+		// Récupérer l'ID du client et du produit
+		$idClient = isset($client['idClient']) ? $client['idClient'] : 0;
+		$idProduit = isset($_GET['idProduit']) ? intval($_GET['idProduit']) : 0;
 
-        <script>
-			function afficherMessage(message) {
-				var msgElement = document.createElement("p");
-				msgElement.textContent = message;
-				document.getElementById("message-container").appendChild(msgElement);
-				setTimeout(function() {msgElement.remove(); }, 2000); 
-			}
+		$isFavorite = false; // Valeur par défaut
 
-		
-            document.getElementById('favButton').addEventListener('click', function() {
-                var img = document.getElementById('favImage');
+		if ($idClient > 0 && $idProduit > 0) {
+			// Vérifier si ce produit est déjà dans les favoris
+			$checkFav = $conn->prepare("SELECT * FROM Produit_Favoris WHERE idProduit = ? AND idClient = ?");
+			$checkFav->execute([$idProduit, $idClient]);
+			$isFavorite = $checkFav->rowCount() > 0; // True si le produit est déjà dans les favoris
+		}
+		?>
 
-                if (img.src.includes('petit-coeur-rouge.png')) {
-                    img.src = 'images/petit-coeur-plein.png'; 
-					afficherMessage("Ajouté au favoris");
-                } else {
-                    img.src = 'images/petit-coeur-rouge.png'; 
-					afficherMessage("Retiré des favoris");
+		<button type="button" class="butFavoris" id="favButton">
+			<img src="<?php echo $isFavorite ? 'images/petit-coeur-plein.png' : 'images/petit-coeur-rouge.png'; ?>" alt="petit coeur" width="20px" id="favImage">
+		</button>
 
-                }
-            });
-        </script>
-		<div id="message-container"></div>
+
+	<script>
+	// Fonction pour afficher un message temporaire
+	function afficherMessage(message) {
+		var msgElement = document.createElement("p");
+		msgElement.textContent = message;
+		document.getElementById("message-container").appendChild(msgElement);
+		setTimeout(function() { msgElement.remove(); }, 2000);
+	}
+
+	// Vérifier si l'utilisateur est connecté
+	var isUserLoggedIn = <?php echo isset($_SESSION['client_email']) ? 'true' : 'false'; ?>;
+
+	document.getElementById('favButton').addEventListener('click', function() {
+		if (!isUserLoggedIn) {
+			afficherMessage("Vous devez être connecté pour ajouter aux favoris.");
+			return; // Ne pas exécuter le reste du code si l'utilisateur n'est pas connecté
+		}
+
+		var img = document.getElementById('favImage');
+		var idProduit = <?php echo $idProduit; ?>;
+		var idClient = <?php echo $idClient; ?>;
+
+		// Ajout ou retrait du produit dans les favoris
+		if (img.src.includes('petit-coeur-rouge.png')) {
+			img.src = 'images/petit-coeur-plein.png'; // Le coeur devient plein (favori ajouté)
+			var action = 'ajouter';
+			afficherMessage("Ajouté aux favoris");
+		} else {
+			img.src = 'images/petit-coeur-rouge.png'; // Le coeur devient vide (favori retiré)
+			var action = 'retirer';
+			afficherMessage("Retiré des favoris");
+		}
+
+		// Requête AJAX pour ajouter ou retirer du favori
+		var xhr = new XMLHttpRequest();
+		xhr.open("POST", "favorisAction.php", true);
+		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		xhr.send("idProduit=" + idProduit + "&idClient=" + idClient + "&action=" + action);
+	});
+	</script>
+
+	<div id="message-container"></div>
+
     </div>
 </section>
 
@@ -155,15 +242,14 @@ $req->closeCursor();
 
 <section class="avis">
 
-    <h2>Avis</h2>
-
+<h2>Avis</h2>
     <?php
     if ($client_email):
-        echo '<button type="button" class="button-avis" onclick="toggleForm()">Ajouter un avis</button>';
+        echo '<button type="button" class="button-avis" onclick="blocAvis()">Ajouter un avis</button>';
     endif;
     ?>
 
-    <!-- Form to add a new avis -->
+    <!-- Ajouter des nouvelles avis Form -->
     <section class="evaluation" id="avisForm" style="display: none;">
         <?php if ($idClient): ?>
             <form action="descriptionDetail.php?idProduit=<?php echo $idProduit; ?>" method="post">
@@ -198,40 +284,69 @@ $req->closeCursor();
 
     $nbAvis = 0;
 
-    while (($avis = $res->fetch()) and $nbAvis < 3) {
-
-        //recupere le nom du client qui a ecrit l'avis
+    while ($avis = $res->fetch()) {
+        // Récupère le nom du client qui a écrit l'avis
         $req = $conn->prepare("SELECT * FROM Client WHERE idClient = ?");
         $req->execute([$avis['idClient']]);
         $client = $req->fetch();
         $req->closeCursor();
 
-        echo '<section class="evaluation">';
+        $displayStyle = $nbAvis < 3 ? 'block' : 'none';
 
+        echo '<section class="evaluation" style="display: ' . $displayStyle . ';" id="avis-' . $nbAvis . '">';
         echo '<div class="notes">
-                    <button type="button" class="butAvatar" onclick=" "> <img src="images/perso-avatar.png" alt="avatar"> </button>';
+                <button type="button" class="butAvatar" onclick=" "> <img src="images/perso-avatar.png" alt="avatar"> </button>';
         echo '<h3>' . $client['nom'] . " " . $client['prenom'] . '</h3>';
-        echo afficherEtoiles($avis['note']); //appel de fonction affcherEtoiles
+        echo afficherEtoiles($avis['note']);
         echo '<h3>' . $avis['note'] . '/5</h3>
-                </div>';
-
+              </div>';
         echo '<div class="eval-perso">';
         echo '<p>' . $avis['contenu'] . '</p>';
 
         $date1 = $avis['dateAvis'];
         $date = strftime("%d/%m/%Y", strtotime($date1));
+        echo '<p class="date-avis">Avis du <strong>' . $date . '</strong></p>';
 
-        echo '<p class="date-avis">
-                    Avis du <strong>' . $date    . '</strong>
-                    </p>';
+        //afficher les reponses de l'entreprise
+        if (isset($_SESSION['reponses'][$idProduit][$avis['idClient']])) {
+            $reponse = $_SESSION['reponses'][$idProduit][$avis['idClient']];
+            echo '<div class="reponse">';
+            echo '<p>' . $reponse['contenu'] . '</p>';
+            $dateReponse = strftime("%d/%m/%Y", strtotime($reponse['date']));
+            $prenom = isset($reponse['prenom']) ? $reponse['prenom'] : 'Lutin & Companny';
+            $nom = isset($reponse['nom']) ? $reponse['nom'] : 'Lutin & Companny';
+            echo '<p class="date-reponse">Réponse du <strong>' . $dateReponse . '</strong> par ' . $prenom . ' ' . $nom . '</p>';
+            echo '<form action="descriptionDetail.php?idProduit=' . $idProduit . '&idClientAvis=' . $avis['idClient'] . '" method="post" style="display:inline;">
+                    <textarea name="contenuReponse" required>' . $reponse['contenu'] . '</textarea>
+                    <button type="submit" name="updateReponse">Modifier</button>
+                    <button type="submit" name="deleteReponse">Supprimer</button>
+                  </form>';
+            echo '</div>';
+        } else {
+            
+            // Formulaire de réponse pour l'entreprise
+            if ($client_role !== null) {
+                echo '<form action="descriptionDetail.php?idProduit=' . $idProduit . '&idClientAvis=' . $avis['idClient'] . '" method="post" style="display:inline;">
+                        <textarea name="contenuReponse" required></textarea>
+                        <button type="submit" name="submitReponse">Répondre</button>
+                      </form>';
+            }
+        }
 
-        // Add delete button if the avis belongs to the logged-in user
+        // button de suppression de l'avis pour l'entreprise
+        if ($client_role !== null) {
+            echo '<form action="descriptionDetail.php?idProduit=' . $idProduit . '&idClientAvis=' . $avis['idClient'] . '" method="post" style="display:inline;">
+                    <button type="submit" name="deleteAvis">Supprimer Avis</button>
+                  </form>';
+        }
+
+        // Rajout le button de suppression de l'avis pour le client
         if ($avis['idClient'] == $idClient) {
             echo '<form action="descriptionDetail.php?idProduit=' . $idProduit . '" method="post" style="display:inline;">
                     <input type="hidden" name="deleteAvis" value="1">
                     <input type="hidden" name="idProduit" value="' . $idProduit . '">
                     <input type="hidden" name="idClient" value="' . $avis['idClient'] . '">
-                    <button type="submit" class="delete-button">Supprimer</button>
+                    <button type="submit" class="delete-button">Supprimer mon Avis</button>
                   </form>';
         }
 
@@ -240,11 +355,39 @@ $req->closeCursor();
 
         $nbAvis++;
     }
+
+    echo '<button type="button" class="button-afficherAvis" onclick="plusAvis()">Afficher tout les Avis</button>';
+
     ?>
 </section>
 
 <script>
-    function toggleForm() {
+    var montrerAvis = false;
+    function plusAvis() {
+        var nbAvis = <?php echo $nbAvis; ?>;
+        var button = document.querySelector('.button-afficherAvis');
+
+        if (montrerAvis) {
+            for (var i = 3; i < nbAvis; i++) {
+                var avisSection = document.getElementById('avis-' + i);
+                if (avisSection) {
+                    avisSection.style.display = 'none';
+                }
+            }
+            button.textContent = 'Afficher tout les Avis';
+        } else {
+            for (var i = 3; i < nbAvis; i++) {
+                var avisSection = document.getElementById('avis-' + i);
+                if (avisSection) {
+                    avisSection.style.display = 'block';
+                }
+            }
+            button.textContent = 'Réduire les Avis';
+        }
+
+        montrerAvis = !montrerAvis;
+    }
+    function blocAvis() {
         var form = document.getElementById('avisForm');
         if (form.style.display === 'none') {
             form.style.display = 'block';
