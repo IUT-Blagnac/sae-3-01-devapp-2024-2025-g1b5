@@ -4,7 +4,7 @@
 
     //session_start();
 
-        if (isset($_SESSION['client_email']) or isset($_COOKIE['CidClient'])) {
+        if (isset($_SESSION['client_email']) || isset($_COOKIE['CidClient'])) {
 
             $req = $conn->prepare("SELECT * FROM Client WHERE email = ?");
             $req->execute([$_SESSION['client_email']]);
@@ -30,28 +30,72 @@
 
                 $panier = $conn->prepare("SELECT * FROM Panier_Client pc, Produit p WHERE pc.idProduit = p.idProduit AND idClient = ?");
                 $panier->execute([$idClient]);
+                
+                if ( $panier -> rowCount() >= 1 ){
 
-                while( $produit_panier = $panier -> fetch() ) {
+                    while( $produit_panier = $panier -> fetch() ) {
 
-                    echo '<div class="produit-panier"> ';
-                    echo  '<img src="images/produits/Prod'.$produit_panier['idProduit'].'.jpg" alt="'.$produit_panier['nomProduit'].'"  >';
-
-                    echo '  <div class="info-produit-panier">
-                                <p> ' . $produit_panier['nomProduit'] . '</p>
-                                <div class="prix">
-                                    <p> '. $produit_panier['prix'] .' </p>
-                                    <p> '. $produit_panier['quantite'] .' </p>
-                                    <button type="button" class="delete-btn" onclick="">Supprimer</button>
+                        echo '<div class="produit-panier"> ';
+                        echo  '<img src="image_Produit/Prod'.$produit_panier['idProduit'].'.jpg" alt="'.$produit_panier['nomProduit'].'"  >';
+    
+                        echo '  <div class="info-produit-panier">
+                                    <p> ' . $produit_panier['nomProduit'] . '</p>
+                                    <div class="prix">
+                                        <p> '. $produit_panier['prix'] .' </p>
+                                        <p> '. $produit_panier['quantite'] .' </p>
+    
+                                        <form action="supprimerPanier.php" method="POST">
+                                            <input type="text" value="'. $produit_panier['idProduit'] . '" name="idProduit" hidden>
+                                            <input type="text" value="'. $idClient . '" name="idClient" hidden>
+                                            <button type="submit" class="delete-btn" >Supprimer</button>
+                                        </form>
+                                </div>
                             </div>
-                        </div>
+    
+                        </div> ';
+    
+                    }
+    
+                    $panier->closeCursor();
 
-                    </div> ';
-
+                } else {
+                    echo 'Votre panier est vide !<br>Remplissez-le !';
                 }
-
-                $panier->closeCursor();
+                
 
             } else {
+
+                if (isset($_SESSION['panier']) ) {
+
+                    foreach ($_SESSION['panier'] as $idProd => $quantite) {
+
+                        $res = $conn->prepare("SELECT * FROM Produit WHERE idProduit = ?");
+                        $res->execute([$idProd]);
+                        $prod = $res->fetch();
+                        $res->closeCursor();
+                        
+                        echo '<div class="produit-panier"> ';
+                        echo  '<img src="image_Produit/Prod'.$idProd.'.jpg" alt="'.$prod['nomProduit'].'"  >';
+
+                        echo '  <div class="info-produit-panier">
+                                    <p> ' . $prod['nomProduit'] . '</p>
+                                    <div class="prix">
+                                        <p> '. $prod['prix'] .' </p>
+                                        <p> '. $quantite .' </p>
+                                        <form action="supprimerPanier.php" method="POST">
+                                            <input type="text" value="'. $idProd . '" name="idProd" hidden>
+                                            <button type="submit" class="delete-btn" >Supprimer</button>
+                                        </form>
+                                </div>
+                            </div>
+
+                        </div> ';
+
+                    }
+
+                } else {
+                    echo 'Votre panier est vide !<br>Remplissez-le !';
+                }
 
             }
 
@@ -72,19 +116,66 @@
     <?php
 
         if ( $idClient != 0 ) {
-            $res = $conn->prepare("SELECT sum(quantite), sum(prix) FROM Panier_Client pc, Produit p WHERE pc.idProduit = p.idProduit AND idClient = ?");
-            $res->execute([$idClient]);
-            $prix_qte = $res->fetch();
-            $res->closeCursor();
 
+            //on définit les paramètres retour
+            $prix = 0;
+            $quantite = 0;
+
+            // on définit la requete d'appel de la procédure stockée 
+            $recapPanier = 'CALL RecapPanier( :idClient, @quantiteTotale, @prixTotal )';
+
+            // Préparer et exécuter l'appel de la procédure
+            $statement = $conn->prepare($recapPanier);
+            $statement->bindParam(':idClient', $idClient);
+            $statement->execute();
+            $statement->closeCursor();
+
+            // Récupérer directement les valeurs des variables OUT
+            $query = 'SELECT @quantiteTotale AS quantiteTotale, @prixTotal AS prixTotal';
+            $result = $conn->query($query);
+
+            // Récupérer les résultats
+            if ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                $quantite = $row['quantiteTotale'];
+                $prix = $row['prixTotal'];
+            }
+                        
             echo '
                 <div class="recap-panier">
-                    <p>Produits (' . $prix_qte['sum(quantite)'] . ') </p>
-                    <p>Sous-Total : ' . $prix_qte['sum(prix)'] . ' €</p>
+                    <p>Produits (' . $quantite . ') </p>
+                    <p>Sous-Total : ' . $prix . ' €</p>
                 </div>
 
                 <button type="button" class="valider-panier" onclick="">Valider mon Panier</button>
             ';
+
+        } else {
+
+            if (isset($_SESSION['panier']) ) {
+                $qteTotale = 0;
+                $prixTotal = 0;
+
+                foreach ($_SESSION['panier'] as $idProd => $qteProd) {
+                    //Permet de calculer le prix du produit du tableau de la session
+                    $res = $conn->prepare("SELECT * FROM Produit WHERE idProduit = ?");
+                    $res->execute([$idProd]);
+                    $prod = $res->fetch();
+                    $res->closeCursor();
+
+                    $qteTotale += $qteProd;
+                    $prixTotal += $prod['prix'] * $qteProd;
+                }
+
+                echo '
+                    <div class="recap-panier">
+                        <p>Produits (' . $qteTotale. ') </p>
+                        <p>Sous-Total : ' . $prixTotal . ' €</p>
+                    </div>
+
+                    <button type="button" class="valider-panier" onclick="">Valider mon Panier</button>
+                ';
+            }
+
         }
 
     ?>

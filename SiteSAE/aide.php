@@ -44,18 +44,10 @@ include "header.php";
                 <summary>Que faire si un produit reçu est endommagé ?</summary>
                 <p>Si vous avez reçu un produit endommagé, veuillez nous contacter immédiatement. Consultez notre page <a href="probleme-livraison.php">"Problème sur la livraison"</a> pour signaler un produit endommagé et demander un remplacement.</p>
             </details>
-            <details>
-                <summary>Comment utiliser un code promo ?</summary>
-                <p>Pour utiliser un code promo, entrez-le lors du passage à la caisse dans la section "Code Promo". Le montant de la réduction sera appliqué à votre commande avant le paiement.</p>
-            </details>
-            <details>
-                <summary>Pourquoi mon code promo ne fonctionne-t-il pas ?</summary>
-                <p>Assurez-vous que le code promo est encore valide et qu'il s'applique bien à l'article que vous souhaitez acheter. Si le code ne fonctionne toujours pas, consultez la page <a href="faq.php">"FAQ générale"</a> pour des informations supplémentaires.</p>
-            </details>
-            <details>
-                <summary>Est-ce que vous livrez dans mon pays ?</summary>
-                <p>Oui, nous livrons à l'international ! Veuillez vérifier notre <a href="livraison.php">page de livraison</a> pour connaître les détails et les frais de livraison spécifiques à votre région.</p>
-            </details>
+            
+            <p>
+                Si vous avez plus de questions, nous vous encourageons a aller sur notre <a href="faq.php">FAQ</a> ou bien de <a href="contact.php">nous contacter</a> directement.
+            </p>
 
             <!-- Section dépannage technique -->
             <h2>Problèmes techniques</h2>

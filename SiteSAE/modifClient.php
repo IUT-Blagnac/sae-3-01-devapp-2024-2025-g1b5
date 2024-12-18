@@ -239,7 +239,7 @@ $numTel = formatNumTel($numTel);
                 <br><br>
 
                 <label for="codePostal">Code postal :</label>
-                <input type="text" id="codePostal" name="codePostal" value="<?php echo htmlspecialchars($codePostal); ?>" oninput="validateCodePostal()">
+                <input type="text" id="codePostal" name="codePostal" value="<?php echo htmlspecialchars($codePostal); ?>" oninput="valideCodePostal()">
                 <div id="codePostal-respect-message" style="color: red;"></div>
                 <br>
 
@@ -250,7 +250,7 @@ $numTel = formatNumTel($numTel);
             <div class="info-section">
                 <h3>Informations de paiement</h3>
                 <label for="numCarte">Numéro de carte bancaire :</label>
-                <input type="text" id="numCarte" name="numCarte" value="<?php echo htmlspecialchars($numCarte); ?>" oninput="validateNumCarte()">
+                <input type="text" id="numCarte" name="numCarte" value="<?php echo htmlspecialchars($numCarte); ?>" oninput="valideNumCarte()">
                 <div id="numCarte-respect-message" style="color: red;"></div>
                 <br>
 
@@ -259,7 +259,7 @@ $numTel = formatNumTel($numTel);
                 <br><br>
 
                 <label for="codeCarte">CVV :</label>
-                <input type="text" id="codeCarte" name="codeCarte" value="<?php echo htmlspecialchars($codeCarte); ?>" oninput="validateCVV()">
+                <input type="text" id="codeCarte" name="codeCarte" value="<?php echo htmlspecialchars($codeCarte); ?>" oninput="valideCVV()">
                 <div id="codeCarte-respect-message" style="color: red;"></div>
             </div>
             <br><br>
@@ -303,7 +303,7 @@ ob_end_flush(); // Envoyer la sortie tamponnée
         }
     }
 
-    function validateCodePostal() {
+    function valideCodePostal() {
         var codePostalInput = document.getElementById("codePostal");
         var codePostal = codePostalInput.value;
         var message = document.getElementById("codePostal-respect-message");
@@ -317,7 +317,7 @@ ob_end_flush(); // Envoyer la sortie tamponnée
         }
     }
 
-    function validateNumCarte() {
+    function valideNumCarte() {
         var numCarteInput = document.getElementById("numCarte");
         var numCarte = numCarteInput.value.replace(/\s+/g, ''); // Supprimer les espaces pour la validation
         var message = document.getElementById("numCarte-respect-message");
@@ -331,7 +331,7 @@ ob_end_flush(); // Envoyer la sortie tamponnée
         }
     }
 
-    function validateCVV() {
+    function valideCVV() {
         var codeCarteInput = document.getElementById("codeCarte");
         var codeCarte = codeCarteInput.value;
         var message = document.getElementById("codeCarte-respect-message");

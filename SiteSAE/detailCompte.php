@@ -70,12 +70,24 @@ $commandes = $query->fetchAll(PDO::FETCH_ASSOC);
         </div>
         <div class="info-section">
             <h3>Commandes récentes</h3>
+            <?php if($commandes && count($commandes) > 0) : ?>
             <ul>
                 <?php foreach ($commandes as $commande): ?>
-                    <li>Commande #<?php echo htmlspecialchars($commande['idCommande']); ?> - Statut : <?php echo htmlspecialchars($commande['statut']); ?> - Date : <?php echo htmlspecialchars($commande['dateCommande']); ?></li>
+                    <li>Commande #<?php echo htmlspecialchars($commande['idCommande']); ?> 
+                    - Type de Livraison : <?php echo htmlspecialchars($commande['typeLivraison']); ?> 
+                    - Statut : <?php echo htmlspecialchars($commande['statut']); ?> 
+                    - Date : <?php echo htmlspecialchars((new DateTime($commande['dateCommande']))->format('d/m/Y')); ?></li>
                 <?php endforeach; ?>
-            </ul>
-            <button class="button">Voir toutes les commandes</button>
+                </ul>
+                <a href="detailCommandeClient.php"><button class="button">Voir toutes les commandes</button></a>
+            <?php else: ?>
+                <p>Aucune commande encore effectuée. Il n'est jamais trop tard pour se faire plaisir. <br>
+                    Découvrez nos offres et laissez-vous tenter dès maintenant!
+                </p>
+                <a href="ListeProduit.php?promo=1"><button class="button">Découvrir nos offres</button></a>
+
+
+            <?php endif; ?>
         </div>
     </section>
 </main>

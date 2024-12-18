@@ -1,3 +1,4 @@
+    
 <footer>
     <div class="footer-contenu">
         <!-- Colonne À propos -->

@@ -1,15 +1,33 @@
 <?php
+	header("Pragma: no-cache");
+	ob_start(); // Commence le tampon de sortie
     include "testAdmin.php"; // Connexion à la base de données
 
     // Suppression d'un produit
-    if (isset($_POST['delete'])) {
-        $idProduit = $_POST['delete'];
-        $query = $conn->prepare("DELETE FROM Produit WHERE idProduit = :idProduit");
-        $query->bindParam(':idProduit', $idProduit, PDO::PARAM_INT);
-        $query->execute();
-        header('Location: gestion-produits.php'); // Redirection après suppression
-        exit;
-    }
+	if (isset($_POST['delete'])) {
+		$idProduit = $_POST['delete'];
+
+		// Récupérer le chemin de l'image associée au produit
+		$imagePath = "./image_Produit/Prod{$idProduit}.jpg";
+
+		// Supprimer l'image si elle existe
+		if (file_exists($imagePath)) {
+			unlink($imagePath); // Supprime le fichier
+		}
+		
+		// Supprimer la quantité associée dans la table Stock
+		$queryStock = $conn->prepare("DELETE FROM Stock WHERE idProduit = :idProduit");
+		$queryStock->bindParam(':idProduit', $idProduit, PDO::PARAM_INT);
+		$queryStock->execute();
+		
+		// Supprimer le produit de la base de données
+		$query = $conn->prepare("DELETE FROM Produit WHERE idProduit = :idProduit");
+		$query->bindParam(':idProduit', $idProduit, PDO::PARAM_INT);
+		$query->execute();
+
+		header('location: gestionProduit.php?success=supp');
+		exit;
+	}
 
     // Récupération des catégories pour le filtre de recherche
     $query = $conn->prepare("SELECT idCategorie, nomCategorie FROM Categorie");
@@ -73,8 +91,10 @@
             </select>
             <button type="submit">Rechercher</button>
         </form>
+	<div>
+		<a href = "ajouterProduit.php"><button type ="submit">Ajouter produit</button></a>
+	</div>
     </div>
-
     <!-- Tableau dynamique des produits -->
     <div class="tableau-produits">
         <table>
@@ -88,12 +108,22 @@
                     <th>Nom</th>
                     <th>Note</th>
                     <th>Catégorie</th>
+					<th>Quantité</th>
+					<th>Image</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 <?php if (count($produits) > 0): ?>
                     <?php foreach ($produits as $produit): ?>
+						<?php 
+                            // Récupération de la quantité actuelle pour chaque produit
+                            $queryStock = $conn->prepare("SELECT quantiteStock FROM Stock WHERE idProduit = :idProduit");
+                            $queryStock->bindParam(':idProduit', $produit['idProduit'], PDO::PARAM_INT);
+                            $queryStock->execute();
+                            $stock = $queryStock->fetch(PDO::FETCH_ASSOC);
+                            $quantiteStock = $stock ? $stock['quantiteStock'] : 0;
+                        ?>
                         <tr>
                             <td><?= htmlspecialchars($produit['idProduit']) ?></td>
                             <td><?= htmlspecialchars($produit['age']) ?></td>
@@ -103,6 +133,8 @@
                             <td><?= htmlspecialchars($produit['nomProduit']) ?></td>
                             <td><?= htmlspecialchars($produit['noteGlobale']) ?></td>
                             <td><?= htmlspecialchars($produit['nomCategorie'] ?: 'Non spécifiée') ?></td>
+							<td><?= htmlspecialchars($quantiteStock) ?></td>
+							<td><img src='./image_Produit/Prod<?php echo $produit['idProduit']; ?>.jpg?<?php echo time(); ?>' width="50%"></td>
                             <td>
                                 <!-- Formulaire pour supprimer un produit -->
                                 <form method="POST" style="display:inline;">
@@ -125,8 +157,35 @@
         </table>
     </div>
 </section>
+<script>
+    function showNotification(message) {
+        alert(message); 
+    }
 
+    // Vérification de l'URL pour un paramètre de succès
+    const urlParams = new URLSearchParams(window.location.search);
+    const success = urlParams.get('success');
+
+    if (success === 'add') {
+        showNotification('Le produit a été ajouté avec succès !');
+    } else if (success === 'edit') {
+        showNotification('Le produit a été modifié avec succès !');
+    }
+	else if (success === 'supp') {
+        showNotification('Le produit a été supprimé avec succès !');
+    }
+
+    // Optionnel : Supprimez le paramètre `success` de l'URL après l'affichage du message
+    if (success) {
+        const cleanUrl = window.location.origin + window.location.pathname;
+        window.history.replaceState({}, document.title, cleanUrl);
+    }
+</script>
 <?php include "footer.php"; ?>
 
 </body>
 </html>
+
+<?php
+ob_end_flush(); // Envoie la sortie tamponnée au navigateur
+?>

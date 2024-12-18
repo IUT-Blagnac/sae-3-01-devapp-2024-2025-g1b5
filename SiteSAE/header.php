@@ -1,9 +1,8 @@
 <?php
-$test="";
+require_once 'Connect.inc.php';
     if (session_status() === PHP_SESSION_NONE) {
 		session_start();
 	}
-    include("gestioncategorie.php");
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -17,45 +16,74 @@ $test="";
 </head>
 <body>
 <header> 
-    <div class="header">
-        <a href="index.php"><img src="images/logo-entreprise.png" alt="Logo"></a> 
+<div class="header">
+    <!-- Logo -->
+    <div class="logo">
+        <a href="index.php">
+            <img src="images/logo-entreprise.png" alt="Logo">
+        </a>
+    </div>
 
-        <div class="search-bar">
-            <input type="text" placeholder="Recherche...">
-            <img src="images/loupe.png" alt="Search"> 
-        </div>
-        
-        <div class="icons">
-			<div>
-			<?php
-				if (isset($_SESSION['client_email']) || isset($_COOKIE['CidClient'])) {
-					    $email = isset($_SESSION['client_email']) ? $_SESSION['client_email'] : $_COOKIE['CidClient'];
-						$query = $conn->prepare("SELECT role FROM Client WHERE email = :email");
-						$query->bindParam(':email', $email);
-						$query->execute();
-						$result = $query->fetch(PDO::FETCH_ASSOC);
-					if (isset($result['role']) || $result['role'] !== null) {
-						echo "<a href='menuAdmin.php'><button class='espaceAdmin'>Espace Admin</button></a>";
-					}
-				}		
-			?>
-			</div>
-            <img src="images/coeur.jpg" alt="Favoris"> 
-            <a href="panier.php"><img src="images/cart.jpg" alt="Cart"></a>
+    <!-- Barre de recherche -->
+    <div class="recherche">
+        <form class="search-bar" action="ListeProduit.php" method="GET">
+            <input 
+                type="text" 
+                name="search" 
+                placeholder="Entrez un mot-clé..." 
+                value="<?php echo isset($_GET['search']) ? $_GET['search'] : null; ?>"
+            >
+            <button type="submit">
+                <img src="images/loupe.png" alt="recherche">
+            </button>
+        </form>
+    </div>
+
+    <!-- Icons -->
+    <div class="icons">
+        <!-- Espace Admin -->
+        <div>
             <?php
-            if (isset($_SESSION['client_email']) || isset($_COOKIE['CidClient'])) {
+            if (isset($_SESSION['client_email'])) {
+                $email = isset($_SESSION['client_email']) ? $_SESSION['client_email'] : $_COOKIE['CidClient'];
+                $query = $conn->prepare("SELECT role FROM Client WHERE email = :email");
+                $query->bindParam(':email', $email);
+                $query->execute();
+                $result = $query->fetch(PDO::FETCH_ASSOC);
+                if (isset($result['role']) || $result['role'] !== null) {
+                    echo "<a href='menuAdmin.php'><button class='espaceAdmin'>Espace Admin</button></a>";
+                }
+            }
+            ?>
+        </div>
+
+        <!-- Icônes favorites, panier et utilisateur -->
+        <div class="icons">
+            <a href="favoris.php"><img src="images/coeur.jpg" alt="Favoris"></a>
+            <a href="panier.php">
+                <img src="images/cart.jpg" alt="Cart">
+            </a>
+            <?php
+            if (isset($_SESSION['client_email'])) {
                 echo '<a href="detailCompte.php"><img src="images/user.jpg" alt="User"></a>';
             } else {
                 echo '<a href="connexionCompte.php"><img src="images/user.jpg" alt="User"></a>';
             }
             ?>
-            <div class="langue">
-                <span>Langue :</span>
-                <img src="images/france.png" alt="Langue"> 
+        </div>
+
+        <!-- Sélection de la langue -->
+        <div class="langue">
+            <div>
+                <img src="images/france.png" alt="Langue">
+            </div>
+            <div>
+                <span>Langue </span>
             </div>
         </div>
     </div>
-    
+</div>
+
     <section class="menu">
 
         <div class="menu-age">
@@ -74,10 +102,8 @@ $test="";
             <button class="deroulant">Type</button> 
             <div class="liste-deroulant">
             <?php
-            separateur($categorie, $scategorie);
+            require_once "gestioncategorie.php";
             ?>
-                
-
             </div>
         </div>
 
