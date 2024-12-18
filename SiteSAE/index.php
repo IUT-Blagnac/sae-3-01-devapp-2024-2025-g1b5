@@ -9,7 +9,8 @@ include "tableauxProduit.php";
 include "Connect.inc.php";
 ?>
 <br>
-<h1> À la une </h1>
+<br>
+<h1> Produits à la une </h1>
 <section class="produits-accueil">
   <?php
     afficherLProduitsA(getproduit($Allproduit,$produitAlaUne));

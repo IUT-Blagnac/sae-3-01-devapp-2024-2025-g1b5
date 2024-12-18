@@ -146,7 +146,9 @@
                     <p>Sous-Total : ' . $prix . ' €</p>
                 </div>
 
-                <button type="button" class="valider-panier" onclick="">Valider mon Panier</button>
+                <form action="commande-choix.php" method="POST" >
+                    <button type="submit" class="valider-panier" onclick="">Valider mon Panier</button>
+                </form>
             ';
 
         } else {

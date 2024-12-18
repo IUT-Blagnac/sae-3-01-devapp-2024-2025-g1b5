@@ -1,4 +1,6 @@
 <?php
+    echo '<link rel="stylesheet" href="commande.css">';
+
     include "header.php";
     include "Connect.inc.php";
 
@@ -33,13 +35,25 @@
                 $adresse = $adr -> fetch();
                 $adr->closeCursor();
                 
-                $idAdresse = $client['idAdresse'] ;
-
-                if ( $idAdresse != null){
-                    echo $idAdresse ;
-                } else {
-                    echo 'null';
+                
+                
+                
+                $panier = $conn->prepare("SELECT * FROM Panier_Client pc, Produit p WHERE pc.idProduit = p.idProduit AND idClient = ?");
+                $panier->execute([$idClient]);
+                
+                while( $produit_panier = $panier -> fetch() ) {
+                    $nomProduit = $produit_panier['nomProduit'];
+                    $idProduit = $produit_panier['idProduit'];
+                    
+                    echo '<div class="rappel-produit-panier" >';
+                        echo  '<img src="image_Produit/Prod'.$idProduit.'.jpg" alt="'.$nomProduit.'"  >';
+                        echo $nomProduit;
+                    echo '</div>';
                 }
+                
+                $idAdresse = $client['idAdresse'] ;
+                $panier->closeCursor();
+            
 
                 $adre = $conn->prepare("SELECT * FROM Adresse WHERE idAdresse = ?");
                 $adre->execute([$idAdresse]);
@@ -49,41 +63,7 @@
                 
                 
 
-            } else {
-
-                if (isset($_SESSION['panier']) ) {
-
-                    foreach ($_SESSION['panier'] as $idProd => $quantite) {
-
-                        $res = $conn->prepare("SELECT * FROM Produit WHERE idProduit = ?");
-                        $res->execute([$idProd]);
-                        $prod = $res->fetch();
-                        $res->closeCursor();
-                        
-                        echo '<div class="produit-panier"> ';
-                        echo  '<img src="image_Produit/Prod'.$idProd.'.jpg" alt="'.$prod['nomProduit'].'"  >';
-
-                        echo '  <div class="info-produit-panier">
-                                    <p> ' . $prod['nomProduit'] . '</p>
-                                    <div class="prix">
-                                        <p> '. $prod['prix'] .' </p>
-                                        <p> '. $quantite .' </p>
-                                        <form action="supprimerPanier.php" method="POST">
-                                            <input type="text" value="'. $idProd . '" name="idProd" hidden>
-                                            <button type="submit" class="delete-btn" >Supprimer</button>
-                                        </form>
-                                </div>
-                            </div>
-
-                        </div> ';
-
-                    }
-
-                } else {
-                    echo 'Votre panier est vide !<br>Remplissez-le !';
-                }
-
-            }
+            } 
 
         ?>
 
@@ -135,34 +115,7 @@
                 <button type="button" class="valider-panier" onclick="">Valider mon Panier</button>
             ';
 
-        } else {
-
-            if (isset($_SESSION['panier']) ) {
-                $qteTotale = 0;
-                $prixTotal = 0;
-
-                foreach ($_SESSION['panier'] as $idProd => $qteProd) {
-                    //Permet de calculer le prix du produit du tableau de la session
-                    $res = $conn->prepare("SELECT * FROM Produit WHERE idProduit = ?");
-                    $res->execute([$idProd]);
-                    $prod = $res->fetch();
-                    $res->closeCursor();
-
-                    $qteTotale += $qteProd;
-                    $prixTotal += $prod['prix'] * $qteProd;
-                }
-
-                echo '
-                    <div class="recap-panier">
-                        <p>Produits (' . $qteTotale. ') </p>
-                        <p>Sous-Total : ' . $prixTotal . ' €</p>
-                    </div>
-
-                    <button type="button" class="valider-panier" onclick="">Valider mon Panier</button>
-                ';
-            }
-
-        }
+        } 
 
     ?>
 

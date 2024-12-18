@@ -671,6 +671,7 @@ CREATE TABLE Composer (
 CREATE TABLE Panier_Client (
     idProduit INT,
     quantite INT,
+    idPromotion INT,
     idClient INT,
     CONSTRAINT pk_Panier_Client PRIMARY KEY (idProduit, idClient),
     CONSTRAINT fk_Panier_Client_Produit FOREIGN KEY (idProduit) REFERENCES Produit(idProduit),
@@ -785,9 +786,10 @@ $req->execute();
 while ($row = $req->fetch(PDO::FETCH_ASSOC))
 {
     $produitAlaUne[] = $row["idProduit"];
-    echo"$row[idProduit]";
 }
-
+//mettre a jour la une
+//$req = $conn ->prepare("CALL InsertDerniersProduits()");
+//$req->execute();
 
 function afficherEtoiles($note, $maxEtoiles = 5)
 {
@@ -819,7 +821,6 @@ function afficherEtoiles($note, $maxEtoiles = 5)
 
 
 
-echo '<br>';
 //Affichage des produits avec les informations de chaque produit image puis en dessous le nom puis le prix et en dessous la note en etoile
 //image adaptable en taille
 function afficherProduit($produit, $nbColonnes)
@@ -844,6 +845,13 @@ function afficherProduit($produit, $nbColonnes)
     echo '<p class="prix-produit" style="margin:5px 0; color:#007BFF; font-size:18px;">Prix : ' . htmlspecialchars($produit['prix']) . ' €</p>';
     echo '<p style="margin:5px 0;">' . afficherEtoiles($produit['noteGlobale']) . '</p>';
 
+    //button ajouter au panier
+    echo '<form action="ajouterPanier.php" method="get">
+    <input type="text" value="' . $produit["idProduit"] . '" name="idProduit" hidden>
+    <button type="submit" class="button">Ajouter au panier</button>
+  </form>';
+
+
     // Fin du conteneur produit
     echo '</div>';
 
@@ -866,8 +874,8 @@ function getproduit($Allproduit,$listeproduit)
 function afficherLProduitsA($tabProduits) {
     echo '<table class:"table1">';
     echo '<tr>';
-    foreach ($tabProduits as $tab) {
-        echo afficherProduit($tab, 5);
+    for ($i = 0; $i < 4; $i++) {
+        echo afficherProduit($tabProduits[$i], 5);
     }
     echo '</tr>';
     echo '</table>';

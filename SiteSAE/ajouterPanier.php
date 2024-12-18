@@ -6,12 +6,12 @@
     $idProduit = isset($_GET['idProduit']) ? intval($_GET['idProduit']) : 0;
 
     // Récupérer l'idProduit depuis l'URL
-    $quantite = isset($_GET['quantite']) ? intval($_GET['quantite']) : 0;
+    $quantite = isset($_GET['quantite']) ? intval($_GET['quantite']) : 1;
 
 
     session_start();
 
-    if (isset($_SESSION['client_email']) ) {
+    if (isset($_SESSION['client_email']) or isset($_COOKIE['CidClient'])) {
 
         $req = $conn->prepare("SELECT * FROM Client WHERE email = ?");
         $req->execute([$_SESSION['client_email']]);
@@ -54,8 +54,16 @@
              $_SESSION['panier'][$idProduit] = $quantite;
          }
 
-         header("Location: descriptionDetail.php?idProduit=$idProduit");
-
+         if (isset($_SERVER['HTTP_REFERER'])) {
+            $urlPrecedente = $_SERVER['HTTP_REFERER'];
+            header("Location: $urlPrecedente");
+            exit;
+        } else {
+            // Redirection par défaut si HTTP_REFERER est absent
+            header("Location: descriptionDetail.php?idProduit=$idProduit");
+            exit;
+        }
+        
     }
 
 ?>
