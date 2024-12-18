@@ -339,6 +339,10 @@ ODJ : Attention soucis sur date du Compte rendu antérieure à la réunion ! CR:
 note : 1,6/3
 Note Appel offre : 11,02/20
 
+==== Evaluation communication semaine 50 par EP
+ODJ OK CR: Il manque toujours les retour de la réunion client et les difficultés/réussites au niveau organisationnel. Des fautes.  
+note : 2/3
+
 
 === Voici un exemple d'évaluation :
 
