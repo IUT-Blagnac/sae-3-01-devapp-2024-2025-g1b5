@@ -11,7 +11,7 @@
 
     session_start();
 
-    if (isset($_SESSION['client_email']) or isset($_COOKIE['CidClient'])) {
+    if (isset($_SESSION['client_email']) ) {
 
         $req = $conn->prepare("SELECT * FROM Client WHERE email = ?");
         $req->execute([$_SESSION['client_email']]);

@@ -77,7 +77,6 @@ if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
 			taille = :taille,
 			nbJoueurMax = :nbJoueurMax,
 			description = :description,
-			noteGlobale = :noteGlobale,
 			idCategorie = :idCategorie
 		WHERE idProduit = :idProduit");
 
@@ -87,7 +86,6 @@ if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
 		$query->bindParam(':taille', $taille, PDO::PARAM_STR);
 		$query->bindParam(':nbJoueurMax', $nbJoueurMax, PDO::PARAM_INT);
 		$query->bindParam(':description', $description, PDO::PARAM_STR);
-		$query->bindParam(':noteGlobale', $noteGlobale, PDO::PARAM_STR);
 		$query->bindParam(':idCategorie', $idCategorie, PDO::PARAM_INT);
 		$query->bindParam(':idProduit', $idProduit, PDO::PARAM_INT);
 
@@ -148,9 +146,6 @@ if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
             <input type="textarea" id="description" name="description" value="<?= htmlspecialchars($produit['description']) ?>" required>
             <br>
 
-            <label for="noteGlobale">Note globale</label>
-            <input type="text" id="noteGlobale" name="noteGlobale" value="<?= htmlspecialchars($produit['noteGlobale']) ?>" readonly>
-            <br>
 
             <label for="idCategorie">Catégorie</label>
             <select name="idCategorie" id="idCategorie">

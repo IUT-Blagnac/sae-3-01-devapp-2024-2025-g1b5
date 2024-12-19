@@ -13,7 +13,7 @@ include "Connect.inc.php";
 <h1> Produits à la une </h1>
 <section class="produits-accueil">
   <?php
-    afficherLProduitsA(getproduit($Allproduit,$produitAlaUne));
+    afficherLProduitsA(getproduit($Allproduit,$produitAlaUne),$produitParPromo);
     /*
     <div>
       <a href="descriptionProduit.php"> <img src="images/circuit-a-bille-138-pieces.png" alt="Image circuit de bille"> </a>
@@ -44,6 +44,7 @@ include "Connect.inc.php";
       ?>
 
 </section>
+
 
 <?PHP
 include "footer.php";

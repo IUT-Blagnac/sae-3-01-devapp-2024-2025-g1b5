@@ -5,7 +5,7 @@ include "Connect.inc.php";
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = htmlspecialchars($_POST['email']);
     $password = htmlspecialchars($_POST['password']);
-    $remember = isset($_POST['remember']); // Détermine si "Se souvenir de moi" est coché
+    $remember = isset($_POST['remember']);
 
     // Vérifiez les informations de connexion dans la base de données
     $query = $conn->prepare("SELECT * FROM Client WHERE email = :email");
@@ -24,17 +24,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Si "Se souvenir de moi" est coché, créer les cookies
             if ($remember) {
                 setcookie('CidClient', $user['email'], time() + 60*60*24, "/"); // 1 jour
-                setcookie('last_connexion', date('Y-m-d H:i:s'), time() + 60*60*24, "/"); // Date actuelle
-                setcookie('ip_address', $_SERVER['REMOTE_ADDR'], time() + 60*60*24, "/"); // Adresse IP
-                setcookie('browser_info', $_SERVER['HTTP_USER_AGENT'], time() + 60*60*24, "/"); // Infos navigateur
-            } else {
-                // Sinon, supprimer les cookies existants
-                if (isset($_COOKIE['CidClient'])) {
-                    setcookie('CidClient', '', time() - 3600, "/"); 
-                    setcookie('last_connexion', '', time() - 3600, "/");
-                    setcookie('ip_address', '', time() - 3600, "/");
-                    setcookie('browser_info', '', time() - 3600, "/");
+            }
+
+            // gérer le panier de la session quand on se connecte si un panier de session existait
+            if (isset($_SESSION['panier'])) {
+                foreach ($_SESSION['panier'] as $idProd => $quantite) {
+                    $appelAjoutPanier = 'CALL AjouterPanier( :idClient, :idProduit, :quantite )';
+
+                    $statement = $conn->prepare($appelAjoutPanier);
+                    $statement->bindParam(':idClient', $user['idClient']);
+                    $statement->bindParam(':idProduit', $idProd);
+                    $statement->bindParam(':quantite', $quantite);
+                    $statement->execute();
+                    $statement->closeCursor();
                 }
+                unset($_SESSION['panier']);
             }
 
             // Redirection vers la page de détail du compte

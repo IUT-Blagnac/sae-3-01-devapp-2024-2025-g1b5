@@ -67,7 +67,7 @@ function filtrePrix($produit, $prixMin, $prixMax)
 
 
 //fonction qui permet dafficher un tableau de produit et appel la fonction afficherProduit pour chaque produit
-function afficherTableauProduit($tableauProduit, $nbColonnes = 3)
+function afficherTableauProduit($tableauProduit, $nbColonnes = 3,$produitParPromo)
 {
     // Début de la table
     echo '<table class:"table1">';
@@ -82,7 +82,7 @@ function afficherTableauProduit($tableauProduit, $nbColonnes = 3)
         }
 
         // Afficher le produit
-        afficherProduit($produit, $nbColonnes);
+        afficherProduit($produit, $nbColonnes,$produitParPromo);
 
         $compteur++;
 
@@ -135,6 +135,10 @@ if ($tabC == null) {
 function triListeProduit($produitAge, $produitType, $idRegroupementPromo, $idRegroupementBS, $recherche, $Allproduit)
 {
     $produit = [];
+    $idProduitsReduction=[];
+    if (is_array($idRegroupementPromo)) {
+        $idProduitsReduction = array_column($idRegroupementPromo, 'idProduit');
+    }
 
     // Parcours de tous les produits
     foreach ($Allproduit as $p) {
@@ -163,7 +167,7 @@ function triListeProduit($produitAge, $produitType, $idRegroupementPromo, $idReg
         }
 
         // Filtrer par promotion
-        if (is_array($idRegroupementPromo) && in_array($p['idProduit'], $idRegroupementPromo)) {
+        if (is_array($idProduitsReduction) && in_array($p['idProduit'], $idProduitsReduction)) {
             $produit[] = $p;
             continue;
         }
@@ -253,7 +257,7 @@ if (isset($_GET['age'])) {
     </div>
     <div class="main-content">
         <?php
-        afficherTableauProduit($produit, 4);
+        afficherTableauProduit($produit, 4,$produitParPromo);
         ?>
         <!-- Section principale pour afficher les produits -->
     </div>

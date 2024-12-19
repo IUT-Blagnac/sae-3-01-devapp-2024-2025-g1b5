@@ -1,73 +1,65 @@
 <?php
-ob_start(); // Mise en mémoire tampon
+ob_start(); // Démarre la mise en tampon de sortie
+
+// Définir l'en-tête pour le bon encodage
 header('Content-Type: text/html; charset=utf-8');
 include "header.php";
 
-// Vérifie si une session est active
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
+// Récupérer les informations actuelles de l'utilisateur
+$date_actuelle = time(); // Date et heure actuelle en timestamp
+$ip_utilisateur = $_SERVER['REMOTE_ADDR'] ?? 'IP inconnue'; // Adresse IP de l'utilisateur
+$user_agent_actuel = $_SERVER['HTTP_USER_AGENT'] ?? 'Non disponible'; // Informations du navigateur
 
-// Suppression des cookies si le bouton est cliqué
-if (isset($_POST['delete_cookies'])) {
-    setcookie('CidClient', '', time() - 3600, "/");
-    setcookie('last_connexion', '', time() - 3600, "/");
-    setcookie('browser_info', '', time() - 3600, "/");
-    setcookie('ip_address', '', time() - 3600, "/");
-    header("Location: gestion-cookies.php");
-    exit();
-}
+// Effacer les cookies si l'utilisateur le demande
+$confirmation_suppression = false;
 
-// Vérifie si les cookies existent
-$cid_client = isset($_COOKIE['CidClient']) ? htmlspecialchars($_COOKIE['CidClient']) : null;
-$last_connexion = isset($_COOKIE['last_connexion']) ? htmlspecialchars($_COOKIE['last_connexion']) : null;
-$browser_info = isset($_COOKIE['browser_info']) ? htmlspecialchars($_COOKIE['browser_info']) : null;
-$ip_address = isset($_COOKIE['ip_address']) ? htmlspecialchars($_COOKIE['ip_address']) : null;
+if (isset($_POST['effacer_cookies'])) {
+    setcookie('DerniereConnexion', '', time() - 3600, "/");
+    setcookie('UserAgent', '', time() - 3600, "/");
+    $confirmation_suppression = true;
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion des Cookies</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css"> <!-- Lien vers votre CSS -->
 </head>
-
 <body class="background-page">
     <main>
         <section class="pageInfo">
-            <h1>Gestion des Cookies</h1>
+            <h1>Gestion des informations de session</h1>
+            <p>
+                Voici les informations actuelles liées à votre session. Ces données sont temporaires et ne sont pas stockées de manière permanente.
+            </p>
 
-            <?php if ($cid_client): ?>
-                <p>Voici les informations liées à votre dernière connexion :</p>
-                <ul>
-                    <li><strong>Adresse e-mail :</strong> <?php echo $cid_client; ?></li>
-                    <li><strong>Date de dernière connexion :</strong> <?php echo $last_connexion; ?></li>
-                    <li><strong>Adresse IP :</strong> <?php echo $ip_address; ?></li>
-                    <li><strong>Informations du navigateur :</strong> <?php echo $browser_info; ?></li>
-                </ul>
-            <?php else: ?>
-                <p>Aucune information n'est disponible car vous n'avez pas choisi de sauvegarder vos cookies.</p>
+            <!-- Informations de la session actuelle -->
+            <h2>Informations de la session actuelle</h2>
+            <p><strong>Date et heure :</strong> <?php echo date("d/m/Y H:i:s", $date_actuelle); ?></p>
+            <p><strong>Adresse IP :</strong> <?php echo htmlspecialchars($ip_utilisateur); ?></p>
+            <p><strong>Informations sur votre navigateur :</strong> <?php echo htmlspecialchars($user_agent_actuel); ?></p>
+
+            <!-- Message de confirmation pour suppression des cookies -->
+            <?php if ($confirmation_suppression): ?>
+                <p class="alert alert-success">
+                    Les cookies ont été effacés avec succès. Les informations ci-dessus sont celles de votre session actuelle.
+                </p>
             <?php endif; ?>
 
-            <!-- Bouton pour détruire les cookies -->
-            <?php if ($cid_client): ?>
-                <form method="post" action="">
-                    <button type="submit" name="delete_cookies" class="btn btn-danger" style="background-color: #e74c3c; color: white; padding: 8px 18px; margin-top: 20px; border-radius: 6px; font-size: 14px; font-weight: bold; box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); transition: background-color 0.3s, transform 0.3s;">
-    Supprimer les cookies
-                    </button>
-                </form>
-            <?php endif; ?>
+            <!-- Bouton pour effacer les cookies -->
+            <form method="post" action="">
+                <button type="submit" name="effacer_cookies" class="btn btn-danger">Effacer les cookies</button>
+            </form>
         </section>
     </main>
 
     <?php include "footer.php"; ?>
 </body>
-
 </html>
 
 <?php
-ob_end_flush(); // Envoie le contenu de la mémoire tampon
+ob_end_flush(); // Envoie la sortie finale au navigateur
 ?>

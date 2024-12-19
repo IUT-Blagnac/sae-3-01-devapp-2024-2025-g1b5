@@ -2,6 +2,7 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 include 'Connect.inc.php';
 use Faker\Factory;
+use Vtiful\Kernel\Format;
 $faker = Faker\Factory::create('fr_FR');
 
 //tableau de tout les insert
@@ -757,15 +758,14 @@ $produitParTaille =[];
 $produitParType =[];
 $produitAlaUne =[];
 
-
 $produitParPromo =[];
 $produitParBestSell =[];
 
-$req = $conn->prepare("SELECT idProduit FROM Regroupement,Produit_Regroupement WHERE nomRegroupement='Promotion' AND Regroupement.idRegroupement=Produit_Regroupement.idRegroupement");
+$req = $conn->prepare("CALL listReduction();");
 $req->execute();
 while ($row = $req->fetch(PDO::FETCH_ASSOC))
 {
-    $produitParPromo[] =  $row['idProduit'];
+    $produitParPromo[] =  $row;
 }
 $req = $conn->prepare("SELECT idProduit FROM Regroupement,Produit_Regroupement WHERE nomRegroupement='Best seller' AND Regroupement.idRegroupement=Produit_Regroupement.idRegroupement");
 $req->execute();
@@ -823,10 +823,19 @@ function afficherEtoiles($note, $maxEtoiles = 5)
 
 //Affichage des produits avec les informations de chaque produit image puis en dessous le nom puis le prix et en dessous la note en etoile
 //image adaptable en taille
-function afficherProduit($produit, $nbColonnes)
+function afficherProduit($produit, $nbColonnes,$reduction)
 {
     // Calcul de la largeur d'une cellule en pourcentage
     $largeurCellule = 100 / $nbColonnes;
+    $idProduitsReduction = array_column($reduction, 'idProduit');
+    $r=0;
+    foreach($reduction as $r1){
+        if($r1['idProduit']==$produit['idProduit']){
+            $r=$produit['prix']/(1-$r1['reduction']);
+            $r = number_format($r, 2);
+
+        }
+    }
 
     // Affichage de la cellule
     echo '<td style="text-align:center; width:' . $largeurCellule . '%; vertical-align:top; padding:10px;">';
@@ -842,7 +851,17 @@ function afficherProduit($produit, $nbColonnes)
 
     // Affichage des détails du produit
     echo '<p class="nom-produit" style="margin:5px 0; font-weight:bold;">' . htmlspecialchars($produit['nomProduit']) . '</p>';
-    echo '<p class="prix-produit" style="margin:5px 0; color:#007BFF; font-size:18px;">Prix : ' . htmlspecialchars($produit['prix']) . ' €</p>';
+
+    //affichage des prix avec reduction 
+    if($r!= 0  ){
+        echo '<p class="prix-produit" style="margin:5px 0; color:red; font-size:18px; text-decoration: line-through;">Prix : ' . htmlspecialchars($r) . ' €</p>';
+        echo '<p class="prix-produit" style="margin:5px 0; color:#007BFF; font-size:18px; font-weight: bold;">Promo : ' . htmlspecialchars($produit['prix']) . ' €</p>';
+
+    }else{
+        echo '<p class="prix-produit" style="margin:5px 0; color:#007BFF; font-size:18px;">Prix : ' . htmlspecialchars($produit['prix']) . ' €</p>';
+    
+    }
+    
     echo '<p style="margin:5px 0;">' . afficherEtoiles($produit['noteGlobale']) . '</p>';
 
     //button ajouter au panier
@@ -871,11 +890,11 @@ function getproduit($Allproduit,$listeproduit)
 
 }
 
-function afficherLProduitsA($tabProduits) {
+function afficherLProduitsA($tabProduits,$reduction) {
     echo '<table class:"table1">';
     echo '<tr>';
     for ($i = 0; $i < 4; $i++) {
-        echo afficherProduit($tabProduits[$i], 5);
+        echo afficherProduit($tabProduits[$i], 5,$reduction);
     }
     echo '</tr>';
     echo '</table>';

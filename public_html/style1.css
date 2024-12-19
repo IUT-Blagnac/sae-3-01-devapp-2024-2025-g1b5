@@ -606,40 +606,6 @@ main {
     margin-top: 4%;
 }
 
-.recap-panier{
-    border: 1px solid #ddd; 
-    border-radius: 8px; 
-    padding: 4%;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-}
-
-.recap-panier p {
-    padding-left: 10%;
-    padding-right: 10%;
-}
-
-.code-promo {
-    margin: 10%;
-}
-
-.promo  {
-    margin-top: 10%;
-}
-
-.votre-panier{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.votre-panier h1 {
-    margin-bottom: 7% ;
-}
-
-.recapitulatif h1 {
-    margin-bottom: 25% ;
-}
 
 .produit-panier{
     display: flex;
@@ -1042,6 +1008,7 @@ body.background-page {
     margin-right: auto;
 }
 
+
 /*Style pour la liste des produits*/
 /* Styles de la table */
 table {
@@ -1115,9 +1082,8 @@ table td {
     width: 20%;
     position: relative;
     left: 40%;
-    top: 2.5%;
+    top: 2%;
 }
-
 
 
 

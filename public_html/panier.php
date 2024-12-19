@@ -4,7 +4,7 @@
 
     //session_start();
 
-        if (isset($_SESSION['client_email']) || isset($_COOKIE['CidClient'])) {
+        if (isset($_SESSION['client_email']) ) {
 
             $req = $conn->prepare("SELECT * FROM Client WHERE email = ?");
             $req->execute([$_SESSION['client_email']]);
@@ -18,6 +18,14 @@
 
 ?>
 
+<script>
+	// Cette fonction permettra de demander la connexion a son compte client
+	function alertConnexion() {
+		if(confirm("Il faut être connecté, voulez-vous vous connecter ?")){
+			document.location.href = "connexionCompte.php";
+		} 
+	}
+</script>
 
 <section class="panier">
 
@@ -121,36 +129,50 @@
             $prix = 0;
             $quantite = 0;
 
-            // on définit la requete d'appel de la procédure stockée 
-            $recapPanier = 'CALL RecapPanier( :idClient, @quantiteTotale, @prixTotal )';
+            $panier = $conn->prepare("SELECT * FROM Panier_Client pc, Produit p WHERE pc.idProduit = p.idProduit AND idClient = ?");
+            $panier->execute([$idClient]);
+                
+            if ( $panier -> rowCount() >= 1 ){
 
-            // Préparer et exécuter l'appel de la procédure
-            $statement = $conn->prepare($recapPanier);
-            $statement->bindParam(':idClient', $idClient);
-            $statement->execute();
-            $statement->closeCursor();
 
-            // Récupérer directement les valeurs des variables OUT
-            $query = 'SELECT @quantiteTotale AS quantiteTotale, @prixTotal AS prixTotal';
-            $result = $conn->query($query);
+                // on définit la requete d'appel de la procédure stockée 
+                $recapPanier = 'CALL RecapPanier( :idClient, @quantiteTotale, @prixTotal )';
 
-            // Récupérer les résultats
-            if ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                $quantite = $row['quantiteTotale'];
-                $prix = $row['prixTotal'];
+                // Préparer et exécuter l'appel de la procédure
+                $statement = $conn->prepare($recapPanier);
+                $statement->bindParam(':idClient', $idClient);
+                $statement->execute();
+                $statement->closeCursor();
+
+                // Récupérer directement les valeurs des variables OUT
+                $query = 'SELECT @quantiteTotale AS quantiteTotale, @prixTotal AS prixTotal';
+                $result = $conn->query($query);
+
+                // Récupérer les résultats
+                if ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                    $quantite = $row['quantiteTotale'];
+                    $prix = $row['prixTotal'];
+                }
+
             }
                         
             echo '
                 <div class="recap-panier">
-                    <p>Produits (' . $quantite . ') </p>
+                    <p>Produits (' . $quantite . ')</p>
                     <p>Sous-Total : ' . $prix . ' €</p>
                 </div>
-
-                <form action="commande-choix.php" method="POST" >
-                    <input type="hidden" name="quantite" value="' . $quantite . '">
-                    <button type="submit" class="valider-panier" onclick="">Valider mon Panier</button>
-                </form>
             ';
+
+            echo '<form action="commande-choix.php" method="POST">
+                    <input type="hidden" name="quantite" value="' . $quantite . '">';
+
+            if ($quantite != 0) {
+                echo '<button type="submit" class="valider-panier">Valider mon Panier</button>';
+            } else {
+                echo '<button type="submit" class="valider-panier" disabled>Valider mon Panier</button>';
+            }
+
+            echo '</form>';
 
         } else {
 
@@ -175,8 +197,9 @@
                         <p>Sous-Total : ' . $prixTotal . ' €</p>
                     </div>
 
-                    <button type="button" class="valider-panier" onclick="">Valider mon Panier</button>
-                ';
+                    ';
+
+                echo ' <a href="javascript:alertConnexion()"><button type="button" class="valider-panier" >Valider mon Panier</button></a> ';
             }
 
         }

@@ -15,8 +15,42 @@
             $idClient = 0 ;
         }
 
+        
+
 ?>
 
+<script>
+        // Variables dynamiques
+        const cardNumber = "1111111111116026"; // Numéro de carte complet
+        const cardExpiry = "12/2026";         // Date d'expiration
+        const cardCVV = "123";               // Code CVV
+
+        // Initialisation
+        document.getElementById('card-last-digits').textContent = cardNumber.slice(-4);
+        document.getElementById('card-expiry').textContent = cardExpiry;
+
+        let isVisible = false;
+
+        // Fonction pour afficher/masquer les informations
+        function toggleVisibility() {
+            const cardInfo = document.getElementById('card-number');
+            const cardCVVElement = document.getElementById('card-cvv');
+
+            if (isVisible) {
+                // Masquer les informations
+                cardInfo.innerHTML = `<span class="hidden">•••• •••• ••••</span> ${cardNumber.slice(-4)}`;
+                cardCVVElement.textContent = "•••";
+                cardCVVElement.classList.add('hidden');
+            } else {
+                // Afficher les informations complètes
+                cardInfo.textContent = cardNumber.replace(/(\d{4})/g, '$1 ').trim();
+                cardCVVElement.textContent = cardCVV;
+                cardCVVElement.classList.remove('hidden');
+            }
+
+            isVisible = !isVisible;
+        }
+    </script>
 
 <section class="panier">
 
@@ -80,7 +114,17 @@
                             <button type="submit" class="valider-panier" >Modifier mon Adresse</button>
                         </form>
                     ';
-                    
+                  
+
+                } else {
+
+                    echo '<h2>Votre moyen de Livraison</h2>';
+
+                    echo '
+                        <form class="choix-adresse" action="modifAdresse.php" method="POST">                 
+                            <button type="submit" class="valider-panier" >Ajouter mon Adresse</button>
+                        </form>
+                    ';
                 }
 
                     echo '<h2>Votre moyen de Paiement</h2>';
@@ -96,48 +140,68 @@
                         $dateCarte = $carteBancaire['dateExpiration'] ;
                         $cvv = $carteBancaire['codeCarte'] ;
 
-                        echo 'yes' ;
+                        $dernierNumCarte = substr($numCarte, -4);
+
+                        echo "                            
+                                <div class='payment-box'>
+                                    <div class='card-info'>
+                                        <span>•••• •••• •••• ".$dernierNumCarte."</span>
+                                    </div>
+                                    <div class='details'>
+                                        <p>Date d'expiration : <span id='card-expiry'>".$dateCarte."</span></p>
+                                        <p>CVV : <span> •••</span></p>
+                                    </div>
+                                </div>
+                        ";
+
+                        echo '
+                            <form class="choix-adresse" action="modifCarteBancaire.php" method="POST">                   
+                                <button type="submit" class="valider-panier">Changer de carte</button>
+                            </form>
+                        ';
+                        
                     } else {
-                        echo 'no' ;
+                       
+                        echo'<section class="paiement-container">
+                                <h2>Renseignez votre carte de paiement</h2>
+                                
+                                <form>
+                                    <!-- Numéro de carte -->
+                                    <div class="input-group">
+                                        <label for="card-number">Numéro de carte</label>
+                                        <input type="text" id="card-number" placeholder="1234 5678 9012 3456" required>
+                                    </div>
+    
+                                
+                                    <div class="input-row">
+                                        <div class="input-group">
+                                            <label for="expiration">Expiration</label>
+                                            <input type="text" id="expiration" placeholder="MM/AA" required>
+                                        </div>
+                                        <div class="input-group">
+                                            <label for="ccv">CCV</label>
+                                            <input type="text" id="ccv" placeholder="3 chiffres" required>
+                                        </div>
+                                    </div>
+    
+                                    <div class="input-group">
+                                        <label for="cardholder">Titulaire de la carte</label>
+                                        <input type="text" id="cardholder" value="ADRIEN THEOPHILE" required>
+                                    </div>
+    
+                                
+                                    <div class="input-group checkbox">
+                                        <input type="checkbox" id="save-card">
+                                        <label for="save-card"><strong>Enregistrer ma carte bancaire</strong><br>Pour faciliter mes prochains achats</label>
+                                    </div>
+    
+                                    <button type="submit" class="submit-btn">Enregistrer</button>
+                                </form>
+                            </section>';
+
                     }
 
 
-                    echo'<section class="paiement-container">
-                            <h2>Renseignez votre carte de paiement</h2>
-                            
-                            <form>
-                                <!-- Numéro de carte -->
-                                <div class="input-group error">
-                                    <label for="card-number">Numéro de carte</label>
-                                    <input type="text" id="card-number" placeholder="1234 5678 9012 3456" required>
-                                </div>
-
-                            
-                                <div class="input-row">
-                                    <div class="input-group">
-                                        <label for="expiration">Expiration</label>
-                                        <input type="text" id="expiration" placeholder="MM/AA" required>
-                                    </div>
-                                    <div class="input-group">
-                                        <label for="ccv">CCV</label>
-                                        <input type="text" id="ccv" placeholder="3 chiffres" required>
-                                    </div>
-                                </div>
-
-                                <div class="input-group">
-                                    <label for="cardholder">Titulaire de la carte</label>
-                                    <input type="text" id="cardholder" value="ADRIEN THEOPHILE" required>
-                                </div>
-
-                            
-                                <div class="input-group checkbox">
-                                    <input type="checkbox" id="save-card">
-                                    <label for="save-card"><strong>Enregistrer ma carte bancaire</strong><br>Pour faciliter mes prochains achats</label>
-                                </div>
-
-                                <button type="submit" class="submit-btn">Enregistrer</button>
-                            </form>
-                        </section>';
                 
 
             } 
@@ -183,6 +247,14 @@
                 $quantite = $row['quantiteTotale'];
                 $prix = $row['prixTotal'];
             }
+
+            setlocale(LC_TIME, 'fr_FR.UTF-8'); 
+
+            // Ajoute 2 jours (2 * 24 * 60 * 60 secondes) à la date actuelle
+            $datePlus2Jours = time() + (2 * 24 * 60 * 60);
+
+            $datePlus5Jours = time() + (5 * 24 * 60 * 60);
+            $datePlus7Jours = time() + (7 * 24 * 60 * 60);
                         
             echo '
                 <div class="recap-panier">
@@ -190,7 +262,33 @@
                     <p>Sous-Total : ' . $prix . ' €</p>
                 </div>
 
-                <button type="button" class="valider-panier" onclick="">Payer</button>
+                <form action="ajouterCommande.php" method="POST" >
+
+                    <div class="livraison-container" >
+                        <input type="radio" id="Standard" name="typeLivraison" value="Standard" checked>
+                        <label class="livraison-card" for="Standard">
+                            <div class="livraison-content">
+                                <div class="livraison-header">Livraison standard <span class="prix gratuit">Gratuit</span></div>
+                                    <div class="livraison-details">
+                                        <p>Livraison entre le '.strftime("%e", $datePlus5Jours) .' et le '. strftime("%e %B", $datePlus7Jours) .'</p>
+                                    </div>
+                            </div>
+                        </label>
+
+                        <input type="radio" id="Express" name="typeLivraison" value="Express" >
+                        <label class="livraison-card" for="Express">
+                            <div class="livraison-content">
+                                <div class="livraison-header">Livraison express <span class="prix payant">3,99€</span></div>
+                                    <div class="livraison-details">
+                                        <p>Livraison prévue le '. strftime("%e %B", $datePlus2Jours) .'</p>
+                                    </div>
+                            </div>
+                        </label>
+                    </div>
+
+                    <input type="text" name="idAdresse" value="', $idAdresse,'" hidden>  
+                    <button type="submit" class="valider-panier" >Payer</button>
+                </form>
             ';
 
         } 

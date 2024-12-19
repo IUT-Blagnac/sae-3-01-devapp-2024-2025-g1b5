@@ -2,10 +2,14 @@
     width: 10%;
 }
 
+/** page modif adresse **/
+
 /* Style global de la section */
 .changement-adresse {
+    
     max-width: 700px;
-    margin: 0 auto; /* Centrer le formulaire */
+    margin: auto; /* Centrer le formulaire */
+    margin-top: 3%;
     padding: 20px;
     font-family: Arial, sans-serif;
     background-color: #f9f9f9; /* Fond clair */
@@ -149,25 +153,215 @@
     color: #444;
 }
 
-/* Bouton de soumission */
-.submit-btn {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    background-color: #ddd;
-    color: #888;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: not-allowed;
+
+
+/** Type de Livraison **/
+
+/* Conteneur global pour les options de livraison */
+.livraison-container {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    font-family: Arial, sans-serif;
 }
 
-.submit-btn:enabled {
-    background-color: #f39c12;
-    color: #fff;
+/* Masquer les boutons radio natifs */
+.livraison-card input[type="radio"] {
+    display: none;
+}
+
+/* Carte globale pour chaque option */
+.livraison-card {
+    display: flex;
+    flex: 1;
+    border: 2px solid #ddd;
+    border-radius: 8px;
     cursor: pointer;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.submit-btn:enabled:hover {
-    background-color: #e67e22;
+/* Style au survol */
+.livraison-card:hover {
+    border-color: #007bff;
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
 }
+
+/* Contenu à l'intérieur des cartes */
+.livraison-content {
+    padding: 15px;
+    width: 100%;
+}
+
+/* En-tête (titre + prix) */
+.livraison-header {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap : 20px;
+}
+
+/* Prix gratuit ou payant */
+.prix {
+    font-weight: bold;
+}
+
+.prix.gratuit , .prix.payant {
+    color: #d9534f; /* Rouge pour gratuit */
+}
+
+
+/* Détails (texte informatif) */
+.livraison-details {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Effet lorsqu'un bouton radio est sélectionné */
+.livraison-card input[type="radio"]:checked + .livraison-content {
+    border: none;
+    background-color: #fff;
+    border-radius: 6px;
+}
+
+.livraison-card input[type="radio"]:checked {
+    border-color: #007bff;
+}
+
+.livraison-card input[type="radio"]:checked ~ .livraison-content .livraison-header {
+    color: #007bff;
+}
+
+/* Animation légère */
+.livraison-card:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
+}
+
+
+
+
+/** commande - choix */
+
+
+
+/* Section du panier */
+.votre-panier {
+    flex: 2;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.votre-panier h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.rappel-produit-panier {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.rappel-produit-panier img {
+    width: 80px;
+    height: 80px;
+    margin-right: 15px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+
+
+/* Section récapitulatif */
+.recapitulatif {
+    flex: 1;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.recapitulatif h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.recap-panier {
+    margin-bottom: 20px;
+    font-size: 18px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.recap-panier p {
+    margin-bottom: 10px;
+}
+
+.code-promo {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.promo {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+
+
+/** moyen de paiement **/
+
+
+.payment-box {
+    background: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.card-info {
+    background: #fff;
+    border: 1px solid #dcdcdc;
+    border-radius: 10px;
+    padding: 15px;
+    font-size: 18px;
+    letter-spacing: 1px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.details {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.8;
+}
+
+.details p {
+    margin: 0;
+    padding: 5px 0;
+    font-size: 14px;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.details p:last-child {
+    border-bottom: none;
+}
+
   
