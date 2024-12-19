@@ -1,7 +1,7 @@
 <?php
-include "header.php";
+    require_once "header.php";
 
-$email_value = isset($_COOKIE['CidClient']) ? htmlspecialchars($_COOKIE['CidClient']) : '';
+    $email_value = isset($_COOKIE['CidClient']) ? htmlspecialchars($_COOKIE['CidClient']) : '';
 ?>
 
 <main class="d-flex justify-content-center align-items-center" style="margin-top: 5%; height: 80vh; background-color: #f9f9f9;">
@@ -35,7 +35,7 @@ $email_value = isset($_COOKIE['CidClient']) ? htmlspecialchars($_COOKIE['CidClie
 </main>
 
 <?php
-include "footer.php";
+    include "footer.php";
 ?>
 </body>
 

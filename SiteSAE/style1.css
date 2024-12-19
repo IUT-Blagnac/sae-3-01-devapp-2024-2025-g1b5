@@ -226,55 +226,67 @@ main {
 }
 
 /* Header */
-
 .header {
     background-color: #ff1f11;
-    padding: 10px;
+    padding: 10px 20px;
     display: flex; 
     align-items: center; 
     justify-content: space-between;
+    color: white;
 }
-
 .header img {
     height: 50px;
-    border-radius: 25px;
+    border-radius: 25px; /* Coins arrondis pour le logo */
 }
 
+/* Barre de recherche */
 .search-bar {
     display: flex;
     align-items: center;
-    background: var(--white);
-    border-radius: 25px; /* Increased border-radius to make it round */
-    padding: 0.5rem;
-    margin-left:0;
-    width: 40%;
     position: relative;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto; /* Centré */
 }
-
+.recherche{
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    margin: 0 auto; /* Centré */
+}
 .search-bar input {
     border: none;
     outline: none;
-    width: 100%;
-    padding: 0.5rem;
-    border-radius: 25px; 
+    width: 100%; /* S'étend sur toute la largeur */
+    padding: 0.5rem 1rem;
+    border-radius: 25px; /* Coins arrondis */
+    font-size: 16px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-.search-bar img {
+.search-bar button {
+    background: none;
+    border: none;
     position: absolute;
     right: 10px;
+    cursor: pointer;
+    padding: 0;
+}
+
+.search-bar button img {
     height: 20px;
     cursor: pointer;
 }
 
+/* Icons */
 .icons {
-    position: relative;
-    left: -5em;
     display: flex;
     align-items: center;
+    gap: 15px; /* Espacement entre les éléments */
 }
 
 .icons img {
-    margin-left: 15px;
     height: 30px;
     cursor: pointer;
 }
@@ -282,21 +294,110 @@ main {
 .icons img[alt="Favoris"],
 .icons img[alt="User"],
 .icons img[alt="Cart"] {
-    height: 40px; /* Increase the size of the heart, user, and shopping cart logos */
+    height: 40px; /* Taille spécifique pour ces icônes */
 }
 
+/* Langue */
 .langue {
-    position: relative;
     display: flex;
     align-items: center;
-    margin-left: 10px;
-    left: 5em;
+    gap: 5px;
 }
-
 
 .langue img {
-    border-radius: 0; /* Ensure the flag image does not have a border radius */
+    border: #000 2px solid; /* Bordure noire */
+    border-radius: 0; /* Pas de coins arrondis pour les drapeaux */
+    height: 20px;
 }
+
+/*Liste des produits*/
+
+.page-container {
+    display: flex;
+    gap: 10px; /* Espacement entre les colonnes */
+}
+
+.sidebar {
+    margin-left: 40px;
+    flex: 0 0 20%; /* Largeur fixe de la barre latérale */
+}
+
+.main-content {
+    flex: 1; /* Prend tout l'espace restant */
+}
+
+/*filtrage 
+*/
+.filtrage-container {
+    max-width: 400px; /* Largeur maximale de la section */
+    margin: 20px auto; /* Centrer la section */
+    padding: 20px;
+    background-color: #f9f9f9; /* Fond clair */
+    border: 1px solid #ddd; /* Bordure légère */
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre */
+}
+
+/* Styles pour le formulaire dans filtrage-container */
+.filtrage-container form span {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #333;
+}
+
+.filtrage-container form select,
+.filtrage-container form input[type="number"] {
+    width: 100%; /* Prend toute la largeur */
+    padding: 10px; /* Espacement interne */
+    font-size: 16px; /* Taille du texte */
+    margin-bottom: 15px; /* Espacement inférieur */
+    border: 1px solid #ddd; /* Bordure */
+    border-radius: 5px; /* Coins arrondis */
+    background-color: #fff; /* Fond blanc */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Ombre interne */
+    transition: border-color 0.3s, box-shadow 0.3s; /* Animation de transition */
+}
+
+.filtrage-container form select:hover,
+.filtrage-container form input[type="number"]:hover {
+    border-color: #007BFF; /* Bordure bleue au survol */
+}
+
+.filtrage-container form select:focus,
+.filtrage-container form input[type="number"]:focus {
+    outline: none; /* Supprime le contour par défaut */
+    border-color: #007BFF; /* Bordure bleue */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Ombre bleue */
+}
+
+.filtrage-container form input[type="submit"] {
+    width: 100%; /* Largeur totale */
+    padding: 10px 15px;
+    font-size: 16px;
+    color: #fff; /* Texte blanc */
+    background-color: #007BFF; /* Fond bleu */
+    border: none; /* Supprime les bordures */
+    border-radius: 5px; /* Coins arrondis */
+    cursor: pointer; /* Curseur pointeur */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.filtrage-container form input[type="submit"]:hover {
+    background-color: #0056b3; /* Bleu foncé */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre au survol */
+}
+
+.filtrage-container form input[type="submit"]:focus {
+    outline: none;
+    background-color: #0056b3;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+
+
+
 
 .menu {
     display: flex;
@@ -505,59 +606,27 @@ main {
     margin-top: 4%;
 }
 
-.recap-panier{
-    border: 1px solid #ddd; 
-    border-radius: 8px; 
-    padding: 4%;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-}
-
-.recap-panier p {
-    padding-left: 10%;
-    padding-right: 10%;
-}
-
-.code-promo {
-    margin: 10%;
-}
-
-.promo  {
-    margin-top: 10%;
-}
-
-
-
-
-.votre-panier{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.votre-panier h1 {
-    margin-bottom: 7% ;
-}
-
-.recapitulatif h1 {
-    margin-bottom: 25% ;
-}
 
 .produit-panier{
     display: flex;
     flex-direction: row;
     border: 1px solid #ddd; 
+    width: 40em;
     border-radius: 8px; 
     padding: 4%;
     margin-bottom: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-    gap: 10%;
+    gap: 20%;
 }
 
 .produit-panier img {
     width: 30%;
+    margin-left: 5%;
 }
 
+.info-produit-panier  {
+    margin-left : 10%;
+}
 
 .delete-btn {
     color: #e60000;
@@ -940,6 +1009,81 @@ body.background-page {
 }
 
 
+/*Style pour la liste des produits*/
+/* Styles de la table */
+table {
+    border-collapse: separate; /* Espacement entre les cases */
+    width: 100%;
+    margin: 20px auto; /* Centrer la table */
+}
+
+table tr {
+    text-align: center; /* Centrer le contenu */
+}
+
+table td {
+    padding: 10px; /* Espacement autour des produits */
+}
+/* Style des cases produit */
+.case-produit {
+    display: block; /* Bloque pour aligner le contenu verticalement */
+    padding: 15px;
+    background-color: #f9f9f9; /* Couleur de fond */
+    border: 1px solid #ddd; /* Bordure discrète */
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Effet d'ombre */
+    transition: transform 0.3s, box-shadow 0.3s; /* Animation pour hover */
+}
+
+/* Effet au survol */
+.case-produit:hover {
+    transform: scale(1.03); /* Légère augmentation de taille */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Ombre plus marquée */
+}
+
+/* Nom du produit */
+.nom-produit {
+    font-weight: bold;
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+/* Prix du produit */
+.prix-produit {
+    color: #007BFF; /* Couleur d'accent */
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* Image produit */
+.case-produit img {
+    border-radius: 8px; /* Coins arrondis pour l'image */
+}
+
+/* Bouton d'ajout un avis */
+.button-avis{
+    background-color: white;
+    color: #00B928;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    width: 20%;
+    position: relative;
+    left: 80%;
+    top: -6.5%;
+}
+
+.button-afficherAvis{
+    background-color: white;
+    color: #00B928;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 10px;
+    width: 20%;
+    position: relative;
+    left: 40%;
+    top: 2%;
+}
 
 
 

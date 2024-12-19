@@ -26,6 +26,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 setcookie('CidClient', $user['email'], time() + 60*60*24, "/"); // 1 jour
             }
 
+            // gérer le panier de la session quand on se connecte si un panier etait rempli
+            if (isset($_SESSION['panier'])) {
+                foreach ($_SESSION['panier'] as $idProd => $quantite) {
+                    $appelAjoutPanier = 'CALL AjouterPanier( :idClient, :idProduit, :quantite )';
+
+                    $statement = $conn->prepare($appelAjoutPanier);
+                    $statement->bindParam(':idClient', $user['idClient']);
+                    $statement->bindParam(':idProduit', $idProd);
+                    $statement->bindParam(':quantite', $quantite);
+                    $statement->execute();
+                    $statement->closeCursor();
+                }
+                unset($_SESSION['panier']);
+            }
+
             // Redirection vers la page de détail du compte
             header('Location: detailCompte.php');
             exit();

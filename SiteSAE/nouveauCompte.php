@@ -1,4 +1,6 @@
 <?php
+ob_start();
+
 include "header.php";
 include "Connect.inc.php";
 
@@ -53,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <main class="d-flex justify-content-center align-items-center"
-    style="margin-top: 5%;height: 150vh; background-color: #f9f9f9; margin-top: 0;">
+    style="margin-top: 5%;height: 150vh; background-color: #f9f9f9;">
     <div class="card p-4 shadow" style="width: 350px;">
         <h2 class="text-center mb-4" style="color: #FF1F11;">Créer compte</h2>
         <form method="post">
@@ -144,4 +146,7 @@ function numTelrespect() {
 }
 </script>
 </body>
+<?php
+ob_end_flush();
+?>
 </html>

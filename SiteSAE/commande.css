@@ -1,0 +1,345 @@
+.rappel-produit-panier img {
+    width: 10%;
+}
+
+/* Style global de la section */
+.changement-adresse {
+    max-width: 700px;
+    margin: 0 auto; /* Centrer le formulaire */
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9; /* Fond clair */
+  }
+  
+  /* Style du formulaire */
+  .changement-adresse form {
+    display: flex;
+    flex-wrap: wrap; /* Affichage en grille */
+    gap: 20px; 
+  }
+  
+  /* Style des labels */
+  .changement-adresse label {
+    flex: 1 1 100%; /* Les labels prennent la largeur complète */
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  
+  /* Style des champs input */
+  .changement-adresse input {
+    flex: 1 1 calc(50% - 20px); /* Chaque input prend la moitié de la largeur moins l'espacement */
+    padding: 8px 0;
+    border: none;
+    border-bottom: 2px solid #000; 
+    background: transparent;
+    font-size: 16px;
+    color: #333;
+    outline: none; /* Retire l'outline par défaut */
+    transition: border-color 0.3s;
+  }
+  
+  /* Espacement spécifique pour éviter des chevauchements */
+  .changement-adresse form input[name="pays"] {
+    flex: 100%; /* Pays prend toute la largeur */
+  }
+  
+  /* Style du bouton */
+  .changement-adresse button {
+    flex: 100%;
+    padding: 12px;
+    background-color: #ff1f11;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .changement-adresse button:hover {
+    background-color: #ad170c; /* Jaune foncé au survol */
+  }
+
+
+  /** commande - choix  **/
+
+/* Conteneur principal */
+.paiement-container {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    padding: 20px;
+    text-align: center;
+}
+
+.paiement-container h2 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* Logos de cartes */
+.logos {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.logos img {
+    height: 30px;
+    width: auto;
+}
+
+/* Champs de saisie */
+.input-group {
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #666;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+}
+
+.input-group input:focus {
+    border-color: #4CAF50;
+}
+
+/* Gestion des erreurs */
+.input-group.error input {
+    border-color: #e74c3c;
+}
+
+.input-group .error-text {
+    font-size: 12px;
+    color: #e74c3c;
+    margin-top: 5px;
+}
+
+/* Champs côte à côte */
+.input-row {
+    display: flex;
+    gap: 15px;
+}
+
+.input-row .input-group {
+    flex: 1;
+}
+
+/* Checkbox */
+.input-group.checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #444;
+}
+
+/* Bouton de soumission */
+.submit-btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #ddd;
+    color: #888;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: not-allowed;
+}
+
+.submit-btn:enabled {
+    background-color: #f39c12;
+    color: #fff;
+    cursor: pointer;
+}
+
+.submit-btn:enabled:hover {
+    background-color: #e67e22;
+}
+
+/** Type de Livraison **/
+
+/* Conteneur global pour les options de livraison */
+.livraison-container {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    font-family: Arial, sans-serif;
+}
+
+/* Masquer les boutons radio natifs */
+.livraison-card input[type="radio"] {
+    display: none;
+}
+
+/* Carte globale pour chaque option */
+.livraison-card {
+    display: flex;
+    flex: 1;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Style au survol */
+.livraison-card:hover {
+    border-color: #007bff;
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+}
+
+/* Contenu à l'intérieur des cartes */
+.livraison-content {
+    padding: 15px;
+    width: 100%;
+}
+
+/* En-tête (titre + prix) */
+.livraison-header {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Prix gratuit ou payant */
+.prix {
+    font-weight: bold;
+}
+
+.prix.gratuit {
+    color: #d9534f; /* Rouge pour gratuit */
+}
+
+.prix.payant {
+    color: #d9534f; /* Rouge pour le prix */
+}
+
+/* Détails (texte informatif) */
+.livraison-details {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Effet lorsqu'un bouton radio est sélectionné */
+.livraison-card input[type="radio"]:checked + .livraison-content {
+    border: none;
+    background-color: #fff;
+    border-radius: 6px;
+}
+
+.livraison-card input[type="radio"]:checked {
+    border-color: #007bff;
+}
+
+.livraison-card input[type="radio"]:checked ~ .livraison-content .livraison-header {
+    color: #007bff;
+}
+
+/* Animation légère */
+.livraison-card:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
+}
+
+
+
+
+/** commande - choix */
+
+
+
+/* Section du panier */
+.votre-panier {
+    flex: 2;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.votre-panier h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.rappel-produit-panier {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.rappel-produit-panier img {
+    width: 80px;
+    height: 80px;
+    margin-right: 15px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+
+
+/* Section récapitulatif */
+.recapitulatif {
+    flex: 1;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.recapitulatif h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.recap-panier {
+    margin-bottom: 20px;
+    font-size: 18px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.recap-panier p {
+    margin-bottom: 10px;
+}
+
+.code-promo {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.promo {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+
+
+
+  

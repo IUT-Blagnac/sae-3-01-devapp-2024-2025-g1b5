@@ -2,6 +2,7 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 include 'Connect.inc.php';
 use Faker\Factory;
+use Vtiful\Kernel\Format;
 $faker = Faker\Factory::create('fr_FR');
 
 //tableau de tout les insert
@@ -131,9 +132,7 @@ function regroupement($nbRP)
         (nomRegroupement) VALUES ("' . $RP['nomRP'] . '")';
     }
     for ($i = 0; $i < $nbRP; $i++) {
-        $RP = [
-            'nomRP' => $faker->word,
-        ];
+       
         $tabInsert[] = 'INSERT INTO Produit_Regroupement 
         (idProduit,idRegroupement) VALUES 
         (' . random_int(1, 70) . ',' . random_int(1, 4) . ')';
@@ -243,7 +242,7 @@ function categorie($tabCategorie, $tabProduits)
     foreach ($tabCategorie as $categorie => $sousCategorie) {
 
         $valCategorie = mb_substr(mb_strtolower($categorie, 'UTF-8'), 0, 3, 'UTF-8');
-        $insert = "INSERT INTO Categorie (nomCategorie, valCategorie) VALUES ('$categorie', '$valCategorie');";
+        $insert = "INSERT INTO Categorie (nomCategorie, valCategorie,niveau) VALUES ('$categorie', '$valCategorie',1);";
         $tabInsert[] = $insert; // Ajouter au tableau
 
         foreach ($sousCategorie as $sousCat => $sousCat2) {
@@ -258,8 +257,8 @@ function categorie($tabCategorie, $tabProduits)
                     $valSousCategorie = str_replace(' ', '', $valSousCategorie);
 
                     $insert = "INSERT INTO Categorie 
-                    (nomCategorie, valCategorie) 
-                    VALUES ('$sousCat3', '$valSousCategorie');";
+                    (nomCategorie, valCategorie,niveau) 
+                    VALUES ('$sousCat3', '$valSousCategorie',3);";
                     $tabInsert[] = $insert;
 
                     $tab = produit($tabProduits, $cpt3, $sousCat3, $cptproduit);
@@ -282,7 +281,7 @@ function categorie($tabCategorie, $tabProduits)
                 }
 
                 $cpt++;
-                $insert = "INSERT INTO Categorie (nomCategorie, valCategorie) VALUES ('$sousCat2', '$valSousCategorie');";
+                $insert = "INSERT INTO Categorie (nomCategorie, valCategorie,niveau) VALUES ('$sousCat2', '$valSousCategorie',2);";
                 $tabInsert[] = $insert;
 
                 $tab = produit($tabProduits, $cpt, $sousCat2, $cptproduit);
@@ -312,21 +311,21 @@ function categorie($tabCategorie, $tabProduits)
 
     foreach ($tabCategorie as $categorie => $sousCategories) {
         $valCategorie = createValCategorie($categorie);
-        $tabInsert[] = insertCategorie($categorie, $valCategorie);
+        $tabInsert[] = insertCategorie($categorie, $valCategorie,1);
         $cptCSousCategorie = $cptCategorie; // Sauvegarde pour lier les sous-catégories
         foreach ($sousCategories as $sousCat => $subItems) {
             if (is_array($subItems)) {
                 $cptCategorie++;
                 $valSousCategorie = createValCategorie($sousCat);
-                $tabInsert[] = insertCategorie($sousCat, $valSousCategorie);
+                $tabInsert[] = insertCategorie($sousCat, $valSousCategorie,2);
                 $tabInsert[] = insertSousCategorie($cptCSousCategorie, $cptCategorie);
                 
-                processSubCategories($subItems, $cptCategorie , $tabInsert, $tabProduits, $cptProduit);
+                processSubCategories($subItems, $cptCategorie , $tabInsert, $tabProduits, $cptProduit,3);
 
             } else {
                 $cptCategorie++;
                 $valSousCategorie = createValCategorie($subItems);
-                $tabInsert[] = insertCategorie($subItems, $valSousCategorie);
+                $tabInsert[] = insertCategorie($subItems, $valSousCategorie,2);
 
                 $tabInsert = array_merge($tabInsert, produit($tabProduits, $cptCategorie, $subItems, $cptProduit));
 
@@ -353,9 +352,9 @@ function createValCategorie($name)
 }
 
 
-function insertCategorie($nomCategorie, $valCategorie)
+function insertCategorie($nomCategorie, $valCategorie,$niveau)
 {
-    return "INSERT INTO Categorie (nomCategorie, valCategorie) VALUES ('$nomCategorie', '$valCategorie');";
+    return "INSERT INTO Categorie (nomCategorie, valCategorie,niveau) VALUES ('$nomCategorie', '$valCategorie','$niveau');";
 }
 
 function insertSousCategorie($idCategorie, $idSousCategorie)
@@ -363,12 +362,12 @@ function insertSousCategorie($idCategorie, $idSousCategorie)
     return "INSERT INTO SousCategorie (idCategorie, idSousCategorie) VALUES ('$idCategorie', '$idSousCategorie');";
 }
 
-function processSubCategories($subItems, &$cptCategorie, &$tabInsert, $tabProduits, &$cptProduit){
+function processSubCategories($subItems, &$cptCategorie, &$tabInsert, $tabProduits, &$cptProduit,$niveau){
     $cptSCategorie= $cptCategorie;
     foreach ($subItems as $subItem) {
         $cptCategorie++;
         $valSousCategorie = createValCategorie($subItem);
-        $tabInsert[] = insertCategorie($subItem, $valSousCategorie);
+        $tabInsert[] = insertCategorie($subItem, $valSousCategorie, $niveau);
 
         $tabInsert = array_merge($tabInsert, produit($tabProduits, $cptCategorie, $subItem, $cptProduit));
 
@@ -596,6 +595,7 @@ DROP TABLE IF EXISTS Categorie;
         idCategorie INT AUTO_INCREMENT,
         nomCategorie VARCHAR(100),
         valCategorie VARCHAR(100),
+        niveau INT DEFAULT 1,
         CONSTRAINT pk_Categorie PRIMARY KEY (idCategorie)
         );
         
@@ -672,32 +672,33 @@ CREATE TABLE Composer (
 CREATE TABLE Panier_Client (
     idProduit INT,
     quantite INT,
+    idPromotion INT,
     idClient INT,
     CONSTRAINT pk_Panier_Client PRIMARY KEY (idProduit, idClient),
     CONSTRAINT fk_Panier_Client_Produit FOREIGN KEY (idProduit) REFERENCES Produit(idProduit),
     CONSTRAINT fk_Panier_Client_Client FOREIGN KEY (idClient) REFERENCES Client(idClient)
 );
-                                        
-                                        CREATE TABLE Avis (
-                                            idProduit INT,
-                                            idClient INT,
-                                            contenu TEXT,
-                                            note INT,
-                                            dateAvis DATE,
-                                            CONSTRAINT pk_Avis PRIMARY KEY (idProduit, idClient),
-                                            CONSTRAINT fk_Avis_Produit FOREIGN KEY (idProduit) REFERENCES Produit(idProduit),
-                                            CONSTRAINT fk_Avis_Client FOREIGN KEY (idClient) REFERENCES Client(idClient),
-                                            CONSTRAINT chk_Note CHECK (note BETWEEN 1 AND 5)
-                                            );
+                                  
+CREATE TABLE Avis (
+idProduit INT,
+idClient INT,
+contenu TEXT,
+note INT,
+dateAvis DATE,
+CONSTRAINT pk_Avis PRIMARY KEY (idProduit, idClient),
+CONSTRAINT fk_Avis_Produit FOREIGN KEY (idProduit) REFERENCES Produit(idProduit),
+CONSTRAINT fk_Avis_Client FOREIGN KEY (idClient) REFERENCES Client(idClient),
+CONSTRAINT chk_Note CHECK (note BETWEEN 1 AND 5)
+);
                                             
-                                            CREATE TABLE Produit_Favoris (
-                                                idProduit INT,
-                                                idClient INT,
-                                                CONSTRAINT pk_Produit_Favoris PRIMARY KEY (idProduit, idClient),
-                                                CONSTRAINT fk_Produit_Favoris_Produit FOREIGN KEY (idProduit) REFERENCES Produit(idProduit),
-                                                CONSTRAINT fk_Produit_Favoris_Client FOREIGN KEY (idClient) REFERENCES Client(idClient)
-                                                );
-                                                ";
+CREATE TABLE Produit_Favoris (
+idProduit INT,
+idClient INT,
+CONSTRAINT pk_Produit_Favoris PRIMARY KEY (idProduit, idClient),
+CONSTRAINT fk_Produit_Favoris_Produit FOREIGN KEY (idProduit) REFERENCES Produit(idProduit),
+CONSTRAINT fk_Produit_Favoris_Client FOREIGN KEY (idClient) REFERENCES Client(idClient)
+);
+";
 $conn->exec($creetable);
 foreach ($tabInsert as $insert) {
     $d++;
@@ -747,4 +748,157 @@ foreach ($tabinsert as $insert) {
 }
 echo 'Total : ' . $total;
 */
+
+
+
+//Bouton déroulant de choix d'affichage
+$Allproduit=[] ;
+$produitParAge =[];
+$produitParTaille =[];
+$produitParType =[];
+$produitAlaUne =[];
+
+$produitParPromo =[];
+$produitParBestSell =[];
+
+$req = $conn->prepare("CALL listReduction();");
+$req->execute();
+while ($row = $req->fetch(PDO::FETCH_ASSOC))
+{
+    $produitParPromo[] =  $row;
+}
+$req = $conn->prepare("SELECT idProduit FROM Regroupement,Produit_Regroupement WHERE nomRegroupement='Best seller' AND Regroupement.idRegroupement=Produit_Regroupement.idRegroupement");
+$req->execute();
+while ($row = $req->fetch(PDO::FETCH_ASSOC))
+{
+    $produitParBestSell[] = $row['idProduit'];
+}
+//recuperer tout les produits de la base de donnée
+$req = $conn->prepare("SELECT * FROM Produit");
+$req->execute();
+while ($row = $req->fetch(PDO::FETCH_ASSOC))
+{
+    $Allproduit[] = $row;
+}
+//recuperer les produits a la une
+$req = $conn->prepare("SELECT idProduit FROM Regroupement,Produit_Regroupement WHERE nomRegroupement='a la une' AND Regroupement.idRegroupement=Produit_Regroupement.idRegroupement");
+$req->execute();
+while ($row = $req->fetch(PDO::FETCH_ASSOC))
+{
+    $produitAlaUne[] = $row["idProduit"];
+}
+//mettre a jour la une
+//$req = $conn ->prepare("CALL InsertDerniersProduits()");
+//$req->execute();
+
+function afficherEtoiles($note, $maxEtoiles = 5)
+{
+    $html = '';
+    $entier = floor($note); // Partie entière de la note
+    $decimal = $note - $entier; // Partie décimale
+
+    // Affichage des étoiles pleines
+    for ($i = 1; $i <= $entier; $i++) {
+        $html .= '<span style="color: yellow; font-size: 1.5em;">★</span>';
+    }
+
+    // Affichage d'une demi-étoile si la partie décimale est supérieure ou égale à 0.5
+    if ($decimal >= 0.5) {
+        $html .= '<span style="color: yellow; font-size: 1.5em;">☆</span>';
+    }
+
+    // Compléter avec des étoiles vides si nécessaire
+    for ($i = $entier + ($decimal >= 0.5 ? 1 : 0); $i < $maxEtoiles; $i++) {
+        $html .= '<span style="font-size: 1.5em">☆</span>';
+    }
+
+    return $html;
+}
+
+
+
+//affichage de titre de la page en fonction de la categorie choisi ou si cest une recherche
+
+
+
+//Affichage des produits avec les informations de chaque produit image puis en dessous le nom puis le prix et en dessous la note en etoile
+//image adaptable en taille
+function afficherProduit($produit, $nbColonnes,$reduction)
+{
+    // Calcul de la largeur d'une cellule en pourcentage
+    $largeurCellule = 100 / $nbColonnes;
+    $idProduitsReduction = array_column($reduction, 'idProduit');
+    $r=0;
+    foreach($reduction as $r1){
+        if($r1['idProduit']==$produit['idProduit']){
+            $r=$produit['prix']/(1-$r1['reduction']);
+            $r = number_format($r, 2);
+
+        }
+    }
+
+    // Affichage de la cellule
+    echo '<td style="text-align:center; width:' . $largeurCellule . '%; vertical-align:top; padding:10px;">';
+    echo '<a href="descriptionDetail.php?idProduit=' . $produit['idProduit'] . '" style="text-decoration:none; color:black;">';
+
+    // Conteneur produit avec style
+    echo '<div class="case-produit">';
+
+    // Image du produit
+    echo '<div style="width:100%; height:0; padding-bottom:100%; position:relative;">';
+    echo '<img src="image_Produit/Prod' . $produit['idProduit'] . '.jpg" style="width:100%; height:100%; position:absolute; top:0; left:0;" />';
+    echo '</div>';
+
+    // Affichage des détails du produit
+    echo '<p class="nom-produit" style="margin:5px 0; font-weight:bold;">' . htmlspecialchars($produit['nomProduit']) . '</p>';
+
+    //affichage des prix avec reduction 
+    if($r!= 0  ){
+        echo '<p class="prix-produit" style="margin:5px 0; color:red; font-size:18px; text-decoration: line-through;">Prix : ' . htmlspecialchars($r) . ' €</p>';
+        echo '<p class="prix-produit" style="margin:5px 0; color:#007BFF; font-size:18px; font-weight: bold;">Promo : ' . htmlspecialchars($produit['prix']) . ' €</p>';
+
+    }else{
+        echo '<p class="prix-produit" style="margin:5px 0; color:#007BFF; font-size:18px;">Prix : ' . htmlspecialchars($produit['prix']) . ' €</p>';
+    
+    }
+    
+    echo '<p style="margin:5px 0;">' . afficherEtoiles($produit['noteGlobale']) . '</p>';
+
+    //button ajouter au panier
+    echo '<form action="ajouterPanier.php" method="get">
+    <input type="text" value="' . $produit["idProduit"] . '" name="idProduit" hidden>
+    <button type="submit" class="button">Ajouter au panier</button>
+  </form>';
+
+
+    // Fin du conteneur produit
+    echo '</div>';
+
+    echo '</a>';
+    echo '</td>';
+}
+
+function getproduit($Allproduit,$listeproduit)
+{
+    $tabProduit = [];
+    foreach ($Allproduit as $key ) {
+        if (in_array($key['idProduit'],$listeproduit) ) {
+            $tabProduit[] = $key;
+        }
+    }
+    return $tabProduit;
+
+}
+
+function afficherLProduitsA($tabProduits,$reduction) {
+    echo '<table class:"table1">';
+    echo '<tr>';
+    for ($i = 0; $i < 4; $i++) {
+        echo afficherProduit($tabProduits[$i], 5,$reduction);
+    }
+    echo '</tr>';
+    echo '</table>';
+    
+}
+
 ?>
