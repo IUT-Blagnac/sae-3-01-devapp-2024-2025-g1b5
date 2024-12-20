@@ -82,13 +82,13 @@ Voici les mesures pour sécuriser les données sur le site de Lutin&Co :
 | Authentification forte | Implémenter une double authentification pour les utilisateurs lors de la connexion à leur compte | Haute
 | Protection contre les attaques XSS/CSRF | Mettre en place des contrôles pour prévenir les attaques de type Cross-Site Scripting et Cross-Site Request Forgery | Moyenne
 | Sauvegardes régulières des données | Planifier des sauvegardes régulières des données utilisateurs, des commandes et des transactions | Moyenne
-| Surveillance des activités suspectes | Mettre en place des outils de surveillance pour détecter les accès suspects et prévenir les intrusions | Haute
+| Système de modération | Possibilité de supprimer des comptes et des avis qui ne respectent pas les règles de respect | Haute
 |===
 
 [[user_stories]]
 == User Stories à ajouter au dernier sprint
 
-Voici quelques User Stories (US) à ajouter au dernier sprint pour assurer la mise en conformité du site avec les exigences légales et sécuritaires :
+Voici quelques User Stories (US) que l'on pourrait ajouter au dernier sprint ou plus tard sur le site pour assurer la mise en conformité du site avec les exigences légales et sécuritaires :
 
 [cols="3,5,2"]
 |===
