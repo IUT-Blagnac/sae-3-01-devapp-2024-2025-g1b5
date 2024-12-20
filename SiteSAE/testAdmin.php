@@ -4,6 +4,12 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 include "Connect.inc.php";
+if (!isset($_SESSION['client_email']) && !isset($_COOKIE['CidClient'])) {
+    // Rediriger les utilisateurs non connectés
+    echo "Vous devez être connecté pour accéder à cette page.";
+    header('Refresh: 5; URL=index.php');
+    exit();
+}
 
 if (isset($_SESSION['client_email']) || isset($_COOKIE['CidClient'])) {
     $email = isset($_SESSION['client_email']) ? $_SESSION['client_email'] : $_COOKIE['CidClient'];

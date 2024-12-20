@@ -2,6 +2,7 @@
 
     
     include "Connect.inc.php";
+    session_start() ;
 
     if (isset($_POST['modif'])) {
 
@@ -25,11 +26,12 @@
         $idClient = $client['idClient'] ;
 
         $query = $conn->prepare("INSERT INTO Adresse (codePostal, ville, rue, pays) VALUES (:codePostal, :ville, :rue, :pays)");
-        $query->bindParam(':codePostal', $codePostal);
-        $query->bindParam(':ville', $ville);
-        $query->bindParam(':rue', $rue);
-        $query->bindParam(':pays', $pays);
+        $query->bindParam(':codePostal', $_POST['codePostal']);
+        $query->bindParam(':ville', $_POST['ville']);
+        $query->bindParam(':rue', $_POST['rue']);
+        $query->bindParam(':pays', $_POST['pays']);
         $query->execute();
+
         $idAdresse = $conn->lastInsertId();
 
         // Mettre à jour l'ID de l'adresse dans la table Client
@@ -37,13 +39,15 @@
         $query->bindParam(':idAdresse', $idAdresse);
         $query->bindParam(':client_id', $idClient);
         $query->execute();
+
+        header('Location: commande-choix.php');
     }
 
 
     include "header.php";
 
 
-        if (isset($_SESSION['client_email']) || isset($_COOKIE['CidClient'])) {
+        if (isset($_SESSION['client_email']) ) {
 
             if (isset($_POST['adresseActuelle'])) {
 
@@ -61,16 +65,16 @@
                     <section class="changement-adresse" >
                         <form method="POST">
                             <label for="rue">Rue :</label>
-                            <input type="text" name="rue" value="'. $rue . '">
+                            <input type="text" name="rue" value="'. $rue . '" required>
 
                             <label for="ville">Ville :</label>
-                            <input type="text" name="ville" value="'. $ville . '">
+                            <input type="text" name="ville" value="'. $ville . '" required>
 
                             <label for="codePostal">Code Postal :</label>
-                            <input type="text" name="codePostal" value="'. $codePostal . '">
+                            <input type="text" name="codePostal" value="'. $codePostal . '" required>
 
                             <label for="pays">Pays :</label>
-                            <input type="text" name="pays" value="'. $pays . '">
+                            <input type="text" name="pays" value="'. $pays . '" required>
 
                             <input type="text" name="idAdresse" value="'. $_POST['adresseActuelle'] . '" hidden>
                             <button type="submit" name="modif" >Modifier cette adresse</button>
@@ -84,16 +88,16 @@
                     <section class="changement-adresse" >
                         <form method="POST">
                             <label for="rue">Rue :</label>
-                            <input type="text" name="rue">
+                            <input type="text" name="rue" required>
 
                             <label for="ville">Ville :</label>
-                            <input type="text" name="ville">
+                            <input type="text" name="ville" required>
 
                             <label for="codePostal">Code Postal :</label>
-                            <input type="text" name="codePostal">
+                            <input type="text" name="codePostal" required>
 
                             <label for="pays">Pays :</label>
-                            <input type="text" name="pays">
+                            <input type="text" name="pays" required>
 
                             <button type="submit" name="ajouter" >Modifier cette adresse</button>
                         </form>

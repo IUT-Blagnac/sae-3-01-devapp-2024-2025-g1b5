@@ -15,6 +15,9 @@
   <div>
     <a href ="gestionProduit.php"><button type="button" class="button" onclick="">Gestion produits</button></a>
   </div>
+  <div>
+    <a href ="gestionCodePromo.php"><button type="button" class="button" onclick="">Gestion code promo</button></a>
+  </div>
 
 </section>
 

@@ -14,7 +14,6 @@ include "Connect.inc.php";
 <section class="produits-accueil">
   <?php
     afficherLProduitsA(getproduit($Allproduit,$produitAlaUne),$produitParPromo);
-    var_dump($produitParPromo)
     /*
     <div>
       <a href="descriptionProduit.php"> <img src="images/circuit-a-bille-138-pieces.png" alt="Image circuit de bille"> </a>

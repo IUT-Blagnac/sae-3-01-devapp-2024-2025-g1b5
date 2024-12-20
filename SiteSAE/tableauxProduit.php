@@ -2,6 +2,7 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 include 'Connect.inc.php';
 use Faker\Factory;
+use Vtiful\Kernel\Format;
 $faker = Faker\Factory::create('fr_FR');
 
 //tableau de tout les insert
@@ -830,8 +831,9 @@ function afficherProduit($produit, $nbColonnes,$reduction)
     $r=0;
     foreach($reduction as $r1){
         if($r1['idProduit']==$produit['idProduit']){
-            $r=$r1['reduction']*$produit['prix'];
+            $r=$produit['prix']/(1-$r1['reduction']);
             $r = number_format($r, 2);
+
         }
     }
 
@@ -852,7 +854,7 @@ function afficherProduit($produit, $nbColonnes,$reduction)
 
     //affichage des prix avec reduction 
     if($r!= 0  ){
-        echo '<p class="prix-produit" style="margin:5px 0; color:red; font-size:18px; text-decoration: line-through;">Prix : ' . htmlspecialchars($produit['prix']+$r) . ' €</p>';
+        echo '<p class="prix-produit" style="margin:5px 0; color:red; font-size:18px; text-decoration: line-through;">Prix : ' . htmlspecialchars($r) . ' €</p>';
         echo '<p class="prix-produit" style="margin:5px 0; color:#007BFF; font-size:18px; font-weight: bold;">Promo : ' . htmlspecialchars($produit['prix']) . ' €</p>';
 
     }else{
@@ -897,6 +899,12 @@ function afficherLProduitsA($tabProduits,$reduction) {
     echo '</tr>';
     echo '</table>';
     
+}
+$listeCodePromo = [];
+$req = $conn->prepare("SELECT * FROM codePromotion");
+$req->execute();
+while ($codePromo = $req->fetch()) {
+    $listeCodePromo[] = $codePromo;
 }
 
 ?>

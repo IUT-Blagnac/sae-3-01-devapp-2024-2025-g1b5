@@ -2,10 +2,56 @@
     width: 10%;
 }
 
+/** page panier quantite + et - */
+
+.quantity-btn {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.quantity-btn:hover {
+    background-color: #e0e0e0;
+    transform: scale(1.1);
+}
+
+.quantity-btn:active {
+    background-color: #ccc;
+    transform: scale(0.9);
+}
+
+.minus-btn::before {
+    content: "−";
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+.plus-btn::before {
+    content: "+";
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+
+
+/** page modif adresse **/
+
 /* Style global de la section */
 .changement-adresse {
+    
     max-width: 700px;
-    margin: 0 auto; /* Centrer le formulaire */
+    margin: auto; /* Centrer le formulaire */
+    margin-top: 3%;
     padding: 20px;
     font-family: Arial, sans-serif;
     background-color: #f9f9f9; /* Fond clair */
@@ -61,10 +107,24 @@
   }
 
 
-  /** commande - choix  **/
+  /** modif carte bancaire  **/
 
 /* Conteneur principal */
+.submit-btn  {
+    flex: 100%;
+    padding: 12px;
+    background-color: #ff1f11;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+
 .paiement-container {
+    margin: auto;
+    margin-top: 4%;
     background: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -78,19 +138,6 @@
     font-size: 18px;
     margin-bottom: 15px;
     color: #333;
-}
-
-/* Logos de cartes */
-.logos {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 15px;
-}
-
-.logos img {
-    height: 30px;
-    width: auto;
 }
 
 /* Champs de saisie */
@@ -149,27 +196,7 @@
     color: #444;
 }
 
-/* Bouton de soumission */
-.submit-btn {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    background-color: #ddd;
-    color: #888;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: not-allowed;
-}
 
-.submit-btn:enabled {
-    background-color: #f39c12;
-    color: #fff;
-    cursor: pointer;
-}
-
-.submit-btn:enabled:hover {
-    background-color: #e67e22;
-}
 
 /** Type de Livraison **/
 
@@ -217,6 +244,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap : 20px;
 }
 
 /* Prix gratuit ou payant */
@@ -224,13 +252,10 @@
     font-weight: bold;
 }
 
-.prix.gratuit {
+.prix.gratuit , .prix.payant {
     color: #d9534f; /* Rouge pour gratuit */
 }
 
-.prix.payant {
-    color: #d9534f; /* Rouge pour le prix */
-}
 
 /* Détails (texte informatif) */
 .livraison-details {
@@ -251,9 +276,6 @@
     border-color: #007bff;
 }
 
-.livraison-card input[type="radio"]:checked ~ .livraison-content .livraison-header {
-    color: #007bff;
-}
 
 /* Animation légère */
 .livraison-card:active {
@@ -270,7 +292,7 @@
 
 /* Section du panier */
 .votre-panier {
-    flex: 2;
+    flex: 1;
     background-color: #ffffff;
     padding: 20px;
     border-radius: 8px;
@@ -278,8 +300,13 @@
 }
 
 .votre-panier h1 {
-    font-size: 24px;
+    font-size: 40px;
     margin-bottom: 20px;
+}
+
+.votre-panier h2 {
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
 
 .rappel-produit-panier {
@@ -310,7 +337,7 @@
 }
 
 .recapitulatif h1 {
-    font-size: 24px;
+    font-size: 40px;
     margin-bottom: 20px;
 }
 
@@ -339,6 +366,104 @@
     background-color: #f9f9f9;
 }
 
+
+
+/** moyen de paiement **/
+
+
+.payment-box {
+    background: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.card-info {
+    background: #fff;
+    border: 1px solid #dcdcdc;
+    border-radius: 10px;
+    padding: 15px;
+    font-size: 18px;
+    letter-spacing: 1px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.details {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.8;
+}
+
+.details p {
+    margin: 0;
+    padding: 5px 0;
+    font-size: 14px;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.details p:last-child {
+    border-bottom: none;
+}
+
+
+/** Confirmation de commande **/
+
+
+.confirmation-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin-top: 3%;
+}
+
+.confirmation-box {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 30px 20px;
+    max-width: 400px;
+    margin: 20px;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+.success-icon {
+    width: 80px;
+    margin-bottom: 20px;
+}
+
+.confirmation-box h1 {
+    color: #2ecc71;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.confirmation-box p {
+    color: #555;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    background-color: #3498db;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #2980b9;
+}
 
 
 

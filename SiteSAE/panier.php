@@ -4,7 +4,7 @@
 
     //session_start();
 
-        if (isset($_SESSION['client_email']) || isset($_COOKIE['CidClient'])) {
+        if (isset($_SESSION['client_email']) ) {
 
             $req = $conn->prepare("SELECT * FROM Client WHERE email = ?");
             $req->execute([$_SESSION['client_email']]);
@@ -18,6 +18,14 @@
 
 ?>
 
+<script>
+	// Cette fonction permettra de demander la connexion a son compte client
+	function alertConnexion() {
+		if(confirm("Il faut être connecté, voulez-vous vous connecter ?")){
+			document.location.href = "connexionCompte.php";
+		} 
+	}
+</script>
 
 <section class="panier">
 
@@ -43,11 +51,18 @@
                                     <div class="prix">
                                         <p> '. $produit_panier['prix'] .' </p>
                                         <p> '. $produit_panier['quantite'] .' </p>
-    
-                                        <form action="supprimerPanier.php" method="POST">
+
+                                        <form action="supprimerPanier.php" method="POST" style="display: inline;">
                                             <input type="text" value="'. $produit_panier['idProduit'] . '" name="idProduit" hidden>
                                             <input type="text" value="'. $idClient . '" name="idClient" hidden>
-                                            <button type="submit" class="delete-btn" >Supprimer</button>
+                                            <button type="submit" class="quantity-btn minus-btn" ></button>
+                                        </form>
+
+                                        <form action="ajouterPanier.php" method="get" style="display: inline;">
+                                            <input type="text" value="'. $produit_panier['idProduit'] . '" name="idProduit" hidden>
+                                            <input type="number" value="1" name="quantite" hidden>
+                                            <input type="number" value="1" name="confirmation" hidden>
+                                            <button type="submit" class="quantity-btn plus-btn" ></button>
                                         </form>
                                 </div>
                             </div>
@@ -80,11 +95,18 @@
                         echo '  <div class="info-produit-panier">
                                     <p> ' . $prod['nomProduit'] . '</p>
                                     <div class="prix">
-                                        <p> '. $prod['prix'] .' </p>
-                                        <p> '. $quantite .' </p>
-                                        <form action="supprimerPanier.php" method="POST">
+                                        <p> '. $prod['prix'] .' €</p>
+                                        <p> Quantite : '. $quantite .' </p>
+                                        
+                                        <form action="supprimerPanier.php" method="POST" style="display: inline;">
                                             <input type="text" value="'. $idProd . '" name="idProd" hidden>
-                                            <button type="submit" class="delete-btn" >Supprimer</button>
+                                            <button type="submit" class="quantity-btn minus-btn" ></button>
+                                        </form>
+
+                                        <form action="ajouterPanier.php" method="get" style="display: inline;">
+                                            <input type="text" value="'. $idProd . '" name="idProduit" hidden>
+                                            <input type="number" value="1" name="quantite" hidden>
+                                            <button type="submit" class="quantity-btn plus-btn" ></button>
                                         </form>
                                 </div>
                             </div>
@@ -189,8 +211,9 @@
                         <p>Sous-Total : ' . $prixTotal . ' €</p>
                     </div>
 
-                    <button type="button" class="valider-panier" onclick="">Valider mon Panier</button>
-                ';
+                    ';
+
+                echo ' <a href="javascript:alertConnexion()"><button type="button" class="valider-panier" >Valider mon Panier</button></a> ';
             }
 
         }

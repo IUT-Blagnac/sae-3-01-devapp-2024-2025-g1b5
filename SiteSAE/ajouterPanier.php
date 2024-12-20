@@ -5,13 +5,15 @@
     // Récupérer l'idProduit depuis l'URL
     $idProduit = isset($_GET['idProduit']) ? intval($_GET['idProduit']) : 0;
 
-    // Récupérer l'idProduit depuis l'URL
+    // Récupérer la quantite depuis l'URL
     $quantite = isset($_GET['quantite']) ? intval($_GET['quantite']) : 1;
+
+    $confirm = isset($_GET['confirmation']) ? intval($_GET['confirmation']) : 0;
 
 
     session_start();
 
-    if (isset($_SESSION['client_email']) or isset($_COOKIE['CidClient'])) {
+    if (isset($_SESSION['client_email']) ) {
 
         $req = $conn->prepare("SELECT * FROM Client WHERE email = ?");
         $req->execute([$_SESSION['client_email']]);
@@ -34,7 +36,12 @@
             $statement->execute();
             $statement->closeCursor();
 
-            header("Location: descriptionDetail.php?idProduit=$idProduit");
+            if ($confirm == 1) {
+                header("Location: panier.php");
+            } else {
+                header("Location: descriptionDetail.php?idProduit=$idProduit");
+            }
+
         } catch (PDOException $e) {
             echo "Erreur lors de l'insertion du produit dans le panier !";
         }

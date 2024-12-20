@@ -35,6 +35,14 @@ if ($idProduit > 0) {
     $prod->closeCursor();
 }
 
+// Vérifier si le client a commandé le produit
+$commande = false;
+if ($idClient > 0 && $idProduit > 0) {
+    $query = $conn->prepare("SELECT COUNT(*) FROM Commande WHERE idClient = ?");
+    $query->execute([$idClient]);
+    $commande = $query->fetchColumn() > 0;
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['deleteAvis']) && $_POST['deleteAvis'] == 1) {
         // Handle delete review
@@ -80,14 +88,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // Delete response from a session or a file
         unset($_SESSION['reponses'][$idProduit][$idClientAvis]);
-    } elseif (isset($_POST['deleteAvis'])) {
+    } elseif (isset($_POST['deleteAvisAdmin'])) {
         // Handle delete review
         $idProduit = $_GET['idProduit'];
         $idClientAvis = $_GET['idClientAvis'];
+        echo'<script>alert("'.$idClientAvis.'")</script>';
 
         // Delete review from the database
-        $stmt = $conn->prepare("CALL SupprimerAvisEtMettreAJourNoteGlobale(?, ?)");
-        $stmt->execute([$idProduit, $idClient]);
+        try {
+            $stmt = $conn->prepare("CALL SupprimerAvisEtMettreAJourNoteGlobale(?, ?)");
+            $stmt->execute([$idProduit, $idClientAvis]);
+        } catch (PDOException $e) {
+            echo "". $e->getMessage() ."";
+        }
     } else {
         // Handle add review
         if (isset($_POST['idProduit']) && isset($_POST['idClient'])) {
@@ -100,7 +113,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmt = $conn->prepare("CALL AjouterAvisEtMettreAJourNoteGlobale(?, ?, ?, ?)");
             $stmt->execute([$idProduit, $idClient, $contenu, $note]);
         } catch (PDOException $e) {
-            echo "";
+            echo "". $e->getMessage() ."";
         }
     }
     }
@@ -144,20 +157,21 @@ $req->closeCursor();
             $r=0;
             foreach($produitParPromo as $r1){
                 if($r1['idProduit']==$produit['idProduit']){
-                    $r=$r1['reduction']*$produit['prix'];
+                    
+                    $r=$produit['prix']/(1-$r1['reduction']);
                     $r = number_format($r, 2);
                 }
             }
             
             if($r!= 0  ){
-        echo '<p class="prix-produit" style="margin:5px 0; color:red; font-size:1em; text-decoration: line-through;">Prix : ' . htmlspecialchars($produit['prix']) . ' €</p>';
-        echo '<center><p class="prix-produit" style="margin:5px 0; color:#007BFF; font-size:0.9em; font-weight: bold;">Promo : ' . htmlspecialchars($produit['prix']-$r) . ' €</p></center>';
+                echo '<p class="prix-produit" style="margin:5px 0; color:red; font-size:1em; text-decoration: line-through;">Prix : ' . htmlspecialchars($r) . ' €</p>';
+                echo '<center><p class="prix-produit" style="margin:5px 0; color:#007BFF; font-size:0.9em; font-weight: bold;">Promo : ' . htmlspecialchars($produit['prix']) . ' €</p></center>';
 
-    
-    }else{
-        echo '<p class="prix-produit" style="margin:5px 0; color:#007BFF; font-size:1em;">Prix : ' . htmlspecialchars($produit['prix']) . ' €</p>';
-    
-    }
+            
+            }else{
+                echo '<p class="prix-produit" style="margin:5px 0; color:#007BFF; font-size:1em;">Prix : ' . htmlspecialchars($produit['prix']) . ' €</p>';
+            
+            }
              ?> </h2>
         </div>
 
@@ -166,23 +180,70 @@ $req->closeCursor();
             <button type="submit" class="button">Ajouter au panier</button>
             <input type="number" id="quantite" value="1" name="quantite" min="1" oninput="ajusterQuantite()">
         </form>
-        <button type="button" class="butFavoris" id="favButton">
-            <img src="images/petit-coeur-rouge.png" alt="petit coeur" width="20px" id="favImage">
-        </button>
+		<?php
+		// Récupérer l'ID du client et du produit
+		$idClient = isset($client['idClient']) ? $client['idClient'] : 0;
+		$idProduit = isset($_GET['idProduit']) ? intval($_GET['idProduit']) : 0;
 
-        <!-- Intégration du JavaScript -->
-        <script>
-            document.getElementById('favButton').addEventListener('click', function() {
-                var img = document.getElementById('favImage');
+		$isFavorite = false; // Valeur par défaut
 
-                if (img.src.includes('petit-coeur-rouge.png')) {
-                    img.src = 'images/petit-coeur-plein.png'; // Remplacez ceci par le chemin de la deuxième image
-                } else {
-                    img.src = 'images/petit-coeur-rouge.png'; // Remplacez ceci par le chemin de l'image initiale
-                }
-            });
-        </script>
-    </div>
+		if ($idClient > 0 && $idProduit > 0) {
+			// Vérifier si ce produit est déjà dans les favoris
+			$checkFav = $conn->prepare("SELECT * FROM Produit_Favoris WHERE idProduit = ? AND idClient = ?");
+			$checkFav->execute([$idProduit, $idClient]);
+			$isFavorite = $checkFav->rowCount() > 0; // True si le produit est déjà dans les favoris
+		}
+		?>
+
+		<button type="button" class="butFavoris" id="favButton">
+			<img src="<?php echo $isFavorite ? 'images/petit-coeur-plein.png' : 'images/petit-coeur-rouge.png'; ?>" alt="petit coeur" width="20px" id="favImage">
+		</button>
+
+
+	<script>
+	// Fonction pour afficher un message temporaire
+	function afficherMessage(message) {
+		var msgElement = document.createElement("p");
+		msgElement.textContent = message;
+		document.getElementById("message-container").appendChild(msgElement);
+		setTimeout(function() { msgElement.remove(); }, 2000);
+	}
+
+	// Vérifier si l'utilisateur est connecté
+	var isUserLoggedIn = <?php echo isset($_SESSION['client_email']) ? 'true' : 'false'; ?>;
+
+	document.getElementById('favButton').addEventListener('click', function() {
+		if (!isUserLoggedIn) {
+			afficherMessage("Vous devez être connecté pour ajouter aux favoris.");
+			return; // Ne pas exécuter le reste du code si l'utilisateur n'est pas connecté
+		}
+
+		var img = document.getElementById('favImage');
+		var idProduit = <?php echo $idProduit; ?>;
+		var idClient = <?php echo $idClient; ?>;
+
+		// Ajout ou retrait du produit dans les favoris
+		if (img.src.includes('petit-coeur-rouge.png')) {
+			img.src = 'images/petit-coeur-plein.png'; // Le coeur devient plein (favori ajouté)
+			var action = 'ajouter';
+			afficherMessage("Ajouté aux favoris");
+		} else {
+			img.src = 'images/petit-coeur-rouge.png'; // Le coeur devient vide (favori retiré)
+			var action = 'retirer';
+			afficherMessage("Retiré des favoris");
+		}
+
+		// Requête AJAX pour ajouter ou retirer du favori
+		var xhr = new XMLHttpRequest();
+		xhr.open("POST", "favorisAction.php", true);
+		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		xhr.send("idProduit=" + idProduit + "&idClient=" + idClient + "&action=" + action);
+	});
+	</script>
+
+	<div id="message-container"></div>
+
+ 
 </section>
 
 <section class="description">
@@ -211,7 +272,7 @@ $req->closeCursor();
     <h2>Avis</h2>
 
     <?php
-    if ($client_email):
+    if ($commande):
         echo '<button type="button" class="button-avis" onclick="blocAvis()">Ajouter un avis</button>';
     endif;
     ?>
@@ -234,6 +295,7 @@ $req->closeCursor();
                 </div>
                 <div>
                     <label for="contenu">Contenu:</label>
+                    <br>
                     <textarea name="contenu" id="contenu" required></textarea>
                 </div>
                 <div>
@@ -303,7 +365,7 @@ $req->closeCursor();
         // button de suppression de l'avis pour l'entreprise
         if ($client_role !== null) {
             echo '<form action="descriptionDetail.php?idProduit=' . $idProduit . '&idClientAvis=' . $avis['idClient'] . '" method="post" style="display:inline;">
-                    <button type="submit" name="deleteAvis">Supprimer Avis</button>
+                    <button type="submit" name="deleteAvisAdmin">Supprimer Avis</button>
                   </form>';
         }
 

@@ -1,11 +1,11 @@
 <?php
 include("tableauxProduit.php");
+include "testAdmin.php"; // Connexion à la base de données
 
 
 //verifier que reduction est bien un nombre plus petit ou egal a 1 avec 2 chiffres apres la virgule
 $listeProduitPromo = array_column($produitParPromo, 'idProduit');
 $r = $_POST['reduction'];
-var_dump($listeProduitPromo);
 if(isset($_POST)){
     if(preg_match('/^(0\.[0-9][1-9]?|1(\.00?)?)$/', $_POST['reduction'])&& $_GET['idProduit'] > 0 && !in_array($_GET['idProduit'], $listeProduitPromo)){
         $reduction = $_POST['reduction'];
@@ -30,5 +30,4 @@ if(isset($_POST)){
     }else{
         header("Location: gestionProduit.php?error=$_GET[idProduit]");
     }
-    var_dump($_POST);
 }

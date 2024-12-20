@@ -85,6 +85,8 @@
 					throw new Exception("Erreur lors de l'upload de l'image : " . $_FILES['file']['error']);
 				}
 			}
+			$query = $conn->prepare('CALL InsertDerniersProduits();');
+			$query->execute();
 
 			$conn->commit(); // Valide la transaction
 			header('Location: gestionProduit.php?success=add');

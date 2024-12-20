@@ -69,6 +69,19 @@ main {
         .tableau-produits th {
             background-color: #f2f2f2;
         }
+        .tableau-promo {
+            margin: 20px auto;
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .tableau-promo th, .tableau-promo td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        .tableau-promo th {
+            background-color: #f2f2f2;
+        }
 		
 /* Conteneur du formulaire */
 .modifier-produit {

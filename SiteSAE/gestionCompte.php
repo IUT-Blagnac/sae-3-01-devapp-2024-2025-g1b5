@@ -4,10 +4,19 @@
 	// Suppression d'un client
 	if (isset($_POST['delete'])) {
 		$idClient = $_POST['delete'];
+		$query = $conn->prepare("DELETE FROM Commande WHERE idClient = :idClient");
+		$query->bindParam(':idClient', $idClient, PDO::PARAM_INT);
+		$query->execute();
+		$query = $conn->prepare("DELETE FROM CarteBancaire WHERE idClient = :idClient");
+		$query->bindParam(':idClient', $idClient, PDO::PARAM_INT);
+		$query->execute();
+		$query = $conn->prepare("DELETE FROM Avis WHERE idClient = :idClient");
+		$query->bindParam(':idClient', $idClient, PDO::PARAM_INT);
+		$query->execute();
 		$query = $conn->prepare("DELETE FROM Client WHERE idClient = :idClient");
 		$query->bindParam(':idClient', $idClient, PDO::PARAM_INT);
 		$query->execute();
-		echo "<p>Le compte client a été supprimé avec succès.</p>";
+		echo "<script>alert('Le compte client a été supprimé avec succès.');</script>";
 	}
 
 	// Promouvoir un client au rôle Admin
@@ -16,7 +25,7 @@
 		$query = $conn->prepare("UPDATE Client SET role = 'A' WHERE idClient = :idClient");
 		$query->bindParam(':idClient', $idClient, PDO::PARAM_INT);
 		$query->execute();
-		echo "<p>L'utilisateur séléctionné est bien passé administrateur.</p>";
+		echo "<script>alert('L'utilisateur séléctionné est bien passé administrateur.');</script>";
 	}
 
 	// Recherche de clients

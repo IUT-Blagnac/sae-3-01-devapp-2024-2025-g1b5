@@ -6,6 +6,7 @@
     
     if (isset($_SESSION['client_email']) ) {
         
+        
         $req = $conn->prepare("SELECT * FROM Client WHERE email = ?");
         $req->execute([$_SESSION['client_email']]);
         $client = $req->fetch();
@@ -20,7 +21,7 @@
         try {
 
             $commande = $conn->prepare("INSERT INTO Commande ( typeLivraison, dateCommande, idClient, idAdresse, statut)  VALUES ( ?, CURRENT_DATE(), ?, ?, ?) ");
-            $commande->execute([ $typeLivraison, $idClient, $idAdresse, null]);
+            $commande->execute([ $typeLivraison, $idClient, $idAdresse, 'En preparation']);
             $commande->closeCursor();
 
             $selectCommande = $conn->prepare("SELECT max(idCommande) FROM Commande WHERE idClient = ? AND dateCommande = CURRENT_DATE() ");
@@ -48,9 +49,15 @@
 
             $panier->closeCursor();
 
-            header("Location: commande.php");
+            unset($_SESSION['numCarte']);
+            unset($_SESSION['dateE']);
+            unset($_SESSION['cvv']);
+            unset($_SESSION['titulaire']);
+
+            header("Location: commande.php?statut=reussi");
         } catch (PDOException $e) {
             echo "Erreur lors de l'insertion de la commande !";
+            header("Location: commande.php?statut=echoue");
         }
         
     } else {
