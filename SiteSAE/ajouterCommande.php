@@ -36,7 +36,7 @@
 
             while( $produit_panier = $panier -> fetch() ) {
 
-                $composer = $conn->prepare("INSERT INTO Composer ( idCommande, idProduit, quantite, reduction)  VALUES ( ?, ?, ?, ?) ");
+                $composer = $conn->prepare("INSERT INTO Composer ( idCommande, idProduit, quantite, idCodePromo)  VALUES ( ?, ?, ?, ?) ");
                 $composer->execute([ $idCommande, $produit_panier['idProduit'], $produit_panier['quantite'], null]);
                 $composer->closeCursor();
 
@@ -53,6 +53,9 @@
             unset($_SESSION['dateE']);
             unset($_SESSION['cvv']);
             unset($_SESSION['titulaire']);
+
+            unset($_SESSION['paypalMail']);
+            unset($_SESSION['paypalMdp']);
 
             header("Location: commande.php?statut=reussi");
         } catch (PDOException $e) {

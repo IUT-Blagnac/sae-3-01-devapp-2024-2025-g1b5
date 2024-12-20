@@ -409,6 +409,42 @@
     border-bottom: none;
 }
 
+/* Style pour la box PayPal */
+.paypal-box {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    display: flex;
+    margin-top: 5%;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.paypal-box .paypal-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.paypal-box .paypal-info input[type="radio"] {
+    accent-color: #0070ba; /* Couleur spécifique à PayPal */
+    width: 18px;
+    height: 18px;
+}
+
+.paypal-box .paypal-info label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+.paypal-box .paypal-description {
+    font-size: 14px;
+    color: #555;
+    margin: 0;
+}
+
 
 /** Confirmation de commande **/
 
@@ -466,5 +502,82 @@
 }
 
 
+/* Styles généraux pour les méthodes de paiement */
+.payment-method {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    max-width: 400px;
+    margin: auto;
+}
 
-  
+/* Section Carte Bancaire */
+.payment-box {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    background-color: #ffffff;
+}
+.card-info {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+.details p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.valider-panier {
+    display: inline-block;
+    background-color: #ff4500;
+    color: white;
+    font-size: 14px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+.valider-panier:hover {
+    background-color: #e03d00;
+}
+
+/* Section PayPal */
+.paypal-box {
+   
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    background-color: #ffffff;
+}
+
+.paypal-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.paypal-info label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.paypal-description {
+    font-size: 14px;
+    color: #555;
+    margin-left: 28px; /* Align with the radio button */
+}
+.paypal-info input {
+    margin-bottom: 10px;
+}
+

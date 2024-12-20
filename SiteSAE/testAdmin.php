@@ -30,5 +30,5 @@ if (isset($_SESSION['client_email']) || isset($_COOKIE['CidClient'])) {
     exit();
 }
 
-include "header.php";
+require_once "header.php";
 ?>

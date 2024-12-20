@@ -1,5 +1,5 @@
 <?php
-    include "header.php";
+    require_once "header.php";
     include "Connect.inc.php";
 
     //session_start();
@@ -38,7 +38,7 @@
 
                 $panier = $conn->prepare("SELECT * FROM Panier_Client pc, Produit p WHERE pc.idProduit = p.idProduit AND idClient = ?");
                 $panier->execute([$idClient]);
-                
+              
                 if ( $panier -> rowCount() >= 1 ){
 
                     while( $produit_panier = $panier -> fetch() ) {
@@ -127,11 +127,34 @@
 
     <div class="recapitulatif">
         <h1>Récapitulatif</h1>
+        <?php
+            $code = $conn->prepare("SELECT * FROM Panier_Client_Promo WHERE idClient = ?");
+            $code->execute([$idClient]);
+            while ($code = $code->fetch(PDO::FETCH_ASSOC)) {
+                $pClient[] = $code['idPromo'];
+                echo $pClient['idPromo'];
+            }
+        ?>
 
         <div class="recap-panier">
             <div class="code-promo">
                 <label for="code-promo">Code Promo :</label>
-                <input type="text" class="promo" placeholder="Ecrivez le ici ...">
+                <form action="promoVerif.php?idClient=<?php echo $idClient; ?>" method="POST">
+                    <input type="text" name="promocode" id="promocode" placeholder="Entrez votre code promo">
+                    <?php if (isset($_GET['error'])) { ?>
+                        <p style="color: red;"><?php echo $_GET['error']; ?></p>
+                    <?php } 
+                    if($pClient['idPromo']!=null){
+
+                        echo '<p>Code promo appliqué
+                        </p>';
+
+                    }else{
+                        echo '<button type="submit" class="valider-panier">Valider </button>';
+                    }
+                    ?>
+                    
+                </form>
             </div>
         </div>
 

@@ -38,9 +38,24 @@ if ($idProduit > 0) {
 // Vérifier si le client a commandé le produit
 $commande = false;
 if ($idClient > 0 && $idProduit > 0) {
-    $query = $conn->prepare("SELECT COUNT(*) FROM Commande WHERE idClient = ?");
-    $query->execute([$idClient]);
-    $commande = $query->fetchColumn() > 0;
+    
+    // Debug: Afficher les valeurs de $idClient et $idProduit
+    error_log("idClient: $idClient, idProduit: $idProduit");
+
+    $query = $conn->prepare("SELECT COUNT(*) as count 
+         FROM Commande 
+         INNER JOIN Composer ON Commande.idCommande = Composer.idCommande 
+         WHERE Commande.idClient = :idClient AND Composer.idProduit = :idProduit"
+    );
+    $query->bindParam(':idClient', $idClient, PDO::PARAM_INT);
+    $query->bindParam(':idProduit', $idProduit, PDO::PARAM_INT);
+    $query->execute();
+    $count = $query->fetchColumn();
+
+    // Debug: Afficher le résultat de la requête
+    error_log("Commande count: $count");
+
+    $commande = $count > 0;
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

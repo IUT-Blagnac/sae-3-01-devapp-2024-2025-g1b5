@@ -1,12 +1,12 @@
 <?PHP
-include "header.php";
-include "tableauxProduit.php";
+require_once "header.php";
+require_once "tableauxProduit.php";
 ?>
 <div class="img-acceuil">
   <img src="images/guirlandes-accueil.png" alt="Image guirlandes page d'acceuil">
 </div>
 <?php
-include "Connect.inc.php";
+require_once "Connect.inc.php";
 ?>
 <br>
 <br>

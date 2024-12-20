@@ -107,8 +107,14 @@
 
                         $dernierNumCarte = substr($numCarte, -4);
 
+
                         echo "                            
                                 <div class='payment-box'>
+                                    <div class='paypal-info'>
+                                        <input type='radio' id='carteBancaire' name='methodePaiement' value='carteBancaire' checked>
+                                        <label for='carteBancaire' >Utiliser la carte Bancaire</label>
+                                    </div>
+                                
                                     <div class='card-info'>
                                         <span>•••• •••• •••• ".$dernierNumCarte."</span>
                                     </div>
@@ -125,7 +131,41 @@
                                 <button type="submit" class="valider-panier">Modifier la carte enregistrée</button>
                             </form>
                         ';
+
+                        if (isset($_SESSION['paypalMail']) && isset($_SESSION['paypalMdp']) ) {
+
+                            echo '
+                                <div class="paypal-box">
+                                    <div class="paypal-info">
+                                        <input type="radio" id="paypal" name="methodePaiement" value="paypal">
+                                        <label for="paypal">Utiliser PayPal</label>
+                                    </div>
+                                    <p class="paypal-description">Vous êtes connecté votre compte PayPal avec le mail '. $_SESSION['paypalMail'] .'</p>
+                                </div>
+    
+                                <form class="choix-adresse" action="choisirPaypal.php" method="POST">   
+                                    <button type="submit" class="valider-panier">Choisir PayPal</button>
+                                </form>
+                            ' ;
+                            
+                        } else {
+
+                            echo '
+                                <div class="paypal-box">
+                                    <div class="paypal-info">
+                                        <input type="radio" id="paypal" name="methodePaiement" value="paypal">
+                                        <label for="paypal">Utiliser PayPal</label>
+                                    </div>
+                                    <p class="paypal-description">Connectez-vous à votre compte PayPal pour payer.</p>
+                                </div>
+    
+                                <form class="choix-adresse" action="choisirPaypal.php" method="POST">   
+                                    <button type="submit" class="valider-panier">Choisir PayPal</button>
+                                </form>
+                            ' ;
+                        }
                         
+                      
                     } else {
 
                         if (isset($_SESSION['numCarte']) && isset($_SESSION['cvv']) ) {
@@ -140,6 +180,10 @@
 
                             echo "                            
                                     <div class='payment-box'>
+                                        <div class='paypal-info'>
+                                            <input type='radio' id='carteBancaire' name='methodePaiement' value='carteBancaire' checked>
+                                            <label for='carteBancaire' >Utiliser la carte Bancaire</label>
+                                        </div>
                                         <div class='card-info'>
                                             <span>•••• •••• •••• ".$dernierNumCarte."</span>
                                         </div>
@@ -156,6 +200,39 @@
                                     <button type="submit" class="valider-panier">Modifier la carte enregistrée</button>
                                 </form>
                             ';
+
+                            if (isset($_SESSION['paypalMail']) && isset($_SESSION['paypalMdp']) ) {
+
+                                echo '
+                                    <div class="paypal-box">
+                                        <div class="paypal-info">
+                                            <input type="radio" id="paypal" name="methodePaiement" value="paypal">
+                                            <label for="paypal">Utiliser PayPal</label>
+                                        </div>
+                                        <p class="paypal-description">Vous êtes connecté votre compte PayPal avec le mail '. $_SESSION['paypalMail'] .'</p>
+                                    </div>
+        
+                                    <form class="choix-adresse" action="choisirPaypal.php" method="POST">   
+                                        <button type="submit" class="valider-panier">Choisir PayPal</button>
+                                    </form>
+                                ' ;
+                                
+                            } else {
+    
+                                echo '
+                                    <div class="paypal-box">
+                                        <div class="paypal-info">
+                                            <input type="radio" id="paypal" name="methodePaiement" value="paypal">
+                                            <label for="paypal">Utiliser PayPal</label>
+                                        </div>
+                                        <p class="paypal-description">Connectez-vous à votre compte PayPal pour payer.</p>
+                                    </div>
+        
+                                    <form class="choix-adresse" action="choisirPaypal.php" method="POST">   
+                                        <button type="submit" class="valider-panier">Choisir PayPal</button>
+                                    </form>
+                                ' ;
+                            }
                             
                         } else {
                        
@@ -167,6 +244,39 @@
                                     <button type="submit" class="valider-panier">Ajouter une carte</button>
                                 </form>
                             ';
+
+                            if (isset($_SESSION['paypalMail']) && isset($_SESSION['paypalMdp']) ) {
+
+                                echo '
+                                    <div class="paypal-box">
+                                        <div class="paypal-info">
+                                            <input type="radio" id="paypal" name="methodePaiement" value="paypal" checked>
+                                            <label for="paypal">Utiliser PayPal</label>
+                                        </div>
+                                        <p class="paypal-description">Vous êtes connecté votre compte PayPal avec le mail '. $_SESSION['paypalMail'] .'</p>
+                                    </div>
+        
+                                    <form class="choix-adresse" action="choisirPaypal.php" method="POST">   
+                                        <button type="submit" class="valider-panier">Choisir PayPal</button>
+                                    </form>
+                                ' ;
+                                
+                            } else {
+    
+                                echo '
+                                    <div class="paypal-box">
+                                        <div class="paypal-info">
+                                            <input type="radio" id="paypal" name="methodePaiement" value="paypal">
+                                            <label for="paypal">Utiliser PayPal</label>
+                                        </div>
+                                        <p class="paypal-description">Connectez-vous à votre compte PayPal pour payer.</p>
+                                    </div>
+        
+                                    <form class="choix-adresse" action="choisirPaypal.php" method="POST">   
+                                        <button type="submit" class="valider-panier">Choisir PayPal</button>
+                                    </form>
+                                ' ;
+                            }
 
                         }
 
@@ -258,9 +368,15 @@
                     </div>
 
                     <input type="text" name="idAdresse" value="', $idAdresse,'" hidden>  
-                    <button type="submit" class="valider-panier" >Payer</button>
-                </form>
             ';
+                    
+                if ( $idAdresse && ($carteBancaire || isset($_SESSION['numCarte']) ) ) {
+                    echo ' <button type="submit" class="valider-panier" >Payer</button>';
+                } else {
+                    echo ' <button type="submit" class="valider-panier" disabled>Payer</button>';
+                }
+                    
+                echo'</form>';
 
         } 
 

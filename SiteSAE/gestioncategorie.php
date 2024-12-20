@@ -1,5 +1,4 @@
 <?php
-require_once 'Connect.inc.php';
 
 
 $categorie =[];
@@ -115,13 +114,9 @@ function separateur($categEnfant, $categParent) {
             unset($tabCategNV2b[$key]);
         }
     }
-    echo afficherCategories($tabCategNV1, $tabCategNV2b, $tabCategNV3,$categEnfant) ;
+    return afficherCategories($tabCategNV1, $tabCategNV2b, $tabCategNV3,$categEnfant) ;
     
     
 }
-
-separateur($categorie, $scategorie);
-
-
 
 ?>

@@ -1,18 +1,27 @@
 <?php
-include "tableauxProduit.php";
-include "testAdmin.php";
+ob_start(); // Commence le tampon de sortie
+require_once "tableauxProduit.php";
+require_once "testAdmin.php";
+
 
 
 $searchNom = $_POST['search_nom'] ?? '';
 
 $lister = [];
 
-if(isset($_POST['search_nom'])){
+if (isset($_POST['search_nom']) && !empty($_POST['search_nom'])) {
     foreach ($listeCodePromo as $code) {
-        if (stripos($code["nomCodePromo"],$searchNom) && $searchNom != '') {
+        if (stripos($code["NomCodePromo"], $searchNom) && $searchNom != '') {
             $lister[] = $code;
         }
     }
+    if (count($lister) > 0) {
+        $listeCodePromo1 = $listeCodePromo;
+    } else {
+        $listeCodePromo1 = $lister;
+    }
+} else {
+    $listeCodePromo1 = $listeCodePromo;
 }
 ?>
 <!DOCTYPE html>
@@ -43,7 +52,7 @@ if(isset($_POST['search_nom'])){
         <h2>Ajouter code promo</h2>
 
         <div class="tableau-produits">
-        <!-- ajouterCodePromo-->
+            <!-- ajouterCodePromo-->
             <form method="POST" action="ajouterCodePromo.php">
                 <table>
                     <thead>
@@ -57,26 +66,27 @@ if(isset($_POST['search_nom'])){
                     </thead>
                     <tbody>
 
-                       <form action="ajouterCodePromo.php" method="POST">
-                        <tr>
-                            <td><input type="text" name="nomCodePromo" required></td>
-<!-- verification du chiffre compris entre 0 et 1 .0 non inclue-->
-                            <td><input type="number" name="reduction" step="0.01" min="0" max="1" required></td>
-                            <td>
-    <input type="date" name="dateDebut" value="<?php echo date('Y-m-d'); ?>" >
-</td>
-<td>
-    <input type="date" name="dateFin" value="<?php echo date('Y-m-d', strtotime('+1 year')); ?>" >
-</td>
+                        <form action="ajouterCodePromo.php" method="POST">
+                            <tr>
+                                <td><input type="text" name="nomCodePromo" required></td>
+                                <!-- verification du chiffre compris entre 0 et 1 .0 non inclue-->
+                                <td><input type="number" name="reduction" step="0.01" min="0" max="1" required></td>
+                                <td>
+                                    <input type="date" name="dateDebut" value="<?php echo date('Y-m-d'); ?>">
+                                </td>
+                                <td>
+                                    <input type="date" name="dateFin"
+                                        value="<?php echo date('Y-m-d', strtotime('+1 year')); ?>">
+                                </td>
 
-                            <td><input type="submit" value="Ajouter"></td>
-                        </tr>
-                       
-                       </form>
+                                <td><input type="submit" value="Ajouter"></td>
+                            </tr>
+
+                        </form>
                     </tbody>
                 </table>
             </form>
-            
+
         </div>
         <br>
         <h2>Liste des codes promo</h2>
@@ -84,7 +94,9 @@ if(isset($_POST['search_nom'])){
             <table>
                 <thead>
                     <tr>
+                        <th>id Code Promo</th>
                         <th>Nom Code Promo</th>
+                        <th>Code Promo</th>
                         <th>Reduction</th>
                         <th>Date de debut</th>
                         <th>Date de fin</th>
@@ -95,18 +107,35 @@ if(isset($_POST['search_nom'])){
                 <tbody>
                     <?php
 
-                    foreach ($listeCodePromo as $codePromo) {
+                    foreach ($listeCodePromo1 as $codePromo) {
                         ?>
-                        <tr>
-                            <td><?= $codePromo['NomCodePromo'] ?></td>
-                            <td><?= $codePromo['reduction'] ?></td>
-                            <td><?= $codePromo['dateDebut'] ?></td>
-                            <td><?= $codePromo['dateFin'] ?></td>
-                            <td><a href="modifierCodePromo.php?idPromo=<?= $codePromo['idPromo'] ?>">Modifier</a>
-                            </td>
-                            <td><a href="supprimerCodePromo.php?idPromo=<?= $codePromo['idPromo'] ?>">Supprimer</a>
-                            </td>
-                        </tr>
+                        <form action="modifPromo.php" method="POST">
+                            <tr>
+                                <td>
+                                    <input type="hidden" name="idCodePromo"
+                                        value="<?= htmlspecialchars($codePromo['idPromo']) ?>">
+                                    <?= htmlspecialchars($codePromo['idPromo']) ?>
+                                </td>
+                                <td><input type="text" name="nomCodePromo" value="<?= $codePromo['NomCodePromo'] ?>"
+                                        required></td>
+                                <!-- verification du chiffre compris entre 0 et 1 .0 non inclue-->
+                                <td><input type="hidden" name="codePromo" value="<?= $codePromo['CodePromo'] ?>" >
+                                    <?= htmlspecialchars($codePromo['CodePromo']) ?>
+                                </td>
+                                <td><input type="number" name="reduction" value="<?= $codePromo['reduction'] ?>" step="0.01"
+                                        min="0" max="1" required></td>
+                                <td>
+                                    <input type="date" name="dateDebut" value="<?= $codePromo['dateDebut'] ?>">
+                                </td>
+                                <td>
+                                    <input type="date" name="dateFin" value="<?= $codePromo['dateFin'] ?>">
+                                </td>
+                                <td><input type="submit" name = 'Modifier' value="Modifier"></td>
+                                <td><input type="submit" name = 'Supprimer' value="Supprimer"></td>
+                            </tr>
+
+                        </form>
+
                         <?php
                     }
                     ?>
@@ -117,8 +146,11 @@ if(isset($_POST['search_nom'])){
         </div>
 
         <?PHP
-include "footer.php";
-?>
+
+
+        require_once "footer.php";
+        ob_end_flush()
+            ?>
 </body>
 
 </html>

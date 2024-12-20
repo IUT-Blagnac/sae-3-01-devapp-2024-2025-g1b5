@@ -1,8 +1,11 @@
 <?php
+ob_start();
 require_once 'Connect.inc.php';
-    if (session_status() === PHP_SESSION_NONE) {
+require_once "gestioncategorie.php";
+if (session_status() === PHP_SESSION_NONE) {
 		session_start();
-	}
+}
+    $affiche = separateur($categorie, $scategorie);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -103,7 +106,7 @@ require_once 'Connect.inc.php';
             <button class="deroulant">Type</button> 
             <div class="liste-deroulant">
             <?php
-            require_once "gestioncategorie.php";
+            print_r($affiche);
             ?>
             </div>
         </div>
@@ -119,3 +122,6 @@ require_once 'Connect.inc.php';
     </section> 
 
 </header>
+<?php
+ob_end_flush();
+?>

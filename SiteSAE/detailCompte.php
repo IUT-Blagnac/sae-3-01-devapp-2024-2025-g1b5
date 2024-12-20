@@ -53,7 +53,7 @@ $commandes = $query->fetchAll(PDO::FETCH_ASSOC);
         <ul>
             <li><a href="#">Informations personnelles</a></li>
             <li><a href="modifClient.php">Modifier Compte</a></li>
-            <li><a href="#">Commandes récentes</a></li>
+            <li><a href="detailCommandeClient.php">Toutes les commandes</a></li>
             <li><a href="deconnexion.php">Déconnexion</a></li>
         </ul>
     </nav>
