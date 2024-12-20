@@ -48,9 +48,15 @@
 
             $panier->closeCursor();
 
-            header("Location: commande.php");
+            unset($_SESSION['numCarte']);
+            unset($_SESSION['dateE']);
+            unset($_SESSION['cvv']);
+            unset($_SESSION['titulaire']);
+
+            header("Location: commande.php?statut=reussi");
         } catch (PDOException $e) {
             echo "Erreur lors de l'insertion de la commande !";
+            header("Location: commande.php?statut=echoue");
         }
         
     } else {

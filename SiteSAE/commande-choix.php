@@ -30,8 +30,6 @@
 
                 $panier = $conn->prepare("SELECT * FROM Panier_Client pc, Produit p WHERE pc.idProduit = p.idProduit AND idClient = ?");
                 $panier->execute([$idClient]);
-                
-                echo 'nb Produits : ';
 
                 while( $produit_panier = $panier -> fetch() ) {
                     $nomProduit = $produit_panier['nomProduit'];
@@ -83,6 +81,15 @@
                     ';
                   
 
+                } else {
+
+                    echo '<h2>Votre moyen de Livraison</h2>';
+
+                    echo '
+                        <form class="choix-adresse" action="modifAdresse.php" method="POST">                 
+                            <button type="submit" class="valider-panier" >Ajouter mon Adresse</button>
+                        </form>
+                    ';
                 }
 
                     echo '<h2>Votre moyen de Paiement</h2>';
@@ -98,48 +105,70 @@
                         $dateCarte = $carteBancaire['dateExpiration'] ;
                         $cvv = $carteBancaire['codeCarte'] ;
 
-                        echo $numCarte ;
-                        echo $dateCarte ;
-                        echo $cvv ;
+                        $dernierNumCarte = substr($numCarte, -4);
+
+                        echo "                            
+                                <div class='payment-box'>
+                                    <div class='card-info'>
+                                        <span>•••• •••• •••• ".$dernierNumCarte."</span>
+                                    </div>
+                                    <div class='details'>
+                                        <p>Date d'expiration : <span id='card-expiry'>".$dateCarte."</span></p>
+                                        <p>CVV : <span> •••</span></p>
+                                    </div>
+                                </div>
+                        ";
+
+                        echo '
+                            <form class="choix-adresse" action="modifCarteBancaire.php" method="POST">   
+                                <input type="text" name="carteActuelle" value="', $numCarte,'" hidden>                
+                                <button type="submit" class="valider-panier">Modifier la carte enregistrée</button>
+                            </form>
+                        ';
                         
                     } else {
-                       
-                        echo'<section class="paiement-container">
-                                <h2>Renseignez votre carte de paiement</h2>
-                                
-                                <form>
-                                    <!-- Numéro de carte -->
-                                    <div class="input-group">
-                                        <label for="card-number">Numéro de carte</label>
-                                        <input type="text" id="card-number" placeholder="1234 5678 9012 3456" required>
-                                    </div>
-    
-                                
-                                    <div class="input-row">
-                                        <div class="input-group">
-                                            <label for="expiration">Expiration</label>
-                                            <input type="text" id="expiration" placeholder="MM/AA" required>
+
+                        if (isset($_SESSION['numCarte']) && isset($_SESSION['cvv']) ) {
+
+                            $numCarte = $_SESSION['numCarte'] ;
+                            $dateCarte = $_SESSION['dateE'] ;
+                            $cvv = $_SESSION['cvv'] ;
+
+                            $dernierNumCarte = substr($numCarte, -4);
+
+                            echo "Votre carte ne sera pas enregistrée !";
+
+                            echo "                            
+                                    <div class='payment-box'>
+                                        <div class='card-info'>
+                                            <span>•••• •••• •••• ".$dernierNumCarte."</span>
                                         </div>
-                                        <div class="input-group">
-                                            <label for="ccv">CCV</label>
-                                            <input type="text" id="ccv" placeholder="3 chiffres" required>
+                                        <div class='details'>
+                                            <p>Date d'expiration : <span id='card-expiry'>".$dateCarte."</span></p>
+                                            <p>CVV : <span> •••</span></p>
                                         </div>
                                     </div>
-    
-                                    <div class="input-group">
-                                        <label for="cardholder">Titulaire de la carte</label>
-                                        <input type="text" id="cardholder" value="ADRIEN THEOPHILE" required>
-                                    </div>
-    
-                                
-                                    <div class="input-group checkbox">
-                                        <input type="checkbox" id="save-card">
-                                        <label for="save-card"><strong>Enregistrer ma carte bancaire</strong><br>Pour faciliter mes prochains achats</label>
-                                    </div>
-    
-                                    <button type="submit" class="submit-btn">Enregistrer</button>
+                            ";
+
+                            echo '
+                                <form class="choix-adresse" action="modifCarteBancaire.php" method="POST">   
+                                    <input type="text" name="carteActuelle" value="', $numCarte,'" hidden>                
+                                    <button type="submit" class="valider-panier">Modifier la carte enregistrée</button>
                                 </form>
-                            </section>';
+                            ';
+                            
+                        } else {
+                       
+                            echo "Aucun moyen de paiement est enregistré !<br>
+                                Ajoutez-en un !" ;
+
+                            echo '
+                                <form class="choix-adresse" action="modifCarteBancaire.php" method="POST">                   
+                                    <button type="submit" class="valider-panier">Ajouter une carte</button>
+                                </form>
+                            ';
+
+                        }
 
                     }
 
@@ -220,7 +249,7 @@
                         <input type="radio" id="Express" name="typeLivraison" value="Express" >
                         <label class="livraison-card" for="Express">
                             <div class="livraison-content">
-                                <div class="livraison-header">Livraison express <span class="prix payant">4,99 €</span></div>
+                                <div class="livraison-header">Livraison express <span class="prix payant">Gratuit</span></div>
                                     <div class="livraison-details">
                                         <p>Livraison prévue le '. strftime("%e %B", $datePlus2Jours) .'</p>
                                     </div>

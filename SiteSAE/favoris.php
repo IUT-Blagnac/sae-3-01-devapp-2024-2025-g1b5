@@ -1,56 +1,94 @@
 <?php
+include "Connect.inc.php";
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['idProduit'])) {
+    $idProduit = intval($_POST['idProduit']);
+
+    // Vérifier si l'utilisateur est connecté
+    if (!isset($_SESSION['client_email'])) {
+        header("Location: connexion.php");
+        exit();
+    }
+
+    // Récupérer l'ID du client
+    $client_email = $_SESSION['client_email'];
+    $query = $conn->prepare("SELECT idClient FROM Client WHERE email = ?");
+    $query->execute([$client_email]);
+    $client = $query->fetch();
+    $idClient = $client['idClient'];
+
+    // Supprimer le produit des favoris
+    $deleteQuery = $conn->prepare("DELETE FROM Produit_Favoris WHERE idClient = ? AND idProduit = ?");
+    $deleteQuery->execute([$idClient, $idProduit]);
+
+    // Rediriger vers la page des favoris
+    header("Location: favoris.php");
+    exit();
+}
+?>
+<?php
 include "header.php";
 include "Connect.inc.php";
-require "verifConnexion.php";
 
+// Vérifier si l'utilisateur est connecté
+if (!isset($_SESSION['client_email'])) {
+    echo "<script>alert('Vous devez être connecté pour consulter vos produits favoris.');</script>";
+    include "footer.php";
+    exit();
+}
+
+// Récupérer l'ID du client
+$client_email = $_SESSION['client_email'];
+$query = $conn->prepare("SELECT idClient FROM Client WHERE email = ?");
+$query->execute([$client_email]);
+$client = $query->fetch();
+$idClient = $client['idClient'];
+
+// Récupérer les produits favoris
+$query = $conn->prepare("
+    SELECT P.idProduit, P.nomProduit, P.prix, P.description
+    FROM Produit_Favoris PF
+    JOIN Produit P ON PF.idProduit = P.idProduit
+    WHERE PF.idClient = ?
+");
+$query->execute([$idClient]);
+$favoris = $query->fetchAll(PDO::FETCH_ASSOC);
 ?>
-
+<link rel="stylesheet" href="favoris.css">
 <main class="main-container">
-    <nav class="side-menu">
-        <ul>
-            <li><a href="#">Informations personnelles</a></li>
-            <li><a href="modifClient.php">Modifier Compte</a></li>
-            <li><a href="#">Commandes récentes</a></li>
-            <li><a href="deconnexion.php">Déconnexion</a></li>
-        </ul>
-    </nav>
-    <section class="client-info">
-        <h2>Bienvenue, <?php echo htmlspecialchars($client['prenom']); ?></h2>
-        <div class="info-section">
-            <h3>Informations personnelles</h3>
-            <p>Prénom : <?php echo htmlspecialchars($client['prenom']); ?></p>
-            <p>Email : <?php echo htmlspecialchars($client['email']); ?></p>
-            <p>Adresse : <?php echo htmlspecialchars($adresseComplete); ?></p>
-            <p>Carte Bancaire : <?php echo htmlspecialchars($numCarteMasque); ?>
-            </p>
-            <a href="modifClient.php"><button class="button">Modifier</button></a>
-        </div>
-        <div class="info-section">
-            <h3>Commandes récentes</h3>
-            <?php if($commandes && count($commandes) > 0) : ?>
-            <ul>
-                <?php foreach ($commandes as $commande): ?>
-                    <li>Commande #<?php echo htmlspecialchars($commande['idCommande']); ?> 
-                    - Type de Livraison : <?php echo htmlspecialchars($commande['typeLivraison']); ?> 
-                    - Statut : <?php echo htmlspecialchars($commande['statut']); ?> 
-                    - Date : <?php echo htmlspecialchars((new DateTime($commande['dateCommande']))->format('d/m/Y')); ?></li>
+    <section class="favoris">
+        <h1>Vos Produits Favoris</h1>
+        <?php if (count($favoris) > 0): ?>
+            <div class="produits-favoris">
+                <?php foreach ($favoris as $produit): ?>
+                    <div class="produit">
+                        <img src="image_Produit/Prod<?php echo $produit['idProduit']; ?>.jpg" alt="<?php echo htmlspecialchars($produit['nomProduit']); ?>" width="150px">
+                        <h2><?php echo htmlspecialchars($produit['nomProduit']); ?></h2>
+                        <p><?php echo htmlspecialchars($produit['description']); ?></p>
+                        <p><strong>Prix : </strong><?php echo number_format($produit['prix'], 2); ?> €</p>
+
+                        <!-- Formulaire pour ajouter au panier -->
+                        <form action="ajouterPanier.php" method="get" style="display: inline-block;">
+                            <input type="hidden" name="idProduit" value="<?php echo $produit['idProduit']; ?>">
+                            <label for="quantite_<?php echo $produit['idProduit']; ?>">Quantité :</label>
+                            <input type="number" id="quantite_<?php echo $produit['idProduit']; ?>" name="quantite" value="1" min="1" style="width: 50px;">
+                            <button type="submit" class="button">Ajouter au panier</button>
+                        </form>
+
+                        <!-- Formulaire pour supprimer des favoris -->
+                        <form action="supprimerFavoris.php" method="post" style="display: inline-block;">
+                            <input type="hidden" name="idProduit" value="<?php echo $produit['idProduit']; ?>">
+                            <button type="submit" class="button-delete">Supprimer des favoris</button>
+                        </form>
+                    </div>
                 <?php endforeach; ?>
-                </ul>
-                <a href="detailCommandeClient.php"><button class="button">Voir toutes les commandes</button></a>
-            <?php else: ?>
-                <p>Aucune commande encore effectuée. Il n'est jamais trop tard pour se faire plaisir. <br>
-                    Découvrez nos offres et laissez-vous tenter dès maintenant!
-                </p>
-                <a href="ListeProduit.php?promo=1"><button class="button">Découvrir nos offres</button></a>
-
-
-            <?php endif; ?>
-        </div>
+            </div>
+        <?php else: ?>
+            <p>Vous n'avez aucun produit dans vos favoris.</p>
+        <?php endif; ?>
     </section>
 </main>
 
 <?php
 include "footer.php";
 ?>
-</body>
-</html>

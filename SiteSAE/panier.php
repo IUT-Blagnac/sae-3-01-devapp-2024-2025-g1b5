@@ -51,11 +51,18 @@
                                     <div class="prix">
                                         <p> '. $produit_panier['prix'] .' </p>
                                         <p> '. $produit_panier['quantite'] .' </p>
-    
-                                        <form action="supprimerPanier.php" method="POST">
+
+                                        <form action="supprimerPanier.php" method="POST" style="display: inline;">
                                             <input type="text" value="'. $produit_panier['idProduit'] . '" name="idProduit" hidden>
                                             <input type="text" value="'. $idClient . '" name="idClient" hidden>
-                                            <button type="submit" class="delete-btn" >Supprimer</button>
+                                            <button type="submit" class="quantity-btn minus-btn" ></button>
+                                        </form>
+
+                                        <form action="ajouterPanier.php" method="get" style="display: inline;">
+                                            <input type="text" value="'. $produit_panier['idProduit'] . '" name="idProduit" hidden>
+                                            <input type="number" value="1" name="quantite" hidden>
+                                            <input type="number" value="1" name="confirmation" hidden>
+                                            <button type="submit" class="quantity-btn plus-btn" ></button>
                                         </form>
                                 </div>
                             </div>
@@ -88,11 +95,18 @@
                         echo '  <div class="info-produit-panier">
                                     <p> ' . $prod['nomProduit'] . '</p>
                                     <div class="prix">
-                                        <p> '. $prod['prix'] .' </p>
-                                        <p> '. $quantite .' </p>
-                                        <form action="supprimerPanier.php" method="POST">
+                                        <p> '. $prod['prix'] .' €</p>
+                                        <p> Quantite : '. $quantite .' </p>
+                                        
+                                        <form action="supprimerPanier.php" method="POST" style="display: inline;">
                                             <input type="text" value="'. $idProd . '" name="idProd" hidden>
-                                            <button type="submit" class="delete-btn" >Supprimer</button>
+                                            <button type="submit" class="quantity-btn minus-btn" ></button>
+                                        </form>
+
+                                        <form action="ajouterPanier.php" method="get" style="display: inline;">
+                                            <input type="text" value="'. $idProd . '" name="idProduit" hidden>
+                                            <input type="number" value="1" name="quantite" hidden>
+                                            <button type="submit" class="quantity-btn plus-btn" ></button>
                                         </form>
                                 </div>
                             </div>

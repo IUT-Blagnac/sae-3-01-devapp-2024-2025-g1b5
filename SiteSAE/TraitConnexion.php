@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 setcookie('CidClient', $user['email'], time() + 60*60*24, "/"); // 1 jour
             }
 
-            // gérer le panier de la session quand on se connecte si un panier etait rempli
+            // gérer le panier de la session quand on se connecte si un panier de session existait
             if (isset($_SESSION['panier'])) {
                 foreach ($_SESSION['panier'] as $idProd => $quantite) {
                     $appelAjoutPanier = 'CALL AjouterPanier( :idClient, :idProduit, :quantite )';
