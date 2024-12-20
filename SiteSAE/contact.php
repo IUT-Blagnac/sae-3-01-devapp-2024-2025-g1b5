@@ -39,20 +39,11 @@ include "header.php";
                 <li><strong>Samedi :</strong> 10h00 - 14h00</li>
                 <li><strong>Dimanche :</strong> Fermé</li>
             </ul>
+
             <h2>Notre emplacement</h2>
-            <p>Vous pouvez également nous rendre visite à notre adresse physique (si vous vous trouvez en Laponie !)</p>
-            
-            <!-- Carte interactive avec un marqueur pour l'emplacement du Père Noël -->
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2316.727502631433!2d25.8533!3d66.5325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4685025069e18463%3A0xf8c7b46093f72db8!2sSanta%20Claus%20Village!5e0!3m2!1sen!2sfi!4v1603199435914!5m2!1sen!2sfi" 
-                width="600" 
-                height="450" 
-                style="border:0;" 
-                allowfullscreen="" 
-                loading="lazy">
-            </iframe>
-
-
+            <p>Vous pouvez également nous rendre visite à notre adresse physique (si vous vous trouvez au Pôle Nord !)</p>
+            <!-- Carte interactive (par exemple, Google Maps) -->
+            <iframe src="https://www.google.com/maps/embed?pb=..." width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </section>
     </main>
 

@@ -1,6 +1,6 @@
 <?php
+session_start();
 include "Connect.inc.php";
-include "verifConnexion.php";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['idProduit'])) {
     $idProduit = intval($_POST['idProduit']);

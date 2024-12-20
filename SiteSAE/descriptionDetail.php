@@ -1,6 +1,7 @@
 <?php
 include "header.php";
 include "Connect.inc.php";
+include "tableauxProduit.php";
 
 // Récupérer l'email du client
 $client_email = isset($_SESSION['client_email']) ? $_SESSION['client_email'] : '';
@@ -39,9 +40,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Handle delete review
         $idProduit = $_POST['idProduit'];
         $idClient = $_POST['idClient'];
-        $res = $conn->prepare("DELETE FROM Avis WHERE idProduit = ? AND idClient = ?");
-        $res->execute([$idProduit, $idClient]);
-    } elseif (isset($_POST['submitReponse'])) {
+        $stmt = $conn->prepare("CALL SupprimerAvisEtMettreAJourNoteGlobale(?, ?)");
+        $stmt->execute([$idProduit, $idClient]);
+
+    } 
+
+    elseif (isset($_POST['submitReponse'])) {
         // Handle add response
         $idProduit = $_GET['idProduit'];
         $idClientAvis = $_GET['idClientAvis'];
@@ -82,43 +86,34 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $idClientAvis = $_GET['idClientAvis'];
 
         // Delete review from the database
-        $res = $conn->prepare("DELETE FROM Avis WHERE idProduit = ? AND idClient = ?");
-        $res->execute([$idProduit, $idClientAvis]);
+        $stmt = $conn->prepare("CALL SupprimerAvisEtMettreAJourNoteGlobale(?, ?)");
+        $stmt->execute([$idProduit, $idClient]);
     } else {
         // Handle add review
         if (isset($_POST['idProduit']) && isset($_POST['idClient'])) {
-            $idProduit = $_POST['idProduit'];
-            $idClient = $_POST['idClient'];
-            $note = $_POST['note'];
-            $contenu = $_POST['contenu'];
-            $dateAvis = date('Y-m-d H:i:s');
-
-            $res = $conn->prepare("INSERT INTO Avis (idProduit, idClient, contenu, note, dateAvis) VALUES (?, ?, ?, ?, ?)");
-            $res->execute([$idProduit, $idClient, $contenu, $note, $dateAvis]);
+        $idProduit = $_POST['idProduit'];
+        $idClient = $_POST['idClient'];
+        $note = $_POST['note'];
+        $contenu = $_POST['contenu'];
+        $dateAvis = date('Y-m-d H:i:s');
+        try {
+            $stmt = $conn->prepare("CALL AjouterAvisEtMettreAJourNoteGlobale(?, ?, ?, ?)");
+            $stmt->execute([$idProduit, $idClient, $contenu, $note]);
+        } catch (PDOException $e) {
+            echo "";
         }
+    }
     }
     
 }
 
-//etoile en jaune 
-function afficherEtoiles($note, $maxEtoiles = 5)
-{
-    $html = '';
-    for ($i = 1; $i <= $maxEtoiles; $i++) {
-        if ($i <= $note) {
-            $html .= '<span style="color: yellow; font-size:1.5em" ; >★</span>';
-        } else {
-            $html .= '<span style = "font-size:1.5em" >☆</span>';
-        }
-    }
-    return $html;
-}
 
 //recupere le nb max de produit en stock
 $req = $conn->prepare("SELECT quantiteStock FROM Stock WHERE idProduit = ?");
 $req->execute([$idProduit]);
 $stock_max = $req->fetchColumn();
 $req->closeCursor();
+
 
 ?>
 
@@ -145,7 +140,25 @@ $req->closeCursor();
         <p>Age : <?php echo $produit['age']; ?> ans</p>
 
         <div class="prixDescription">
-            <h2> <?php echo $produit['prix']; ?> €</h2>
+            <h2> <?php 
+            $r=0;
+            foreach($produitParPromo as $r1){
+                if($r1['idProduit']==$produit['idProduit']){
+                    $r=$r1['reduction']*$produit['prix'];
+                    $r = number_format($r, 2);
+                }
+            }
+            
+            if($r!= 0  ){
+        echo '<p class="prix-produit" style="margin:5px 0; color:red; font-size:1em; text-decoration: line-through;">Prix : ' . htmlspecialchars($produit['prix']) . ' €</p>';
+        echo '<center><p class="prix-produit" style="margin:5px 0; color:#007BFF; font-size:0.9em; font-weight: bold;">Promo : ' . htmlspecialchars($produit['prix']-$r) . ' €</p></center>';
+
+    
+    }else{
+        echo '<p class="prix-produit" style="margin:5px 0; color:#007BFF; font-size:1em;">Prix : ' . htmlspecialchars($produit['prix']) . ' €</p>';
+    
+    }
+             ?> </h2>
         </div>
 
         <form action="ajouterPanier.php" method="get">
@@ -153,69 +166,22 @@ $req->closeCursor();
             <button type="submit" class="button">Ajouter au panier</button>
             <input type="number" id="quantite" value="1" name="quantite" min="1" oninput="ajusterQuantite()">
         </form>
-		<?php
-		// Récupérer l'ID du client et du produit
-		$idClient = isset($client['idClient']) ? $client['idClient'] : 0;
-		$idProduit = isset($_GET['idProduit']) ? intval($_GET['idProduit']) : 0;
+        <button type="button" class="butFavoris" id="favButton">
+            <img src="images/petit-coeur-rouge.png" alt="petit coeur" width="20px" id="favImage">
+        </button>
 
-		$isFavorite = false; // Valeur par défaut
+        <!-- Intégration du JavaScript -->
+        <script>
+            document.getElementById('favButton').addEventListener('click', function() {
+                var img = document.getElementById('favImage');
 
-		if ($idClient > 0 && $idProduit > 0) {
-			// Vérifier si ce produit est déjà dans les favoris
-			$checkFav = $conn->prepare("SELECT * FROM Produit_Favoris WHERE idProduit = ? AND idClient = ?");
-			$checkFav->execute([$idProduit, $idClient]);
-			$isFavorite = $checkFav->rowCount() > 0; // True si le produit est déjà dans les favoris
-		}
-		?>
-
-		<button type="button" class="butFavoris" id="favButton">
-			<img src="<?php echo $isFavorite ? 'images/petit-coeur-plein.png' : 'images/petit-coeur-rouge.png'; ?>" alt="petit coeur" width="20px" id="favImage">
-		</button>
-
-
-	<script>
-	// Fonction pour afficher un message temporaire
-	function afficherMessage(message) {
-		var msgElement = document.createElement("p");
-		msgElement.textContent = message;
-		document.getElementById("message-container").appendChild(msgElement);
-		setTimeout(function() { msgElement.remove(); }, 2000);
-	}
-
-	// Vérifier si l'utilisateur est connecté
-	var isUserLoggedIn = <?php echo isset($_SESSION['client_email']) ? 'true' : 'false'; ?>;
-
-	document.getElementById('favButton').addEventListener('click', function() {
-		if (!isUserLoggedIn) {
-			afficherMessage("Vous devez être connecté pour ajouter aux favoris.");
-			return; // Ne pas exécuter le reste du code si l'utilisateur n'est pas connecté
-		}
-
-		var img = document.getElementById('favImage');
-		var idProduit = <?php echo $idProduit; ?>;
-		var idClient = <?php echo $idClient; ?>;
-
-		// Ajout ou retrait du produit dans les favoris
-		if (img.src.includes('petit-coeur-rouge.png')) {
-			img.src = 'images/petit-coeur-plein.png'; // Le coeur devient plein (favori ajouté)
-			var action = 'ajouter';
-			afficherMessage("Ajouté aux favoris");
-		} else {
-			img.src = 'images/petit-coeur-rouge.png'; // Le coeur devient vide (favori retiré)
-			var action = 'retirer';
-			afficherMessage("Retiré des favoris");
-		}
-
-		// Requête AJAX pour ajouter ou retirer du favori
-		var xhr = new XMLHttpRequest();
-		xhr.open("POST", "favorisAction.php", true);
-		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-		xhr.send("idProduit=" + idProduit + "&idClient=" + idClient + "&action=" + action);
-	});
-	</script>
-
-	<div id="message-container"></div>
-
+                if (img.src.includes('petit-coeur-rouge.png')) {
+                    img.src = 'images/petit-coeur-plein.png'; // Remplacez ceci par le chemin de la deuxième image
+                } else {
+                    img.src = 'images/petit-coeur-rouge.png'; // Remplacez ceci par le chemin de l'image initiale
+                }
+            });
+        </script>
     </div>
 </section>
 
@@ -242,7 +208,8 @@ $req->closeCursor();
 
 <section class="avis">
 
-<h2>Avis</h2>
+    <h2>Avis</h2>
+
     <?php
     if ($client_email):
         echo '<button type="button" class="button-avis" onclick="blocAvis()">Ajouter un avis</button>';
@@ -314,7 +281,7 @@ $req->closeCursor();
             echo '<p>' . $reponse['contenu'] . '</p>';
             $dateReponse = strftime("%d/%m/%Y", strtotime($reponse['date']));
             $prenom = isset($reponse['prenom']) ? $reponse['prenom'] : 'Lutin & Companny';
-            $nom = isset($reponse['nom']) ? $reponse['nom'] : 'Lutin & Companny';
+            $nom = isset($reponse['nom']) ? $reponse['nom'] : 'Xmas';
             echo '<p class="date-reponse">Réponse du <strong>' . $dateReponse . '</strong> par ' . $prenom . ' ' . $nom . '</p>';
             echo '<form action="descriptionDetail.php?idProduit=' . $idProduit . '&idClientAvis=' . $avis['idClient'] . '" method="post" style="display:inline;">
                     <textarea name="contenuReponse" required>' . $reponse['contenu'] . '</textarea>

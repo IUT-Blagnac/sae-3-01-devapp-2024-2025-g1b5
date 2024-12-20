@@ -170,4 +170,176 @@
 .submit-btn:enabled:hover {
     background-color: #e67e22;
 }
+
+/** Type de Livraison **/
+
+/* Conteneur global pour les options de livraison */
+.livraison-container {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    font-family: Arial, sans-serif;
+}
+
+/* Masquer les boutons radio natifs */
+.livraison-card input[type="radio"] {
+    display: none;
+}
+
+/* Carte globale pour chaque option */
+.livraison-card {
+    display: flex;
+    flex: 1;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Style au survol */
+.livraison-card:hover {
+    border-color: #007bff;
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+}
+
+/* Contenu à l'intérieur des cartes */
+.livraison-content {
+    padding: 15px;
+    width: 100%;
+}
+
+/* En-tête (titre + prix) */
+.livraison-header {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Prix gratuit ou payant */
+.prix {
+    font-weight: bold;
+}
+
+.prix.gratuit {
+    color: #d9534f; /* Rouge pour gratuit */
+}
+
+.prix.payant {
+    color: #d9534f; /* Rouge pour le prix */
+}
+
+/* Détails (texte informatif) */
+.livraison-details {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Effet lorsqu'un bouton radio est sélectionné */
+.livraison-card input[type="radio"]:checked + .livraison-content {
+    border: none;
+    background-color: #fff;
+    border-radius: 6px;
+}
+
+.livraison-card input[type="radio"]:checked {
+    border-color: #007bff;
+}
+
+.livraison-card input[type="radio"]:checked ~ .livraison-content .livraison-header {
+    color: #007bff;
+}
+
+/* Animation légère */
+.livraison-card:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
+}
+
+
+
+
+/** commande - choix */
+
+
+
+/* Section du panier */
+.votre-panier {
+    flex: 2;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.votre-panier h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.rappel-produit-panier {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.rappel-produit-panier img {
+    width: 80px;
+    height: 80px;
+    margin-right: 15px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+
+
+/* Section récapitulatif */
+.recapitulatif {
+    flex: 1;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.recapitulatif h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.recap-panier {
+    margin-bottom: 20px;
+    font-size: 18px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.recap-panier p {
+    margin-bottom: 10px;
+}
+
+.code-promo {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.promo {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+
+
+
   
