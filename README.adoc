@@ -98,6 +98,7 @@ poser vos questions.
 | 2021-09-20 | Document de Conception |https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b5/blob/master/GPO/conception.adoc|Test de la case de retour
 |03-12-2024|Cahier de recette|https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b5/blob/master/GPO/Recette.adoc|
 |03-12-2024|Documentation utilisateur|https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b5/blob/master/GPO/documentation%20utilisateurs.adoc|
+|20-12-2024| Fiche droit| https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b5/blob/master/Conseil_Droit.adoc|
 
 |===
 TIP: Mettez ici toutes les informations nécessaire à 
