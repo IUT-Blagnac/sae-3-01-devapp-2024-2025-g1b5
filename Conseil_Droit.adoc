@@ -39,17 +39,7 @@ Mentions manquantes sur le site de Lutin&Co :
 [[processus_vente]]
 == Description détaillée du processus de vente en ligne (BPMN)
 
-Le diagramme de collaboration BPMN pour le processus de vente en ligne doit comprendre les étapes suivantes :
-
-1. **Visite du site par l’utilisateur** : le client explore les produits.
-2. **Ajout au panier** : le client ajoute des produits au panier.
-3. **Identification/Création de compte** : l’utilisateur doit s’identifier ou créer un compte s’il est nouveau.
-4. **Validation du panier** : le client vérifie les articles, les quantités, le total, etc.
-5. **Saisie des informations de paiement et livraison** : le client entre ses informations de livraison et de paiement.
-6. **Confirmation de la commande** : le client confirme la commande.
-7. **Traitement de la commande** : le site procède au traitement de la commande.
-8. **Expédition et livraison** : les produits sont expédiés et livrés au client.
-9. **Facturation et suivi de la commande** : une facture est générée, le client peut suivre son colis.
+Voici le diagramme de collaboration BPMN :
 
 image::imageDroit/BPMN.png[]
 
