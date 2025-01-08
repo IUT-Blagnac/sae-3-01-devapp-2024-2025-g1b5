@@ -1,1 +1,30 @@
+= Documentation Utilisateur - Lutin & Co
+Bienvenue sur Lutin & Co, votre boutique en ligne de jouets pour des fêtes de Noël magiques ! Cette documentation vous guidera dans l’utilisation de notre site pour trouver, acheter, et offrir des jouets à vos proches en cette saison festive.
+
+== Table des matières
+1. Introduction
+2. Gestion Produit
+   * Ajouter produit
+   * Modifier produit
+   * Supprimer produit
+3. Gestion Utilisateur
+   * Promouvoir utilisateur
+   * Supprimer compte
+4. Gestion Codes promotions
+   * Ajouter code promotion
+   * Supprimer code promotion
+   * Modifier code promotion
+5. Favoris
+   * Ajouter au favoris
+   * Rechercher un produit
+   * Découvrir les nouveautés et les promotions
+
+
+== 1. Introduction
+Lutin & Co est la destination idéale pour vos achats de Noël. Notre site propose une large gamme de jouets soigneusement sélectionnés pour tous les âges, des cadeaux magiques pour faire plaisir à vos enfants, vos proches, ou même pour vous offrir un peu de joie. Découvrez notre sélection et profitez de notre service de livraison rapide pour garantir un Noël sans souci.
+
+== 2. Gestion Produit
+
+=== Pourquoi créer un compte ?
+Créer un compte sur Lutin & Co vous permet de bénéficier d’une expérience d’achat personnalisée, de suivre vos commandes et d’accéder à des offres exclusives.
 
