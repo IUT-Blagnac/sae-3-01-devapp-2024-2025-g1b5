@@ -25,6 +25,30 @@ Lutin & Co est la destination idéale pour vos achats de Noël. Notre site propo
 
 == 2. Gestion Produit
 
-=== Pourquoi créer un compte ?
-Créer un compte sur Lutin & Co vous permet de bénéficier d’une expérience d’achat personnalisée, de suivre vos commandes et d’accéder à des offres exclusives.
+=== Ajouter produit
 
+=== Modifier produit
+
+=== Supprimer produit
+
+== 3. Gestion Utilisateur
+
+=== Promouvoir utilisateur
+
+=== Supprimer compte
+
+== 4. Gestion Codes promotions
+
+=== Ajouter code promotion
+
+=== Supprimer code promotion
+
+=== Modifier code promotion
+
+== 5. Favoris
+
+=== Ajouter au favoris
+
+=== Rechercher un produit
+
+=== Découvrir les nouveautés et les promotions
