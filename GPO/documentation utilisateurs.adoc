@@ -47,14 +47,19 @@ image::image/gestionProduit.PNG[]
 
 === Ajouter produit
 
-Depuis la page de gestion produit, cliquer sur ajouter produit.
+Depuis la page de gestion produit vous pouvez rechercher un produit, en ajouter un, en modifier un et en supprimer un. Nous allons nous intéresser à l'ajout des produits pour cela cliquer sur ajouter produit.
 
 image::image/ajouterProduit.PNG[]
 
 Remplisser le formulaire et ajouter une image puis valider, une fois validé le produit est ajouté et est consultable.
 
-
 === Modifier produit
+
+Pour modifier un produit repartez de la page gestion Produit et séléctionner modifier produit au bout de la ligne (présent au bout de la ligne de chaqe article).
+
+image::image/modifierProduit.PNG[]
+
+Valider quand les modifications souhaités ont été effectuées.
 
 === Supprimer produit
 
