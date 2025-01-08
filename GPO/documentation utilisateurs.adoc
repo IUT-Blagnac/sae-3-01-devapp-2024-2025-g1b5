@@ -25,7 +25,34 @@ Lutin & Co est la destination idéale pour vos achats de Noël. Notre site propo
 
 == 2. Gestion Produit
 
+Pour accéder à la page de gestion des produits pour l'administrateur  il faut d'abord accéder à la page d'accueil et cliquer sur l'icone d'identification en haut à droite.
+
+image::image/connexion.PNG[]
+
+Ensuite connectez vous avec un compte administrateur.
+
+image::image/formConnexion.PNG[]
+
+Cliquer désormais sur l'icone "Espace Admin" qui apparaît en haut à droite.
+
+image::image/espaceAdmin.PNG[]
+
+Vous arrivez sur la page de gestion administrateur
+
+image::image/gestion.PNG[]
+
+Cliquer sur gestion Produit.
+
+image::image/gestionProduit.PNG[]
+
 === Ajouter produit
+
+Depuis la page de gestion produit, cliquer sur ajouter produit.
+
+image::image/ajouterProduit.PNG[]
+
+Remplisser le formulaire et ajouter une image puis valider, une fois validé le produit est ajouté et est consultable.
+
 
 === Modifier produit
 
