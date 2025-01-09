@@ -345,6 +345,10 @@ Note Appel offre : 11,02/20
 ODJ OK CR: Il manque toujours les retour de la réunion client et les difficultés/réussites au niveau organisationnel. Des fautes.  
 note : 2/3
 
+==== Evaluation communication semaine 51 par EP
+Attention c'est la réunion d'équipe que je demande (retrospective de sprint ) pas celle avec le client (sprint review) même si vous devez la résumer dans le CR. Peu rédigé.Pensez à m'envoyer l'ODJ pour la semaine prochaine.
+note: 2,49/3
+
 
 === Voici un exemple d'évaluation :
 
