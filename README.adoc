@@ -331,6 +331,7 @@ Un Sprint durera 2 semaines
 | Réunions sprint 3 | link:https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b5/blob/master/GPO/ODJ_CR_Reunion/ODJ_SEM50.pdf[ODJ semaine 50] | link:https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b5/blob/master/GPO/ODJ_CR_Reunion/CR_SEM50.pdf[CR semaine 50]
 |  | link:https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b5/blob/master/GPO/ODJ_CR_Reunion/ODJ_SEM51.pdf[ODJ semaine 51] | link:https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b5/blob/master/GPO/ODJ_CR_Reunion/CR_SEM51.pdf[CR semaine 51]
 | Réunions POST-MORTEM | link:https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b5/blob/master/GPO/ODJ_CR_Reunion/ODJ_POST-MORTEM.pdf[ODJ POST-MORTEM] | 
+|===
 
 ==== Evaluation communication semaine 48 par EP
 Odj /CR évalués concernent la réunion de rétrospective de sprint de l'équipe, je ne l'ai pas pour la semaine 48!  J'ai évalué exceptionnellement semaine 47 à la plaçe. ODJ : Il manque qui va rédiger le compte rendu, qui est responsable de chaque rubrique (cf. exemple). CR : Il manque le plan avec les rubriques de l'ODJ, il manque le point réunion client, il manque l'analyse difficultés -réussites du sprint, il manque qui se charge de l'organisation de la prochaine réunion.
