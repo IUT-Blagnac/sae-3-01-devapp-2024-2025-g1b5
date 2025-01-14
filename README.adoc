@@ -350,6 +350,9 @@ note : 2/3
 Attention c'est la réunion d'équipe que je demande (retrospective de sprint ) pas celle avec le client (sprint review) même si vous devez la résumer dans le CR. Peu rédigé.Pensez à m'envoyer l'ODJ pour la semaine prochaine.
 note: 2,49/3
 
+=== Evaluation fiche droit
+
+17/20
 
 === Voici un exemple d'évaluation :
 
