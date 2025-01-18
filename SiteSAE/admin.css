@@ -1,0 +1,56 @@
+.produits-accueil {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centre les éléments horizontalement */
+}
+
+.produits-accueil form {
+    margin-bottom: 20px; /* Ajoute de l'espace sous la barre de recherche */
+    width: 100%; /* Barre de recherche prend la largeur du conteneur */
+    max-width: 600px; /* Limite la largeur pour une meilleure apparence */
+    display: flex;
+    flex-wrap: wrap; /* Permet d'adapter les champs sur petits écrans */
+    justify-content: space-between; /* Espacement égal entre les champs */
+    gap: 10px; /* Espacement entre les champs */
+}
+
+.produits-accueil input[type="text"] {
+    flex: 1; /* Chaque champ de saisie prend une part égale */
+    padding: 10px; /* Ajoute de l'espace interne */
+    border: 1px solid #ccc; /* Bordure légère */
+    border-radius: 5px; /* Coins arrondis */
+}
+
+.produits-accueil button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.produits-accueil button:hover {
+    background-color: #0056b3;
+}
+
+.table {
+    margin-top: 20px;
+    border-collapse: collapse;
+    width: 80%; /* Réduit la largeur de la table pour l'esthétique */
+    max-width: 1000px; /* Limite la largeur maximale */
+}
+
+.table, th, td {
+    border: 1px solid #ccc; /* Bordure légère */
+}
+
+.table th, table td {
+    padding: 10px;
+    text-align: left;
+}
+
+.table th {
+    background-color: #f8f8f8; /* Fond pour les en-têtes */
+}

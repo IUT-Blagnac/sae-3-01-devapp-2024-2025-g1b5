@@ -1,4 +1,6 @@
 <?php
+ob_start();
+
 include "header.php";
 include "Connect.inc.php";
 
@@ -35,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     try {
         // Requête préparée pour éviter les injections SQL
-        $client = $conn->prepare("INSERT INTO Client (email, password, prenom, nom, numTel, genreC, dateNaissance) VALUES (:email, :password, :prenom, :nom, :num_telephone, :genre, :date_naissance)");
+        $client = $conn->prepare("INSERT INTO Client (email, password, prenom, nom, numTel, genreC, dateNaissance ,pointFidelite) VALUES (:email, :password, :prenom, :nom, :num_telephone, :genre, :date_naissance ,0)");
         $client->bindParam(':prenom', $prenom);
         $client->bindParam(':nom', $nom);
         $client->bindParam(':date_naissance', $date_naissance);
@@ -47,13 +49,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Compte créé avec succès!";
         header("Location: connexionCompte.php");
     } catch (PDOException $e) {
-        echo "Erreur: " . $e->getMessage();
+        echo "<div class='alert alert-danger' role='alert'>Erreur lors de la création du compte. </div>";
     }
 }
 ?>
 
 <main class="d-flex justify-content-center align-items-center"
-    style="height: 150vh; background-color: #f9f9f9; margin-top: 0;">
+    style="margin-top: 5%;height: 150vh; background-color: white;">
     <div class="card p-4 shadow" style="width: 350px;">
         <h2 class="text-center mb-4" style="color: #FF1F11;">Créer compte</h2>
         <form method="post">
@@ -144,4 +146,7 @@ function numTelrespect() {
 }
 </script>
 </body>
+<?php
+ob_end_flush();
+?>
 </html>

@@ -8,7 +8,6 @@ include "header.php";
         <h1>Circuit à bille 138 pièces + 30 billes</h1>
         <p>Ref : 8172347</p>
         <p>Age : 3-5 ans</p>
-
         <div class="prixDescription">
             <h2>49,99 €</h2>
         </div>

@@ -1,0 +1,583 @@
+.rappel-produit-panier img {
+    width: 10%;
+}
+
+/** page panier quantite + et - */
+
+.quantity-btn {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.quantity-btn:hover {
+    background-color: #e0e0e0;
+    transform: scale(1.1);
+}
+
+.quantity-btn:active {
+    background-color: #ccc;
+    transform: scale(0.9);
+}
+
+.minus-btn::before {
+    content: "−";
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+.plus-btn::before {
+    content: "+";
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+
+
+/** page modif adresse **/
+
+/* Style global de la section */
+.changement-adresse {
+    
+    max-width: 700px;
+    margin: auto; /* Centrer le formulaire */
+    margin-top: 3%;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9; /* Fond clair */
+  }
+  
+  /* Style du formulaire */
+  .changement-adresse form {
+    display: flex;
+    flex-wrap: wrap; /* Affichage en grille */
+    gap: 20px; 
+  }
+  
+  /* Style des labels */
+  .changement-adresse label {
+    flex: 1 1 100%; /* Les labels prennent la largeur complète */
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  
+  /* Style des champs input */
+  .changement-adresse input {
+    flex: 1 1 calc(50% - 20px); /* Chaque input prend la moitié de la largeur moins l'espacement */
+    padding: 8px 0;
+    border: none;
+    border-bottom: 2px solid #000; 
+    background: transparent;
+    font-size: 16px;
+    color: #333;
+    outline: none; /* Retire l'outline par défaut */
+    transition: border-color 0.3s;
+  }
+  
+  /* Espacement spécifique pour éviter des chevauchements */
+  .changement-adresse form input[name="pays"] {
+    flex: 100%; /* Pays prend toute la largeur */
+  }
+  
+  /* Style du bouton */
+  .changement-adresse button {
+    flex: 100%;
+    padding: 12px;
+    background-color: #ff1f11;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .changement-adresse button:hover {
+    background-color: #ad170c; /* Jaune foncé au survol */
+  }
+
+
+  /** modif carte bancaire  **/
+
+/* Conteneur principal */
+.submit-btn  {
+    flex: 100%;
+    padding: 12px;
+    background-color: #ff1f11;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+
+.paiement-container {
+    margin: auto;
+    margin-top: 4%;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    padding: 20px;
+    text-align: center;
+}
+
+.paiement-container h2 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* Champs de saisie */
+.input-group {
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #666;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+}
+
+.input-group input:focus {
+    border-color: #4CAF50;
+}
+
+/* Gestion des erreurs */
+.input-group.error input {
+    border-color: #e74c3c;
+}
+
+.input-group .error-text {
+    font-size: 12px;
+    color: #e74c3c;
+    margin-top: 5px;
+}
+
+/* Champs côte à côte */
+.input-row {
+    display: flex;
+    gap: 15px;
+}
+
+.input-row .input-group {
+    flex: 1;
+}
+
+/* Checkbox */
+.input-group.checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #444;
+}
+
+
+
+/** Type de Livraison **/
+
+/* Conteneur global pour les options de livraison */
+.livraison-container {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    font-family: Arial, sans-serif;
+}
+
+/* Masquer les boutons radio natifs */
+.livraison-card input[type="radio"] {
+    display: none;
+}
+
+/* Carte globale pour chaque option */
+.livraison-card {
+    display: flex;
+    flex: 1;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Style au survol */
+.livraison-card:hover {
+    border-color: #007bff;
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+}
+
+/* Contenu à l'intérieur des cartes */
+.livraison-content {
+    padding: 15px;
+    width: 100%;
+}
+
+/* En-tête (titre + prix) */
+.livraison-header {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap : 20px;
+}
+
+/* Prix gratuit ou payant */
+.prix {
+    font-weight: bold;
+}
+
+.prix.gratuit , .prix.payant {
+    color: #d9534f; /* Rouge pour gratuit */
+}
+
+
+/* Détails (texte informatif) */
+.livraison-details {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Effet lorsqu'un bouton radio est sélectionné */
+.livraison-card input[type="radio"]:checked + .livraison-content {
+    border: none;
+    background-color: #fff;
+    border-radius: 6px;
+}
+
+.livraison-card input[type="radio"]:checked {
+    border-color: #007bff;
+}
+
+
+/* Animation légère */
+.livraison-card:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
+}
+
+
+
+
+/** commande - choix */
+
+
+
+/* Section du panier */
+.votre-panier {
+    flex: 1;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.votre-panier h1 {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.votre-panier h2 {
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.rappel-produit-panier {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.rappel-produit-panier img {
+    width: 80px;
+    height: 80px;
+    margin-right: 15px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+
+
+/* Section récapitulatif */
+.recapitulatif {
+    flex: 1;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.recapitulatif h1 {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.recap-panier {
+    margin-bottom: 20px;
+    font-size: 18px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.recap-panier p {
+    margin-bottom: 10px;
+}
+
+.code-promo {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.promo {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+
+
+/** moyen de paiement **/
+
+
+.payment-box {
+    background: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.card-info {
+    background: #fff;
+    border: 1px solid #dcdcdc;
+    border-radius: 10px;
+    padding: 15px;
+    font-size: 18px;
+    letter-spacing: 1px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.details {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.8;
+}
+
+.details p {
+    margin: 0;
+    padding: 5px 0;
+    font-size: 14px;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.details p:last-child {
+    border-bottom: none;
+}
+
+/* Style pour la box PayPal */
+.paypal-box {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    display: flex;
+    margin-top: 5%;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.paypal-box .paypal-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.paypal-box .paypal-info input[type="radio"] {
+    accent-color: #0070ba; /* Couleur spécifique à PayPal */
+    width: 18px;
+    height: 18px;
+}
+
+.paypal-box .paypal-info label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+.paypal-box .paypal-description {
+    font-size: 14px;
+    color: #555;
+    margin: 0;
+}
+
+
+/** Confirmation de commande **/
+
+
+.confirmation-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin-top: 3%;
+}
+
+.confirmation-box {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 30px 20px;
+    max-width: 400px;
+    margin: 20px;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+.success-icon {
+    width: 80px;
+    margin-bottom: 20px;
+}
+
+.confirmation-box h1 {
+    color: #2ecc71;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.confirmation-box p {
+    color: #555;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    background-color: #3498db;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #2980b9;
+}
+
+
+/* Styles généraux pour les méthodes de paiement */
+.payment-method {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    max-width: 400px;
+    margin: auto;
+}
+
+/* Section Carte Bancaire */
+.payment-box {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    background-color: #ffffff;
+}
+.card-info {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+.details p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.valider-panier {
+    display: inline-block;
+    background-color: #ff4500;
+    color: white;
+    font-size: 14px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+.valider-panier:hover {
+    background-color: #e03d00;
+}
+
+/* Section PayPal */
+.paypal-box {
+   
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    background-color: #ffffff;
+}
+
+.paypal-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.paypal-info label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.paypal-description {
+    font-size: 14px;
+    color: #555;
+    margin-left: 28px; /* Align with the radio button */
+}
+.paypal-info input {
+    margin-bottom: 10px;
+}
+

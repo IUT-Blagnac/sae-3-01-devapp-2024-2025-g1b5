@@ -1,46 +1,95 @@
 <?php
 include "header.php";
+include "Connect.inc.php";
+require "verifConnexion.php";
+
+// Récupérer l'email du client
+$client_email = isset($_SESSION['client_email']) ? $_SESSION['client_email'] : '';
+
+
+// Récupérer les informations du client
+$query = $conn->prepare("SELECT * FROM Client WHERE email = :client_email");
+$query->bindParam(':client_email', $client_email);
+$query->execute();
+$client = $query->fetch(PDO::FETCH_ASSOC);
+
+$client_id = $client['idClient'];
+$idAdresse = $client['idAdresse'];
+
+// Récupérer les informations de l'adresse
+$query = $conn->prepare("SELECT * FROM Adresse WHERE idAdresse = :idAdresse");
+$query->bindParam(':idAdresse', $idAdresse);
+$query->execute();
+$adresse = $query->fetch(PDO::FETCH_ASSOC);
+$rue = $adresse ? $adresse['rue'] : '';
+$ville = $adresse ? $adresse['ville'] : '';
+$codePostal = $adresse ? $adresse['codePostal'] : '';
+$pays = $adresse ? $adresse['pays'] : '';
+$adresseComplete = $rue ? "$rue, $ville, $codePostal, $pays" : 'Adresse non définie';
+
+// Récupérer les informations de la carte bancaire
+$query = $conn->prepare("SELECT * FROM CarteBancaire WHERE idClient = :client_id");
+$query->bindParam(':client_id', $client_id);
+$query->execute();
+$carte = $query->fetch(PDO::FETCH_ASSOC);
+$numCarte = $carte ? $carte['numCarte'] : 'Carte bancaire non définie';
+
+// Fonction pour masquer les numéros de la carte bancaire sauf les 4 derniers chiffres
+function masquerNumCarte($numCarte) {
+    return str_repeat('*', strlen($numCarte) - 4) . substr($numCarte, -4);
+}
+
+$numCarteMasque = $carte ? masquerNumCarte($numCarte) : 'Non définie';
+
+// Récupérer les commandes récentes du client
+$query = $conn->prepare("SELECT * FROM Commande WHERE idClient = :client_id ORDER BY dateCommande DESC LIMIT 5");
+$query->bindParam(':client_id', $client_id);
+$query->execute();
+$commandes = $query->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <main class="main-container">
     <nav class="side-menu">
         <ul>
-            <li><a href="#">Informations personnelles</a></li>
-            <li><a href="#">Commandes récentes</a></li>
-            <li><a href="#">Préférences</a></li>
+        <li><a href="detailCompte.php">Informations personnelles</a></li>
+
+            <li><a href="modifClient.php">Modifier Compte</a></li>
+            <li><a href="detailPointFidelite.php">Points de fidélité</a></li>
+            <li><a href="detailCommandeClient.php">Toutes les commandes</a></li>
             <li><a href="deconnexion.php">Déconnexion</a></li>
-            <?php
-            if (isset($_COOKIE['CidClient'])) {
-                echo '<li class="nav-item">
-                        <a class="nav-link" href="DetruireCookie.php">Détruire Cookie</a>
-                      </li>';
-            }
-            ?>
         </ul>
     </nav>
     <section class="client-info">
-        <h2>Bienvenue, <?php echo isset($_SESSION['client_prenom']) ? htmlspecialchars($_SESSION['client_prenom']) : 'Invite'; ?></h2>
+        <h2>Bienvenue, <?php echo htmlspecialchars($client['prenom']); ?></h2>
         <div class="info-section">
             <h3>Informations personnelles</h3>
-            <p>Prenom : <?php echo isset($_SESSION['client_prenom']) ? htmlspecialchars($_SESSION['client_prenom']) : 'Non défini'; ?></p>
-            <p>Email : <?php echo isset($_SESSION['client_email']) ? htmlspecialchars($_SESSION['client_email']) : 'Non défini'; ?></p>
-            <p>Adresse :<?php echo isset($_SESSION['client_adresse']) ? htmlspecialchars($_SESSION['client_adresse']) : 'Non défini'; ?></p>
-            <button class="button">Modifier</button>
+            <p>Prénom : <?php echo htmlspecialchars($client['prenom']); ?></p>
+            <p>Email : <?php echo htmlspecialchars($client['email']); ?></p>
+            <p>Adresse : <?php echo htmlspecialchars($adresseComplete); ?></p>
+            <p>Carte Bancaire : <?php echo htmlspecialchars($numCarteMasque); ?>
+            </p>
+            <a href="modifClient.php"><button class="button">Modifier</button></a>
         </div>
         <div class="info-section">
             <h3>Commandes récentes</h3>
+            <?php if($commandes && count($commandes) > 0) : ?>
             <ul>
-                <li>Commande #12345 - Statut : Livrée</li>
-                <li>Commande #12346 - Statut : En cours</li>
-                <li>Commande #12347 - Statut : Annulée</li>
-            </ul>
-            <button class="button">Voir toutes les commandes</button>
-        </div>
-        <div class="info-section">
-            <h3>Préférences</h3>
-            <p>Langue : Français</p>
-            <p>Notifications : Activées</p>
-            <button class="button">Modifier</button>
+                <?php foreach ($commandes as $commande): ?>
+                    <li>Commande #<?php echo htmlspecialchars($commande['idCommande']); ?> 
+                    - Type de Livraison : <?php echo htmlspecialchars($commande['typeLivraison']); ?> 
+                    - Statut : <?php echo htmlspecialchars($commande['statut']); ?> 
+                    - Date : <?php echo htmlspecialchars((new DateTime($commande['dateCommande']))->format('d/m/Y')); ?></li>
+                <?php endforeach; ?>
+                </ul>
+                <a href="detailCommandeClient.php"><button class="button">Voir toutes les commandes</button></a>
+            <?php else: ?>
+                <p>Aucune commande encore effectuée. Il n'est jamais trop tard pour se faire plaisir. <br>
+                    Découvrez nos offres et laissez-vous tenter dès maintenant!
+                </p>
+                <a href="ListeProduit.php?promo=1"><button class="button">Découvrir nos offres</button></a>
+
+
+            <?php endif; ?>
         </div>
     </section>
 </main>
@@ -48,6 +97,5 @@ include "header.php";
 <?php
 include "footer.php";
 ?>
-
 </body>
 </html>

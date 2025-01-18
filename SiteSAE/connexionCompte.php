@@ -1,10 +1,10 @@
 <?php
-include "header.php";
+    require_once "header.php";
 
-$email_value = isset($_COOKIE['CidClient']) ? htmlspecialchars($_COOKIE['CidClient']) : '';
+    $email_value = isset($_COOKIE['CidClient']) ? htmlspecialchars($_COOKIE['CidClient']) : '';
 ?>
 
-<main class="d-flex justify-content-center align-items-center" style="height: 80vh; background-color: #f9f9f9;">
+<main class="d-flex justify-content-center align-items-center" style="margin-top: 5%; height: 80vh; background-color: white;">
     <div class="card p-4 shadow" style="width: 350px;">
         <h2 class="text-center mb-4" style="color: #FF1F11;">Connexion</h2>
         <?php
@@ -35,7 +35,7 @@ $email_value = isset($_COOKIE['CidClient']) ? htmlspecialchars($_COOKIE['CidClie
 </main>
 
 <?php
-include "footer.php";
+    include "footer.php";
 ?>
 </body>
 
