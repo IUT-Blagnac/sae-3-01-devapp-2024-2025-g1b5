@@ -96,7 +96,7 @@ poser vos questions.
 |===
 | Date    | Nom         |  Lien   | Retour
 | 2021-09-20 | Document de Conception |https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b5/blob/master/GPO/conception.adoc|Test de la case de retour
-|03-12-2024|Cahier de recette|https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b5/blob/master/GPO/Recette.adoc|
+|03-12-2024|Cahier de recette|https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b5/blob/master/GPO/Cahier_de_Recette_G1B5.pdf|
 |03-12-2024|Documentation utilisateur|https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b5/blob/master/GPO/documentation%20utilisateurs.adoc|
 |20-12-2024| Fiche droit| https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b5/blob/master/Conseil_Droit.adoc|
 
@@ -330,6 +330,7 @@ Un Sprint durera 2 semaines
 |  | link:https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b5/blob/master/GPO/ODJ_CR_Reunion/ODJ_SEM49.pdf[ODJ semaine 49] | link:https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b5/blob/master/GPO/ODJ_CR_Reunion/CR_SEM49.pdf[CR semaine 49]
 | Réunions sprint 3 | link:https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b5/blob/master/GPO/ODJ_CR_Reunion/ODJ_SEM50.pdf[ODJ semaine 50] | link:https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b5/blob/master/GPO/ODJ_CR_Reunion/CR_SEM50.pdf[CR semaine 50]
 |  | link:https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b5/blob/master/GPO/ODJ_CR_Reunion/ODJ_SEM51.pdf[ODJ semaine 51] | link:https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b5/blob/master/GPO/ODJ_CR_Reunion/CR_SEM51.pdf[CR semaine 51]
+| Réunions POST-MORTEM | link:https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b5/blob/master/GPO/ODJ_CR_Reunion/ODJ_POST-MORTEM.pdf[ODJ POST-MORTEM] | 
 |===
 
 ==== Evaluation communication semaine 48 par EP
@@ -345,6 +346,13 @@ Note Appel offre : 11,02/20
 ODJ OK CR: Il manque toujours les retour de la réunion client et les difficultés/réussites au niveau organisationnel. Des fautes.  
 note : 2/3
 
+==== Evaluation communication semaine 51 par EP
+Attention c'est la réunion d'équipe que je demande (retrospective de sprint ) pas celle avec le client (sprint review) même si vous devez la résumer dans le CR. Peu rédigé.Pensez à m'envoyer l'ODJ pour la semaine prochaine.
+note: 2,49/3
+
+=== Evaluation fiche droit
+
+17/20
 
 === Voici un exemple d'évaluation :
 
